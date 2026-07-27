@@ -52,12 +52,16 @@ async function acceptCookies(page) {
 }
 
 async function getWidgetFrame(page) {
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 40; i++) {
     const frame = page.frames().find((f) => f.url().includes('widgets.tennis.de'));
     if (frame) return frame;
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(750);
   }
-  throw new Error('Widget-Frame (widgets.tennis.de) nicht gefunden - hat sich tennis.de geändert?');
+  const frameUrls = page.frames().map((f) => f.url());
+  throw new Error(
+    'Widget-Frame (widgets.tennis.de) nicht gefunden - hat sich tennis.de geändert? ' +
+    'Gefundene Frames: ' + JSON.stringify(frameUrls)
+  );
 }
 
 // Ein Turnierteilnehmer-Eintrag in der Meldeliste, z.B.:
@@ -178,14 +182,41 @@ async function scrapeCompetition(frame, index, competitionLabel) {
 
 async function main() {
   const browser = await chromium.launch();
-  const page = await browser.newPage({ locale: 'de-DE' });
+  const page = await browser.newPage({
+    locale: 'de-DE',
+    userAgent:
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
+      '(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+  });
+
+  fs.mkdirSync(DATA_DIR, { recursive: true });
 
   console.log('Öffne', DETAIL_URL);
   await page.goto(DETAIL_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
   await acceptCookies(page);
   await page.waitForTimeout(3000);
 
-  const frame = await getWidgetFrame(page);
+  // Diagnose-Schnappschuss der äußeren Seite, damit wir bei einem Fehlschlag
+  // sehen, was der Bot tatsächlich vorgefunden hat (z.B. Cookie-Banner,
+  // Bot-Sperre, andere Seitenstruktur).
+  try {
+    const outerText = await page.locator('body').innerText();
+    fs.writeFileSync(path.join(DATA_DIR, 'scrape-debug-outer.txt'), outerText);
+    await page.screenshot({ path: path.join(DATA_DIR, 'scrape-debug.png'), fullPage: true });
+  } catch (e) {
+    console.warn('Konnte Diagnose-Schnappschuss nicht erstellen:', e.message);
+  }
+
+  let frame;
+  try {
+    frame = await getWidgetFrame(page);
+  } catch (e) {
+    console.error(e.message);
+    writeJSON('entrants.json', readJSON('entrants.json', []));
+    console.log('Kein Widget-Frame gefunden - siehe data/scrape-debug-outer.txt und data/scrape-debug.png.');
+    await browser.close();
+    return;
+  }
   await frame.waitForSelector('text=Konkurrenzen', { timeout: 30000 }).catch(() => {});
 
   // Konkurrenzen-Übersicht als Text holen, um Namen/LK-Klassen den
