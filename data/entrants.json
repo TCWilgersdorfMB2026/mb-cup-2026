@@ -86,12 +86,6 @@
         "lk": "14,8"
       },
       {
-        "name": "Haas Konstantin",
-        "club": "TC Siegen",
-        "dtbId": "19762451",
-        "lk": "12,7"
-      },
-      {
         "name": "Henrichs Lukas",
         "club": "TC Ludwigseck Salchendorf e.V.",
         "dtbId": "19571807",
@@ -203,6 +197,12 @@
         "club": "TC Schönbach",
         "dtbId": "11084267",
         "lk": "18,8"
+      },
+      {
+        "name": "Lück Markus",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "19077937",
+        "lk": "21,9"
       },
       {
         "name": "Mai Lennart",
@@ -461,6 +461,12 @@
         "lk": "21,1"
       },
       {
+        "name": "Henrichs Rolf",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "15800810",
+        "lk": "18,6"
+      },
+      {
         "name": "Mosch Rüdiger",
         "club": "TC Ludwigseck Salchendorf e.V.",
         "dtbId": "16654162",
@@ -630,6 +636,12 @@
         "club": "TC Haiger",
         "dtbId": "29155598",
         "lk": "19,4"
+      },
+      {
+        "name": "Wiegel Lea",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "21051841",
+        "lk": "18,1"
       }
     ]
   },
