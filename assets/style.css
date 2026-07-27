@@ -88,26 +88,65 @@ body {
 .card .score { font-weight: 700; color: var(--accent); }
 .card .meta { color: var(--muted); font-size: 0.8rem; }
 
-.comp-group { margin-bottom: 18px; }
-.comp-group .comp { font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-.comp-group ul { margin: 0; padding-left: 18px; }
-
-.match-players { display: flex; flex-direction: column; gap: 2px; margin-bottom: 6px; }
-.match-players .player { font-size: 0.95rem; }
-.match-players .player.winner { font-weight: 700; color: var(--navy); }
-.winner-badge {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: #fff;
-  background: var(--navy);
+.bracket-picker { margin-bottom: 16px; }
+.bracket-picker select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 1px 7px;
-  margin-left: 6px;
-  vertical-align: middle;
+  background: var(--card);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
-.match-card .score { margin-bottom: 4px; }
-.match-card .pending { color: var(--muted); font-style: italic; font-size: 0.85rem; margin-bottom: 4px; }
+
+.bracket-scroll { overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+
+.bracket-grid {
+  display: grid;
+  gap: 4px 18px;
+  min-width: 560px;
+}
+
+.bracket-col-header {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-align: center;
+  padding-bottom: 8px;
+  white-space: nowrap;
+}
+
+.bracket-match { display: flex; align-items: center; }
+
+.bracket-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 0.8rem;
+}
+.bracket-player { padding: 2px 0; color: var(--text); }
+.bracket-player.winner { font-weight: 700; color: var(--navy); }
+.bracket-score { color: var(--accent); font-weight: 700; font-size: 0.72rem; margin-top: 3px; }
+.bracket-pending { color: var(--muted); font-style: italic; font-size: 0.72rem; margin-top: 3px; }
+
+.bracket-champion { justify-content: center; }
+.bracket-champion .bracket-box.winner-box {
+  background: var(--navy);
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 44px;
+}
 
 .report-item h3 { margin: 0 0 6px; color: var(--navy); }
 .report-item .date { color: var(--muted); font-size: 0.8rem; margin-bottom: 8px; }

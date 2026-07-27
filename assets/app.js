@@ -39,77 +39,162 @@ function renderTicker(items) {
 // Unbekannte/leere Rundennamen (z.B. bei Konkurrenzen ohne Tableau) landen
 // einfach ans Ende, statt den Sortiervorgang zu verwirren.
 const ROUND_ORDER = ['Sechzehntelfinale', 'Achtelfinale', 'Viertelfinale', 'Halbfinale', 'Finale'];
-function roundRank(round) {
-  const i = ROUND_ORDER.indexOf(round || '');
-  return i === -1 ? ROUND_ORDER.length : i;
-}
 
 function namesMatch(a, b) {
   return (a || '').trim() && (a || '').trim() === (b || '').trim();
 }
 
-function renderMatchCard(m) {
+// Hält die zuletzt geladenen Daten und die aktuell im Dropdown gewählte
+// Konkurrenz, damit ein Refresh (alle 60s) die Auswahl der Person nicht
+// zurücksetzt und das Dropdown nicht bei jedem Tick neu aufgebaut werden muss.
+const state = { schedule: [], results: [], entrants: [], selectedCompetition: null };
+
+// Liefert die Namen ALLER Konkurrenzen, die entweder Paarungen (Tableau)
+// oder zumindest eine Meldeliste haben - in der Reihenfolge, in der sie
+// zuerst auftauchen.
+function listCompetitions() {
+  const seen = new Set();
+  const names = [];
+  for (const m of [...state.results, ...state.schedule]) {
+    if (m.competition && !seen.has(m.competition)) {
+      seen.add(m.competition);
+      names.push(m.competition);
+    }
+  }
+  for (const c of state.entrants) {
+    if (c.competition && !seen.has(c.competition)) {
+      seen.add(c.competition);
+      names.push(c.competition);
+    }
+  }
+  return names;
+}
+
+// Baut EIN Match-Kästchen im Tableau-Stil (wie tennis.de): beide Spielernamen
+// übereinander, Sieger:in fett, Ergebnis darunter bzw. "Noch offen".
+function bracketBoxHtml(m) {
   const p1Wins = m.played && namesMatch(m.player1, m.winner);
   const p2Wins = m.played && namesMatch(m.player2, m.winner);
-  const metaParts = [m.round, m.time ? fmtTime(m.time) : '', m.court ? 'Platz ' + m.court : ''].filter(Boolean);
   return `
-    <div class="card match-card">
-      <div class="match-players">
-        <div class="player${p1Wins ? ' winner' : ''}">${escapeHtml(m.player1 || '')}${p1Wins ? '<span class="winner-badge">Sieger</span>' : ''}</div>
-        <div class="player${p2Wins ? ' winner' : ''}">${escapeHtml(m.player2 || '')}${p2Wins ? '<span class="winner-badge">Sieger</span>' : ''}</div>
-      </div>
-      ${m.played ? `<div class="score">${escapeHtml(m.score || '')}</div>` : '<div class="pending">Noch offen</div>'}
-      ${metaParts.length ? `<div class="meta">${metaParts.map(escapeHtml).join(' · ')}</div>` : ''}
+    <div class="bracket-box">
+      <div class="bracket-player${p1Wins ? ' winner' : ''}">${escapeHtml(m.player1 || '')}</div>
+      <div class="bracket-player${p2Wins ? ' winner' : ''}">${escapeHtml(m.player2 || '')}</div>
+      ${m.played ? `<div class="bracket-score">${escapeHtml(m.score || '')}</div>` : '<div class="bracket-pending">Noch offen</div>'}
     </div>`;
 }
 
-// Zeigt Spielplan (offene Paarungen) UND Ergebnisse (entschiedene Matches)
-// zusammen in einer Ansicht, pro Konkurrenz gruppiert und nach Runde
-// sortiert - so sieht man auf einen Blick den kompletten Turnierverlauf
-// einer Konkurrenz statt zwischen zwei Tabs hin- und herspringen zu müssen.
-// Konkurrenzen, für die es noch keine einzige Paarung gibt (Auslosung steht
-// noch aus, oder die Konkurrenz hat gar kein Tableau), zeigen stattdessen
-// die gemeldeten Spieler:innen aus der Meldeliste.
-function renderSpielplanErgebnisse(schedule, results, entrants) {
-  const el = qs('spiele-list');
-  const all = [
-    ...(results || []).map((m) => ({ ...m, played: true })),
-    ...(schedule || []).map((m) => ({ ...m, played: false })),
-  ];
-
-  const byCompetition = new Map();
-  for (const m of all) {
-    const key = m.competition || '';
-    if (!byCompetition.has(key)) byCompetition.set(key, []);
-    byCompetition.get(key).push(m);
+// Rendert eine Konkurrenz als Turnierbaum (Spalte pro Runde), analog zur
+// tennis.de-Tableau-Ansicht. Nutzt CSS Grid mit exakter Zeilen-Zentrierung:
+// ein Match in Runde r (0-indiziert) an Position i belegt "Sub-Zeilen"
+// [i * 2^(r+1) + 1 .. + 2^(r+1)] - das entspricht immer genau der Zeilen-
+// spanne seiner beiden Vorrunden-Matches, dadurch steht jede Box exakt
+// mittig zwischen ihren beiden Zubringer-Matches. Setzt voraus, dass die
+// erste angezeigte Runde ein sauberes 2er-Potenz-Tableau ohne Freilose ist
+// (bei den bisher getesteten Konkurrenzen der Fall).
+function renderBracket(matches) {
+  const byRound = new Map();
+  for (const m of matches) {
+    const r = m.round || '';
+    if (!byRound.has(r)) byRound.set(r, []);
+    byRound.get(r).push(m);
+  }
+  const roundsPresent = ROUND_ORDER.filter((r) => byRound.has(r));
+  if (!roundsPresent.length) {
+    return '<p class="empty">Für diese Konkurrenz liegen noch keine Paarungen vor.</p>';
   }
 
-  if (!byCompetition.size && (!entrants || !entrants.length)) {
+  const firstRoundCount = byRound.get(roundsPresent[0]).length;
+  const totalSubrows = firstRoundCount * 2;
+
+  const finaleMatches = byRound.get('Finale');
+  const finaleDone = finaleMatches && finaleMatches.length === 1 && finaleMatches[0].winner;
+  const columns = finaleDone ? [...roundsPresent, 'Sieger'] : roundsPresent;
+
+  let cells = '';
+  columns.forEach((roundName, colIdx) => {
+    const col = colIdx + 1;
+    cells += `<div class="bracket-col-header" style="grid-column:${col};grid-row:1;">${escapeHtml(roundName)}</div>`;
+
+    if (roundName === 'Sieger') {
+      cells += `
+        <div class="bracket-match bracket-champion" style="grid-column:${col};grid-row:2 / span ${totalSubrows};">
+          <div class="bracket-box winner-box">${escapeHtml(finaleMatches[0].winner)}</div>
+        </div>`;
+      return;
+    }
+
+    const rowUnit = Math.pow(2, colIdx + 1);
+    byRound.get(roundName).forEach((m, i) => {
+      const rowStart = i * rowUnit + 2;
+      cells += `
+        <div class="bracket-match" style="grid-column:${col};grid-row:${rowStart} / span ${rowUnit};">
+          ${bracketBoxHtml(m)}
+        </div>`;
+    });
+  });
+
+  return `
+    <div class="bracket-scroll">
+      <div class="bracket-grid" style="grid-template-columns:repeat(${columns.length}, minmax(150px, 1fr)); grid-template-rows:auto repeat(${totalSubrows}, minmax(26px, 1fr));">
+        ${cells}
+      </div>
+    </div>`;
+}
+
+// Rendert die aktuell im Dropdown gewählte Konkurrenz: Turnierbaum, wenn
+// bereits Paarungen existieren, sonst die gemeldeten Spieler:innen aus der
+// Meldeliste (Auslosung steht noch aus).
+function renderCompetitionDetail() {
+  const el = qs('spiele-list');
+  if (!state.selectedCompetition) {
     el.innerHTML = '<p class="empty">Wird vor Turnierstart eingepflegt.</p>';
     return;
   }
+  const matches = [
+    ...state.results.filter((m) => m.competition === state.selectedCompetition).map((m) => ({ ...m, played: true })),
+    ...state.schedule.filter((m) => m.competition === state.selectedCompetition).map((m) => ({ ...m, played: false })),
+  ];
+  if (matches.length) {
+    el.innerHTML = renderBracket(matches);
+    return;
+  }
+  const entrantBlock = state.entrants.find((c) => c.competition === state.selectedCompetition);
+  if (entrantBlock && entrantBlock.entrants.length) {
+    el.innerHTML = `
+      <p class="hint">Auslosung steht noch aus – gemeldete Spieler:innen:</p>
+      <ul>${entrantBlock.entrants.map((p) => `<li>${escapeHtml(p.name || '')}${p.club ? ' · ' + escapeHtml(p.club) : ''}${p.lk ? ' · LK' + escapeHtml(p.lk) : ''}</li>`).join('')}</ul>`;
+    return;
+  }
+  el.innerHTML = '<p class="empty">Wird vor Turnierstart eingepflegt.</p>';
+}
 
-  const matchSections = [...byCompetition.entries()].map(([competition, matches]) => {
-    matches.sort((a, b) => roundRank(a.round) - roundRank(b.round));
-    return `
-      <div class="comp-group">
-        <div class="comp">${escapeHtml(competition)}</div>
-        <div class="card-list">${matches.map(renderMatchCard).join('')}</div>
-      </div>`;
-  });
+// Baut das Konkurrenzen-Dropdown auf (nur wenn sich die Liste geändert hat)
+// und rendert danach die Detailansicht der ausgewählten Konkurrenz. Die
+// Auswahl bleibt über einen Refresh hinweg erhalten, solange die Konkurrenz
+// noch existiert.
+function renderSpielplanErgebnisse(schedule, results, entrants) {
+  state.schedule = schedule || [];
+  state.results = results || [];
+  state.entrants = entrants || [];
 
-  // Konkurrenzen, die noch gar keine Paarung haben (Auslosung steht noch
-  // aus), zeigen stattdessen ihre Meldeliste.
-  const entrantSections = (entrants || [])
-    .filter((c) => !byCompetition.has(c.competition))
-    .map((c) => `
-      <div class="comp-group">
-        <div class="comp">${escapeHtml(c.competition || '')}</div>
-        <p class="hint">Auslosung steht noch aus – gemeldete Spieler:innen:</p>
-        <ul>${(c.entrants || []).map((p) => `<li>${escapeHtml(p.name || '')}${p.club ? ' · ' + escapeHtml(p.club) : ''}${p.lk ? ' · LK' + escapeHtml(p.lk) : ''}</li>`).join('')}</ul>
-      </div>`);
+  const names = listCompetitions();
+  const selectEl = qs('competition-select');
 
-  el.innerHTML = matchSections.join('') + entrantSections.join('');
+  if (!names.length) {
+    selectEl.innerHTML = '<option value="">Keine Konkurrenzen</option>';
+    state.selectedCompetition = null;
+    renderCompetitionDetail();
+    return;
+  }
+
+  if (!state.selectedCompetition || !names.includes(state.selectedCompetition)) {
+    state.selectedCompetition = names[0];
+  }
+  selectEl.innerHTML = names
+    .map((c) => `<option value="${escapeHtml(c)}"${c === state.selectedCompetition ? ' selected' : ''}>${escapeHtml(c)}</option>`)
+    .join('');
+
+  renderCompetitionDetail();
 }
 
 function renderReports(items) {
@@ -169,6 +254,14 @@ function setupTabs() {
   });
 }
 
+function setupCompetitionSelect() {
+  qs('competition-select').addEventListener('change', (e) => {
+    state.selectedCompetition = e.target.value;
+    renderCompetitionDetail();
+  });
+}
+
 setupTabs();
+setupCompetitionSelect();
 refreshAll();
 setInterval(refreshAll, REFRESH_MS);
