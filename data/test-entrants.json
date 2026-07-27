@@ -356,7 +356,7 @@
     ]
   },
   {
-    "competition": "Herren 30 Einzel KO LK 1,0-25,0",
+    "competition": "Herren Einzel KO LK 22,0-25,0 (Nebenrunde)",
     "entrants": [
       {
         "name": "Ballion Silas",
@@ -385,7 +385,7 @@
     ]
   },
   {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "competition": "Herren Einzel KO LK 22,0-25,0 (Nebenrunde)",
     "entrants": [
       {
         "name": "Bahlmann Niclas Hans",
@@ -420,7 +420,7 @@
     ]
   },
   {
-    "competition": "Herren 40 Einzel KO LK 20,0-25,0",
+    "competition": "Herren Einzel KO LK 22,0-25,0 (Nebenrunde)",
     "entrants": [
       {
         "name": "Gyurcsi Robert Denes",
@@ -449,7 +449,7 @@
     ]
   },
   {
-    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "competition": "Herren Einzel KO LK 22,0-25,0 (Nebenrunde)",
     "entrants": [
       {
         "name": "Braun Sebastian",
@@ -484,11 +484,11 @@
     ]
   },
   {
-    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "competition": "Herren 30 Einzel KO LK 1,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Herren 60 Einzel KO LK 20,0-25,0",
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
         "name": "Ermert Martin",
@@ -553,11 +553,11 @@
     ]
   },
   {
-    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "competition": "Herren 40 Einzel KO LK 20,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Herren 70 Einzel KO LK 20,0-25,0",
+    "competition": "Herren 40 Einzel KO LK 20,0-25,0 (Nebenrunde)",
     "entrants": [
       {
         "name": "Mauk Andreas",
@@ -574,7 +574,7 @@
     ]
   },
   {
-    "competition": "Damen Einzel KO LK 1,0-25,0",
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
         "name": "Galbas Jörg",
@@ -609,15 +609,15 @@
     ]
   },
   {
-    "competition": "Damen Einzel KO LK 15,0-25,0",
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "competition": "Herren 60 Einzel KO LK 20,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Damen 30 Einzel KO LK 1,0-25,0",
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
         "name": "Afrahi Dr. Madjid",
@@ -658,11 +658,11 @@
     ]
   },
   {
-    "competition": "Damen 40 Einzel KO LK 1,0-25,0",
+    "competition": "Herren 70 Einzel KO LK 20,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Damen 40 Einzel KO LK 20,0-25,0",
+    "competition": "Damen Einzel KO LK 1,0-25,0",
     "entrants": [
       {
         "name": "Heide Miriam",
@@ -691,7 +691,7 @@
     ]
   },
   {
-    "competition": "Damen 50 Einzel KO LK 1,0-25,0",
+    "competition": "Damen Einzel KO LK 15,0-25,0",
     "entrants": [
       {
         "name": "Demirdöven Mehtap",
@@ -762,7 +762,7 @@
     ]
   },
   {
-    "competition": "Damen 60 Einzel KO LK 1,0-25,0",
+    "competition": "Damen Einzel KO LK 22,0-25,0",
     "entrants": [
       {
         "name": "Hachenberg Anna",
@@ -791,7 +791,7 @@
     ]
   },
   {
-    "competition": "Konkurrenz 21",
+    "competition": "Damen Einzel KO LK 22,0-25,0 (Nebenrunde)",
     "entrants": [
       {
         "name": "Habig Linn",
@@ -820,11 +820,11 @@
     ]
   },
   {
-    "competition": "Konkurrenz 22",
+    "competition": "Damen 30 Einzel KO LK 1,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Konkurrenz 23",
+    "competition": "Damen 40 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
         "name": "Moll Nina",
@@ -847,15 +847,15 @@
     ]
   },
   {
-    "competition": "Konkurrenz 24",
+    "competition": "Damen 40 Einzel KO LK 20,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Konkurrenz 25",
+    "competition": "Damen 50 Einzel KO LK 1,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Konkurrenz 26",
+    "competition": "Damen 60 Einzel KO LK 1,0-25,0",
     "entrants": []
   }
 ]
