@@ -5,7 +5,17 @@ on:
     # Alle 30 Minuten. Läuft ganzjährig; außerhalb des Turniers passiert
     # einfach nichts Neues und es wird kein Commit erzeugt.
     - cron: '*/30 * * * *'
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      test_tournament_id:
+        description: >-
+          Optional: tennis.de Turnier-ID eines ANDEREN Turniers zu Testzwecken
+          (z.B. um die Tableau-/Ergebnis-Logik an einem bereits
+          abgeschlossenen Turnier zu prüfen). Leer lassen für den normalen
+          MB-Cup-Lauf. Bei Angabe werden nur test-*.json Dateien geschrieben,
+          die echten Daten bleiben unangetastet.
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -33,6 +43,7 @@ jobs:
         env:
           TENNIS_DE_USERNAME: ${{ secrets.TENNIS_DE_USERNAME }}
           TENNIS_DE_PASSWORD: ${{ secrets.TENNIS_DE_PASSWORD }}
+          TEST_TOURNAMENT_ID: ${{ github.event.inputs.test_tournament_id }}
 
       - name: Änderungen committen (falls vorhanden)
         run: |
