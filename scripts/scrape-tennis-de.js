@@ -23,7 +23,15 @@ const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
 
-const TOURNAMENT_ID = '796221'; // 17. Wilgersdorfer LK-Turnier um den markenbaumarkt24-Cup
+// TEST_TOURNAMENT_ID erlaubt es, den Scraper testweise gegen ein ANDERES
+// (bereits abgeschlossenes) Turnier laufen zu lassen, z.B. um die
+// Tableau-/Ergebnis-Parser-Logik an echten Bracket-Daten zu prüfen, ohne die
+// echten MB-Cup-2026-Datendateien zu überschreiben. Ist die Variable gesetzt,
+// werden alle Ausgabedateien mit "test-" vorangestellt geschrieben
+// (test-entrants.json usw.) statt der echten entrants.json/schedule.json/
+// results.json. Der reguläre 30-Minuten-Cron setzt diese Variable nie.
+const TOURNAMENT_ID = process.env.TEST_TOURNAMENT_ID || '796221'; // Standard: 17. Wilgersdorfer LK-Turnier um den markenbaumarkt24-Cup
+const FILE_PREFIX = process.env.TEST_TOURNAMENT_ID ? 'test-' : '';
 const DETAIL_URL = `https://www.tennis.de/spielen/spielbetrieb/turniersuche.html#detail/${TOURNAMENT_ID}`;
 const DATA_DIR = path.join(__dirname, '..', 'data');
 
@@ -332,8 +340,8 @@ async function main() {
   // Seitenstruktur als erwartet).
   try {
     const outerText = await page.locator('body').innerText();
-    fs.writeFileSync(path.join(DATA_DIR, 'scrape-debug.txt'), outerText);
-    await page.screenshot({ path: path.join(DATA_DIR, 'scrape-debug.png'), fullPage: true });
+    fs.writeFileSync(path.join(DATA_DIR, `${FILE_PREFIX}scrape-debug.txt`), outerText);
+    await page.screenshot({ path: path.join(DATA_DIR, `${FILE_PREFIX}scrape-debug.png`), fullPage: true });
   } catch (e) {
     console.warn('Konnte Diagnose-Schnappschuss nicht erstellen:', e.message);
   }
@@ -344,9 +352,9 @@ async function main() {
   if (hasLoginWall) {
     console.error(
       'tennis.de zeigt einen Login-Hinweis statt der Konkurrenzen - vermutlich Bot-Erkennung. ' +
-      'Siehe data/scrape-debug.txt und data/scrape-debug.png.'
+      `Siehe data/${FILE_PREFIX}scrape-debug.txt und data/${FILE_PREFIX}scrape-debug.png.`
     );
-    writeJSON('entrants.json', readJSON('entrants.json', []));
+    writeJSON(`${FILE_PREFIX}entrants.json`, readJSON(`${FILE_PREFIX}entrants.json`, []));
     await browser.close();
     return;
   }
@@ -371,14 +379,14 @@ async function main() {
     if (matches && matches.length) allMatches.push(...matches);
   }
 
-  writeJSON('entrants.json', allEntrants);
+  writeJSON(`${FILE_PREFIX}entrants.json`, allEntrants);
 
   // Ergebnisse (mit Score) und Spielplan (ohne Score) trennen
   const results = allMatches.filter((m) => m.score && /\d:\d/.test(m.score));
   const schedule = allMatches.filter((m) => !m.score);
 
-  if (results.length) writeJSON('results.json', results);
-  if (schedule.length) writeJSON('schedule.json', schedule);
+  if (results.length) writeJSON(`${FILE_PREFIX}results.json`, results);
+  if (schedule.length) writeJSON(`${FILE_PREFIX}schedule.json`, schedule);
 
   console.log(`Fertig: ${allEntrants.length} Meldelisten, ${results.length} Ergebnisse, ${schedule.length} offene Paarungen.`);
 
