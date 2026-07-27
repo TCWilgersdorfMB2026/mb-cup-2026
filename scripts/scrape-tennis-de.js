@@ -158,24 +158,78 @@ async function loginIfNeeded(page) {
   }
 }
 
-// Extrahiert die Klartext-Bezeichnungen der Konkurrenzen aus der
-// Turnier-Übersichtsseite. Format auf tennis.de (bestätigt am echten
-// MB-Cup-Turnier, 3 aufeinanderfolgende Zeilen je Konkurrenz):
-//   Herren Einzel
-//   KO
-//   LK 1,0-25,0
-function extractCompetitionLabels(overviewText) {
+// Analysiert die Turnier-Übersichtsseite und liefert EIN Objekt pro
+// "Meldeliste"-Link, in der exakten Dokument-Reihenfolge, in der sie auf der
+// Seite erscheinen - inklusive Nebenrunden (Trostrunden), die KEINE eigene
+// Herren/Damen-Kopfzeile haben, aber trotzdem eine eigene Meldeliste UND
+// (meist) einen eigenen "Hauptfeld"/"Tableau ansehen"-Link besitzen.
+//
+// WICHTIG (Bug, gefunden beim Test gegen ein abgeschlossenes Turnier mit
+// echten Klammern): Nicht jede Konkurrenz hat ein Tableau (kleine Felder
+// unter 5 Meldungen z.B. haben oft nur eine Meldeliste, kein Hauptfeld).
+// Die Reihenfolge der "Hauptfeld"-Links ist deshalb NICHT deckungsgleich mit
+// der Reihenfolge der "Meldeliste"-Links - man darf NICHT einfach beide
+// Listen mit demselben Index (nth(i)) verknüpfen, sonst landet man beim
+// Tableau-Scraping regelmäßig bei der falschen Konkurrenz. Diese Funktion
+// bestimmt deshalb für jede Meldeliste separat, ob (und an welcher Position
+// innerhalb der Hauptfeld-Linkliste) ein Tableau existiert.
+//
+// Format auf tennis.de je Konkurrenz (Leerzeilen entfernt):
+//   Herren Einzel        <- Kategorie (fehlt bei Nebenrunden)
+//   KO                   <- Format (fehlt bei Nebenrunden)
+//   LK 1,0-25,0          <- LK-Bereich (fehlt bei Nebenrunden)
+//   ...
+//   Meldeliste           <- Anker, den wir suchen
+//   Zulassungsliste      <- optional
+//   Termine              <- optional
+//   Hauptfeld            <- nur vorhanden, wenn Auslosung erfolgt ist
+function parseOverviewBlocks(overviewText) {
   const lines = overviewText.split('\n').map((l) => l.trim()).filter(Boolean);
-  const labels = [];
+  const blocks = [];
+  let currentLabel = null;
+  let labelUsed = false;
+  let hauptfeldCounter = 0;
+
   for (let i = 0; i < lines.length; i++) {
     const isCategory = /^(Herren|Damen)\b/.test(lines[i]);
     const isFormat = /^(KO|Spiralsystem|Round Robin)$/.test(lines[i + 1] || '');
     const isLk = /^LK\s*[\d.,\-]+/.test(lines[i + 2] || '');
     if (isCategory && isFormat && isLk) {
-      labels.push(`${lines[i]} ${lines[i + 1]} ${lines[i + 2]}`);
+      currentLabel = `${lines[i]} ${lines[i + 1]} ${lines[i + 2]}`;
+      labelUsed = false;
+    }
+
+    if (lines[i] === 'Meldeliste') {
+      // Nach vorne schauen (bis zur nächsten Meldeliste/Kategorie), ob ein
+      // Hauptfeld-/Tableau-Link zu DIESER Konkurrenz gehört.
+      let hasHauptfeld = false;
+      for (let j = i + 1; j < Math.min(i + 8, lines.length); j++) {
+        if (lines[j] === 'Meldeliste') break;
+        const nextIsCategory =
+          /^(Herren|Damen)\b/.test(lines[j]) && /^(KO|Spiralsystem|Round Robin)$/.test(lines[j + 1] || '');
+        if (nextIsCategory) break;
+        if (lines[j] === 'Hauptfeld' || /^Tableau ansehen/.test(lines[j])) {
+          hasHauptfeld = true;
+          break;
+        }
+      }
+
+      let label = null;
+      if (currentLabel && !labelUsed) {
+        label = currentLabel;
+        labelUsed = true;
+      } else if (currentLabel) {
+        label = `${currentLabel} (Nebenrunde)`;
+      }
+
+      blocks.push({
+        label,
+        hauptfeldIndex: hasHauptfeld ? hauptfeldCounter : null,
+      });
+      if (hasHauptfeld) hauptfeldCounter += 1;
     }
   }
-  return labels;
+  return blocks;
 }
 
 // Ein Turnierteilnehmer-Eintrag in der Meldeliste. Reales Beispiel (Zeilen
@@ -250,15 +304,22 @@ function parseTableau(text, competition) {
   return matches;
 }
 
-async function scrapeCompetition(page, index, competitionLabel) {
+// meldelisteIndex: Position dieser Konkurrenz in der Liste ALLER
+// "Meldeliste"-Links (inkl. Nebenrunden) - für die Meldeliste selbst.
+// hauptfeldIndex: Position dieser Konkurrenz in der (kürzeren, separaten)
+// Liste der "Hauptfeld"/"Tableau ansehen"-Links, oder null, wenn diese
+// Konkurrenz gar kein Tableau hat (z.B. zu wenige Meldungen). Siehe
+// parseOverviewBlocks() für die Begründung, warum diese beiden Indizes NICHT
+// identisch sind.
+async function scrapeCompetition(page, meldelisteIndex, hauptfeldIndex, competitionLabel) {
   const result = { entrants: null, matches: [] };
 
   // --- Meldeliste ---
   try {
     const meldelisteLinks = page.getByText('Meldeliste', { exact: true });
     const count = await meldelisteLinks.count();
-    if (index < count) {
-      await meldelisteLinks.nth(index).click({ timeout: 5000 });
+    if (meldelisteIndex < count) {
+      await meldelisteLinks.nth(meldelisteIndex).click({ timeout: 5000 });
       await page.waitForTimeout(1200);
       const text = await page.locator('body').innerText();
       result.entrants = parseMeldeliste(text, competitionLabel);
@@ -278,25 +339,40 @@ async function scrapeCompetition(page, index, competitionLabel) {
     console.warn(`Meldeliste für "${competitionLabel}" konnte nicht gelesen werden:`, e.message);
   }
 
-  // --- Ergebnisse / Tableau (nur vorhanden, wenn Auslosung erfolgt ist) ---
-  try {
-    const ergebnisLinks = page.getByText('Hauptfeld', { exact: true }).or(page.getByText('Tableau ansehen', { exact: false }));
-    const count = await ergebnisLinks.count();
-    if (index < count) {
-      await ergebnisLinks.nth(index).click({ timeout: 5000 });
-      await page.waitForTimeout(1200);
-      const text = await page.locator('body').innerText();
-      if (!text.includes('nicht verfügbar')) {
-        result.matches = parseTableau(text, competitionLabel);
+  // --- Ergebnisse / Tableau (nur vorhanden, wenn Auslosung erfolgt ist UND
+  // diese Konkurrenz überhaupt ein Hauptfeld hat) ---
+  if (hauptfeldIndex !== null) {
+    try {
+      const ergebnisLinks = page.getByText('Hauptfeld', { exact: true }).or(page.getByText('Tableau ansehen', { exact: false }));
+      const count = await ergebnisLinks.count();
+      if (hauptfeldIndex < count) {
+        await ergebnisLinks.nth(hauptfeldIndex).click({ timeout: 5000 });
+        await page.waitForTimeout(1200);
+        const text = await page.locator('body').innerText();
+        if (!text.includes('nicht verfügbar')) {
+          result.matches = parseTableau(text, competitionLabel);
+        }
+        // Diagnose: die allererste Tableau-Seite eines Laufs immer
+        // mitschreiben, damit man bei 0 gefundenen Ergebnissen sehen kann,
+        // ob die Seite überhaupt wie erwartet aussieht (Klick hat geklappt,
+        // aber Regex passt nicht) oder ob der Klick ins Leere ging.
+        if (hauptfeldIndex === 0) {
+          try {
+            fs.writeFileSync(path.join(DATA_DIR, `${FILE_PREFIX}tableau-debug.txt`), text);
+            await page.screenshot({ path: path.join(DATA_DIR, `${FILE_PREFIX}tableau-debug.png`), fullPage: true });
+          } catch (e) {
+            console.warn('Konnte Tableau-Diagnose-Schnappschuss nicht erstellen:', e.message);
+          }
+        }
+        const back = page.getByText('Zurück zur Übersicht', { exact: false }).first();
+        if (await back.isVisible({ timeout: 1000 }).catch(() => false)) {
+          await back.click({ timeout: 3000 });
+          await page.waitForTimeout(800);
+        }
       }
-      const back = page.getByText('Zurück zur Übersicht', { exact: false }).first();
-      if (await back.isVisible({ timeout: 1000 }).catch(() => false)) {
-        await back.click({ timeout: 3000 });
-        await page.waitForTimeout(800);
-      }
+    } catch (e) {
+      console.warn(`Ergebnisse für "${competitionLabel}" konnten nicht gelesen werden:`, e.message);
     }
-  } catch (e) {
-    console.warn(`Ergebnisse für "${competitionLabel}" konnten nicht gelesen werden:`, e.message);
   }
 
   return result;
@@ -363,18 +439,26 @@ async function main() {
 
   const overviewText = await page.locator('body').innerText();
 
-  const competitionBlocks = extractCompetitionLabels(overviewText);
+  const overviewBlocks = parseOverviewBlocks(overviewText);
 
   const meldelisteCount = await page.getByText('Meldeliste', { exact: true }).count();
   console.log(`${meldelisteCount} Konkurrenzen mit Meldeliste gefunden.`);
+  if (overviewBlocks.length !== meldelisteCount) {
+    console.warn(
+      `Warnung: parseOverviewBlocks() fand ${overviewBlocks.length} Blöcke, ` +
+      `aber es gibt ${meldelisteCount} Meldeliste-Links. Zuordnung kann an dieser Stelle abweichen.`
+    );
+  }
 
   const allEntrants = [];
   const allMatches = [];
 
   for (let i = 0; i < meldelisteCount; i++) {
-    const label = competitionBlocks[i] || `Konkurrenz ${i + 1}`;
-    console.log(`(${i + 1}/${meldelisteCount}) ${label}`);
-    const { entrants, matches } = await scrapeCompetition(page, i, label);
+    const block = overviewBlocks[i] || {};
+    const label = block.label || `Konkurrenz ${i + 1}`;
+    const hauptfeldIndex = block.hauptfeldIndex ?? null;
+    console.log(`(${i + 1}/${meldelisteCount}) ${label}${hauptfeldIndex === null ? ' [kein Tableau]' : ` [Tableau #${hauptfeldIndex}]`}`);
+    const { entrants, matches } = await scrapeCompetition(page, i, hauptfeldIndex, label);
     if (entrants) allEntrants.push(entrants);
     if (matches && matches.length) allMatches.push(...matches);
   }
