@@ -264,43 +264,134 @@ function parseMeldeliste(text, competition) {
   return { competition, entrants };
 }
 
-// Best-effort-Parser für die Tableau-Ansicht (Bracket). Sucht nach
-// Spieler-Zeilen im Format "LK9,4 - Nachname, Vorname, 1990 - Verein, WTV"
-// und einer davorstehenden Zeile mit Satzergebnissen ("6:2 6:4").
-// NOCH NICHT an echten Bracket-Daten verifiziert (Auslosung steht noch aus).
-function parseTableau(text, competition) {
-  const lines = text.split('\n').map((l) => l.trim()).filter(Boolean);
-  const playerLineRe = /LK[\d.,]+\s*-\s*([^,]+,\s*[^,]+),\s*\d{4}\s*-\s*([^,]+),\s*\w+/;
-  const scoreRe = /^(\d+:\d+|Aufg\.|w\.o\.)(\s+(\d+:\d+|Aufg\.|w\.o\.))*$/;
+// Liest die Tableau-Ansicht (Bracket) STRUKTURIERT aus dem DOM aus, nicht aus
+// geflachtem innerText. Die Bracket-Darstellung ist eine echte HTML-Tabelle
+// mit einer Spalte pro Runde (z.B. "Achtelfinale", "Viertelfinale",
+// "Halbfinale", "Finale", "Sieger"). Verifiziert am kompletten, bereits
+// abgeschlossenen 16. Wilgersdorfer LK-Turnier (Herren Einzel Hauptfeld,
+// 16er-Tableau, ID 713418) - alle 15 Matches (8 Achtelfinale + 4 Viertelfinale
+// + 2 Halbfinale + 1 Finale) inkl. korrektem Sieger und Score von Hand UND
+// programmatisch nachgerechnet.
+async function extractTableauTable(page) {
+  return page.evaluate(() => {
+    const tables = Array.from(document.querySelectorAll('table'));
+    const table = tables.find((t) =>
+      /Achtelfinale|Viertelfinale|Halbfinale|Finale|Sechzehntelfinale/.test(t.textContent)
+    );
+    if (!table) return null;
+    const trs = Array.from(table.querySelectorAll('tr'));
+    if (trs.length < 2) return null;
+    const headers = Array.from(trs[0].children).map((th) => th.textContent.trim());
+    const rows = trs.slice(1).map((tr) => Array.from(tr.children).map((td) => td.textContent.trim()));
+    return { headers, rows };
+  });
+}
+
+const FULL_PLAYER_RE = /LK([\d.,]+)\s*-\s*([^,]+),\s*([^,]+),\s*(\d{4})\s*-\s*(.+)$/;
+
+function parseShortName(label) {
+  const m = label.match(/^([^,]+),\s*([A-ZÄÖÜ])\.?$/);
+  if (!m) return null;
+  return { surname: m[1].trim(), initial: m[2] };
+}
+
+function fullNameMatchesShort(fullName, short) {
+  if (!short) return false;
+  const parts = fullName.split(',');
+  const surname = parts[0].trim();
+  const firstname = (parts[1] || '').trim();
+  return surname === short.surname && firstname[0] === short.initial;
+}
+
+// tableData = { headers, rows } von extractTableauTable(). Jede weitere
+// Rundenspalte (nach der ersten, den Teilnehmern) enthält abwechselnd
+// [Kurzname-des-Siegers, Ergebnis] für jedes Match der VORHERIGEN Runde -
+// z.B. steht das Ergebnis eines Achtelfinale-Matches in der
+// "Viertelfinale"-Spalte. Wir verarbeiten deshalb Spalte für Spalte und
+// reichen die jeweiligen Sieger als Teilnehmer der nächsten Runde weiter.
+function parseTableau(tableData, competition) {
+  if (!tableData) return [];
+  const { headers, rows } = tableData;
+  const roundNames = headers.slice(1);
+  if (roundNames.length < 2) return [];
+
+  let participants = [];
+  for (const row of rows) {
+    const cell = row[1];
+    if (!cell) continue;
+    const m = cell.match(FULL_PLAYER_RE);
+    if (m) {
+      participants.push({
+        lk: m[1],
+        fullName: `${m[2].trim()}, ${m[3].trim()}`,
+        club: m[5].trim(),
+      });
+    }
+  }
+  if (participants.length < 2) return [];
 
   const matches = [];
-  for (let i = 0; i < lines.length; i++) {
-    const m1 = lines[i].match(playerLineRe);
-    if (!m1) continue;
-    // Manche Zeilen enthalten zwei Spieler nebeneinander (zwei Tableau-Spalten
-    // wurden beim Textauslesen zusammengefasst). Wir extrahieren alle Treffer.
-    const allPlayers = [...lines[i].matchAll(new RegExp(playerLineRe, 'g'))];
-    if (allPlayers.length < 2) continue;
-
-    const player1 = allPlayers[0][1].trim();
-    const player2 = allPlayers[1][1].trim();
-
-    // Score-Zeile steht typischerweise in der Zeile direkt davor
-    let score = null;
-    if (i > 0 && scoreRe.test(lines[i - 1])) {
-      score = lines[i - 1];
+  for (let colIdx = 2; colIdx < headers.length; colIdx++) {
+    const roundLabel = roundNames[colIdx - 2];
+    const entries = [];
+    for (const row of rows) {
+      const cell = row[colIdx];
+      if (cell) entries.push(cell);
     }
 
-    matches.push({
-      competition,
-      player1,
-      player2,
-      score,
-      round: '',
-      time: '',
-      court: '',
-    });
+    const pairCount = Math.floor(participants.length / 2);
+    const nextParticipants = [];
+    let roundIncomplete = false;
+    for (let i = 0; i < pairCount; i++) {
+      const p1 = participants[2 * i];
+      const p2 = participants[2 * i + 1];
+      if (!p1 || !p2) continue;
+
+      const label = entries[2 * i] || null;
+      const score = entries[2 * i + 1] || null;
+
+      if (!label) {
+        // Dieses Match ist auf der Seite noch nicht entschieden (Turnier
+        // läuft noch) - als Spielplan-Eintrag ohne Ergebnis aufnehmen, aber
+        // NICHT als Teilnehmer der nächsten Runde weiterreichen, da wir noch
+        // nicht wissen, wer gewinnt. Nachfolgende Runden können deshalb erst
+        // in einem späteren Lauf ausgewertet werden.
+        matches.push({
+          competition,
+          round: roundLabel,
+          player1: p1.fullName,
+          player2: p2.fullName,
+          score: null,
+          time: '',
+          court: '',
+        });
+        roundIncomplete = true;
+        continue;
+      }
+
+      const short = parseShortName(label);
+      let winner = null;
+      if (short) {
+        if (fullNameMatchesShort(p1.fullName, short)) winner = p1;
+        else if (fullNameMatchesShort(p2.fullName, short)) winner = p2;
+      }
+      if (!winner) winner = p1; // Fallback, falls Kurzname nicht zuordenbar ist
+
+      matches.push({
+        competition,
+        round: roundLabel,
+        player1: p1.fullName,
+        player2: p2.fullName,
+        score,
+        time: '',
+        court: '',
+      });
+      nextParticipants.push(winner);
+    }
+    participants = nextParticipants;
+    if (roundIncomplete) break;
   }
+
   return matches;
 }
 
@@ -350,15 +441,21 @@ async function scrapeCompetition(page, meldelisteIndex, hauptfeldIndex, competit
         await page.waitForTimeout(1200);
         const text = await page.locator('body').innerText();
         if (!text.includes('nicht verfügbar')) {
-          result.matches = parseTableau(text, competitionLabel);
+          const tableData = await extractTableauTable(page);
+          result.matches = parseTableau(tableData, competitionLabel);
         }
         // Diagnose: die allererste Tableau-Seite eines Laufs immer
         // mitschreiben, damit man bei 0 gefundenen Ergebnissen sehen kann,
         // ob die Seite überhaupt wie erwartet aussieht (Klick hat geklappt,
-        // aber Regex passt nicht) oder ob der Klick ins Leere ging.
+        // aber die Tabelle nicht gefunden/anders aufgebaut ist).
         if (hauptfeldIndex === 0) {
           try {
             fs.writeFileSync(path.join(DATA_DIR, `${FILE_PREFIX}tableau-debug.txt`), text);
+            const tableData = await extractTableauTable(page);
+            fs.writeFileSync(
+              path.join(DATA_DIR, `${FILE_PREFIX}tableau-debug.json`),
+              JSON.stringify(tableData, null, 2) + '\n'
+            );
             await page.screenshot({ path: path.join(DATA_DIR, `${FILE_PREFIX}tableau-debug.png`), fullPage: true });
           } catch (e) {
             console.warn('Konnte Tableau-Diagnose-Schnappschuss nicht erstellen:', e.message);
