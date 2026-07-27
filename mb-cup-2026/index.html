@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>17. Wilgersdorfer LK-Turnier – markenbaumarkt24-Cup 2026</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <h1>markenbaumarkt24-Cup 2026</h1>
+    <p class="subtitle">17. Wilgersdorfer LK-Turnier · TC Wilgersdorf · 15.–22.08.2026</p>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="tab-btn active" data-tab="ticker">Liveticker</button>
+  <button class="tab-btn" data-tab="spielplan">Spielplan</button>
+  <button class="tab-btn" data-tab="ergebnisse">Ergebnisse</button>
+  <button class="tab-btn" data-tab="berichte">Tagesberichte</button>
+  <button class="tab-btn" data-tab="speiseplan">Speiseplan</button>
+</nav>
+
+<main class="content">
+
+  <section id="ticker" class="tab-panel active">
+    <h2>Liveticker</h2>
+    <p class="hint">Aktuelle Kurzmeldungen vom Platz. Wird während des Turniers laufend aktualisiert.</p>
+    <div id="ticker-list" class="ticker-list">
+      <p class="empty">Noch keine Meldungen.</p>
+    </div>
+  </section>
+
+  <section id="spielplan" class="tab-panel">
+    <h2>Spielplan</h2>
+    <p class="hint">Konkurrenzen und anstehende Spiele.</p>
+    <div id="spielplan-list" class="card-list">
+      <p class="empty">Spielplan wird vor Turnierstart eingepflegt.</p>
+    </div>
+  </section>
+
+  <section id="ergebnisse" class="tab-panel">
+    <h2>Ergebnisse</h2>
+    <p class="hint">Gespielte Matches und Resultate.</p>
+    <div id="ergebnisse-list" class="card-list">
+      <p class="empty">Noch keine Ergebnisse.</p>
+    </div>
+  </section>
+
+  <section id="berichte" class="tab-panel">
+    <h2>Tagesberichte</h2>
+    <div id="berichte-list" class="report-list">
+      <p class="empty">Der erste Tagesbericht folgt nach Turnierstart.</p>
+    </div>
+  </section>
+
+  <section id="speiseplan" class="tab-panel">
+    <h2>Speiseplan</h2>
+    <div id="speiseplan-list" class="menu-list">
+      <p class="empty">Speiseplan wird noch veröffentlicht.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>TC Wilgersdorf e.V. · Diese Seite wird automatisch alle paar Minuten aktualisiert.</p>
+  <p class="updated" id="last-updated"></p>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

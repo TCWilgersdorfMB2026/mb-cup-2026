@@ -1,0 +1,104 @@
+:root {
+  --green: #1b6b3c;
+  --green-dark: #124d2b;
+  --gold: #c9a227;
+  --bg: #f7f7f4;
+  --card: #ffffff;
+  --text: #222;
+  --muted: #6b6b6b;
+  --border: #e3e3df;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.site-header {
+  background: linear-gradient(135deg, var(--green), var(--green-dark));
+  color: #fff;
+  padding: 24px 16px 20px;
+  text-align: center;
+}
+.site-header h1 { margin: 0 0 4px; font-size: 1.5rem; }
+.subtitle { margin: 0; font-size: 0.9rem; opacity: 0.9; }
+
+.tabs {
+  display: flex;
+  overflow-x: auto;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  -webkit-overflow-scrolling: touch;
+}
+.tab-btn {
+  flex: 1 0 auto;
+  padding: 12px 14px;
+  border: none;
+  background: transparent;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+}
+.tab-btn.active {
+  color: var(--green-dark);
+  border-bottom-color: var(--gold);
+}
+
+.content { max-width: 720px; margin: 0 auto; padding: 16px; }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.tab-panel h2 { margin-top: 0; color: var(--green-dark); }
+.hint { color: var(--muted); font-size: 0.85rem; margin-top: -8px; }
+
+.empty { color: var(--muted); font-style: italic; }
+
+.ticker-list, .card-list, .report-list, .menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ticker-item, .card, .report-item, .menu-day {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.ticker-item .time {
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-right: 8px;
+}
+
+.card .comp { font-weight: 700; color: var(--green-dark); }
+.card .players { margin: 4px 0; }
+.card .score { font-weight: 700; }
+.card .meta { color: var(--muted); font-size: 0.8rem; }
+
+.report-item h3 { margin: 0 0 6px; color: var(--green-dark); }
+.report-item .date { color: var(--muted); font-size: 0.8rem; margin-bottom: 8px; }
+.report-item p { white-space: pre-wrap; margin: 0; }
+
+.menu-day h3 { margin: 0 0 8px; color: var(--green-dark); }
+.menu-day ul { margin: 0; padding-left: 18px; }
+
+.site-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.75rem;
+  padding: 20px 16px 30px;
+}
+.updated { margin-top: 4px; }
