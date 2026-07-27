@@ -1,25 +1,25 @@
 :root {
-  --green: #1b6b3c;
-  --green-dark: #124d2b;
-  --gold: #c9a227;
-  --bg: #f7f7f4;
+  --navy: #002c58;
+  --navy-dark: #001a35;
+  --accent: #116dff;
+  --bg: #eeeeee;
   --card: #ffffff;
   --text: #222;
   --muted: #6b6b6b;
-  --border: #e3e3df;
+  --border: #e0e0e0;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Barlow', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
 }
 
 .site-header {
-  background: linear-gradient(135deg, var(--green), var(--green-dark));
+  background: linear-gradient(135deg, var(--navy), var(--navy-dark));
   color: #fff;
   padding: 24px 16px 20px;
   text-align: center;
@@ -50,8 +50,8 @@ body {
   white-space: nowrap;
 }
 .tab-btn.active {
-  color: var(--green-dark);
-  border-bottom-color: var(--gold);
+  color: var(--navy);
+  border-bottom-color: var(--accent);
 }
 
 .content { max-width: 720px; margin: 0 auto; padding: 16px; }
@@ -59,7 +59,7 @@ body {
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 
-.tab-panel h2 { margin-top: 0; color: var(--green-dark); }
+.tab-panel h2 { margin-top: 0; color: var(--navy); }
 .hint { color: var(--muted); font-size: 0.85rem; margin-top: -8px; }
 
 .empty { color: var(--muted); font-style: italic; }
@@ -79,20 +79,20 @@ body {
 
 .ticker-item .time {
   font-weight: 700;
-  color: var(--green-dark);
+  color: var(--navy);
   margin-right: 8px;
 }
 
-.card .comp { font-weight: 700; color: var(--green-dark); }
+.card .comp { font-weight: 700; color: var(--navy); }
 .card .players { margin: 4px 0; }
-.card .score { font-weight: 700; }
+.card .score { font-weight: 700; color: var(--accent); }
 .card .meta { color: var(--muted); font-size: 0.8rem; }
 
-.report-item h3 { margin: 0 0 6px; color: var(--green-dark); }
+.report-item h3 { margin: 0 0 6px; color: var(--navy); }
 .report-item .date { color: var(--muted); font-size: 0.8rem; margin-bottom: 8px; }
 .report-item p { white-space: pre-wrap; margin: 0; }
 
-.menu-day h3 { margin: 0 0 8px; color: var(--green-dark); }
+.menu-day h3 { margin: 0 0 8px; color: var(--navy); }
 .menu-day ul { margin: 0; padding-left: 18px; }
 
 .site-footer {
