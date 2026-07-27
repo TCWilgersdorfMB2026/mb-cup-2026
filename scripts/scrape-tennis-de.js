@@ -81,6 +81,62 @@ async function acceptCookies(page) {
   return false;
 }
 
+// Loggt sich bei tennis.de ein, falls TENNIS_DE_USERNAME/TENNIS_DE_PASSWORD
+// als Umgebungsvariablen (GitHub-Secrets) gesetzt sind. Die Konkurrenzen-
+///Meldeliste-Daten sind nur für eingeloggte Accounts sichtbar - ohne Login
+// zeigt tennis.de stattdessen "Bitte logge dich ein ...".
+// HINWEIS: Die genauen Feld-/Button-Selektoren sind nach bestem Wissen
+// geraten (kein Zugriff auf die Login-Maske im ausgeloggten Zustand möglich,
+// ohne die echte Vereinssitzung zu gefährden). Bei Bedarf anhand von
+// data/scrape-debug.png nach einem Fehlschlag anpassen.
+async function loginIfNeeded(page) {
+  const username = process.env.TENNIS_DE_USERNAME;
+  const password = process.env.TENNIS_DE_PASSWORD;
+  if (!username || !password) {
+    console.log('TENNIS_DE_USERNAME/TENNIS_DE_PASSWORD nicht gesetzt - überspringe Login.');
+    return false;
+  }
+
+  try {
+    const loginTrigger = page.getByText('Login', { exact: true }).first();
+    if (!(await loginTrigger.isVisible({ timeout: 3000 }).catch(() => false))) {
+      console.log('Kein "Login"-Button sichtbar - evtl. bereits eingeloggt oder anderer Seitenaufbau.');
+      return false;
+    }
+    await loginTrigger.click({ timeout: 5000 });
+    await page.waitForTimeout(1500);
+
+    const emailInput = page
+      .locator('input[type="email"], input[name*="user" i], input[name*="mail" i], input[type="text"]')
+      .first();
+    const passwordInput = page.locator('input[type="password"]').first();
+
+    await emailInput.waitFor({ timeout: 10000 });
+    await emailInput.fill(username);
+    await passwordInput.waitFor({ timeout: 10000 });
+    await passwordInput.fill(password);
+
+    const submitBtn = page.getByRole('button', { name: /login|anmelden/i }).first();
+    if (await submitBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+      await submitBtn.click({ timeout: 5000 });
+    } else {
+      await passwordInput.press('Enter');
+    }
+
+    await page.waitForTimeout(3000);
+    const loggedIn = await page
+      .getByText('Logout', { exact: false })
+      .first()
+      .isVisible({ timeout: 5000 })
+      .catch(() => false);
+    console.log('Login erfolgreich:', loggedIn);
+    return loggedIn;
+  } catch (e) {
+    console.warn('Login fehlgeschlagen:', e.message);
+    return false;
+  }
+}
+
 // Ein Turnierteilnehmer-Eintrag in der Meldeliste. Reales Beispiel (Zeilen
 // nach dem Entfernen leerer Zeilen), bestätigt am echten MB-Cup-Turnier:
 //   1
@@ -228,7 +284,15 @@ async function main() {
   await page.goto(DETAIL_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
   const cookiesAccepted = await acceptCookies(page);
   console.log('Cookie-Banner akzeptiert:', cookiesAccepted);
-  await page.waitForTimeout(5000);
+  await page.waitForTimeout(3000);
+
+  const loggedIn = await loginIfNeeded(page);
+  if (loggedIn) {
+    // Nach dem Login die Turnierseite neu laden, damit die Konkurrenzen
+    // sicher mit dem eingeloggten Zustand gerendert werden.
+    await page.goto(DETAIL_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.waitForTimeout(3000);
+  }
 
   // Diagnose-Schnappschuss, damit wir bei einem Fehlschlag sehen, was der
   // Bot tatsächlich vorgefunden hat (z.B. Cookie-Banner, Bot-Sperre, andere
