@@ -150,6 +150,26 @@ async function loginIfNeeded(page) {
   }
 }
 
+// Extrahiert die Klartext-Bezeichnungen der Konkurrenzen aus der
+// Turnier-Übersichtsseite. Format auf tennis.de (bestätigt am echten
+// MB-Cup-Turnier, 3 aufeinanderfolgende Zeilen je Konkurrenz):
+//   Herren Einzel
+//   KO
+//   LK 1,0-25,0
+function extractCompetitionLabels(overviewText) {
+  const lines = overviewText.split('\n').map((l) => l.trim()).filter(Boolean);
+  const labels = [];
+  for (let i = 0; i < lines.length; i++) {
+    const isCategory = /^(Herren|Damen)\b/.test(lines[i]);
+    const isFormat = /^(KO|Spiralsystem|Round Robin)$/.test(lines[i + 1] || '');
+    const isLk = /^LK\s*[\d.,\-]+/.test(lines[i + 2] || '');
+    if (isCategory && isFormat && isLk) {
+      labels.push(`${lines[i]} ${lines[i + 1]} ${lines[i + 2]}`);
+    }
+  }
+  return labels;
+}
+
 // Ein Turnierteilnehmer-Eintrag in der Meldeliste. Reales Beispiel (Zeilen
 // nach dem Entfernen leerer Zeilen), bestätigt am echten MB-Cup-Turnier:
 //   1
@@ -335,9 +355,7 @@ async function main() {
 
   const overviewText = await page.locator('body').innerText();
 
-  const competitionBlocks = [
-    ...overviewText.matchAll(/^(Herren|Damen)[^\n]*\n(KO|Spiralsystem|Round Robin)[^\n]*\nLK[\d.,\-]+/gm),
-  ].map((m) => m[0].split('\n').join(' '));
+  const competitionBlocks = extractCompetitionLabels(overviewText);
 
   const meldelisteCount = await page.getByText('Meldeliste', { exact: true }).count();
   console.log(`${meldelisteCount} Konkurrenzen mit Meldeliste gefunden.`);
