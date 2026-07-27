@@ -1,1 +1,699 @@
-[]
+[
+  {
+    "competition": "Konkurrenz 1",
+    "entrants": [
+      {
+        "name": "Feldmann Jonas Juttichai",
+        "club": "TC Rhode e.V.",
+        "dtbId": "10914651",
+        "lk": "9,4"
+      },
+      {
+        "name": "Galinski Johannes",
+        "club": "TuS Ferndorf",
+        "dtbId": "18353208",
+        "lk": "7,3"
+      },
+      {
+        "name": "Jud Tobias",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19958598",
+        "lk": "11,8"
+      },
+      {
+        "name": "Knebel Philipp",
+        "club": "TuS Ferndorf",
+        "dtbId": "18200353",
+        "lk": "7,6"
+      },
+      {
+        "name": "Menn Jan Steffen",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "18889740",
+        "lk": "9,4"
+      },
+      {
+        "name": "Motyka-Niehoff Philipp",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19650702",
+        "lk": "9,2"
+      },
+      {
+        "name": "Müller Nico",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "19201064",
+        "lk": "12,0"
+      },
+      {
+        "name": "Nies Tim",
+        "club": "TC Wilgersdorf",
+        "dtbId": "10464737",
+        "lk": "8,0"
+      },
+      {
+        "name": "Schmitt Pascal",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19450853",
+        "lk": "5,4"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 2",
+    "entrants": [
+      {
+        "name": "Böhl Timo",
+        "club": "TC 71 Netphen",
+        "dtbId": "18201150",
+        "lk": "15,5"
+      },
+      {
+        "name": "Ermert Martin",
+        "club": "TC Wilgersdorf",
+        "dtbId": "18065110",
+        "lk": "14,2"
+      },
+      {
+        "name": "Groß Tomm",
+        "club": "TuS 1900 Eisern",
+        "dtbId": "17854669",
+        "lk": "12,7"
+      },
+      {
+        "name": "Göckus Maximilian",
+        "club": "TuS 1900 Eisern",
+        "dtbId": "19662251",
+        "lk": "14,8"
+      },
+      {
+        "name": "Haas Konstantin",
+        "club": "TC Siegen",
+        "dtbId": "19762451",
+        "lk": "12,7"
+      },
+      {
+        "name": "Henrichs Lukas",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "19571807",
+        "lk": "15,5"
+      },
+      {
+        "name": "Hilberg Til",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "10566966",
+        "lk": "16,8"
+      },
+      {
+        "name": "Kettner Paul",
+        "club": "TC Wilgersdorf",
+        "dtbId": "10920075",
+        "lk": "17,2"
+      },
+      {
+        "name": "Kneppe Christian",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "17753794",
+        "lk": "16,2"
+      },
+      {
+        "name": "Koch Colin",
+        "club": "TC Haiger",
+        "dtbId": "10371025",
+        "lk": "15,5"
+      },
+      {
+        "name": "Peters Marvin",
+        "club": "TC Wilgersdorf",
+        "dtbId": "10055938",
+        "lk": "13,4"
+      },
+      {
+        "name": "Rötzel Johannes",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19761635",
+        "lk": "14,5"
+      },
+      {
+        "name": "Solbach Tim",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "18996676",
+        "lk": "14,4"
+      },
+      {
+        "name": "Stauf Michael",
+        "club": "TC Wieland-Wilnsdorf",
+        "dtbId": "17056937",
+        "lk": "17,5"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 3",
+    "entrants": [
+      {
+        "name": "Anders Denis",
+        "club": "TC Siegen",
+        "dtbId": "18454852",
+        "lk": "17,4"
+      },
+      {
+        "name": "Backaus Ole Fiete",
+        "club": "TC Wilgersdorf",
+        "dtbId": "11152457",
+        "lk": "19,8"
+      },
+      {
+        "name": "Baldus Jonas",
+        "club": "1. TC Wahlbach",
+        "dtbId": "10161556",
+        "lk": "18,4"
+      },
+      {
+        "name": "Deeken Matthias",
+        "club": "TC Siegen",
+        "dtbId": "18455519",
+        "lk": "19,9"
+      },
+      {
+        "name": "Fries Leo",
+        "club": "TC Wilgersdorf",
+        "dtbId": "11202558",
+        "lk": "21,3"
+      },
+      {
+        "name": "Gyurcsi Robert Denes",
+        "club": "TC Wilgersdorf",
+        "dtbId": "10010178",
+        "lk": "18,5"
+      },
+      {
+        "name": "Gün Bulut",
+        "club": "TuS 1900 Eisern",
+        "dtbId": "18754721",
+        "lk": "20,7"
+      },
+      {
+        "name": "Hartmann Nils",
+        "club": "TC Wieland-Wilnsdorf",
+        "dtbId": "18893736",
+        "lk": "20,4"
+      },
+      {
+        "name": "Kopp Jannis",
+        "club": "TC Schönbach",
+        "dtbId": "11084267",
+        "lk": "18,8"
+      },
+      {
+        "name": "Mai Lennart",
+        "club": "TC Wieland-Wilnsdorf",
+        "dtbId": "19359956",
+        "lk": "21,3"
+      },
+      {
+        "name": "Mayenschein Dennis",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "19764458",
+        "lk": "21,2"
+      },
+      {
+        "name": "Metzger Tim",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "19663213",
+        "lk": "21,6"
+      },
+      {
+        "name": "Müller Stefan",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17457511",
+        "lk": "22,4"
+      },
+      {
+        "name": "Polzer Timo",
+        "club": "TC Oranien Frohnhausen",
+        "dtbId": "18157118",
+        "lk": "18,6"
+      },
+      {
+        "name": "Schröder Yannick",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "19764462",
+        "lk": "21,2"
+      },
+      {
+        "name": "Stader Dominik",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "18501592",
+        "lk": "20,8"
+      },
+      {
+        "name": "Türk Michael",
+        "club": "1. TC Wahlbach",
+        "dtbId": "19077528",
+        "lk": "17,5"
+      },
+      {
+        "name": "Volz Konstantin",
+        "club": "TV Eiserfeld",
+        "dtbId": "18554728",
+        "lk": "18,0"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 4",
+    "entrants": [
+      {
+        "name": "Anders Gero",
+        "club": "TC 71 Netphen",
+        "dtbId": "11218345",
+        "lk": "24,1"
+      },
+      {
+        "name": "Braun Sebastian",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19077989",
+        "lk": "23,4"
+      },
+      {
+        "name": "Damm Robin",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "19764574",
+        "lk": "25,0"
+      },
+      {
+        "name": "Dielmann Benedikt",
+        "club": "TuS 1900 Eisern",
+        "dtbId": "19765006",
+        "lk": "24,0"
+      },
+      {
+        "name": "Freudenstein Manuel",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19257143",
+        "lk": "23,7"
+      },
+      {
+        "name": "Gutsch Christian",
+        "club": "TC GW Freudenberg",
+        "dtbId": "19764695",
+        "lk": "22,4"
+      },
+      {
+        "name": "Högemann Simon",
+        "club": "TC Wilgersdorf",
+        "dtbId": "18889826",
+        "lk": "25,0"
+      },
+      {
+        "name": "Lerscht Michael",
+        "club": "TC Wieland-Wilnsdorf",
+        "dtbId": "18456683",
+        "lk": "21,4"
+      },
+      {
+        "name": "Müller Joachim",
+        "club": "1. TC Wahlbach",
+        "dtbId": "18756259",
+        "lk": "20,1"
+      },
+      {
+        "name": "Nickel Jan",
+        "club": "TC Haiger",
+        "dtbId": "10067073",
+        "lk": "24,5"
+      },
+      {
+        "name": "Ossenbühl Udo",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "16455384",
+        "lk": "22,0"
+      },
+      {
+        "name": "Roth Marvin",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "19360305",
+        "lk": "23,0"
+      },
+      {
+        "name": "Scheuermann Florian",
+        "club": "TC Siegen",
+        "dtbId": "18705477",
+        "lk": "23,2"
+      },
+      {
+        "name": "Windisch Marcus",
+        "club": "TC Siegen",
+        "dtbId": "18068204",
+        "lk": "23,7"
+      },
+      {
+        "name": "Zahlmann Jörg Michael",
+        "club": "TC Wilgersdorf",
+        "dtbId": "16754662",
+        "lk": "24,8"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 5",
+    "entrants": [
+      {
+        "name": "Mauk Andreas",
+        "club": "TC Wilgersdorf",
+        "dtbId": "18001166",
+        "lk": "15,9"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 6",
+    "entrants": []
+  },
+  {
+    "competition": "Konkurrenz 7",
+    "entrants": [
+      {
+        "name": "Durow Thorsten",
+        "club": "TC Grün-Weiß Neuenkirchen e.V.",
+        "dtbId": "16900516",
+        "lk": "10,9"
+      },
+      {
+        "name": "Galbas Jörg",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17101145",
+        "lk": "14,3"
+      },
+      {
+        "name": "Hofacker Mathias",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17400520",
+        "lk": "11,9"
+      },
+      {
+        "name": "Hussing Frank",
+        "club": "1. TC Wahlbach",
+        "dtbId": "16804340",
+        "lk": "9,4"
+      },
+      {
+        "name": "Klink Peter",
+        "club": "SV Gosenbach e.V. TA",
+        "dtbId": "17302647",
+        "lk": "12,6"
+      },
+      {
+        "name": "Pavicic Peter",
+        "club": "ETV Eimsbüttel e.V.",
+        "dtbId": "16500095",
+        "lk": "11,0"
+      },
+      {
+        "name": "Schmelzeisen Frank",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17000443",
+        "lk": "12,9"
+      },
+      {
+        "name": "Schreiber Oliver",
+        "club": "TV Hoffnung Littfeld",
+        "dtbId": "17500383",
+        "lk": "12,7"
+      },
+      {
+        "name": "Schwarzer Martin",
+        "club": "TC Schwarz-Weiß Deuz 77",
+        "dtbId": "16700834",
+        "lk": "13,6"
+      },
+      {
+        "name": "Siegwolf Volker",
+        "club": "TC Wilgersdorf",
+        "dtbId": "16854501",
+        "lk": "17,7"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 8",
+    "entrants": []
+  },
+  {
+    "competition": "Konkurrenz 9",
+    "entrants": [
+      {
+        "name": "Feldmann Jürgen",
+        "club": "TC Rhode e.V.",
+        "dtbId": "16400579",
+        "lk": "17,5"
+      },
+      {
+        "name": "Germies Bernd",
+        "club": "TC Wieland-Wilnsdorf",
+        "dtbId": "16001435",
+        "lk": "18,6"
+      },
+      {
+        "name": "Hebestreit Thorsten",
+        "club": "SV Grün-Weiss Harburg e.V.",
+        "dtbId": "16251191",
+        "lk": "21,1"
+      },
+      {
+        "name": "Mosch Rüdiger",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "16654162",
+        "lk": "22,1"
+      },
+      {
+        "name": "Rothe Michael",
+        "club": "1. TC Wahlbach",
+        "dtbId": "16411055",
+        "lk": "9,6"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 10",
+    "entrants": []
+  },
+  {
+    "competition": "Konkurrenz 11",
+    "entrants": [
+      {
+        "name": "Bieker Joachim",
+        "club": "TuS Ferndorf",
+        "dtbId": "15300587",
+        "lk": "19,0"
+      },
+      {
+        "name": "Rauen Werner",
+        "club": "TC Menden",
+        "dtbId": "15400051",
+        "lk": "15,4"
+      },
+      {
+        "name": "Sommer Rainer",
+        "club": "TuS Ferndorf",
+        "dtbId": "15100120",
+        "lk": "10,6"
+      },
+      {
+        "name": "Sprenger Axel",
+        "club": "TuS Ferndorf",
+        "dtbId": "15102472",
+        "lk": "16,8"
+      },
+      {
+        "name": "Vogels Reiner",
+        "club": "TuS AdH Weidenau",
+        "dtbId": "15501038",
+        "lk": "11,3"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 12",
+    "entrants": []
+  },
+  {
+    "competition": "Konkurrenz 13",
+    "entrants": []
+  },
+  {
+    "competition": "Konkurrenz 14",
+    "entrants": [
+      {
+        "name": "Backaus Hedda Lotta",
+        "club": "TC Wilgersdorf",
+        "dtbId": "21050414",
+        "lk": "13,3"
+      },
+      {
+        "name": "Gün Ira",
+        "club": "TuS 1900 Eisern",
+        "dtbId": "28952797",
+        "lk": "15,2"
+      },
+      {
+        "name": "Hees Sabrina",
+        "club": "TC GW Freudenberg",
+        "dtbId": "29455392",
+        "lk": "14,8"
+      },
+      {
+        "name": "Heide Miriam",
+        "club": "TC Wilgersdorf",
+        "dtbId": "28801140",
+        "lk": "15,6"
+      },
+      {
+        "name": "Hoffmann Nicole",
+        "club": "TV Hoffnung Littfeld",
+        "dtbId": "29400009",
+        "lk": "16,0"
+      },
+      {
+        "name": "Lübke Bettina",
+        "club": "TuS Unglinghausen TA",
+        "dtbId": "29350692",
+        "lk": "13,5"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 15",
+    "entrants": [
+      {
+        "name": "Anders Xenia",
+        "club": "Siegener SC 07/09",
+        "dtbId": "28752662",
+        "lk": "17,5"
+      },
+      {
+        "name": "Becker Birgit",
+        "club": "TC Buschhütten",
+        "dtbId": "26352849",
+        "lk": "19,5"
+      },
+      {
+        "name": "Dörr Vanessa",
+        "club": "TC Siegen",
+        "dtbId": "29760120",
+        "lk": "18,6"
+      },
+      {
+        "name": "Gyurcsi Dora",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "29609190",
+        "lk": "20,1"
+      },
+      {
+        "name": "Hercher Elise",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "20162671",
+        "lk": "19,6"
+      },
+      {
+        "name": "Herking Lea-Marie",
+        "club": "TC GW Freudenberg",
+        "dtbId": "20158330",
+        "lk": "18,6"
+      },
+      {
+        "name": "Hussing Mara",
+        "club": "1. TC Wahlbach",
+        "dtbId": "20458151",
+        "lk": "20,1"
+      },
+      {
+        "name": "Menn Svenja",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "29054847",
+        "lk": "20,1"
+      },
+      {
+        "name": "Nowak Lara Michelle",
+        "club": "TC Siegen",
+        "dtbId": "20062633",
+        "lk": "19,3"
+      },
+      {
+        "name": "Ohm Michaela",
+        "club": "TC Lütringhausen",
+        "dtbId": "28752666",
+        "lk": "19,2"
+      },
+      {
+        "name": "Palić Nina",
+        "club": "TC Haiger",
+        "dtbId": "29155598",
+        "lk": "19,4"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 16",
+    "entrants": [
+      {
+        "name": "Becker Sarah",
+        "club": "TC Buschhütten",
+        "dtbId": "28893189",
+        "lk": "24,6"
+      },
+      {
+        "name": "Pfeifer Jasmin",
+        "club": "TC Wilgersdorf",
+        "dtbId": "29155391",
+        "lk": "25,0"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 17",
+    "entrants": [
+      {
+        "name": "Voth Eva",
+        "club": "TC Wilgersdorf",
+        "dtbId": "27910560",
+        "lk": "16,5"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 18",
+    "entrants": []
+  },
+  {
+    "competition": "Konkurrenz 19",
+    "entrants": [
+      {
+        "name": "Röcher Nicole",
+        "club": "TV Eichen 1888",
+        "dtbId": "27083724",
+        "lk": "10,3"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 20",
+    "entrants": []
+  },
+  {
+    "competition": "Konkurrenz 21",
+    "entrants": []
+  },
+  {
+    "competition": "Konkurrenz 22",
+    "entrants": []
+  },
+  {
+    "competition": "Konkurrenz 23",
+    "entrants": []
+  },
+  {
+    "competition": "Konkurrenz 24",
+    "entrants": []
+  }
+]
