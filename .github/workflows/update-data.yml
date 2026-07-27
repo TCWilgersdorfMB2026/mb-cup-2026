@@ -30,6 +30,9 @@ jobs:
 
       - name: tennis.de auslesen
         run: npm run scrape
+        env:
+          TENNIS_DE_USERNAME: ${{ secrets.TENNIS_DE_USERNAME }}
+          TENNIS_DE_PASSWORD: ${{ secrets.TENNIS_DE_PASSWORD }}
 
       - name: Änderungen committen (falls vorhanden)
         run: |
