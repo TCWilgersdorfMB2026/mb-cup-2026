@@ -4,6 +4,7 @@
     "round": "Achtelfinale",
     "player1": "Schmitt, Pascal",
     "player2": "Frykowski, Sam Noah",
+    "winner": "Schmitt, Pascal",
     "score": "6:1 6:0",
     "time": "",
     "court": ""
@@ -13,6 +14,7 @@
     "round": "Achtelfinale",
     "player1": "Schiep, Pascal",
     "player2": "Schmitz, Julian",
+    "winner": "Schmitz, Julian",
     "score": "4:6 7:5 10:4",
     "time": "",
     "court": ""
@@ -22,6 +24,7 @@
     "round": "Achtelfinale",
     "player1": "Nies, Tim",
     "player2": "Süßmann, Erik",
+    "winner": "Nies, Tim",
     "score": "6:1 6:1",
     "time": "",
     "court": ""
@@ -31,6 +34,7 @@
     "round": "Achtelfinale",
     "player1": "Selter, Jan Lukas",
     "player2": "Knebel, Philipp",
+    "winner": "Knebel, Philipp",
     "score": "6:2 6:3",
     "time": "",
     "court": ""
@@ -40,6 +44,7 @@
     "round": "Achtelfinale",
     "player1": "Jud, Tobias",
     "player2": "Galinski, Johannes",
+    "winner": "Galinski, Johannes",
     "score": "6:1 6:2",
     "time": "",
     "court": ""
@@ -49,6 +54,7 @@
     "round": "Achtelfinale",
     "player1": "Motyka-Niehoff, Philipp",
     "player2": "Klahold, Linus",
+    "winner": "Klahold, Linus",
     "score": "1:6 7:6 10:7",
     "time": "",
     "court": ""
@@ -58,6 +64,7 @@
     "round": "Achtelfinale",
     "player1": "Ballion, Silas",
     "player2": "Ohlenburger, Yannik",
+    "winner": "Ohlenburger, Yannik",
     "score": "6:3 6:2",
     "time": "",
     "court": ""
@@ -67,6 +74,7 @@
     "round": "Achtelfinale",
     "player1": "Unterkalmsteiner, Patrick",
     "player2": "Wagner, Matthias",
+    "winner": "Wagner, Matthias",
     "score": "4:6 6:1 10:5",
     "time": "",
     "court": ""
@@ -76,6 +84,7 @@
     "round": "Viertelfinale",
     "player1": "Schmitt, Pascal",
     "player2": "Schmitz, Julian",
+    "winner": "Schmitt, Pascal",
     "score": "6:1 6:1",
     "time": "",
     "court": ""
@@ -85,6 +94,7 @@
     "round": "Viertelfinale",
     "player1": "Nies, Tim",
     "player2": "Knebel, Philipp",
+    "winner": "Nies, Tim",
     "score": "6:2 7:5",
     "time": "",
     "court": ""
@@ -94,6 +104,7 @@
     "round": "Viertelfinale",
     "player1": "Galinski, Johannes",
     "player2": "Klahold, Linus",
+    "winner": "Galinski, Johannes",
     "score": "6:2 7:5",
     "time": "",
     "court": ""
@@ -103,6 +114,7 @@
     "round": "Halbfinale",
     "player1": "Schmitt, Pascal",
     "player2": "Nies, Tim",
+    "winner": "Schmitt, Pascal",
     "score": "6:3 6:3",
     "time": "",
     "court": ""
@@ -112,6 +124,7 @@
     "round": "Halbfinale",
     "player1": "Galinski, Johannes",
     "player2": "Wagner, Matthias",
+    "winner": "Galinski, Johannes",
     "score": "7:6 6:1",
     "time": "",
     "court": ""
@@ -121,6 +134,7 @@
     "round": "Finale",
     "player1": "Schmitt, Pascal",
     "player2": "Galinski, Johannes",
+    "winner": "Schmitt, Pascal",
     "score": "3:6 6:2 10:7",
     "time": "",
     "court": ""
@@ -130,6 +144,7 @@
     "round": "Achtelfinale",
     "player1": "Trappe, Tim",
     "player2": "Kersting, Matthias",
+    "winner": "Trappe, Tim",
     "score": "6:0 5:7 10:2",
     "time": "",
     "court": ""
@@ -139,6 +154,7 @@
     "round": "Achtelfinale",
     "player1": "Stauf, Michael",
     "player2": "Trappe, Jan",
+    "winner": "Trappe, Jan",
     "score": "6:2 3:6 10:5",
     "time": "",
     "court": ""
@@ -148,6 +164,7 @@
     "round": "Achtelfinale",
     "player1": "Peters, Marvin",
     "player2": "Bahlmann, Niclas Hans",
+    "winner": "Peters, Marvin",
     "score": "4:6 6:3 10:6",
     "time": "",
     "court": ""
@@ -157,6 +174,7 @@
     "round": "Viertelfinale",
     "player1": "Sting, Dominik",
     "player2": "Lotz, Federico",
+    "winner": "Sting, Dominik",
     "score": "6:3 6:2",
     "time": "",
     "court": ""
@@ -166,6 +184,7 @@
     "round": "Viertelfinale",
     "player1": "Trappe, Tim",
     "player2": "Trappe, Jan",
+    "winner": "Trappe, Tim",
     "score": "6:2 6:2",
     "time": "",
     "court": ""
@@ -175,6 +194,7 @@
     "round": "Viertelfinale",
     "player1": "Peters, Marvin",
     "player2": "Habig, Andree",
+    "winner": "Peters, Marvin",
     "score": "6:4 6:4",
     "time": "",
     "court": ""
@@ -184,6 +204,7 @@
     "round": "Halbfinale",
     "player1": "Sting, Dominik",
     "player2": "Trappe, Tim",
+    "winner": "Sting, Dominik",
     "score": "4:6 6:3 10:3",
     "time": "",
     "court": ""
@@ -193,6 +214,7 @@
     "round": "Achtelfinale",
     "player1": "Hilberg, Max",
     "player2": "Wolf, Philipp",
+    "winner": "Wolf, Philipp",
     "score": "6:4 6:2",
     "time": "",
     "court": ""
@@ -202,6 +224,7 @@
     "round": "Achtelfinale",
     "player1": "Trappe, Richard",
     "player2": "Traut, Jan Lukas",
+    "winner": "Traut, Jan Lukas",
     "score": "6:2 1:6 10:4",
     "time": "",
     "court": ""
@@ -211,6 +234,7 @@
     "round": "Viertelfinale",
     "player1": "Schneider, Dennis",
     "player2": "Füllenbach, Jonas",
+    "winner": "Schneider, Dennis",
     "score": "6:2 6:0",
     "time": "",
     "court": ""
@@ -220,6 +244,7 @@
     "round": "Viertelfinale",
     "player1": "Wolf, Philipp",
     "player2": "Traut, Jan Lukas",
+    "winner": "Wolf, Philipp",
     "score": "4:6 7:5 10:7",
     "time": "",
     "court": ""
@@ -229,6 +254,7 @@
     "round": "Viertelfinale",
     "player1": "Löcherbach, Steffen",
     "player2": "Türk, Michael",
+    "winner": "Löcherbach, Steffen",
     "score": "6:1 6:2",
     "time": "",
     "court": ""
@@ -238,6 +264,7 @@
     "round": "Halbfinale",
     "player1": "Schneider, Dennis",
     "player2": "Wolf, Philipp",
+    "winner": "Schneider, Dennis",
     "score": "2:6 7:6 10:5",
     "time": "",
     "court": ""
@@ -247,6 +274,7 @@
     "round": "Viertelfinale",
     "player1": "Rupprich, Klaus-Dieter",
     "player2": "Marburger, Jan",
+    "winner": "Rupprich, Klaus-Dieter",
     "score": "6:1 6:2",
     "time": "",
     "court": ""
@@ -256,6 +284,7 @@
     "round": "Viertelfinale",
     "player1": "Schweisfurth, Frank",
     "player2": "Zahlmann, Jörg Michael",
+    "winner": "Schweisfurth, Frank",
     "score": "6:3 6:2",
     "time": "",
     "court": ""
@@ -265,6 +294,7 @@
     "round": "Viertelfinale",
     "player1": "Rosenthal, Sebastian",
     "player2": "Schmidt, Carsten",
+    "winner": "Schmidt, Carsten",
     "score": "6:4 6:2",
     "time": "",
     "court": ""
@@ -274,6 +304,7 @@
     "round": "Halbfinale",
     "player1": "Rupprich, Klaus-Dieter",
     "player2": "Schweisfurth, Frank",
+    "winner": "Rupprich, Klaus-Dieter",
     "score": "2:6 6:3 10:8",
     "time": "",
     "court": ""
@@ -283,6 +314,7 @@
     "round": "Achtelfinale",
     "player1": "Mauk, Andreas",
     "player2": "Groß, Tomm",
+    "winner": "Groß, Tomm",
     "score": "6:0 6:3",
     "time": "",
     "court": ""
@@ -292,6 +324,7 @@
     "round": "Viertelfinale",
     "player1": "Schnorrenberg, Florian",
     "player2": "Zimmermann, Kai",
+    "winner": "Schnorrenberg, Florian",
     "score": "6:1 6:1",
     "time": "",
     "court": ""
@@ -301,6 +334,7 @@
     "round": "Viertelfinale",
     "player1": "Kneppe, Christian",
     "player2": "Groß, Tomm",
+    "winner": "Kneppe, Christian",
     "score": "6:2 6:0",
     "time": "",
     "court": ""
@@ -310,6 +344,7 @@
     "round": "Halbfinale",
     "player1": "Schnorrenberg, Florian",
     "player2": "Kneppe, Christian",
+    "winner": "Schnorrenberg, Florian",
     "score": "6:3 6:1",
     "time": "",
     "court": ""
@@ -319,6 +354,7 @@
     "round": "Halbfinale",
     "player1": "Sommer, Rainer",
     "player2": "Nies, Wolfgang",
+    "winner": "Nies, Wolfgang",
     "score": "6:3 3:6 10:7",
     "time": "",
     "court": ""
@@ -328,6 +364,7 @@
     "round": "Achtelfinale",
     "player1": "Moos, Annika",
     "player2": "Wiegel, Lea",
+    "winner": "Wiegel, Lea",
     "score": "6:1 3:6 10:7",
     "time": "",
     "court": ""
@@ -337,6 +374,7 @@
     "round": "Achtelfinale",
     "player1": "Wiegel, Nadine",
     "player2": "Habig, Linn",
+    "winner": "Wiegel, Nadine",
     "score": "6:3 6:2",
     "time": "",
     "court": ""
@@ -346,6 +384,7 @@
     "round": "Viertelfinale",
     "player1": "Gün, Ira",
     "player2": "Schiep, Celine",
+    "winner": "Gün, Ira",
     "score": "6:3 6:3",
     "time": "",
     "court": ""
@@ -355,6 +394,7 @@
     "round": "Viertelfinale",
     "player1": "Wiegel, Lea",
     "player2": "Wiegel, Nadine",
+    "winner": "Wiegel, Lea",
     "score": "6:2 6:2",
     "time": "",
     "court": ""
@@ -364,6 +404,7 @@
     "round": "Halbfinale",
     "player1": "Gün, Ira",
     "player2": "Wiegel, Lea",
+    "winner": "Gün, Ira",
     "score": "6:4 6:0",
     "time": "",
     "court": ""
