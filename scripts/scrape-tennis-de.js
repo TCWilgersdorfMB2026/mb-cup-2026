@@ -698,8 +698,12 @@ async function main() {
   const results = allMatches.filter((m) => m.score && /\d:\d/.test(m.score));
   const schedule = allMatches.filter((m) => !m.score);
 
-  if (results.length) writeJSON(`${FILE_PREFIX}results.json`, results);
-  if (schedule.length) writeJSON(`${FILE_PREFIX}schedule.json`, schedule);
+  // WICHTIG: Immer schreiben, auch wenn leer - sonst bleibt beim Wechsel von
+  // "hat Ergebnisse" zurück zu "keine Ergebnisse" (oder wenn die Datei vorher
+  // nur einmal manuell mit Platzhalterdaten angelegt wurde) eine veraltete
+  // Datei liegen, die die Seite fälschlich für aktuell hält.
+  writeJSON(`${FILE_PREFIX}results.json`, results);
+  writeJSON(`${FILE_PREFIX}schedule.json`, schedule);
 
   console.log(`Fertig: ${allEntrants.length} Meldelisten, ${results.length} Ergebnisse, ${schedule.length} offene Paarungen.`);
 
