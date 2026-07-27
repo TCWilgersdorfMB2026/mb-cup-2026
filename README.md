@@ -31,6 +31,28 @@ Während des Turniers reicht es, mir die Updates per Chat zu schicken – ich
 aktualisiere die Dateien und du lädst die neue Version einfach erneut hoch
 (oder ich übernehme das direkt, falls du mir Zugriff aufs Repo gibst).
 
+## Automatische Aktualisierung von tennis.de
+
+`data/schedule.json`, `data/results.json` und `data/entrants.json` (gemeldete
+Spieler:innen je Konkurrenz) werden zusätzlich automatisch von der
+öffentlichen tennis.de-Turnierseite übernommen. Ein GitHub-Actions-Workflow
+(`.github/workflows/update-data.yml`) öffnet dazu alle 30 Minuten einen
+unsichtbaren Browser, liest die sichtbare Seite aus und committet Änderungen
+von selbst – dafür ist keine Anmeldung bei tennis.de nötig, es werden nur
+öffentliche Daten gelesen.
+
+Manuell auslösen: im Repo unter "Actions" → "tennis.de Daten aktualisieren" →
+"Run workflow".
+
+Wichtig: Die Auslosung des MB-Cup erfolgt erst am 11.08.2026. Vorher liefert
+der Scraper nur die Meldelisten (`entrants.json`); Paarungen und Ergebnisse
+kommen automatisch dazu, sobald sie auf tennis.de erscheinen. Da tennis.de
+seine Turnierdaten in einem eingebetteten Widget mit unveröffentlichter
+Struktur anzeigt, ist der Auswertungs-Code in `scripts/scrape-tennis-de.js`
+nach bestem Wissen gebaut – nach der Auslosung lohnt sich ein kurzer Check
+(Datei `data/scrape-debug.txt` zeigt den rohen ausgelesenen Text zur
+Fehlersuche).
+
 ## Einbindung in Wix
 
 1. Im Wix-Editor eine neue Unterseite anlegen, z. B. "MB-Cup 2026".
