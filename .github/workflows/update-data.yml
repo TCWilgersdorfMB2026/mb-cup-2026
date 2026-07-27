@@ -35,7 +35,7 @@ jobs:
         run: |
           git config user.name "mb-cup-bot"
           git config user.email "actions@github.com"
-          git add data/schedule.json data/results.json data/entrants.json data/scrape-debug.txt data/scrape-debug-outer.txt data/scrape-debug.png || true
+          git add data/
           if ! git diff --cached --quiet; then
             git commit -m "Automatisches Update: Spielplan/Ergebnisse von tennis.de"
             git push
