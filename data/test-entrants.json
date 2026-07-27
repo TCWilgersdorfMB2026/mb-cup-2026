@@ -1,0 +1,861 @@
+[
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "entrants": [
+      {
+        "name": "Ballion Silas",
+        "club": "TC Siegen",
+        "dtbId": "10264913",
+        "lk": "8,8"
+      },
+      {
+        "name": "Brey Timo",
+        "club": "TC 71 Netphen",
+        "dtbId": "17300995",
+        "lk": "11,3"
+      },
+      {
+        "name": "Frykowski Sam Noah",
+        "club": "TuS AdH Weidenau",
+        "dtbId": "10462595",
+        "lk": "11,6"
+      },
+      {
+        "name": "Galinski Johannes",
+        "club": "TuS Ferndorf",
+        "dtbId": "18353208",
+        "lk": "8,6"
+      },
+      {
+        "name": "Jud Tobias",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19958598",
+        "lk": "12,2"
+      },
+      {
+        "name": "Klahold Linus",
+        "club": "TC Haiger",
+        "dtbId": "19964109",
+        "lk": "7,3"
+      },
+      {
+        "name": "Knebel Philipp",
+        "club": "TuS Ferndorf",
+        "dtbId": "18200353",
+        "lk": "8,2"
+      },
+      {
+        "name": "Motyka-Niehoff Philipp",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19650702",
+        "lk": "8,7"
+      },
+      {
+        "name": "Nies Tim",
+        "club": "TC Wilgersdorf",
+        "dtbId": "10464737",
+        "lk": "8,2"
+      },
+      {
+        "name": "Ohlenburger Yannik",
+        "club": "TV Sechshelden",
+        "dtbId": "19501021",
+        "lk": "8,3"
+      },
+      {
+        "name": "Schiep Pascal",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19357969",
+        "lk": "12,4"
+      },
+      {
+        "name": "Schmitt Pascal",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19450853",
+        "lk": "5,4"
+      },
+      {
+        "name": "Schmitz Julian",
+        "club": "TC Siegen",
+        "dtbId": "19311994",
+        "lk": "11,1"
+      },
+      {
+        "name": "Selter Jan Lukas",
+        "club": "TC 71 Netphen",
+        "dtbId": "19454869",
+        "lk": "12,2"
+      },
+      {
+        "name": "Süßmann Erik",
+        "club": "TV Hoffnung Littfeld",
+        "dtbId": "19756421",
+        "lk": "10,4"
+      },
+      {
+        "name": "Unterkalmsteiner Patrick",
+        "club": "TC Gottfried von Cramm e.V.",
+        "dtbId": "18353277",
+        "lk": "11,4"
+      },
+      {
+        "name": "Wagner Matthias",
+        "club": "TC Oberwerth Koblenz",
+        "dtbId": "18702979",
+        "lk": "5,5"
+      }
+    ]
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "entrants": [
+      {
+        "name": "Bahlmann Niclas Hans",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "10767460",
+        "lk": "14,7"
+      },
+      {
+        "name": "Diekert Justin",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "10456790",
+        "lk": "14,7"
+      },
+      {
+        "name": "Haas Konstantin",
+        "club": "TC Siegen",
+        "dtbId": "19762451",
+        "lk": "23,0"
+      },
+      {
+        "name": "Habig Andree",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17656094",
+        "lk": "16,9"
+      },
+      {
+        "name": "Kersting Matthias",
+        "club": "TC Wenden",
+        "dtbId": "18653284",
+        "lk": "17,5"
+      },
+      {
+        "name": "Lotz Federico",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "10757416",
+        "lk": "15,1"
+      },
+      {
+        "name": "Peters Marvin",
+        "club": "TC Wilgersdorf",
+        "dtbId": "10055938",
+        "lk": "14,9"
+      },
+      {
+        "name": "Rötzel Johannes",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19761635",
+        "lk": "15,5"
+      },
+      {
+        "name": "Stauf Michael",
+        "club": "TC Wieland-Wilnsdorf",
+        "dtbId": "17056937",
+        "lk": "17,7"
+      },
+      {
+        "name": "Sting Dominik",
+        "club": "TC 71 Netphen",
+        "dtbId": "18891553",
+        "lk": "11,7"
+      },
+      {
+        "name": "Trappe Jan",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "10554295",
+        "lk": "14,9"
+      },
+      {
+        "name": "Trappe Tim",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "19863622",
+        "lk": "16,3"
+      },
+      {
+        "name": "Wüstenhöfer Jan",
+        "club": "TC Wilgersdorf",
+        "dtbId": "18701748",
+        "lk": "14,4"
+      }
+    ]
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "entrants": [
+      {
+        "name": "Füllenbach Jonas",
+        "club": "TC GW Freudenberg",
+        "dtbId": "10451212",
+        "lk": "21,7"
+      },
+      {
+        "name": "Gyurcsi Robert Denes",
+        "club": "TC Wilgersdorf",
+        "dtbId": "10010178",
+        "lk": "19,3"
+      },
+      {
+        "name": "Hilberg Max",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "10831874",
+        "lk": "22,1"
+      },
+      {
+        "name": "Kettner Paul",
+        "club": "TC Wilgersdorf",
+        "dtbId": "10920075",
+        "lk": "18,7"
+      },
+      {
+        "name": "Löcherbach Steffen",
+        "club": "TC Siegen",
+        "dtbId": "18355407",
+        "lk": "18,8"
+      },
+      {
+        "name": "Mosch Rüdiger",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "16654162",
+        "lk": "21,8"
+      },
+      {
+        "name": "Schneider Dennis",
+        "club": "TC 71 Netphen",
+        "dtbId": "19358582",
+        "lk": "18,2"
+      },
+      {
+        "name": "Schulz Ben Jonah",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "10825106",
+        "lk": "19,2"
+      },
+      {
+        "name": "Trappe Richard",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "16854728",
+        "lk": "20,8"
+      },
+      {
+        "name": "Traut Jan Lukas",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "19860343",
+        "lk": "20,6"
+      },
+      {
+        "name": "Türk Michael",
+        "club": "1. TC Wahlbach",
+        "dtbId": "19077528",
+        "lk": "19,6"
+      },
+      {
+        "name": "Wolf Philipp",
+        "club": "TC Siegen",
+        "dtbId": "17163907",
+        "lk": "21,5"
+      }
+    ]
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "entrants": [
+      {
+        "name": "Baldus Jonas",
+        "club": "1. TC Wahlbach",
+        "dtbId": "10161556",
+        "lk": "25,0"
+      },
+      {
+        "name": "Braun Sebastian",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19077989",
+        "lk": "24,5"
+      },
+      {
+        "name": "Büdenbender Jens",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19259151",
+        "lk": "24,0"
+      },
+      {
+        "name": "Habig Nils",
+        "club": "TC Wilgersdorf",
+        "dtbId": "10773268",
+        "lk": "24,5"
+      },
+      {
+        "name": "Marburger Jan",
+        "club": "DJK Betzdorf",
+        "dtbId": "10066682",
+        "lk": "24,0"
+      },
+      {
+        "name": "Müller Joachim",
+        "club": "1. TC Wahlbach",
+        "dtbId": "18756259",
+        "lk": "23,1"
+      },
+      {
+        "name": "Neuser Bent David",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "11099696",
+        "lk": "22,2"
+      },
+      {
+        "name": "Ossenbühl Udo",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "16455384",
+        "lk": "22,6"
+      },
+      {
+        "name": "Rosenthal Sebastian",
+        "club": "TV Eiserfeld",
+        "dtbId": "19764200",
+        "lk": "22,6"
+      },
+      {
+        "name": "Rupprich Klaus-Dieter",
+        "club": "TuS Alchen 1957 e.V. TA",
+        "dtbId": "15753084",
+        "lk": "22,2"
+      },
+      {
+        "name": "Schmidt Carsten",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17355286",
+        "lk": "22,4"
+      },
+      {
+        "name": "Schweisfurth Frank",
+        "club": "TC Wilgersdorf",
+        "dtbId": "16800654",
+        "lk": "24,4"
+      },
+      {
+        "name": "Simon Reinhard",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "15601962",
+        "lk": "24,4"
+      },
+      {
+        "name": "Zahlmann Jörg Michael",
+        "club": "TC Wilgersdorf",
+        "dtbId": "16754662",
+        "lk": "25,0"
+      }
+    ]
+  },
+  {
+    "competition": "Herren 30 Einzel KO LK 1,0-25,0",
+    "entrants": [
+      {
+        "name": "Ballion Silas",
+        "club": "TC Siegen",
+        "dtbId": "10264913",
+        "lk": "8,8"
+      },
+      {
+        "name": "Frykowski Sam Noah",
+        "club": "TuS AdH Weidenau",
+        "dtbId": "10462595",
+        "lk": "11,6"
+      },
+      {
+        "name": "Jud Tobias",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19958598",
+        "lk": "12,2"
+      },
+      {
+        "name": "Motyka-Niehoff Philipp",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19650702",
+        "lk": "8,8"
+      }
+    ]
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "entrants": [
+      {
+        "name": "Bahlmann Niclas Hans",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "10767460",
+        "lk": "14,4"
+      },
+      {
+        "name": "Habig Andree",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17656094",
+        "lk": "16,9"
+      },
+      {
+        "name": "Kersting Matthias",
+        "club": "TC Wenden",
+        "dtbId": "18653284",
+        "lk": "17,6"
+      },
+      {
+        "name": "Rötzel Johannes",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19761635",
+        "lk": "15,4"
+      },
+      {
+        "name": "Stauf Michael",
+        "club": "TC Wieland-Wilnsdorf",
+        "dtbId": "17056937",
+        "lk": "17,7"
+      }
+    ]
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 20,0-25,0",
+    "entrants": [
+      {
+        "name": "Gyurcsi Robert Denes",
+        "club": "TC Wilgersdorf",
+        "dtbId": "10010178",
+        "lk": "19,3"
+      },
+      {
+        "name": "Hilberg Max",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "10831874",
+        "lk": "20,4"
+      },
+      {
+        "name": "Mosch Rüdiger",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "16654162",
+        "lk": "21,6"
+      },
+      {
+        "name": "Trappe Richard",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "16854728",
+        "lk": "20,9"
+      }
+    ]
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "entrants": [
+      {
+        "name": "Braun Sebastian",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19077989",
+        "lk": "24,6"
+      },
+      {
+        "name": "Habig Nils",
+        "club": "TC Wilgersdorf",
+        "dtbId": "10773268",
+        "lk": "24,6"
+      },
+      {
+        "name": "Ossenbühl Udo",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "16455384",
+        "lk": "22,6"
+      },
+      {
+        "name": "Simon Reinhard",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "15601962",
+        "lk": "24,4"
+      },
+      {
+        "name": "Zahlmann Jörg Michael",
+        "club": "TC Wilgersdorf",
+        "dtbId": "16754662",
+        "lk": "25,0"
+      }
+    ]
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "entrants": []
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 20,0-25,0",
+    "entrants": [
+      {
+        "name": "Ermert Martin",
+        "club": "TC Wilgersdorf",
+        "dtbId": "18065110",
+        "lk": "15,7"
+      },
+      {
+        "name": "Groß Tomm",
+        "club": "SV Gosenbach e.V. TA",
+        "dtbId": "17854669",
+        "lk": "14,1"
+      },
+      {
+        "name": "Kneppe Christian",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "17753794",
+        "lk": "15,3"
+      },
+      {
+        "name": "Köhler Tom",
+        "club": "VfL Kirchen",
+        "dtbId": "17907324",
+        "lk": "6,0"
+      },
+      {
+        "name": "Loibl Patrick",
+        "club": "TC Wilgersdorf",
+        "dtbId": "18503120",
+        "lk": "10,6"
+      },
+      {
+        "name": "Mauk Andreas",
+        "club": "TC Wilgersdorf",
+        "dtbId": "18001166",
+        "lk": "15,8"
+      },
+      {
+        "name": "Reichmann Alexander",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17757482",
+        "lk": "24,3"
+      },
+      {
+        "name": "Schnorrenberg Florian",
+        "club": "VfL Kirchen",
+        "dtbId": "17700802",
+        "lk": "4,8"
+      },
+      {
+        "name": "Schäfer Markus",
+        "club": "TC Rosenheim",
+        "dtbId": "17753731",
+        "lk": "5,1"
+      },
+      {
+        "name": "Zimmermann Kai",
+        "club": "VfL Kirchen",
+        "dtbId": "17850793",
+        "lk": "5,5"
+      }
+    ]
+  },
+  {
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "entrants": []
+  },
+  {
+    "competition": "Herren 70 Einzel KO LK 20,0-25,0",
+    "entrants": [
+      {
+        "name": "Mauk Andreas",
+        "club": "TC Wilgersdorf",
+        "dtbId": "18001166",
+        "lk": "15,9"
+      },
+      {
+        "name": "Reichmann Alexander",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17757482",
+        "lk": "24,4"
+      }
+    ]
+  },
+  {
+    "competition": "Damen Einzel KO LK 1,0-25,0",
+    "entrants": [
+      {
+        "name": "Galbas Jörg",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17101145",
+        "lk": "14,3"
+      },
+      {
+        "name": "Klink Peter",
+        "club": "SV Gosenbach e.V. TA",
+        "dtbId": "17302647",
+        "lk": "12,6"
+      },
+      {
+        "name": "Schmelzeisen Frank",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17000443",
+        "lk": "13,1"
+      },
+      {
+        "name": "Schmitt Andreas",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17400245",
+        "lk": "5,9"
+      },
+      {
+        "name": "Schwarzer Martin",
+        "club": "TC Wilgersdorf",
+        "dtbId": "16700834",
+        "lk": "12,7"
+      }
+    ]
+  },
+  {
+    "competition": "Damen Einzel KO LK 15,0-25,0",
+    "entrants": []
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "entrants": []
+  },
+  {
+    "competition": "Damen 30 Einzel KO LK 1,0-25,0",
+    "entrants": [
+      {
+        "name": "Afrahi Dr. Madjid",
+        "club": "TC Siegen",
+        "dtbId": "15051731",
+        "lk": "11,2"
+      },
+      {
+        "name": "Bieker Joachim",
+        "club": "TuS Ferndorf",
+        "dtbId": "15300587",
+        "lk": "21,6"
+      },
+      {
+        "name": "Jung Heinz-Rudi",
+        "club": "TC Wilgersdorf",
+        "dtbId": "15002126",
+        "lk": "14,0"
+      },
+      {
+        "name": "Nies Wolfgang",
+        "club": "TC Wilgersdorf",
+        "dtbId": "15101097",
+        "lk": "14,8"
+      },
+      {
+        "name": "Sommer Rainer",
+        "club": "TuS Ferndorf",
+        "dtbId": "15100120",
+        "lk": "10,0"
+      },
+      {
+        "name": "Sprenger Axel",
+        "club": "TuS Ferndorf",
+        "dtbId": "15102472",
+        "lk": "17,0"
+      }
+    ]
+  },
+  {
+    "competition": "Damen 40 Einzel KO LK 1,0-25,0",
+    "entrants": []
+  },
+  {
+    "competition": "Damen 40 Einzel KO LK 20,0-25,0",
+    "entrants": [
+      {
+        "name": "Heide Miriam",
+        "club": "TC Wilgersdorf",
+        "dtbId": "28801140",
+        "lk": "17,5"
+      },
+      {
+        "name": "Jagdfeld Paula",
+        "club": "TC Wilgersdorf",
+        "dtbId": "20358758",
+        "lk": "15,6"
+      },
+      {
+        "name": "Lübke Bettina",
+        "club": "TuS Unglinghausen TA",
+        "dtbId": "29350692",
+        "lk": "14,6"
+      },
+      {
+        "name": "Schmidt Hannah",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "20655610",
+        "lk": "17,4"
+      }
+    ]
+  },
+  {
+    "competition": "Damen 50 Einzel KO LK 1,0-25,0",
+    "entrants": [
+      {
+        "name": "Demirdöven Mehtap",
+        "club": "TC Haiger",
+        "dtbId": "28892052",
+        "lk": "17,6"
+      },
+      {
+        "name": "Gün Ira",
+        "club": "TuS 1900 Eisern",
+        "dtbId": "28952797",
+        "lk": "15,7"
+      },
+      {
+        "name": "Habig Linn",
+        "club": "TC Wilgersdorf",
+        "dtbId": "20963193",
+        "lk": "22,0"
+      },
+      {
+        "name": "Hombach Marie",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "21051842",
+        "lk": "16,3"
+      },
+      {
+        "name": "Kreß Julia",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "28151103",
+        "lk": "18,6"
+      },
+      {
+        "name": "Moos Annika",
+        "club": "TC Wilgersdorf",
+        "dtbId": "29653332",
+        "lk": "18,7"
+      },
+      {
+        "name": "Sauermann Annemarie",
+        "club": "TC Wenden",
+        "dtbId": "28552236",
+        "lk": "18,9"
+      },
+      {
+        "name": "Schiep Celine",
+        "club": "TC Wilgersdorf",
+        "dtbId": "29759743",
+        "lk": "18,0"
+      },
+      {
+        "name": "Schmidt Heike",
+        "club": "TC Wilgersdorf",
+        "dtbId": "27653392",
+        "lk": "17,1"
+      },
+      {
+        "name": "Wiegel Lea",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "21051841",
+        "lk": "19,5"
+      },
+      {
+        "name": "Wiegel Nadine",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "28352307",
+        "lk": "19,9"
+      }
+    ]
+  },
+  {
+    "competition": "Damen 60 Einzel KO LK 1,0-25,0",
+    "entrants": [
+      {
+        "name": "Hachenberg Anna",
+        "club": "VfL Kirchen",
+        "dtbId": "20162253",
+        "lk": "24,1"
+      },
+      {
+        "name": "Marburger Iris",
+        "club": "DJK Betzdorf",
+        "dtbId": "26954911",
+        "lk": "24,0"
+      },
+      {
+        "name": "Meier Anne",
+        "club": "TC Wilgersdorf",
+        "dtbId": "29155369",
+        "lk": "24,0"
+      },
+      {
+        "name": "Schulz Mia Lotta",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "21106671",
+        "lk": "25,0"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 21",
+    "entrants": [
+      {
+        "name": "Habig Linn",
+        "club": "TC Wilgersdorf",
+        "dtbId": "20963193",
+        "lk": "22,0"
+      },
+      {
+        "name": "Hombach Marie",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "21051842",
+        "lk": "16,2"
+      },
+      {
+        "name": "Moos Annika",
+        "club": "TC Wilgersdorf",
+        "dtbId": "29653332",
+        "lk": "18,6"
+      },
+      {
+        "name": "Sauermann Annemarie",
+        "club": "TC Wenden",
+        "dtbId": "28552236",
+        "lk": "19,0"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 22",
+    "entrants": []
+  },
+  {
+    "competition": "Konkurrenz 23",
+    "entrants": [
+      {
+        "name": "Moll Nina",
+        "club": "TV Eichen 1888",
+        "dtbId": "28000370",
+        "lk": "12,7"
+      },
+      {
+        "name": "Schnorrenberg Kerstin",
+        "club": "VfL Kirchen",
+        "dtbId": "27850326",
+        "lk": "11,4"
+      },
+      {
+        "name": "Zimmermann Carmen",
+        "club": "TC Druidenstein",
+        "dtbId": "26851327",
+        "lk": "18,9"
+      }
+    ]
+  },
+  {
+    "competition": "Konkurrenz 24",
+    "entrants": []
+  },
+  {
+    "competition": "Konkurrenz 25",
+    "entrants": []
+  },
+  {
+    "competition": "Konkurrenz 26",
+    "entrants": []
+  }
+]
