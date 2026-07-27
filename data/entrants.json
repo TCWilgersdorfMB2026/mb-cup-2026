@@ -1,6 +1,6 @@
 [
   {
-    "competition": "Konkurrenz 1",
+    "competition": "Herren Einzel KO LK 1,0-25,0",
     "entrants": [
       {
         "name": "Feldmann Jonas Juttichai",
@@ -59,7 +59,7 @@
     ]
   },
   {
-    "competition": "Konkurrenz 2",
+    "competition": "Herren Einzel KO LK 10,0-25,0",
     "entrants": [
       {
         "name": "Böhl Timo",
@@ -148,7 +148,7 @@
     ]
   },
   {
-    "competition": "Konkurrenz 3",
+    "competition": "Herren Einzel KO LK 17,0-25,0",
     "entrants": [
       {
         "name": "Anders Denis",
@@ -261,7 +261,7 @@
     ]
   },
   {
-    "competition": "Konkurrenz 4",
+    "competition": "Herren Einzel KO LK 22,0-25,0",
     "entrants": [
       {
         "name": "Anders Gero",
@@ -356,7 +356,7 @@
     ]
   },
   {
-    "competition": "Konkurrenz 5",
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
         "name": "Mauk Andreas",
@@ -367,11 +367,11 @@
     ]
   },
   {
-    "competition": "Konkurrenz 6",
+    "competition": "Herren 40 Einzel KO LK 20,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Konkurrenz 7",
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
         "name": "Durow Thorsten",
@@ -436,11 +436,11 @@
     ]
   },
   {
-    "competition": "Konkurrenz 8",
+    "competition": "Herren 50 Einzel KO LK 20,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Konkurrenz 9",
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
         "name": "Feldmann Jürgen",
@@ -475,11 +475,11 @@
     ]
   },
   {
-    "competition": "Konkurrenz 10",
+    "competition": "Herren 60 Einzel KO LK 20,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Konkurrenz 11",
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
         "name": "Bieker Joachim",
@@ -514,15 +514,15 @@
     ]
   },
   {
-    "competition": "Konkurrenz 12",
+    "competition": "Herren 70 Einzel KO LK 20,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Konkurrenz 13",
+    "competition": "Damen Einzel KO LK 1,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Konkurrenz 14",
+    "competition": "Damen Einzel KO LK 10,0-25,0",
     "entrants": [
       {
         "name": "Backaus Hedda Lotta",
@@ -563,7 +563,7 @@
     ]
   },
   {
-    "competition": "Konkurrenz 15",
+    "competition": "Damen Einzel KO LK 17,0-25,0",
     "entrants": [
       {
         "name": "Anders Xenia",
@@ -634,7 +634,7 @@
     ]
   },
   {
-    "competition": "Konkurrenz 16",
+    "competition": "Damen Einzel KO LK 22,0-25,0",
     "entrants": [
       {
         "name": "Becker Sarah",
@@ -651,7 +651,7 @@
     ]
   },
   {
-    "competition": "Konkurrenz 17",
+    "competition": "Damen 40 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
         "name": "Voth Eva",
@@ -662,11 +662,11 @@
     ]
   },
   {
-    "competition": "Konkurrenz 18",
+    "competition": "Damen 40 Einzel KO LK 20,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Konkurrenz 19",
+    "competition": "Damen 50 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
         "name": "Röcher Nicole",
@@ -677,23 +677,23 @@
     ]
   },
   {
-    "competition": "Konkurrenz 20",
+    "competition": "Damen 50 Einzel KO LK 20,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Konkurrenz 21",
+    "competition": "Damen 60 Einzel KO LK 1,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Konkurrenz 22",
+    "competition": "Damen 60 Einzel KO LK 20,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Konkurrenz 23",
+    "competition": "Damen 70 Einzel KO LK 1,0-25,0",
     "entrants": []
   },
   {
-    "competition": "Konkurrenz 24",
+    "competition": "Damen 70 Einzel KO LK 20,0-25,0",
     "entrants": []
   }
 ]
