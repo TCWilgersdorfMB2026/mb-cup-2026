@@ -10,14 +10,13 @@
  * data/scrape-debug.txt) und bei Bedarf die Tableau-Regex weiter unten
  * anpassen, da diese noch nicht an echten Bracket-Daten verifiziert ist.
  *
- * Hinweis zur Bot-Erkennung: In einem normalen, "menschlichen" Browser sind
- * die Konkurrenzen/Meldelisten direkt auf der Hauptseite sichtbar (kein
- * Login nötig, kein separates iframe). Ein frischer Playwright-Headless-
- * Browser wurde von tennis.de jedoch zwischenzeitlich mit einem
- * "Bitte logge dich ein"-Hinweis abgespeist statt der echten Daten - das
- * deutet auf eine Bot-/Fingerprint-Erkennung hin, nicht auf echte
- * Login-Pflicht. Die Optionen unten (echter User-Agent, deutsche Locale,
- * deaktiviertes "AutomationControlled"-Flag) reduzieren das Risiko dafür.
+ * Hinweis zum Login: Die Konkurrenzen-/Meldeliste-Ansicht dieser
+ * Turnierseite ist auf tennis.de tatsächlich NUR für eingeloggte Accounts
+ * sichtbar (bestätigt) - ein ausgeloggter Aufruf zeigt einen
+ * "Information"-Dialog ("Bitte logge dich ein, um nähere Informationen zum
+ * Turnier sehen zu können.") mit eigenem Login-Button. loginIfNeeded() loggt
+ * sich deshalb mit den Secrets TENNIS_DE_USERNAME/TENNIS_DE_PASSWORD ein,
+ * bevor die Konkurrenzen ausgelesen werden.
  */
 
 const fs = require('fs');
@@ -98,8 +97,22 @@ async function loginIfNeeded(page) {
   }
 
   try {
-    const loginTrigger = page.getByText('Login', { exact: true }).first();
-    if (!(await loginTrigger.isVisible({ timeout: 3000 }).catch(() => false))) {
+    // tennis.de zeigt beim ausgeloggten Aufruf dieser Turnierseite einen
+    // "Information"-Dialog ("Bitte logge dich ein, um nähere Informationen
+    // zum Turnier sehen zu können.") mit einem EIGENEN Login-Button. Dieser
+    // Dialog liegt als Overlay über dem Header und fängt Klicks auf den
+    // Header-Login-Link ab (Playwright-Fehler: "... subtree intercepts
+    // pointer events"). Deshalb zuerst gezielt den Button IM Dialog suchen,
+    // erst danach (Fallback) den Header-Link.
+    const dialogLoginBtn = page.locator('[role="dialog"]').getByText('Login', { exact: true }).first();
+    const headerLoginBtn = page.getByText('Login', { exact: true }).first();
+
+    let loginTrigger = null;
+    if (await dialogLoginBtn.isVisible({ timeout: 3000 }).catch(() => false)) {
+      loginTrigger = dialogLoginBtn;
+    } else if (await headerLoginBtn.isVisible({ timeout: 3000 }).catch(() => false)) {
+      loginTrigger = headerLoginBtn;
+    } else {
       console.log('Kein "Login"-Button sichtbar - evtl. bereits eingeloggt oder anderer Seitenaufbau.');
       return false;
     }
