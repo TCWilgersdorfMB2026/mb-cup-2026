@@ -1,0 +1,44 @@
+name: tennis.de Daten aktualisieren
+
+on:
+  schedule:
+    # Alle 30 Minuten. Läuft ganzjährig; außerhalb des Turniers passiert
+    # einfach nichts Neues und es wird kein Commit erzeugt.
+    - cron: '*/30 * * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repo auschecken
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Abhängigkeiten installieren
+        run: npm install
+
+      - name: Playwright-Browser installieren
+        run: npx playwright install --with-deps chromium
+
+      - name: tennis.de auslesen
+        run: npm run scrape
+
+      - name: Änderungen committen (falls vorhanden)
+        run: |
+          git config user.name "mb-cup-bot"
+          git config user.email "actions@github.com"
+          git add data/schedule.json data/results.json data/entrants.json data/scrape-debug.txt || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Automatisches Update: Spielplan/Ergebnisse von tennis.de"
+            git push
+          else
+            echo "Keine Änderungen gefunden."
+          fi
