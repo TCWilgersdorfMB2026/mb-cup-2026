@@ -4,16 +4,20 @@
  * und schreibt die Ergebnisse nach data/schedule.json, data/results.json und
  * data/entrants.json.
  *
- * Warum so kompliziert? tennis.de rendert die Turnierdaten in einem
- * eingebetteten Widget (widgets.tennis.de), das aus Sicherheitsgründen vom
- * Browser isoliert ist. Ein normaler HTTP-Request bekommt daher nur eine
- * leere Hülle. Mit einem echten (headless) Browser über Playwright sieht man
- * dagegen genau das, was auch ein Mensch sehen würde.
+ * WICHTIG: Diese Datei parst Text nach bestem Wissen anhand des echten
+ * MB-Cup-Turniers (Meldeliste bereits live getestet). Sobald die Auslosung
+ * (11.08.2026) steht, unbedingt einmal den Lauf kontrollieren (siehe
+ * data/scrape-debug.txt) und bei Bedarf die Tableau-Regex weiter unten
+ * anpassen, da diese noch nicht an echten Bracket-Daten verifiziert ist.
  *
- * WICHTIG: Diese Datei parst Text nach bestem Wissen anhand eines echten
- * Beispiel-Turniers. Sobald die Auslosung des MB-Cup (11.08.2026) steht,
- * unbedingt einmal den Lauf kontrollieren (siehe data/scrape-debug.txt) und
- * bei Bedarf die Regex-Muster weiter unten anpassen.
+ * Hinweis zur Bot-Erkennung: In einem normalen, "menschlichen" Browser sind
+ * die Konkurrenzen/Meldelisten direkt auf der Hauptseite sichtbar (kein
+ * Login nötig, kein separates iframe). Ein frischer Playwright-Headless-
+ * Browser wurde von tennis.de jedoch zwischenzeitlich mit einem
+ * "Bitte logge dich ein"-Hinweis abgespeist statt der echten Daten - das
+ * deutet auf eine Bot-/Fingerprint-Erkennung hin, nicht auf echte
+ * Login-Pflicht. Die Optionen unten (echter User-Agent, deutsche Locale,
+ * deaktiviertes "AutomationControlled"-Flag) reduzieren das Risiko dafür.
  */
 
 const fs = require('fs');
@@ -37,50 +41,44 @@ function writeJSON(file, data) {
 }
 
 async function acceptCookies(page) {
-  // Wichtig: Wir MÜSSEN allen Cookies zustimmen ("Alle akzeptieren" zuerst
-  // versuchen), weil das Turnier-Widget von widgets.tennis.de als
-  // Drittanbieter-Einbettung eingestuft wird und bei Ablehnung offenbar gar
-  // nicht erst geladen wird (Cookiebot-Consent-Steuerung).
-  const candidates = ['Alle akzeptieren', 'Alle erlauben', 'Alles akzeptieren', 'Akzeptieren', 'Accept all'];
+  // Wichtig: Wir MÜSSEN allen Cookies zustimmen (der tatsächliche Button
+  // heißt bei tennis.de/Cookiebot "Alle zulassen", NICHT "Alle akzeptieren"),
+  // sonst bleibt der Consent-Dialog offen und blockiert die Konkurrenzen-Liste.
+  const candidates = ['Alle zulassen', 'Alle akzeptieren', 'Alle erlauben', 'Akzeptieren', 'Accept all'];
   for (const text of candidates) {
     try {
       const btn = page.getByText(text, { exact: false }).first();
       if (await btn.isVisible({ timeout: 1500 })) {
         await btn.click({ timeout: 1500 });
-        return;
+        return true;
       }
     } catch (e) {
       // weiter versuchen
     }
   }
+  return false;
 }
 
-async function getWidgetFrame(page) {
-  for (let i = 0; i < 40; i++) {
-    const frame = page.frames().find((f) => f.url().includes('widgets.tennis.de'));
-    if (frame) return frame;
-    await page.waitForTimeout(750);
-  }
-  const frameUrls = page.frames().map((f) => f.url());
-  throw new Error(
-    'Widget-Frame (widgets.tennis.de) nicht gefunden - hat sich tennis.de geändert? ' +
-    'Gefundene Frames: ' + JSON.stringify(frameUrls)
-  );
-}
-
-// Ein Turnierteilnehmer-Eintrag in der Meldeliste, z.B.:
-// "1\nMüller Max\nDTB-ID 12345678\nTC Musterstadt\n12345678\nLK9,4 LK9,4"
+// Ein Turnierteilnehmer-Eintrag in der Meldeliste. Reales Beispiel (Zeilen
+// nach dem Entfernen leerer Zeilen), bestätigt am echten MB-Cup-Turnier:
+//   1
+//   Feldmann Jonas Juttichai      <- Name (1 Zeile VOR "DTB-ID ...")
+//   DTB-ID 10914651               <- Anker
+//   TC Rhode e.V.                 <- Verein (1 Zeile NACH "DTB-ID ...")
+//   10914651                      <- DTB-Id nochmal, ohne Label
+//   LK9,4 LK9,4                   <- LK-Werte (3 Zeilen NACH "DTB-ID ...")
+//   2
+//   ...
 function parseMeldeliste(text, competition) {
   const entrants = [];
-  const re = /DTB-ID (\d+)\s*\n([^\n]+?)\s*\n\1\s*\nLK([\d.,]+)\s+LK([\d.,]+)/g;
-  // Name und Verein stehen VOR "DTB-ID", daher brauchen wir einen Blick zurück im Text
   const lines = text.split('\n').map((l) => l.trim()).filter(Boolean);
   for (let i = 0; i < lines.length; i++) {
-    if (/^DTB-ID \d+$/.test(lines[i])) {
-      const dtbId = lines[i].replace('DTB-ID ', '');
-      const name = lines[i - 2] || '';
-      const club = lines[i - 1] || '';
-      const lkLine = lines[i + 2] || '';
+    const anchor = lines[i].match(/^DTB-ID (\d+)$/);
+    if (anchor) {
+      const dtbId = anchor[1];
+      const name = lines[i - 1] || '';
+      const club = lines[i + 1] || '';
+      const lkLine = lines[i + 3] || '';
       const lkMatch = lkLine.match(/LK([\d.,]+)\s+LK([\d.,]+)/);
       entrants.push({
         name,
@@ -96,6 +94,7 @@ function parseMeldeliste(text, competition) {
 // Best-effort-Parser für die Tableau-Ansicht (Bracket). Sucht nach
 // Spieler-Zeilen im Format "LK9,4 - Nachname, Vorname, 1990 - Verein, WTV"
 // und einer davorstehenden Zeile mit Satzergebnissen ("6:2 6:4").
+// NOCH NICHT an echten Bracket-Daten verifiziert (Auslosung steht noch aus).
 function parseTableau(text, competition) {
   const lines = text.split('\n').map((l) => l.trim()).filter(Boolean);
   const playerLineRe = /LK[\d.,]+\s*-\s*([^,]+,\s*[^,]+),\s*\d{4}\s*-\s*([^,]+),\s*\w+/;
@@ -132,26 +131,26 @@ function parseTableau(text, competition) {
   return matches;
 }
 
-async function scrapeCompetition(frame, index, competitionLabel) {
+async function scrapeCompetition(page, index, competitionLabel) {
   const result = { entrants: null, matches: [] };
 
   // --- Meldeliste ---
   try {
-    const meldelisteLinks = frame.getByText('Meldeliste', { exact: true });
+    const meldelisteLinks = page.getByText('Meldeliste', { exact: true });
     const count = await meldelisteLinks.count();
     if (index < count) {
       await meldelisteLinks.nth(index).click({ timeout: 5000 });
-      await frame.waitForTimeout(1200);
-      const text = await frame.locator('body').innerText();
+      await page.waitForTimeout(1200);
+      const text = await page.locator('body').innerText();
       result.entrants = parseMeldeliste(text, competitionLabel);
 
       // zurück zur Übersicht
       const backCandidates = ['Zurück zum Turnier', 'Zurück zur Übersicht'];
       for (const t of backCandidates) {
-        const back = frame.getByText(t, { exact: false }).first();
+        const back = page.getByText(t, { exact: false }).first();
         if (await back.isVisible({ timeout: 1000 }).catch(() => false)) {
           await back.click({ timeout: 3000 });
-          await frame.waitForTimeout(800);
+          await page.waitForTimeout(800);
           break;
         }
       }
@@ -162,19 +161,19 @@ async function scrapeCompetition(frame, index, competitionLabel) {
 
   // --- Ergebnisse / Tableau (nur vorhanden, wenn Auslosung erfolgt ist) ---
   try {
-    const ergebnisLinks = frame.getByText('Hauptfeld', { exact: true }).or(frame.getByText('Tableau ansehen', { exact: false }));
+    const ergebnisLinks = page.getByText('Hauptfeld', { exact: true }).or(page.getByText('Tableau ansehen', { exact: false }));
     const count = await ergebnisLinks.count();
     if (index < count) {
       await ergebnisLinks.nth(index).click({ timeout: 5000 });
-      await frame.waitForTimeout(1200);
-      const text = await frame.locator('body').innerText();
+      await page.waitForTimeout(1200);
+      const text = await page.locator('body').innerText();
       if (!text.includes('nicht verfügbar')) {
         result.matches = parseTableau(text, competitionLabel);
       }
-      const back = frame.getByText('Zurück zur Übersicht', { exact: false }).first();
+      const back = page.getByText('Zurück zur Übersicht', { exact: false }).first();
       if (await back.isVisible({ timeout: 1000 }).catch(() => false)) {
         await back.click({ timeout: 3000 });
-        await frame.waitForTimeout(800);
+        await page.waitForTimeout(800);
       }
     }
   } catch (e) {
@@ -185,55 +184,63 @@ async function scrapeCompetition(frame, index, competitionLabel) {
 }
 
 async function main() {
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({
+    args: ['--disable-blink-features=AutomationControlled'],
+  });
   const page = await browser.newPage({
     locale: 'de-DE',
     userAgent:
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
       '(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
   });
+  // Reduziert die offensichtlichsten Automatisierungs-Fingerprints, die
+  // manche Seiten nutzen, um Headless-Browser mit einem Fallback-Hinweis
+  // ("bitte einloggen") statt der echten Inhalte abzuspeisen.
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+  });
 
   fs.mkdirSync(DATA_DIR, { recursive: true });
 
   console.log('Öffne', DETAIL_URL);
   await page.goto(DETAIL_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
-  await acceptCookies(page);
+  const cookiesAccepted = await acceptCookies(page);
+  console.log('Cookie-Banner akzeptiert:', cookiesAccepted);
   await page.waitForTimeout(5000);
 
-  // Diagnose-Schnappschuss der äußeren Seite, damit wir bei einem Fehlschlag
-  // sehen, was der Bot tatsächlich vorgefunden hat (z.B. Cookie-Banner,
-  // Bot-Sperre, andere Seitenstruktur).
+  // Diagnose-Schnappschuss, damit wir bei einem Fehlschlag sehen, was der
+  // Bot tatsächlich vorgefunden hat (z.B. Cookie-Banner, Bot-Sperre, andere
+  // Seitenstruktur als erwartet).
   try {
     const outerText = await page.locator('body').innerText();
-    fs.writeFileSync(path.join(DATA_DIR, 'scrape-debug-outer.txt'), outerText);
+    fs.writeFileSync(path.join(DATA_DIR, 'scrape-debug.txt'), outerText);
     await page.screenshot({ path: path.join(DATA_DIR, 'scrape-debug.png'), fullPage: true });
   } catch (e) {
     console.warn('Konnte Diagnose-Schnappschuss nicht erstellen:', e.message);
   }
 
-  let frame;
-  try {
-    frame = await getWidgetFrame(page);
-  } catch (e) {
-    console.error(e.message);
+  const hasLoginWall = (await page.locator('body').innerText()).includes(
+    'logge dich ein, um nähere Informationen'
+  );
+  if (hasLoginWall) {
+    console.error(
+      'tennis.de zeigt einen Login-Hinweis statt der Konkurrenzen - vermutlich Bot-Erkennung. ' +
+      'Siehe data/scrape-debug.txt und data/scrape-debug.png.'
+    );
     writeJSON('entrants.json', readJSON('entrants.json', []));
-    console.log('Kein Widget-Frame gefunden - siehe data/scrape-debug-outer.txt und data/scrape-debug.png.');
     await browser.close();
     return;
   }
-  await frame.waitForSelector('text=Konkurrenzen', { timeout: 30000 }).catch(() => {});
 
-  // Konkurrenzen-Übersicht als Text holen, um Namen/LK-Klassen den
-  // Meldeliste-Buttons zuzuordnen (gleiche Reihenfolge wie im DOM).
-  const overviewText = await frame.locator('body').innerText();
-  fs.mkdirSync(DATA_DIR, { recursive: true });
-  fs.writeFileSync(path.join(DATA_DIR, 'scrape-debug.txt'), overviewText);
+  await page.waitForSelector('text=Konkurrenzen', { timeout: 30000 }).catch(() => {});
+
+  const overviewText = await page.locator('body').innerText();
 
   const competitionBlocks = [
     ...overviewText.matchAll(/^(Herren|Damen)[^\n]*\n(KO|Spiralsystem|Round Robin)[^\n]*\nLK[\d.,\-]+/gm),
   ].map((m) => m[0].split('\n').join(' '));
 
-  const meldelisteCount = await frame.getByText('Meldeliste', { exact: true }).count();
+  const meldelisteCount = await page.getByText('Meldeliste', { exact: true }).count();
   console.log(`${meldelisteCount} Konkurrenzen mit Meldeliste gefunden.`);
 
   const allEntrants = [];
@@ -242,7 +249,7 @@ async function main() {
   for (let i = 0; i < meldelisteCount; i++) {
     const label = competitionBlocks[i] || `Konkurrenz ${i + 1}`;
     console.log(`(${i + 1}/${meldelisteCount}) ${label}`);
-    const { entrants, matches } = await scrapeCompetition(frame, i, label);
+    const { entrants, matches } = await scrapeCompetition(page, i, label);
     if (entrants) allEntrants.push(entrants);
     if (matches && matches.length) allMatches.push(...matches);
   }
