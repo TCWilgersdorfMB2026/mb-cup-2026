@@ -35,9 +35,18 @@ function renderTicker(items) {
     </div>`).join('');
 }
 
-function renderMatches(containerId, items, showScore) {
+function renderMatches(containerId, items, showScore, entrants) {
   const el = qs(containerId);
   if (!items || !items.length) {
+    if (!showScore && entrants && entrants.length) {
+      el.innerHTML = `<p class="hint">Die Auslosung steht noch aus – hier schon mal die gemeldeten Spieler:innen je Konkurrenz.</p>` +
+        entrants.map(c => `
+          <div class="card">
+            <div class="comp">${escapeHtml(c.competition || '')}</div>
+            <ul>${(c.entrants || []).map(p => `<li>${escapeHtml(p.name || '')}${p.club ? ' · ' + escapeHtml(p.club) : ''}${p.lk ? ' · LK' + escapeHtml(p.lk) : ''}</li>`).join('')}</ul>
+          </div>`).join('');
+      return;
+    }
     el.innerHTML = `<p class="empty">${showScore ? 'Noch keine Ergebnisse.' : 'Spielplan wird noch eingepflegt.'}</p>`;
     return;
   }
@@ -80,15 +89,16 @@ function escapeHtml(str) {
 }
 
 async function refreshAll() {
-  const [ticker, schedule, results, reports, menu] = await Promise.all([
+  const [ticker, schedule, results, reports, menu, entrants] = await Promise.all([
     loadJSON('data/ticker.json'),
     loadJSON('data/schedule.json'),
     loadJSON('data/results.json'),
     loadJSON('data/reports.json'),
     loadJSON('data/menu.json'),
+    loadJSON('data/entrants.json'),
   ]);
   renderTicker(ticker);
-  renderMatches('spielplan-list', schedule, false);
+  renderMatches('spielplan-list', schedule, false, entrants);
   renderMatches('ergebnisse-list', results, true);
   renderReports(reports);
   renderMenu(menu);
