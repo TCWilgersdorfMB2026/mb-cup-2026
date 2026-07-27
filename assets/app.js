@@ -71,15 +71,19 @@ function listCompetitions() {
 }
 
 // Baut EIN Match-Kästchen im Tableau-Stil (wie tennis.de): beide Spielernamen
-// übereinander, Sieger:in fett, Ergebnis darunter bzw. "Noch offen".
+// übereinander, Sieger:in fett, Ergebnis darunter bzw. "Noch offen", plus
+// Datum/Uhrzeit/Platz (falls vom Ausrichter in tennis.de hinterlegt - sonst
+// bleibt diese Zeile einfach weg, keine Pflichtangabe).
 function bracketBoxHtml(m) {
   const p1Wins = m.played && namesMatch(m.player1, m.winner);
   const p2Wins = m.played && namesMatch(m.player2, m.winner);
+  const metaParts = [m.time, m.court].filter(Boolean);
   return `
     <div class="bracket-box">
       <div class="bracket-player${p1Wins ? ' winner' : ''}">${escapeHtml(m.player1 || '')}</div>
       <div class="bracket-player${p2Wins ? ' winner' : ''}">${escapeHtml(m.player2 || '')}</div>
       ${m.played ? `<div class="bracket-score">${escapeHtml(m.score || '')}</div>` : '<div class="bracket-pending">Noch offen</div>'}
+      ${metaParts.length ? `<div class="bracket-meta">${metaParts.map(escapeHtml).join(' · ')}</div>` : ''}
     </div>`;
 }
 
