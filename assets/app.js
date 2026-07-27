@@ -35,28 +35,81 @@ function renderTicker(items) {
     </div>`).join('');
 }
 
-function renderMatches(containerId, items, showScore, entrants) {
-  const el = qs(containerId);
-  if (!items || !items.length) {
-    if (!showScore && entrants && entrants.length) {
-      el.innerHTML = `<p class="hint">Die Auslosung steht noch aus – hier schon mal die gemeldeten Spieler:innen je Konkurrenz.</p>` +
-        entrants.map(c => `
-          <div class="card">
-            <div class="comp">${escapeHtml(c.competition || '')}</div>
-            <ul>${(c.entrants || []).map(p => `<li>${escapeHtml(p.name || '')}${p.club ? ' · ' + escapeHtml(p.club) : ''}${p.lk ? ' · LK' + escapeHtml(p.lk) : ''}</li>`).join('')}</ul>
-          </div>`).join('');
-      return;
-    }
-    el.innerHTML = `<p class="empty">${showScore ? 'Noch keine Ergebnisse.' : 'Spielplan wird noch eingepflegt.'}</p>`;
+// Reihenfolge, in der Runden innerhalb einer Konkurrenz angezeigt werden.
+// Unbekannte/leere Rundennamen (z.B. bei Konkurrenzen ohne Tableau) landen
+// einfach ans Ende, statt den Sortiervorgang zu verwirren.
+const ROUND_ORDER = ['Sechzehntelfinale', 'Achtelfinale', 'Viertelfinale', 'Halbfinale', 'Finale'];
+function roundRank(round) {
+  const i = ROUND_ORDER.indexOf(round || '');
+  return i === -1 ? ROUND_ORDER.length : i;
+}
+
+function namesMatch(a, b) {
+  return (a || '').trim() && (a || '').trim() === (b || '').trim();
+}
+
+function renderMatchCard(m) {
+  const p1Wins = m.played && namesMatch(m.player1, m.winner);
+  const p2Wins = m.played && namesMatch(m.player2, m.winner);
+  const metaParts = [m.round, m.time ? fmtTime(m.time) : '', m.court ? 'Platz ' + m.court : ''].filter(Boolean);
+  return `
+    <div class="card match-card">
+      <div class="match-players">
+        <div class="player${p1Wins ? ' winner' : ''}">${escapeHtml(m.player1 || '')}${p1Wins ? '<span class="winner-badge">Sieger</span>' : ''}</div>
+        <div class="player${p2Wins ? ' winner' : ''}">${escapeHtml(m.player2 || '')}${p2Wins ? '<span class="winner-badge">Sieger</span>' : ''}</div>
+      </div>
+      ${m.played ? `<div class="score">${escapeHtml(m.score || '')}</div>` : '<div class="pending">Noch offen</div>'}
+      ${metaParts.length ? `<div class="meta">${metaParts.map(escapeHtml).join(' · ')}</div>` : ''}
+    </div>`;
+}
+
+// Zeigt Spielplan (offene Paarungen) UND Ergebnisse (entschiedene Matches)
+// zusammen in einer Ansicht, pro Konkurrenz gruppiert und nach Runde
+// sortiert - so sieht man auf einen Blick den kompletten Turnierverlauf
+// einer Konkurrenz statt zwischen zwei Tabs hin- und herspringen zu müssen.
+// Konkurrenzen, für die es noch keine einzige Paarung gibt (Auslosung steht
+// noch aus, oder die Konkurrenz hat gar kein Tableau), zeigen stattdessen
+// die gemeldeten Spieler:innen aus der Meldeliste.
+function renderSpielplanErgebnisse(schedule, results, entrants) {
+  const el = qs('spiele-list');
+  const all = [
+    ...(results || []).map((m) => ({ ...m, played: true })),
+    ...(schedule || []).map((m) => ({ ...m, played: false })),
+  ];
+
+  const byCompetition = new Map();
+  for (const m of all) {
+    const key = m.competition || '';
+    if (!byCompetition.has(key)) byCompetition.set(key, []);
+    byCompetition.get(key).push(m);
+  }
+
+  if (!byCompetition.size && (!entrants || !entrants.length)) {
+    el.innerHTML = '<p class="empty">Wird vor Turnierstart eingepflegt.</p>';
     return;
   }
-  el.innerHTML = items.map(m => `
-    <div class="card">
-      <div class="comp">${escapeHtml(m.competition || '')}</div>
-      <div class="players">${escapeHtml(m.player1 || '')} vs. ${escapeHtml(m.player2 || '')}</div>
-      ${showScore && m.score ? `<div class="score">${escapeHtml(m.score)}</div>` : ''}
-      <div class="meta">${escapeHtml(m.round || '')} ${m.time ? '· ' + fmtTime(m.time) : ''} ${m.court ? '· Platz ' + escapeHtml(m.court) : ''}</div>
-    </div>`).join('');
+
+  const matchSections = [...byCompetition.entries()].map(([competition, matches]) => {
+    matches.sort((a, b) => roundRank(a.round) - roundRank(b.round));
+    return `
+      <div class="comp-group">
+        <div class="comp">${escapeHtml(competition)}</div>
+        <div class="card-list">${matches.map(renderMatchCard).join('')}</div>
+      </div>`;
+  });
+
+  // Konkurrenzen, die noch gar keine Paarung haben (Auslosung steht noch
+  // aus), zeigen stattdessen ihre Meldeliste.
+  const entrantSections = (entrants || [])
+    .filter((c) => !byCompetition.has(c.competition))
+    .map((c) => `
+      <div class="comp-group">
+        <div class="comp">${escapeHtml(c.competition || '')}</div>
+        <p class="hint">Auslosung steht noch aus – gemeldete Spieler:innen:</p>
+        <ul>${(c.entrants || []).map((p) => `<li>${escapeHtml(p.name || '')}${p.club ? ' · ' + escapeHtml(p.club) : ''}${p.lk ? ' · LK' + escapeHtml(p.lk) : ''}</li>`).join('')}</ul>
+      </div>`);
+
+  el.innerHTML = matchSections.join('') + entrantSections.join('');
 }
 
 function renderReports(items) {
@@ -98,8 +151,7 @@ async function refreshAll() {
     loadJSON('data/entrants.json'),
   ]);
   renderTicker(ticker);
-  renderMatches('spielplan-list', schedule, false, entrants);
-  renderMatches('ergebnisse-list', results, true);
+  renderSpielplanErgebnisse(schedule, results, entrants);
   renderReports(reports);
   renderMenu(menu);
   qs('last-updated').textContent = 'Zuletzt aktualisiert: ' + new Date().toLocaleTimeString('de-DE');
