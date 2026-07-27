@@ -35,23 +35,39 @@ aktualisiere die Dateien und du lädst die neue Version einfach erneut hoch
 
 `data/schedule.json`, `data/results.json` und `data/entrants.json` (gemeldete
 Spieler:innen je Konkurrenz) werden zusätzlich automatisch von der
-öffentlichen tennis.de-Turnierseite übernommen. Ein GitHub-Actions-Workflow
+tennis.de-Turnierseite übernommen. Ein GitHub-Actions-Workflow
 (`.github/workflows/update-data.yml`) öffnet dazu alle 30 Minuten einen
-unsichtbaren Browser, liest die sichtbare Seite aus und committet Änderungen
-von selbst – dafür ist keine Anmeldung bei tennis.de nötig, es werden nur
-öffentliche Daten gelesen.
+unsichtbaren Browser, liest die Seite aus und committet Änderungen von
+selbst.
+
+**Wichtig, anders als ursprünglich angenommen:** Die Konkurrenzen-/
+Meldeliste-Ansicht auf tennis.de ist NICHT ohne Login sichtbar – ein
+ausgeloggter Besuch zeigt nur "Bitte logge dich ein ...". Der Scraper
+braucht deshalb einen echten tennis.de-Account und loggt sich damit vor dem
+Auslesen ein. Dafür müssen einmalig zwei Secrets im Repo hinterlegt werden:
+
+1. Im Repo zu **Settings → Secrets and variables → Actions → New repository
+   secret**.
+2. Secret `TENNIS_DE_USERNAME` anlegen mit der E-Mail-Adresse/dem
+   Benutzernamen des tennis.de-Accounts.
+3. Secret `TENNIS_DE_PASSWORD` anlegen mit dem zugehörigen Passwort.
+
+Diese Werte werden nur verschlüsselt bei GitHub gespeichert und ausschließlich
+innerhalb des Workflows verwendet – sie tauchen in keinem Log auf. Ohne diese
+beiden Secrets läuft der Workflow weiter fehlerfrei durch, findet aber keine
+Daten (nur `entrants.json` wird dann leer geschrieben).
 
 Manuell auslösen: im Repo unter "Actions" → "tennis.de Daten aktualisieren" →
 "Run workflow".
 
 Wichtig: Die Auslosung des MB-Cup erfolgt erst am 11.08.2026. Vorher liefert
 der Scraper nur die Meldelisten (`entrants.json`); Paarungen und Ergebnisse
-kommen automatisch dazu, sobald sie auf tennis.de erscheinen. Da tennis.de
-seine Turnierdaten in einem eingebetteten Widget mit unveröffentlichter
-Struktur anzeigt, ist der Auswertungs-Code in `scripts/scrape-tennis-de.js`
-nach bestem Wissen gebaut – nach der Auslosung lohnt sich ein kurzer Check
-(Datei `data/scrape-debug.txt` zeigt den rohen ausgelesenen Text zur
-Fehlersuche).
+kommen automatisch dazu, sobald sie auf tennis.de erscheinen. Die genauen
+Login-Feld-Selektoren in `scripts/scrape-tennis-de.js` sind nach bestem
+Wissen geraten (kein direkter Zugriff auf die Login-Maske im ausgeloggten
+Zustand möglich) – nach dem ersten Lauf mit gesetzten Secrets unbedingt
+`data/scrape-debug.txt` und `data/scrape-debug.png` kontrollieren und bei
+Bedarf anpassen.
 
 ## Einbindung in Wix
 
