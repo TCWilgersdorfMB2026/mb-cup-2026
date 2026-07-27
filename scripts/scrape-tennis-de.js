@@ -41,15 +41,37 @@ function writeJSON(file, data) {
 }
 
 async function acceptCookies(page) {
-  // Wichtig: Wir MÜSSEN allen Cookies zustimmen (der tatsächliche Button
-  // heißt bei tennis.de/Cookiebot "Alle zulassen", NICHT "Alle akzeptieren"),
-  // sonst bleibt der Consent-Dialog offen und blockiert die Konkurrenzen-Liste.
+  // WICHTIG: Cookiebot rendert seinen Consent-Dialog in einem eigenen,
+  // cross-origin iframe (consentcdn.cookiebot.com) - NICHT direkt im
+  // Haupt-DOM. page.getByText(...) auf der Hauptseite findet den Button
+  // "Alle zulassen" deshalb nie, der Klick geht ins Leere, und der Banner
+  // bleibt offen und blockiert die Konkurrenzen-Liste dahinter.
   const candidates = ['Alle zulassen', 'Alle akzeptieren', 'Alle erlauben', 'Akzeptieren', 'Accept all'];
+
+  for (let i = 0; i < 10; i++) {
+    const cookieFrame = page.frames().find((f) => f.url().includes('cookiebot.com'));
+    if (cookieFrame) {
+      for (const text of candidates) {
+        try {
+          const btn = cookieFrame.getByText(text, { exact: false }).first();
+          if (await btn.isVisible({ timeout: 1000 })) {
+            await btn.click({ timeout: 1000 });
+            return true;
+          }
+        } catch (e) {
+          // weiter versuchen
+        }
+      }
+    }
+    await page.waitForTimeout(500);
+  }
+
+  // Fallback, falls der Banner doch mal direkt im Haupt-DOM landet.
   for (const text of candidates) {
     try {
       const btn = page.getByText(text, { exact: false }).first();
-      if (await btn.isVisible({ timeout: 1500 })) {
-        await btn.click({ timeout: 1500 });
+      if (await btn.isVisible({ timeout: 1000 })) {
+        await btn.click({ timeout: 1000 });
         return true;
       }
     } catch (e) {
