@@ -189,6 +189,7 @@ function parseOverviewBlocks(overviewText) {
   let currentLabel = null;
   let labelUsed = false;
   let hauptfeldCounter = 0;
+  let termineCounter = 0;
 
   for (let i = 0; i < lines.length; i++) {
     const isCategory = /^(Herren|Damen)\b/.test(lines[i]);
@@ -201,8 +202,10 @@ function parseOverviewBlocks(overviewText) {
 
     if (lines[i] === 'Meldeliste') {
       // Nach vorne schauen (bis zur nächsten Meldeliste/Kategorie), ob ein
-      // Hauptfeld-/Tableau-Link zu DIESER Konkurrenz gehört.
+      // Hauptfeld-/Tableau-Link bzw. ein Termine-Link zu DIESER Konkurrenz
+      // gehört. Beides ist optional und unabhängig voneinander vorhanden.
       let hasHauptfeld = false;
+      let hasTermine = false;
       for (let j = i + 1; j < Math.min(i + 8, lines.length); j++) {
         if (lines[j] === 'Meldeliste') break;
         const nextIsCategory =
@@ -210,7 +213,9 @@ function parseOverviewBlocks(overviewText) {
         if (nextIsCategory) break;
         if (lines[j] === 'Hauptfeld' || /^Tableau ansehen/.test(lines[j])) {
           hasHauptfeld = true;
-          break;
+        }
+        if (lines[j] === 'Termine') {
+          hasTermine = true;
         }
       }
 
@@ -225,8 +230,10 @@ function parseOverviewBlocks(overviewText) {
       blocks.push({
         label,
         hauptfeldIndex: hasHauptfeld ? hauptfeldCounter : null,
+        termineIndex: hasTermine ? termineCounter : null,
       });
       if (hasHauptfeld) hauptfeldCounter += 1;
+      if (hasTermine) termineCounter += 1;
     }
   }
   return blocks;
@@ -397,6 +404,88 @@ function parseTableau(tableData, competition) {
   return matches;
 }
 
+// Liest die "Termine"-Ansicht einer Konkurrenz strukturiert aus: eine Tabelle
+// mit Kopfzeile "SP | Name / Platzanlage (PA) | Verein | LK | DR | Termin".
+// Nutzt innerText statt textContent, damit Zeilenumbrüche INNERHALB einer
+// Zelle (z.B. Name + Platzanlage in derselben Zelle) erhalten bleiben - sonst
+// würden z.B. "Schmitt, Pascal" und "Platz 3" ohne Trennzeichen zu einem
+// Wort verschmelzen.
+//
+// HINWEIS: Bei allen bisher geprüften Turnieren (auch dem kompletten,
+// abgeschlossenen Test-Turnier 713418) war diese Tabelle leer - der
+// Turnierausrichter hatte offenbar keine Termine/Plätze pro Spiel in
+// tennis.de eingetragen. Die Parser-Logik unten ist deshalb nach bestem
+// Wissen anhand der Spaltenüberschriften geschrieben, aber NICHT an echten
+// befüllten Zeilen verifiziert. Sobald für den echten MB-Cup 2026 (oder ein
+// anderes Turnier) tatsächlich Termine eingetragen werden, unbedingt einmal
+// data/termine-debug.json bzw. data/test-termine-debug.json prüfen und die
+// Zuordnungs-Heuristik in parseTermine() bei Bedarf nachschärfen.
+async function extractTermineTable(page) {
+  return page.evaluate(() => {
+    const tables = Array.from(document.querySelectorAll('table'));
+    const table = tables.find((t) => /Termin/.test(t.textContent) && /Platzanlage|Verein/.test(t.textContent));
+    if (!table) return null;
+    const trs = Array.from(table.querySelectorAll('tr'));
+    if (trs.length < 1) return null;
+    const headers = Array.from(trs[0].children).map((th) => th.innerText.trim());
+    const rows = trs.slice(1).map((tr) => Array.from(tr.children).map((td) => td.innerText.trim()));
+    return { headers, rows };
+  });
+}
+
+// Extrahiert aus einer Termine-Zeile (Array von Zellentexten, jede Zelle kann
+// mehrzeilig sein) Datum, Uhrzeit und Platz sowie die Rohzeilen zum späteren
+// Abgleich mit einem Spielernamen.
+function parseTermineRow(row) {
+  const lines = row.flatMap((cell) => cell.split('\n').map((l) => l.trim())).filter(Boolean);
+  const full = lines.join(' ');
+  const dateMatch = full.match(/\b(\d{2}\.\d{2}\.\d{4})\b/);
+  const timeMatch = full.match(/\b(\d{1,2}:\d{2})\b/);
+  // "Platz" ist case-insensitiv sicher (kollidiert mit keinem Namen), die
+  // Abkürzung "PA" dagegen NUR groß schreiben matchen - sonst matcht sie
+  // versehentlich als Teilstring in Namen wie "Pascal" oder "Paul".
+  const courtMatch = full.match(/\bPlatz\s*\S+/i) || full.match(/\bPA\s*\d+\S*/);
+  return {
+    lines,
+    date: dateMatch ? dateMatch[1] : '',
+    time: timeMatch ? timeMatch[1] : '',
+    court: courtMatch ? courtMatch[0] : '',
+  };
+}
+
+// Prüft, ob eine Termine-Zeile zu einem Spieler (Format "Nachname, Vorname",
+// wie aus dem Tableau) gehört - über Nachname + (Vorname oder Vorname-Anfangs-
+// buchstabe) im Zeilentext, da das genaue Namensformat der Termine-Tabelle
+// noch nicht an echten Daten verifiziert werden konnte (siehe oben).
+function termineRowMatchesPlayer(row, fullName) {
+  const parts = fullName.split(',');
+  const surname = parts[0].trim();
+  const firstname = (parts[1] || '').trim();
+  if (!surname) return false;
+  return row.lines.some((line) => {
+    if (!line.includes(surname)) return false;
+    if (!firstname) return true;
+    return line.includes(firstname) || (firstname[0] && line.includes(firstname[0]));
+  });
+}
+
+// Ergänzt Datum/Uhrzeit/Platz in den Match-Objekten einer Konkurrenz anhand
+// der Termine-Tabelle (falls vorhanden und befüllt). Verändert die matches
+// NICHT, wenn keine passende Termine-Zeile gefunden wird - dann bleiben
+// time/court einfach leer wie bisher (keine Verschlechterung ggü. vorher).
+function mergeTermineIntoMatches(matches, termineRows) {
+  if (!termineRows || !termineRows.length) return matches;
+  for (const m of matches) {
+    const rowFor = (name) => termineRows.find((row) => termineRowMatchesPlayer(row, name));
+    const row = rowFor(m.player1) || rowFor(m.player2);
+    if (row) {
+      if (row.date) m.time = row.time ? `${row.date} ${row.time} Uhr` : row.date;
+      if (row.court) m.court = row.court;
+    }
+  }
+  return matches;
+}
+
 // meldelisteIndex: Position dieser Konkurrenz in der Liste ALLER
 // "Meldeliste"-Links (inkl. Nebenrunden) - für die Meldeliste selbst.
 // hauptfeldIndex: Position dieser Konkurrenz in der (kürzeren, separaten)
@@ -404,7 +493,7 @@ function parseTableau(tableData, competition) {
 // Konkurrenz gar kein Tableau hat (z.B. zu wenige Meldungen). Siehe
 // parseOverviewBlocks() für die Begründung, warum diese beiden Indizes NICHT
 // identisch sind.
-async function scrapeCompetition(page, meldelisteIndex, hauptfeldIndex, competitionLabel) {
+async function scrapeCompetition(page, meldelisteIndex, hauptfeldIndex, termineIndex, competitionLabel) {
   const result = { entrants: null, matches: [] };
 
   // --- Meldeliste ---
@@ -471,6 +560,42 @@ async function scrapeCompetition(page, meldelisteIndex, hauptfeldIndex, competit
       }
     } catch (e) {
       console.warn(`Ergebnisse für "${competitionLabel}" konnten nicht gelesen werden:`, e.message);
+    }
+  }
+
+  // --- Termine (Datum/Uhrzeit/Platz je Spiel, falls vom Ausrichter in
+  // tennis.de eingetragen) - optional, ergänzt nur time/court in den bereits
+  // aus dem Tableau gewonnenen Matches, ohne sie sonst zu verändern. ---
+  if (termineIndex !== null && result.matches.length) {
+    try {
+      const termineLinks = page.getByText('Termine', { exact: true });
+      const count = await termineLinks.count();
+      if (termineIndex < count) {
+        await termineLinks.nth(termineIndex).click({ timeout: 5000 });
+        await page.waitForTimeout(1200);
+        const termineTable = await extractTermineTable(page);
+        const termineRows = (termineTable ? termineTable.rows : []).map(parseTermineRow);
+        mergeTermineIntoMatches(result.matches, termineRows);
+
+        if (termineIndex === 0) {
+          try {
+            fs.writeFileSync(
+              path.join(DATA_DIR, `${FILE_PREFIX}termine-debug.json`),
+              JSON.stringify(termineTable, null, 2) + '\n'
+            );
+          } catch (e) {
+            console.warn('Konnte Termine-Diagnose nicht schreiben:', e.message);
+          }
+        }
+
+        const back = page.getByText('Zurück zum Turnier', { exact: false }).first();
+        if (await back.isVisible({ timeout: 1000 }).catch(() => false)) {
+          await back.click({ timeout: 3000 });
+          await page.waitForTimeout(800);
+        }
+      }
+    } catch (e) {
+      console.warn(`Termine für "${competitionLabel}" konnten nicht gelesen werden:`, e.message);
     }
   }
 
@@ -556,8 +681,13 @@ async function main() {
     const block = overviewBlocks[i] || {};
     const label = block.label || `Konkurrenz ${i + 1}`;
     const hauptfeldIndex = block.hauptfeldIndex ?? null;
-    console.log(`(${i + 1}/${meldelisteCount}) ${label}${hauptfeldIndex === null ? ' [kein Tableau]' : ` [Tableau #${hauptfeldIndex}]`}`);
-    const { entrants, matches } = await scrapeCompetition(page, i, hauptfeldIndex, label);
+    const termineIndex = block.termineIndex ?? null;
+    console.log(
+      `(${i + 1}/${meldelisteCount}) ${label}` +
+      `${hauptfeldIndex === null ? ' [kein Tableau]' : ` [Tableau #${hauptfeldIndex}]`}` +
+      `${termineIndex === null ? ' [keine Termine]' : ` [Termine #${termineIndex}]`}`
+    );
+    const { entrants, matches } = await scrapeCompetition(page, i, hauptfeldIndex, termineIndex, label);
     if (entrants) allEntrants.push(entrants);
     if (matches && matches.length) allMatches.push(...matches);
   }
