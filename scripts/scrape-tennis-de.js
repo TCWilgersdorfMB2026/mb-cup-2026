@@ -37,7 +37,11 @@ function writeJSON(file, data) {
 }
 
 async function acceptCookies(page) {
-  const candidates = ['Ablehnen', 'Alle ablehnen', 'Nur essenzielle akzeptieren', 'Alle akzeptieren'];
+  // Wichtig: Wir MÜSSEN allen Cookies zustimmen ("Alle akzeptieren" zuerst
+  // versuchen), weil das Turnier-Widget von widgets.tennis.de als
+  // Drittanbieter-Einbettung eingestuft wird und bei Ablehnung offenbar gar
+  // nicht erst geladen wird (Cookiebot-Consent-Steuerung).
+  const candidates = ['Alle akzeptieren', 'Alle erlauben', 'Alles akzeptieren', 'Akzeptieren', 'Accept all'];
   for (const text of candidates) {
     try {
       const btn = page.getByText(text, { exact: false }).first();
@@ -194,7 +198,7 @@ async function main() {
   console.log('Öffne', DETAIL_URL);
   await page.goto(DETAIL_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
   await acceptCookies(page);
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(5000);
 
   // Diagnose-Schnappschuss der äußeren Seite, damit wir bei einem Fehlschlag
   // sehen, was der Bot tatsächlich vorgefunden hat (z.B. Cookie-Banner,
