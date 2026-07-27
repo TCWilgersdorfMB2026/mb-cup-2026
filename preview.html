@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vorschau: Testdaten 2025 – markenbaumarkt24-Cup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <h1>Vorschau mit Testdaten 2025</h1>
+    <p class="subtitle">Historisches LK-Turnier · nur zu Demozwecken, keine echten 2026-Daten</p>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="tab-btn" data-tab="ticker">Liveticker</button>
+  <button class="tab-btn active" data-tab="spiele">Spielplan &amp; Ergebnisse</button>
+  <button class="tab-btn" data-tab="berichte">Tagesberichte</button>
+  <button class="tab-btn" data-tab="speiseplan">Speiseplan</button>
+</nav>
+
+<main class="content">
+
+  <section id="ticker" class="tab-panel">
+    <h2>Liveticker</h2>
+    <p class="hint">In dieser Vorschau nicht befüllt – nur "Spielplan &amp; Ergebnisse" zeigt Testdaten.</p>
+    <div id="ticker-list" class="ticker-list">
+      <p class="empty">Noch keine Meldungen.</p>
+    </div>
+  </section>
+
+  <section id="spiele" class="tab-panel active">
+    <h2>Spielplan &amp; Ergebnisse</h2>
+    <p class="hint">Konkurrenz auswählen, um Turnierbaum bzw. Meldeliste anzuzeigen. (Testdaten aus 2025)</p>
+    <div class="bracket-picker">
+      <select id="competition-select"></select>
+    </div>
+    <div id="spiele-list">
+      <p class="empty">Lädt Testdaten…</p>
+    </div>
+  </section>
+
+  <section id="berichte" class="tab-panel">
+    <h2>Tagesberichte</h2>
+    <div id="berichte-list" class="report-list">
+      <p class="empty">In dieser Vorschau nicht befüllt.</p>
+    </div>
+  </section>
+
+  <section id="speiseplan" class="tab-panel">
+    <h2>Speiseplan</h2>
+    <div id="speiseplan-list" class="menu-list">
+      <p class="empty">In dieser Vorschau nicht befüllt.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Vorschau-Seite mit historischen Testdaten (2025) – wird nach Prüfung wieder entfernt.</p>
+  <p class="updated" id="last-updated"></p>
+</footer>
+
+<script>
+  // Lädt den echten, live deployten app.js-Code (Funktionsdefinitionen), führt aber
+  // NICHT dessen automatischen refreshAll()/setInterval()-Aufruf am Dateiende aus,
+  // damit hier nicht laufend die echten (noch leeren) 2026-Produktivdaten
+  // nachgeladen werden und die Testdaten-Ansicht wieder überschreiben.
+  // Stattdessen werden einmalig Testdaten aus einem historischen Turnier geladen,
+  // um die Turnierbaum-Ansicht mit echten, abgeschlossenen Ergebnissen zu zeigen.
+  fetch('assets/app.js').then((r) => r.text()).then((src) => {
+    const stripped = src.replace(/setupTabs\(\);[\s\S]*$/, '');
+    (0, eval)(stripped);
+    setupTabs();
+    setupCompetitionSelect();
+
+    async function loadTestData() {
+      const [schedule, results, entrants] = await Promise.all([
+        loadJSON('data/test-schedule.json'),
+        loadJSON('data/test-results.json'),
+        loadJSON('data/test-entrants.json'),
+      ]);
+      renderSpielplanErgebnisse(schedule || [], results || [], entrants || []);
+      document.getElementById('last-updated').textContent =
+        'Testdaten geladen: ' + new Date().toLocaleTimeString('de-DE');
+    }
+    loadTestData();
+  });
+</script>
+</body>
+</html>
