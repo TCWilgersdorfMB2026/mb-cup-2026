@@ -33,6 +33,10 @@ extern) entgegen und wird automatisch unter dem jeweiligen Eintrag angezeigt.
 Fehlt das Feld, wird einfach kein Bild angezeigt – bestehende Dateien ohne
 `image` funktionieren unverändert weiter.
 
+Eigene Fotos vom Turnier lassen sich einfach in `data/images/` hochladen
+("Add file" → "Upload files") und dann per relativem Pfad eintragen, z. B.
+`"image": "data/images/finale-2026.jpg"`.
+
 Während des Turniers reicht es, mir die Updates per Chat zu schicken – ich
 aktualisiere die Dateien und du lädst die neue Version einfach erneut hoch
 (oder ich übernehme das direkt, falls du mir Zugriff aufs Repo gibst).
