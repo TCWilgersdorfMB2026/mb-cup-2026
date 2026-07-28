@@ -77,13 +77,13 @@ function listCompetitions() {
 function bracketBoxHtml(m) {
   const p1Wins = m.played && namesMatch(m.player1, m.winner);
   const p2Wins = m.played && namesMatch(m.player2, m.winner);
-  const metaParts = [m.time, m.court].filter(Boolean);
   return `
     <div class="bracket-box">
       <div class="bracket-player${p1Wins ? ' winner' : ''}">${escapeHtml(m.player1 || '')}</div>
       <div class="bracket-player${p2Wins ? ' winner' : ''}">${escapeHtml(m.player2 || '')}</div>
       ${m.played ? `<div class="bracket-score">${escapeHtml(m.score || '')}</div>` : '<div class="bracket-pending">Noch offen</div>'}
-      ${metaParts.length ? `<div class="bracket-meta">${metaParts.map(escapeHtml).join(' · ')}</div>` : ''}
+      ${m.court ? `<div class="bracket-meta bracket-court">${escapeHtml(m.court)}</div>` : ''}
+      ${m.time ? `<div class="bracket-meta bracket-time">${escapeHtml(m.time)}</div>` : ''}
     </div>`;
 }
 
@@ -188,17 +188,94 @@ function renderSpielplanErgebnisse(schedule, results, entrants) {
     selectEl.innerHTML = '<option value="">Keine Konkurrenzen</option>';
     state.selectedCompetition = null;
     renderCompetitionDetail();
+  } else {
+    if (!state.selectedCompetition || !names.includes(state.selectedCompetition)) {
+      state.selectedCompetition = names[0];
+    }
+    selectEl.innerHTML = names
+      .map((c) => `<option value="${escapeHtml(c)}"${c === state.selectedCompetition ? ' selected' : ''}>${escapeHtml(c)}</option>`)
+      .join('');
+    renderCompetitionDetail();
+  }
+
+  renderSpielplanOverview();
+}
+
+// Parst das Termin-Format, wie es der tennis.de-Scraper schreibt
+// ("TT.MM.JJJJ" bzw. "TT.MM.JJJJ HH:MM Uhr") in ein sortierbares Date-Objekt.
+// Liefert null, wenn kein Datum erkennbar ist (z.B. wenn tennis.de für diese
+// Begegnung keinen Termin gepflegt hat).
+function parseTerminDate(str) {
+  if (!str) return null;
+  const m = String(str).match(/(\d{2})\.(\d{2})\.(\d{4})(?:\s+(\d{1,2}):(\d{2}))?/);
+  if (!m) return null;
+  const [, dd, mm, yyyy, hh, min] = m;
+  return new Date(Number(yyyy), Number(mm) - 1, Number(dd), hh ? Number(hh) : 0, min ? Number(min) : 0);
+}
+
+// Baut EINE Zeile der Spielplan-Übersicht: Platz und Uhrzeit vorne (Platz
+// immer in eigener Zeile zuerst), dann Konkurrenz/Runde, Paarung und
+// Ergebnis bzw. "Noch offen".
+function scheduleRowHtml(m) {
+  const p1Wins = m.played && namesMatch(m.player1, m.winner);
+  const p2Wins = m.played && namesMatch(m.player2, m.winner);
+  const timePart = m._date
+    ? m._date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr'
+    : '';
+  return `
+    <div class="schedule-row">
+      <div class="schedule-when">
+        ${m.court ? `<div class="schedule-court">${escapeHtml(m.court)}</div>` : ''}
+        ${timePart
+          ? `<div class="schedule-time">${escapeHtml(timePart)}</div>`
+          : '<div class="schedule-time schedule-time-empty">Zeit offen</div>'}
+      </div>
+      <div class="schedule-match">
+        <div class="schedule-comp">${escapeHtml(m.competition || '')}${m.round ? ' · ' + escapeHtml(m.round) : ''}</div>
+        <div class="schedule-players">
+          <span${p1Wins ? ' class="winner"' : ''}>${escapeHtml(m.player1 || '')}</span> –
+          <span${p2Wins ? ' class="winner"' : ''}>${escapeHtml(m.player2 || '')}</span>
+        </div>
+        ${m.played ? `<div class="schedule-score">${escapeHtml(m.score || '')}</div>` : '<div class="schedule-pending">Noch offen</div>'}
+      </div>
+    </div>`;
+}
+
+// Rendert den eigenständigen "Spielplan"-Tab: ALLE Begegnungen ALLER
+// Konkurrenzen zusammen, chronologisch nach Tag und Uhrzeit gruppiert - im
+// Gegensatz zum "Ergebnisse"-Tab, der pro Konkurrenz einen Turnierbaum zeigt.
+function renderSpielplanOverview() {
+  const el = qs('spielplan-list');
+  if (!el) return;
+
+  const all = [
+    ...state.results.map((m) => ({ ...m, played: true })),
+    ...state.schedule.map((m) => ({ ...m, played: false })),
+  ].map((m) => ({ ...m, _date: parseTerminDate(m.time) }));
+
+  if (!all.length) {
+    el.innerHTML = '<p class="empty">Wird vor Turnierstart eingepflegt.</p>';
     return;
   }
 
-  if (!state.selectedCompetition || !names.includes(state.selectedCompetition)) {
-    state.selectedCompetition = names[0];
-  }
-  selectEl.innerHTML = names
-    .map((c) => `<option value="${escapeHtml(c)}"${c === state.selectedCompetition ? ' selected' : ''}>${escapeHtml(c)}</option>`)
-    .join('');
+  const withDate = all.filter((m) => m._date).sort((a, b) => a._date - b._date);
+  const withoutDate = all.filter((m) => !m._date);
 
-  renderCompetitionDetail();
+  const byDay = new Map();
+  for (const m of withDate) {
+    const dayKey = m._date.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
+    if (!byDay.has(dayKey)) byDay.set(dayKey, []);
+    byDay.get(dayKey).push(m);
+  }
+
+  let html = '';
+  for (const [day, matches] of byDay) {
+    html += `<div class="schedule-day"><h3 class="schedule-date">${escapeHtml(day)}</h3><div class="schedule-rows">${matches.map(scheduleRowHtml).join('')}</div></div>`;
+  }
+  if (withoutDate.length) {
+    html += `<div class="schedule-day"><h3 class="schedule-date">Termin noch offen</h3><div class="schedule-rows">${withoutDate.map(scheduleRowHtml).join('')}</div></div>`;
+  }
+  el.innerHTML = html;
 }
 
 function renderReports(items) {

@@ -149,6 +149,29 @@ body {
   min-height: 44px;
 }
 
+.schedule-day { margin-bottom: 22px; }
+.schedule-date { color: var(--navy); font-size: 0.95rem; margin: 0 0 8px; text-transform: capitalize; }
+.schedule-rows { display: flex; flex-direction: column; gap: 8px; }
+.schedule-row {
+  display: flex;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  align-items: flex-start;
+}
+.schedule-when { flex: 0 0 82px; }
+.schedule-court { font-weight: 700; color: var(--navy); font-size: 0.78rem; }
+.schedule-time { color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
+.schedule-time-empty { font-style: italic; }
+.schedule-match { flex: 1; min-width: 0; }
+.schedule-comp { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 3px; }
+.schedule-players { font-weight: 600; }
+.schedule-players .winner { color: var(--navy); font-weight: 700; }
+.schedule-score { color: var(--accent); font-weight: 700; font-size: 0.85rem; margin-top: 3px; }
+.schedule-pending { color: var(--muted); font-style: italic; font-size: 0.8rem; margin-top: 3px; }
+
 .report-item h3 { margin: 0 0 6px; color: var(--navy); }
 .report-item .date { color: var(--muted); font-size: 0.8rem; margin-bottom: 8px; }
 .report-item p { white-space: pre-wrap; margin: 0; }
