@@ -1,5 +1,5 @@
 [
-  { "day": "Donnerstag, 30.07.", "image": "https://picsum.photos/seed/mbcup-menu1/600/360", "items": ["Grillwürstchen mit Brötchen", "Nudelsalat", "Kuchenbuffet"] },
-  { "day": "Freitag, 31.07.", "image": "https://picsum.photos/seed/mbcup-menu2/600/360", "items": ["Schnitzel mit Kartoffelsalat", "Vegetarische Gemüsepfanne", "Waffeln"] },
-  { "day": "Sonntag, 02.08. (Finaltag)", "image": "https://picsum.photos/seed/mbcup-menu3/600/360", "items": ["Braten mit Kroketten", "Salatbuffet", "Kaffee & Kuchen ab 14 Uhr"] }
+  { "day": "Donnerstag, 30.07.", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Rostbratwurst_%282005%29-01.jpg/960px-Rostbratwurst_%282005%29-01.jpg", "items": ["Grillwürstchen mit Brötchen", "Nudelsalat", "Kuchenbuffet"] },
+  { "day": "Freitag, 31.07.", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Bayrisches_Schnitzel_%28mit_Obazda_gef%C3%BCllt%29_und_Kartoffelsalat_1.jpg/960px-Bayrisches_Schnitzel_%28mit_Obazda_gef%C3%BCllt%29_und_Kartoffelsalat_1.jpg", "items": ["Schnitzel mit Kartoffelsalat", "Vegetarische Gemüsepfanne", "Waffeln"] },
+  { "day": "Sonntag, 02.08. (Finaltag)", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Pork_Chop%2C_Potato_Croquette%2C_Roast_Vegetable%2C_Salad_and_Pepper_Sauce_%2817272489070%29.jpg/960px-Pork_Chop%2C_Potato_Croquette%2C_Roast_Vegetable%2C_Salad_and_Pepper_Sauce_%2817272489070%29.jpg", "items": ["Braten mit Kroketten", "Salatbuffet", "Kaffee & Kuchen ab 14 Uhr"] }
 ]
