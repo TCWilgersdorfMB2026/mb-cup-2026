@@ -47,7 +47,15 @@ function namesMatch(a, b) {
 // Hält die zuletzt geladenen Daten und die aktuell im Dropdown gewählte
 // Konkurrenz, damit ein Refresh (alle 60s) die Auswahl der Person nicht
 // zurücksetzt und das Dropdown nicht bei jedem Tick neu aufgebaut werden muss.
-const state = { schedule: [], results: [], entrants: [], selectedCompetition: null };
+const state = {
+  schedule: [],
+  results: [],
+  entrants: [],
+  selectedCompetition: null,
+  selectedScheduleDay: null,
+  scheduleDays: null,
+  scheduleWithoutDate: [],
+};
 
 // Liefert die Namen ALLER Konkurrenzen, die entweder Paarungen (Tableau)
 // oder zumindest eine Meldeliste haben - in der Reihenfolge, in der sie
@@ -213,12 +221,23 @@ function parseTerminDate(str) {
   return new Date(Number(yyyy), Number(mm) - 1, Number(dd), hh ? Number(hh) : 0, min ? Number(min) : 0);
 }
 
-// Baut EINE Zeile der Spielplan-Übersicht: Platz und Uhrzeit vorne (Platz
-// immer in eigener Zeile zuerst), dann Konkurrenz/Runde, Paarung und
-// Ergebnis bzw. "Noch offen".
+// Formatiert ein Date als sortierbaren Tages-Schlüssel ("2026-07-30") bzw.
+// als lesbares Label ("Donnerstag, 30.07.2026") für das Tages-Dropdown.
+function dayKeyOf(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+function dayLabelOf(date) {
+  return date.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
+// Baut EINE Zeile des Spielplans: Platz und Uhrzeit vorne (Platz immer in
+// eigener Zeile zuerst), dann Konkurrenz/Runde und Paarung. Bewusst OHNE
+// Ergebnis/Sieger - der Spielplan zeigt, wer wann wo spielt, nicht wer
+// gewonnen hat (das steht im "Ergebnisse"-Tab).
 function scheduleRowHtml(m) {
-  const p1Wins = m.played && namesMatch(m.player1, m.winner);
-  const p2Wins = m.played && namesMatch(m.player2, m.winner);
   const timePart = m._date
     ? m._date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr'
     : '';
@@ -232,50 +251,77 @@ function scheduleRowHtml(m) {
       </div>
       <div class="schedule-match">
         <div class="schedule-comp">${escapeHtml(m.competition || '')}${m.round ? ' · ' + escapeHtml(m.round) : ''}</div>
-        <div class="schedule-players">
-          <span${p1Wins ? ' class="winner"' : ''}>${escapeHtml(m.player1 || '')}</span> –
-          <span${p2Wins ? ' class="winner"' : ''}>${escapeHtml(m.player2 || '')}</span>
-        </div>
-        ${m.played ? `<div class="schedule-score">${escapeHtml(m.score || '')}</div>` : '<div class="schedule-pending">Noch offen</div>'}
+        <div class="schedule-players">${escapeHtml(m.player1 || '')} – ${escapeHtml(m.player2 || '')}</div>
       </div>
     </div>`;
 }
 
-// Rendert den eigenständigen "Spielplan"-Tab: ALLE Begegnungen ALLER
-// Konkurrenzen zusammen, chronologisch nach Tag und Uhrzeit gruppiert - im
-// Gegensatz zum "Ergebnisse"-Tab, der pro Konkurrenz einen Turnierbaum zeigt.
+// Baut das Tages-Dropdown für den "Spielplan"-Tab auf: eine Option pro Tag,
+// an dem laut Termin gespielt wird, plus ggf. "Termin noch offen" für
+// Begegnungen ohne Datum. Startet immer beim heutigen Tag (falls an diesem
+// Tag gespielt wird) - andere Tage (vergangen oder zukünftig) sind nur über
+// das Dropdown erreichbar, damit man nicht durchs ganze Turnier scrollen muss.
 function renderSpielplanOverview() {
+  const selectEl = qs('spielplan-day-select');
   const el = qs('spielplan-list');
-  if (!el) return;
+  if (!el || !selectEl) return;
 
-  const all = [
-    ...state.results.map((m) => ({ ...m, played: true })),
-    ...state.schedule.map((m) => ({ ...m, played: false })),
-  ].map((m) => ({ ...m, _date: parseTerminDate(m.time) }));
-
-  if (!all.length) {
-    el.innerHTML = '<p class="empty">Wird vor Turnierstart eingepflegt.</p>';
-    return;
-  }
-
-  const withDate = all.filter((m) => m._date).sort((a, b) => a._date - b._date);
+  const all = [...state.results, ...state.schedule].map((m) => ({ ...m, _date: parseTerminDate(m.time) }));
+  const withDate = all.filter((m) => m._date);
   const withoutDate = all.filter((m) => !m._date);
 
   const byDay = new Map();
   for (const m of withDate) {
-    const dayKey = m._date.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
-    if (!byDay.has(dayKey)) byDay.set(dayKey, []);
-    byDay.get(dayKey).push(m);
+    const key = dayKeyOf(m._date);
+    if (!byDay.has(key)) byDay.set(key, { label: dayLabelOf(m._date), matches: [] });
+    byDay.get(key).matches.push(m);
+  }
+  state.scheduleDays = byDay;
+  state.scheduleWithoutDate = withoutDate;
+
+  const dayKeys = Array.from(byDay.keys()).sort();
+  const options = dayKeys.map((k) => ({ value: k, label: byDay.get(k).label }));
+  if (withoutDate.length) {
+    options.push({ value: '__none__', label: 'Termin noch offen' });
   }
 
-  let html = '';
-  for (const [day, matches] of byDay) {
-    html += `<div class="schedule-day"><h3 class="schedule-date">${escapeHtml(day)}</h3><div class="schedule-rows">${matches.map(scheduleRowHtml).join('')}</div></div>`;
+  if (!options.length) {
+    selectEl.innerHTML = '';
+    state.selectedScheduleDay = null;
+    el.innerHTML = '<p class="empty">Wird vor Turnierstart eingepflegt.</p>';
+    return;
   }
-  if (withoutDate.length) {
-    html += `<div class="schedule-day"><h3 class="schedule-date">Termin noch offen</h3><div class="schedule-rows">${withoutDate.map(scheduleRowHtml).join('')}</div></div>`;
+
+  const todayKey = dayKeyOf(new Date());
+  if (!state.selectedScheduleDay || !options.some((o) => o.value === state.selectedScheduleDay)) {
+    state.selectedScheduleDay = options.some((o) => o.value === todayKey) ? todayKey : options[0].value;
   }
-  el.innerHTML = html;
+
+  selectEl.innerHTML = options
+    .map((o) => `<option value="${escapeHtml(o.value)}"${o.value === state.selectedScheduleDay ? ' selected' : ''}>${escapeHtml(o.label)}</option>`)
+    .join('');
+
+  renderScheduleDay();
+}
+
+// Rendert NUR die Begegnungen des im Dropdown gewählten Tages, sortiert
+// nach Uhrzeit.
+function renderScheduleDay() {
+  const el = qs('spielplan-list');
+  if (!el) return;
+  const day = state.selectedScheduleDay;
+  if (!day) { el.innerHTML = '<p class="empty">Wird vor Turnierstart eingepflegt.</p>'; return; }
+
+  const matches = day === '__none__'
+    ? (state.scheduleWithoutDate || [])
+    : ((state.scheduleDays && state.scheduleDays.get(day)) ? state.scheduleDays.get(day).matches : []);
+  const sorted = [...matches].sort((a, b) => (a._date && b._date) ? a._date - b._date : 0);
+
+  if (!sorted.length) {
+    el.innerHTML = '<p class="empty">Für diesen Tag liegen keine Begegnungen vor.</p>';
+    return;
+  }
+  el.innerHTML = `<div class="schedule-rows">${sorted.map(scheduleRowHtml).join('')}</div>`;
 }
 
 function renderReports(items) {
@@ -342,7 +388,17 @@ function setupCompetitionSelect() {
   });
 }
 
+function setupSpielplanDaySelect() {
+  const el = qs('spielplan-day-select');
+  if (!el) return;
+  el.addEventListener('change', (e) => {
+    state.selectedScheduleDay = e.target.value;
+    renderScheduleDay();
+  });
+}
+
 setupTabs();
 setupCompetitionSelect();
+setupSpielplanDaySelect();
 refreshAll();
 setInterval(refreshAll, REFRESH_MS);
