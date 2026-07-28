@@ -1,5 +1,12 @@
 [
-  { "day": "Donnerstag, 30.07.", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Rostbratwurst_%282005%29-01.jpg/960px-Rostbratwurst_%282005%29-01.jpg", "items": ["Grillwürstchen mit Brötchen", "Nudelsalat", "Kuchenbuffet"] },
-  { "day": "Freitag, 31.07.", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Bayrisches_Schnitzel_%28mit_Obazda_gef%C3%BCllt%29_und_Kartoffelsalat_1.jpg/960px-Bayrisches_Schnitzel_%28mit_Obazda_gef%C3%BCllt%29_und_Kartoffelsalat_1.jpg", "items": ["Schnitzel mit Kartoffelsalat", "Vegetarische Gemüsepfanne", "Waffeln"] },
+  { "day": "Donnerstag, 30.07.", "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Rostbratwurst_%282005%29-01.jpg/960px-Rostbratwurst_%282005%29-01.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Pasta_salad_with_cherry_tomatoes.jpg/960px-Pasta_salad_with_cherry_tomatoes.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Chocolate_cake_and_Victoria_sponge.jpg/960px-Chocolate_cake_and_Victoria_sponge.jpg"
+    ], "items": ["Grillwürstchen mit Brötchen", "Nudelsalat", "Kuchenbuffet"] },
+  { "day": "Freitag, 31.07.", "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Bayrisches_Schnitzel_%28mit_Obazda_gef%C3%BCllt%29_und_Kartoffelsalat_1.jpg/960px-Bayrisches_Schnitzel_%28mit_Obazda_gef%C3%BCllt%29_und_Kartoffelsalat_1.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Waffle%2C_Baytree_Waffle_House%2C_Remerton.jpg/960px-Waffle%2C_Baytree_Waffle_House%2C_Remerton.jpg"
+    ], "items": ["Schnitzel mit Kartoffelsalat", "Vegetarische Gemüsepfanne", "Waffeln"] },
   { "day": "Sonntag, 02.08. (Finaltag)", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Pork_Chop%2C_Potato_Croquette%2C_Roast_Vegetable%2C_Salad_and_Pepper_Sauce_%2817272489070%29.jpg/960px-Pork_Chop%2C_Potato_Croquette%2C_Roast_Vegetable%2C_Salad_and_Pepper_Sauce_%2817272489070%29.jpg", "items": ["Braten mit Kroketten", "Salatbuffet", "Kaffee & Kuchen ab 14 Uhr"] }
 ]
