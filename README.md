@@ -21,17 +21,25 @@ Diese URL wird anschließend per iframe in Wix eingebunden.
 Nur die JSON-Dateien in `data/` müssen ersetzt werden, das HTML bleibt
 unverändert:
 
-- `data/ticker.json` – Liveticker-Meldungen (`time`, `text`, optional `image`: Bild-URL)
+- `data/ticker.json` – Liveticker-Meldungen (`time`, `text`, optional `image` oder `images`: Bild-URL(s))
 - `data/schedule.json` – Spielplan (`competition`, `player1`, `player2`, `round`, `time`, `court`)
 - `data/results.json` – Ergebnisse (wie schedule.json, zusätzlich `score`)
-- `data/reports.json` – Tagesberichte (`date`, `title`, `text`, optional `image`: Bild-URL)
-- `data/menu.json` – Speiseplan (`day`, `items`: Liste von Strings, optional `image`: Bild-URL)
+- `data/reports.json` – Tagesberichte (`date`, `title`, `text`, optional `image` oder `images`: Bild-URL(s))
+- `data/menu.json` – Speiseplan (`day`, `items`: Liste von Strings, optional `image` oder `images`: Bild-URL(s))
 
-Das optionale `image`-Feld nimmt eine Bild-URL (z. B. ein Foto, das irgendwo
-hochgeladen wurde, etwa in einem eigenen `data/images/`-Ordner im Repo oder
-extern) entgegen und wird automatisch unter dem jeweiligen Eintrag angezeigt.
-Fehlt das Feld, wird einfach kein Bild angezeigt – bestehende Dateien ohne
-`image` funktionieren unverändert weiter.
+Für Bilder gibt es zwei Möglichkeiten:
+
+- `"image": "..."` – genau ein Bild.
+- `"images": ["...", "...", ...]` – mehrere Bilder, werden nebeneinander
+  (bzw. auf schmalen Screens umbrechend) angezeigt.
+
+Beide Felder sind optional. Fehlen sie, wird einfach kein Bild angezeigt –
+bestehende Einträge ohne Bild funktionieren unverändert weiter.
+
+Eigene Fotos vom Turnier lassen sich einfach in `data/images/` hochladen
+("Add file" → "Upload files") und dann per relativem Pfad eintragen, z. B.
+`"image": "data/images/finale-2026.jpg"` bzw.
+`"images": ["data/images/finale-2026-1.jpg", "data/images/finale-2026-2.jpg"]`.
 
 Eigene Fotos vom Turnier lassen sich einfach in `data/images/` hochladen
 ("Add file" → "Upload files") und dann per relativem Pfad eintragen, z. B.
