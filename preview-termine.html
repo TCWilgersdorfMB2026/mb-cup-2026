@@ -86,7 +86,7 @@
   // Stattdessen werden für ALLE Bereiche (Liveticker, Spielplan, Ergebnisse,
   // Tagesberichte, Speiseplan) Demodaten geladen, über dieselben Render-
   // Funktionen wie auf der echten Seite.
-  fetch('assets/app.js').then((r) => r.text()).then((src) => {
+  fetch('assets/app.js?t=' + Date.now(), { cache: 'no-store' }).then((r) => r.text()).then((src) => {
     const stripped = src.replace(/setupTabs\(\);[\s\S]*$/, '');
     (0, eval)(stripped);
     setupTabs();
