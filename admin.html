@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MB-Cup 2026 – Infos eintragen</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #002c58;
+    --navy-dark: #001a35;
+    --accent: #116dff;
+    --bg: #eeeeee;
+    --card: #ffffff;
+    --text: #222;
+    --muted: #6b6b6b;
+    --border: #e0e0e0;
+    --danger: #b3261e;
+    --ok: #1b7f3a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Barlow', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  header {
+    background: linear-gradient(135deg, var(--navy), var(--navy-dark));
+    color: #fff;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  header h1 { margin: 0 0 4px; font-size: 1.3rem; }
+  header p { margin: 0; font-size: 0.85rem; opacity: 0.9; }
+  main { max-width: 640px; margin: 0 auto; padding: 16px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 18px;
+  }
+  .card h2 { margin: 0 0 6px; color: var(--navy); font-size: 1.1rem; }
+  .card .hint { color: var(--muted); font-size: 0.82rem; margin: 0 0 14px; }
+  label { display: block; font-weight: 600; font-size: 0.85rem; margin: 12px 0 4px; }
+  input[type=text], input[type=date], input[type=datetime-local], input[type=password], textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background: #fff;
+  }
+  textarea { min-height: 80px; resize: vertical; }
+  input[type=file] { margin-top: 4px; font-size: 0.85rem; }
+  button {
+    margin-top: 14px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:disabled { opacity: 0.6; cursor: default; }
+  button.secondary { background: transparent; color: var(--muted); text-decoration: underline; padding: 4px; font-weight: 400; }
+  .status { margin-top: 10px; font-size: 0.85rem; }
+  .status.ok { color: var(--ok); }
+  .status.err { color: var(--danger); }
+  .entry-list { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 10px; }
+  .entry-list h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--muted); margin: 0 0 8px; }
+  .entry-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .entry-row:last-child { border-bottom: none; }
+  .entry-row .del {
+    color: var(--danger);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 2px 6px;
+    margin: 0;
+    text-decoration: underline;
+  }
+  .setup ol { padding-left: 20px; font-size: 0.9rem; }
+  .setup li { margin-bottom: 8px; }
+  .setup a { color: var(--accent); }
+  .top-links { text-align: center; margin-bottom: 10px; }
+  .top-links a { color: var(--muted); font-size: 0.8rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>MB-Cup 2026 – Infos eintragen</h1>
+  <p>Liveticker, Tagesbericht &amp; Speiseplan direkt aktualisieren</p>
+</header>
+
+<main>
+
+  <div id="setup-box" class="card setup" style="display:none;">
+    <h2>Einmalige Einrichtung</h2>
+    <p class="hint">Das musst du nur beim allerersten Mal machen. Danach reicht auf diesem Gerät einfach das Formular unten.</p>
+    <ol>
+      <li>Falls noch nicht geschehen: Einladung als Mitarbeiter für das Repo per E-Mail annehmen (bei github.com anmelden bzw. kostenlos registrieren).</li>
+      <li>Diesen Link öffnen: <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">Neuen Zugangsschlüssel erstellen</a></li>
+      <li>Bei <strong>Repository access</strong> → <strong>Only select repositories</strong> → <strong>TCWilgersdorfMB2026/mb-cup-2026</strong> auswählen.</li>
+      <li>Bei <strong>Permissions</strong> → <strong>Repository permissions</strong> → <strong>Contents</strong> auf <strong>Read and write</strong> stellen.</li>
+      <li>Unten auf <strong>Generate token</strong> klicken und den angezeigten Code (beginnt mit <code>github_pat_...</code>) kopieren.</li>
+      <li>Den Code hier einfügen und speichern:</li>
+    </ol>
+    <input type="password" id="token-input" placeholder="github_pat_...">
+    <button id="save-token-btn">Speichern</button>
+    <div id="setup-status" class="status"></div>
+  </div>
+
+  <div id="forms-box" style="display:none;">
+    <div class="top-links"><button class="secondary" id="reset-token-btn">Zugangsschlüssel entfernen</button></div>
+
+    <div class="card">
+      <h2>Liveticker</h2>
+      <p class="hint">Kurze Meldung vom Platz. Zeit wird automatisch auf jetzt gesetzt, kann angepasst werden.</p>
+      <form id="ticker-form">
+        <label>Zeitpunkt</label>
+        <input type="datetime-local" name="time" required>
+        <label>Text</label>
+        <textarea name="text" placeholder="z.B. Finale läuft auf dem Center Court!" required></textarea>
+        <label>Bild(er) (optional, mehrere möglich)</label>
+        <input type="file" name="images" accept="image/*" multiple>
+        <button type="submit">Veröffentlichen</button>
+        <div class="status" data-status></div>
+      </form>
+      <div class="entry-list" data-list="ticker"><h3>Bisherige Meldungen</h3><div data-items></div></div>
+    </div>
+
+    <div class="card">
+      <h2>Tagesbericht</h2>
+      <p class="hint">Ein Bericht pro Tag mit Titel und Text.</p>
+      <form id="report-form">
+        <label>Datum</label>
+        <input type="date" name="date" required>
+        <label>Titel</label>
+        <input type="text" name="title" placeholder="z.B. Tag 1: Spannende Auftaktrunde" required>
+        <label>Text</label>
+        <textarea name="text" required></textarea>
+        <label>Bild(er) (optional, mehrere möglich)</label>
+        <input type="file" name="images" accept="image/*" multiple>
+        <button type="submit">Veröffentlichen</button>
+        <div class="status" data-status></div>
+      </form>
+      <div class="entry-list" data-list="reports"><h3>Bisherige Berichte</h3><div data-items></div></div>
+    </div>
+
+    <div class="card">
+      <h2>Speiseplan</h2>
+      <p class="hint">Ein Eintrag pro Tag. Gerichte: ein Gericht pro Zeile. Trägst du denselben Tag nochmal ein, wird der alte Eintrag ersetzt.</p>
+      <form id="menu-form">
+        <label>Tag</label>
+        <input type="text" name="day" placeholder="z.B. Donnerstag, 30.07." required>
+        <label>Gerichte (ein Gericht pro Zeile)</label>
+        <textarea name="items" placeholder="Grillwürstchen mit Brötchen&#10;Nudelsalat&#10;Kuchenbuffet" required></textarea>
+        <label>Bild(er) (optional, mehrere möglich)</label>
+        <input type="file" name="images" accept="image/*" multiple>
+        <button type="submit">Veröffentlichen</button>
+        <div class="status" data-status></div>
+      </form>
+      <div class="entry-list" data-list="menu"><h3>Bisheriger Speiseplan</h3><div data-items></div></div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+const OWNER = 'TCWilgersdorfMB2026';
+const REPO = 'mb-cup-2026';
+const BRANCH = 'main';
+const API = 'https://api.github.com';
+const TOKEN_KEY = 'mbcup_admin_token';
+
+function getToken() { return localStorage.getItem(TOKEN_KEY); }
+function setToken(t) { localStorage.setItem(TOKEN_KEY, t); }
+function clearToken() { localStorage.removeItem(TOKEN_KEY); }
+
+function b64EncodeUnicode(str) { return btoa(unescape(encodeURIComponent(str))); }
+function b64DecodeUnicode(str) { return decodeURIComponent(escape(atob(str.replace(/\n/g, '')))); }
+
+function authHeaders() {
+  return { Authorization: 'Bearer ' + getToken(), Accept: 'application/vnd.github+json' };
+}
+
+async function ghGet(path) {
+  const res = await fetch(`${API}/repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}&t=${Date.now()}`, { headers: authHeaders() });
+  if (res.status === 404) return { sha: null, list: [] };
+  if (!res.ok) throw new Error('Laden fehlgeschlagen (Code ' + res.status + '). Ist der Zugangsschlüssel noch gültig?');
+  const json = await res.json();
+  let list = [];
+  try { list = JSON.parse(b64DecodeUnicode(json.content) || '[]'); } catch (e) { list = []; }
+  return { sha: json.sha, list };
+}
+
+async function ghPutJson(path, list, sha, message) {
+  const content = b64EncodeUnicode(JSON.stringify(list, null, 2) + '\n');
+  const body = { message, content, branch: BRANCH };
+  if (sha) body.sha = sha;
+  const res = await fetch(`${API}/repos/${OWNER}/${REPO}/contents/${path}`, {
+    method: 'PUT', headers: authHeaders(), body: JSON.stringify(body),
+  });
+  if (!res.ok) { const t = await res.text().catch(() => ''); throw new Error('Speichern fehlgeschlagen (Code ' + res.status + '). ' + t.slice(0, 200)); }
+  return res.json();
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function safeFileName(file) {
+  const extMatch = /\.([a-zA-Z0-9]+)$/.exec(file.name || '');
+  const ext = (extMatch ? extMatch[1] : 'jpg').toLowerCase().replace(/[^a-z0-9]/g, '') || 'jpg';
+  return `img-${Date.now()}-${Math.random().toString(36).slice(2, 7)}.${ext}`;
+}
+
+async function uploadImages(fileList, contextLabel) {
+  const paths = [];
+  for (const file of Array.from(fileList || [])) {
+    const path = `data/images/${safeFileName(file)}`;
+    const content = await fileToBase64(file);
+    const res = await fetch(`${API}/repos/${OWNER}/${REPO}/contents/${path}`, {
+      method: 'PUT', headers: authHeaders(),
+      body: JSON.stringify({ message: `Bild hinzugefügt (${contextLabel})`, content, branch: BRANCH }),
+    });
+    if (!res.ok) { const t = await res.text().catch(() => ''); throw new Error('Bild-Upload fehlgeschlagen (Code ' + res.status + '). ' + t.slice(0, 200)); }
+    paths.push(path);
+  }
+  return paths;
+}
+
+function withImages(entry, paths) {
+  if (paths.length === 1) entry.image = paths[0];
+  else if (paths.length > 1) entry.images = paths;
+  return entry;
+}
+
+function setStatus(el, msg, isErr) {
+  el.textContent = msg;
+  el.className = 'status ' + (isErr ? 'err' : 'ok');
+}
+
+function escapeHtml(str) {
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// ---- Ticker ----
+async function refreshTickerList() {
+  const box = document.querySelector('[data-list="ticker"] [data-items]');
+  box.textContent = 'Lädt…';
+  try {
+    const { list } = await ghGet('data/ticker.json');
+    const sorted = list.map((it, i) => ({ ...it, _i: i })).sort((a, b) => new Date(b.time) - new Date(a.time));
+    box.innerHTML = sorted.length ? sorted.map(it => `
+      <div class="entry-row">
+        <span>${escapeHtml(it.time || '')} — ${escapeHtml((it.text || '').slice(0, 60))}</span>
+        <button class="del" data-kind="ticker" data-idx="${it._i}">Löschen</button>
+      </div>`).join('') : '<p class="hint">Noch keine Einträge.</p>';
+  } catch (e) { box.innerHTML = '<p class="status err">' + escapeHtml(e.message) + '</p>'; }
+}
+
+document.getElementById('ticker-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const statusEl = form.querySelector('[data-status]');
+  const btn = form.querySelector('button[type=submit]');
+  btn.disabled = true;
+  setStatus(statusEl, 'Speichere…', false);
+  try {
+    const time = form.time.value;
+    const text = form.text.value.trim();
+    const paths = await uploadImages(form.images.files, 'Liveticker');
+    const { sha, list } = await ghGet('data/ticker.json');
+    list.push(withImages({ time, text }, paths));
+    await ghPutJson('data/ticker.json', list, sha, 'Ticker-Meldung hinzugefügt');
+    setStatus(statusEl, 'Veröffentlicht! Erscheint in ca. 1 Minute auf der Live-Seite.', false);
+    form.reset();
+    setDefaultTime(form);
+    refreshTickerList();
+  } catch (err) { setStatus(statusEl, err.message, true); }
+  btn.disabled = false;
+});
+
+// ---- Reports ----
+async function refreshReportsList() {
+  const box = document.querySelector('[data-list="reports"] [data-items]');
+  box.textContent = 'Lädt…';
+  try {
+    const { list } = await ghGet('data/reports.json');
+    const sorted = list.map((it, i) => ({ ...it, _i: i })).sort((a, b) => new Date(b.date) - new Date(a.date));
+    box.innerHTML = sorted.length ? sorted.map(it => `
+      <div class="entry-row">
+        <span>${escapeHtml(it.date || '')} — ${escapeHtml(it.title || '')}</span>
+        <button class="del" data-kind="reports" data-idx="${it._i}">Löschen</button>
+      </div>`).join('') : '<p class="hint">Noch keine Einträge.</p>';
+  } catch (e) { box.innerHTML = '<p class="status err">' + escapeHtml(e.message) + '</p>'; }
+}
+
+document.getElementById('report-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const statusEl = form.querySelector('[data-status]');
+  const btn = form.querySelector('button[type=submit]');
+  btn.disabled = true;
+  setStatus(statusEl, 'Speichere…', false);
+  try {
+    const date = form.date.value;
+    const title = form.title.value.trim();
+    const text = form.text.value.trim();
+    const paths = await uploadImages(form.images.files, 'Tagesbericht');
+    const { sha, list } = await ghGet('data/reports.json');
+    list.push(withImages({ date, title, text }, paths));
+    await ghPutJson('data/reports.json', list, sha, 'Tagesbericht hinzugefügt: ' + title);
+    setStatus(statusEl, 'Veröffentlicht! Erscheint in ca. 1 Minute auf der Live-Seite.', false);
+    form.reset();
+    refreshReportsList();
+  } catch (err) { setStatus(statusEl, err.message, true); }
+  btn.disabled = false;
+});
+
+// ---- Menu ----
+async function refreshMenuList() {
+  const box = document.querySelector('[data-list="menu"] [data-items]');
+  box.textContent = 'Lädt…';
+  try {
+    const { list } = await ghGet('data/menu.json');
+    box.innerHTML = list.length ? list.map((it, i) => `
+      <div class="entry-row">
+        <span>${escapeHtml(it.day || '')} (${(it.items || []).length} Gerichte)</span>
+        <button class="del" data-kind="menu" data-idx="${i}">Löschen</button>
+      </div>`).join('') : '<p class="hint">Noch keine Einträge.</p>';
+  } catch (e) { box.innerHTML = '<p class="status err">' + escapeHtml(e.message) + '</p>'; }
+}
+
+document.getElementById('menu-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const statusEl = form.querySelector('[data-status]');
+  const btn = form.querySelector('button[type=submit]');
+  btn.disabled = true;
+  setStatus(statusEl, 'Speichere…', false);
+  try {
+    const day = form.day.value.trim();
+    const items = form.items.value.split('\n').map(s => s.trim()).filter(Boolean);
+    const paths = await uploadImages(form.images.files, 'Speiseplan');
+    const { sha, list } = await ghGet('data/menu.json');
+    const entry = withImages({ day, items }, paths);
+    const idx = list.findIndex(d => d.day === day);
+    if (idx >= 0) list[idx] = entry; else list.push(entry);
+    await ghPutJson('data/menu.json', list, sha, 'Speiseplan aktualisiert: ' + day);
+    setStatus(statusEl, 'Veröffentlicht! Erscheint in ca. 1 Minute auf der Live-Seite.', false);
+    form.reset();
+    refreshMenuList();
+  } catch (err) { setStatus(statusEl, err.message, true); }
+  btn.disabled = false;
+});
+
+// ---- Delete handling (event delegation) ----
+document.getElementById('forms-box').addEventListener('click', async (e) => {
+  const btn = e.target.closest('button.del');
+  if (!btn) return;
+  if (!confirm('Diesen Eintrag wirklich löschen?')) return;
+  const kind = btn.dataset.kind;
+  const idx = Number(btn.dataset.idx);
+  const fileMap = { ticker: 'data/ticker.json', reports: 'data/reports.json', menu: 'data/menu.json' };
+  const refreshMap = { ticker: refreshTickerList, reports: refreshReportsList, menu: refreshMenuList };
+  btn.disabled = true;
+  try {
+    const { sha, list } = await ghGet(fileMap[kind]);
+    list.splice(idx, 1);
+    await ghPutJson(fileMap[kind], list, sha, 'Eintrag gelöscht');
+    refreshMap[kind]();
+  } catch (err) { alert(err.message); btn.disabled = false; }
+});
+
+function setDefaultTime(form) {
+  const now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+  form.querySelector('[name=time]').value = now.toISOString().slice(0, 16);
+}
+
+// ---- Setup / token handling ----
+function showForms() {
+  document.getElementById('setup-box').style.display = 'none';
+  document.getElementById('forms-box').style.display = 'block';
+  setDefaultTime(document.getElementById('ticker-form'));
+  refreshTickerList();
+  refreshReportsList();
+  refreshMenuList();
+}
+function showSetup() {
+  document.getElementById('setup-box').style.display = 'block';
+  document.getElementById('forms-box').style.display = 'none';
+}
+
+document.getElementById('save-token-btn').addEventListener('click', async () => {
+  const val = document.getElementById('token-input').value.trim();
+  const statusEl = document.getElementById('setup-status');
+  if (!val) { setStatus(statusEl, 'Bitte Zugangsschlüssel einfügen.', true); return; }
+  setToken(val);
+  setStatus(statusEl, 'Prüfe Zugang…', false);
+  try {
+    await ghGet('data/ticker.json');
+    setStatus(statusEl, 'Zugang bestätigt!', false);
+    showForms();
+  } catch (e) {
+    clearToken();
+    setStatus(statusEl, 'Zugang fehlgeschlagen: ' + e.message, true);
+  }
+});
+
+document.getElementById('reset-token-btn').addEventListener('click', () => {
+  if (!confirm('Zugangsschlüssel auf diesem Gerät entfernen?')) return;
+  clearToken();
+  showSetup();
+});
+
+if (getToken()) { showForms(); } else { showSetup(); }
+</script>
+</body>
+</html>
