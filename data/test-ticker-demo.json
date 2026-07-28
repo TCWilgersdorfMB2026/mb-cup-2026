@@ -1,6 +1,6 @@
 [
-  { "time": "2026-07-30T09:15:00", "text": "Turnierstart! Erste Aufschläge auf Platz 1 und 2." },
+  { "time": "2026-07-30T09:15:00", "text": "Turnierstart! Erste Aufschläge auf Platz 1 und 2.", "image": "https://picsum.photos/seed/mbcup-ticker1/600/360" },
   { "time": "2026-07-30T11:05:00", "text": "Kurze Regenpause – Spielbetrieb pausiert für ca. 20 Minuten." },
-  { "time": "2026-07-30T14:40:00", "text": "Achtelfinale komplett durchgespielt, Viertelfinale steht fest." },
+  { "time": "2026-07-30T14:40:00", "text": "Achtelfinale komplett durchgespielt, Viertelfinale steht fest.", "image": "https://picsum.photos/seed/mbcup-ticker2/600/360" },
   { "time": "2026-08-02T11:30:00", "text": "Finale läuft auf dem Center Court – kommt vorbei und feuert an!" }
 ]

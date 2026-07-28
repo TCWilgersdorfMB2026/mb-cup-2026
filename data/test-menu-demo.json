@@ -1,5 +1,5 @@
 [
-  { "day": "Donnerstag, 30.07.", "items": ["Grillwürstchen mit Brötchen", "Nudelsalat", "Kuchenbuffet"] },
-  { "day": "Freitag, 31.07.", "items": ["Schnitzel mit Kartoffelsalat", "Vegetarische Gemüsepfanne", "Waffeln"] },
-  { "day": "Sonntag, 02.08. (Finaltag)", "items": ["Braten mit Kroketten", "Salatbuffet", "Kaffee & Kuchen ab 14 Uhr"] }
+  { "day": "Donnerstag, 30.07.", "image": "https://picsum.photos/seed/mbcup-menu1/600/360", "items": ["Grillwürstchen mit Brötchen", "Nudelsalat", "Kuchenbuffet"] },
+  { "day": "Freitag, 31.07.", "image": "https://picsum.photos/seed/mbcup-menu2/600/360", "items": ["Schnitzel mit Kartoffelsalat", "Vegetarische Gemüsepfanne", "Waffeln"] },
+  { "day": "Sonntag, 02.08. (Finaltag)", "image": "https://picsum.photos/seed/mbcup-menu3/600/360", "items": ["Braten mit Kroketten", "Salatbuffet", "Kaffee & Kuchen ab 14 Uhr"] }
 ]
