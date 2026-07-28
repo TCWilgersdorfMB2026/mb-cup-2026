@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vorschau: Termine (synthetische Testdaten) – markenbaumarkt24-Cup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <h1>Vorschau: Datum/Uhrzeit/Platz je Spiel</h1>
+    <p class="subtitle">Synthetische Testdaten · zeigt, wie es aussieht sobald tennis.de "Termine" gepflegt sind</p>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="tab-btn" data-tab="ticker">Liveticker</button>
+  <button class="tab-btn active" data-tab="spiele">Spielplan &amp; Ergebnisse</button>
+  <button class="tab-btn" data-tab="berichte">Tagesberichte</button>
+  <button class="tab-btn" data-tab="speiseplan">Speiseplan</button>
+</nav>
+
+<main class="content">
+
+  <section id="ticker" class="tab-panel">
+    <h2>Liveticker</h2>
+    <p class="hint">In dieser Vorschau nicht befüllt – nur "Spielplan &amp; Ergebnisse" zeigt Testdaten.</p>
+    <div id="ticker-list" class="ticker-list">
+      <p class="empty">Noch keine Meldungen.</p>
+    </div>
+  </section>
+
+  <section id="spiele" class="tab-panel active">
+    <h2>Spielplan &amp; Ergebnisse</h2>
+    <p class="hint">Jede Begegnung zeigt hier zusätzlich Datum, Uhrzeit und Platz (synthetisch, da echte tennis.de-Turniere "Termine" bisher praktisch nie pflegen).</p>
+    <div class="bracket-picker">
+      <select id="competition-select"></select>
+    </div>
+    <div id="spiele-list">
+      <p class="empty">Lädt Testdaten…</p>
+    </div>
+  </section>
+
+  <section id="berichte" class="tab-panel">
+    <h2>Tagesberichte</h2>
+    <div id="berichte-list" class="report-list">
+      <p class="empty">In dieser Vorschau nicht befüllt.</p>
+    </div>
+  </section>
+
+  <section id="speiseplan" class="tab-panel">
+    <h2>Speiseplan</h2>
+    <div id="speiseplan-list" class="menu-list">
+      <p class="empty">In dieser Vorschau nicht befüllt.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Vorschau-Seite mit synthetischen Testdaten – wird nach Prüfung wieder entfernt.</p>
+  <p class="updated" id="last-updated"></p>
+</footer>
+
+<script>
+  // Lädt den echten, live deployten app.js-Code (Funktionsdefinitionen), führt aber
+  // NICHT dessen automatischen refreshAll()/setInterval()-Aufruf am Dateiende aus.
+  // Zeigt eine handgebaute Beispiel-Konkurrenz, bei der jede Begegnung Datum/Uhrzeit/
+  // Platz gesetzt hat - so wie es aussehen würde, wenn tennis.de "Termine" für eine
+  // Konkurrenz tatsächlich pflegen würde (in der Praxis bisher nicht beobachtet).
+  fetch('assets/app.js').then((r) => r.text()).then((src) => {
+    const stripped = src.replace(/setupTabs\(\);[\s\S]*$/, '');
+    (0, eval)(stripped);
+    setupTabs();
+    setupCompetitionSelect();
+
+    async function loadTestData() {
+      const results = await loadJSON('data/test-results-termine-demo.json');
+      renderSpielplanErgebnisse([], results || [], []);
+      document.getElementById('last-updated').textContent =
+        'Testdaten geladen: ' + new Date().toLocaleTimeString('de-DE');
+    }
+    loadTestData();
+  });
+</script>
+</body>
+</html>
