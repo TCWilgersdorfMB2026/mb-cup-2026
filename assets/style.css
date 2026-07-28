@@ -55,22 +55,33 @@ body {
 }
 
 /* Auf schmalen Screens müssen alle 5 Menüpunkte auf einen Blick sichtbar
-   sein, ohne dass die Leiste seitlich gescrollt werden muss. Feste 5-Spalten-
-   Aufteilung statt frei fließender Breite, kleinere Schrift, Text darf bei
-   Bedarf zweizeilig umbrechen statt abgeschnitten zu werden. */
+   sein, ohne seitliches Scrollen - aber weiterhin gut lesbar und klar als
+   Buttons erkennbar (nicht winzig). Statt alles in eine Zeile zu zwingen,
+   dürfen die Buttons umbrechen (i.d.R. 3 + 2 Zeilen). */
 @media (max-width: 600px) {
   .tabs {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     overflow-x: visible;
+    gap: 6px;
+    padding: 8px;
+    box-sizing: border-box;
   }
   .tab-btn {
-    flex: none;
-    padding: 8px 2px;
-    font-size: 0.62rem;
+    flex: 1 1 30%;
+    min-width: 100px;
+    padding: 10px 6px;
+    font-size: 0.8rem;
     line-height: 1.2;
     white-space: normal;
-    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+  }
+  .tab-btn.active {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
   }
 }
 
