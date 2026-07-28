@@ -54,6 +54,26 @@ body {
   border-bottom-color: var(--accent);
 }
 
+/* Auf schmalen Screens müssen alle 5 Menüpunkte auf einen Blick sichtbar
+   sein, ohne dass die Leiste seitlich gescrollt werden muss. Feste 5-Spalten-
+   Aufteilung statt frei fließender Breite, kleinere Schrift, Text darf bei
+   Bedarf zweizeilig umbrechen statt abgeschnitten zu werden. */
+@media (max-width: 600px) {
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    overflow-x: visible;
+  }
+  .tab-btn {
+    flex: none;
+    padding: 8px 2px;
+    font-size: 0.62rem;
+    line-height: 1.2;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
 .content { max-width: 720px; margin: 0 auto; padding: 16px; }
 
 .tab-panel { display: none; }
@@ -181,6 +201,28 @@ body {
   text-align: center;
   font-weight: 700;
   padding: 10px 12px;
+}
+
+/* Auf schmalen Screens reicht die Breite nicht für 5-6 Runden-Spalten
+   nebeneinander (Text würde unlesbar klein). Statt horizontal zu scrollen,
+   wird der Baum in eine einfache Liste "eine Runde nach der anderen,
+   Paarungen untereinander" verwandelt. Das ist möglich, ohne die
+   HTML-Reihenfolge zu ändern: die Kästen stehen im Quellcode ohnehin schon
+   rundenweise hintereinander (Achtelfinale zuerst, dann Viertelfinale, ...) -
+   die Grid-Positionierung (grid-column/grid-row) wird einfach wirkungslos,
+   sobald der Container kein Grid mehr ist. */
+@media (max-width: 700px) {
+  .bracket-grid { display: block; }
+  .bracket-col-header {
+    text-align: left;
+    margin-top: 20px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+  .bracket-col-header:first-child { margin-top: 0; }
+  .bracket-match { margin-bottom: 8px; }
+  .bracket-champion { justify-content: flex-start; }
+  .bracket-champion .bracket-box.winner-box { max-width: 280px; }
 }
 
 .schedule-rows { display: flex; flex-direction: column; gap: 8px; }
