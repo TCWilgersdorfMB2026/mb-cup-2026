@@ -20,7 +20,8 @@
 
 <nav class="tabs" id="tabs">
   <button class="tab-btn active" data-tab="ticker">Liveticker</button>
-  <button class="tab-btn" data-tab="spiele">Spielplan &amp; Ergebnisse</button>
+  <button class="tab-btn" data-tab="spielplan">Spielplan</button>
+  <button class="tab-btn" data-tab="ergebnisse">Ergebnisse</button>
   <button class="tab-btn" data-tab="berichte">Tagesberichte</button>
   <button class="tab-btn" data-tab="speiseplan">Speiseplan</button>
 </nav>
@@ -35,8 +36,16 @@
     </div>
   </section>
 
-  <section id="spiele" class="tab-panel">
-    <h2>Spielplan &amp; Ergebnisse</h2>
+  <section id="spielplan" class="tab-panel">
+    <h2>Spielplan</h2>
+    <p class="hint">Alle Begegnungen aller Konkurrenzen, chronologisch nach Datum und Uhrzeit.</p>
+    <div id="spielplan-list">
+      <p class="empty">Wird vor Turnierstart eingepflegt.</p>
+    </div>
+  </section>
+
+  <section id="ergebnisse" class="tab-panel">
+    <h2>Ergebnisse</h2>
     <p class="hint">Konkurrenz auswählen, um Turnierbaum bzw. Meldeliste anzuzeigen.</p>
     <div class="bracket-picker">
       <select id="competition-select"></select>
