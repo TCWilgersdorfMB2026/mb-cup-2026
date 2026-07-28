@@ -32,6 +32,7 @@ function renderTicker(items) {
   el.innerHTML = sorted.map(it => `
     <div class="ticker-item">
       <span class="time">${fmtTime(it.time)}</span>${escapeHtml(it.text)}
+      ${it.image ? `<img class="ticker-image" src="${escapeHtml(it.image)}" alt="" loading="lazy">` : ''}
     </div>`).join('');
 }
 
@@ -146,8 +147,8 @@ function renderBracket(matches) {
   });
 
   return `
-    <div class="bracket-scroll">
-      <div class="bracket-grid" style="grid-template-columns:repeat(${columns.length}, minmax(150px, 1fr)); grid-template-rows:auto repeat(${totalSubrows}, minmax(26px, 1fr));">
+    <div class="bracket-wide">
+      <div class="bracket-grid" style="grid-template-columns:repeat(${columns.length}, minmax(0, 1fr)); grid-template-rows:auto repeat(${totalSubrows}, minmax(26px, 1fr));">
         ${cells}
       </div>
     </div>`;
@@ -332,6 +333,7 @@ function renderReports(items) {
     <div class="report-item">
       <h3>${escapeHtml(r.title || '')}</h3>
       <div class="date">${fmtTime(r.date)}</div>
+      ${r.image ? `<img class="report-image" src="${escapeHtml(r.image)}" alt="" loading="lazy">` : ''}
       <p>${escapeHtml(r.text || '')}</p>
     </div>`).join('');
 }
@@ -342,6 +344,7 @@ function renderMenu(days) {
   el.innerHTML = days.map(d => `
     <div class="menu-day">
       <h3>${escapeHtml(d.day || '')}</h3>
+      ${d.image ? `<img class="menu-image" src="${escapeHtml(d.image)}" alt="" loading="lazy">` : ''}
       <ul>${(d.items || []).map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>
     </div>`).join('');
 }
