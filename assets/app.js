@@ -25,6 +25,23 @@ async function loadJSON(path) {
   }
 }
 
+// Liest ein oder mehrere Bilder aus einem Eintrag: entweder "images": [...]
+// (mehrere Bilder) oder "image": "..." (ein einzelnes Bild, weiterhin
+// unterstützt). Liefert immer ein Array, ggf. leer.
+function imagesOf(entry) {
+  if (Array.isArray(entry.images) && entry.images.length) return entry.images;
+  if (entry.image) return [entry.image];
+  return [];
+}
+
+// Baut eine kleine Bildergalerie (ein Bild volle Breite, mehrere Bilder
+// nebeneinander/umbrechend) - oder liefert nichts, wenn keine Bilder da sind.
+function galleryHtml(entry) {
+  const imgs = imagesOf(entry);
+  if (!imgs.length) return '';
+  return `<div class="gallery">${imgs.map((src) => `<img src="${escapeHtml(src)}" alt="" loading="lazy">`).join('')}</div>`;
+}
+
 function renderTicker(items) {
   const el = qs('ticker-list');
   if (!items || !items.length) { el.innerHTML = '<p class="empty">Noch keine Meldungen.</p>'; return; }
@@ -32,7 +49,7 @@ function renderTicker(items) {
   el.innerHTML = sorted.map(it => `
     <div class="ticker-item">
       <span class="time">${fmtTime(it.time)}</span>${escapeHtml(it.text)}
-      ${it.image ? `<img class="ticker-image" src="${escapeHtml(it.image)}" alt="" loading="lazy">` : ''}
+      ${galleryHtml(it)}
     </div>`).join('');
 }
 
@@ -333,7 +350,7 @@ function renderReports(items) {
     <div class="report-item">
       <h3>${escapeHtml(r.title || '')}</h3>
       <div class="date">${fmtTime(r.date)}</div>
-      ${r.image ? `<img class="report-image" src="${escapeHtml(r.image)}" alt="" loading="lazy">` : ''}
+      ${galleryHtml(r)}
       <p>${escapeHtml(r.text || '')}</p>
     </div>`).join('');
 }
@@ -344,7 +361,7 @@ function renderMenu(days) {
   el.innerHTML = days.map(d => `
     <div class="menu-day">
       <h3>${escapeHtml(d.day || '')}</h3>
-      ${d.image ? `<img class="menu-image" src="${escapeHtml(d.image)}" alt="" loading="lazy">` : ''}
+      ${galleryHtml(d)}
       <ul>${(d.items || []).map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>
     </div>`).join('');
 }

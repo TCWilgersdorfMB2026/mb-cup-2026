@@ -83,16 +83,23 @@ body {
   margin-right: 8px;
 }
 
-.ticker-image, .report-image, .menu-image {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-top: 8px;
+/* Ein Bild: volle Breite. Mehrere Bilder (optional, "images": [...] statt
+   "image": "..."): nebeneinander, umbrechend auf schmalen Screens. */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0;
 }
-.report-image { margin-bottom: 8px; }
-.menu-image { margin-bottom: 8px; }
+.gallery img {
+  flex: 1 1 200px;
+  max-width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+.gallery img:only-child { flex-basis: 100%; height: auto; max-height: 360px; }
 
 .card .comp { font-weight: 700; color: var(--navy); }
 .card .players { margin: 4px 0; }
