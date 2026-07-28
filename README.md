@@ -21,11 +21,17 @@ Diese URL wird anschließend per iframe in Wix eingebunden.
 Nur die JSON-Dateien in `data/` müssen ersetzt werden, das HTML bleibt
 unverändert:
 
-- `data/ticker.json` – Liveticker-Meldungen (`time`, `text`)
+- `data/ticker.json` – Liveticker-Meldungen (`time`, `text`, optional `image`: Bild-URL)
 - `data/schedule.json` – Spielplan (`competition`, `player1`, `player2`, `round`, `time`, `court`)
 - `data/results.json` – Ergebnisse (wie schedule.json, zusätzlich `score`)
-- `data/reports.json` – Tagesberichte (`date`, `title`, `text`)
-- `data/menu.json` – Speiseplan (`day`, `items`: Liste von Strings)
+- `data/reports.json` – Tagesberichte (`date`, `title`, `text`, optional `image`: Bild-URL)
+- `data/menu.json` – Speiseplan (`day`, `items`: Liste von Strings, optional `image`: Bild-URL)
+
+Das optionale `image`-Feld nimmt eine Bild-URL (z. B. ein Foto, das irgendwo
+hochgeladen wurde, etwa in einem eigenen `data/images/`-Ordner im Repo oder
+extern) entgegen und wird automatisch unter dem jeweiligen Eintrag angezeigt.
+Fehlt das Feld, wird einfach kein Bild angezeigt – bestehende Dateien ohne
+`image` funktionieren unverändert weiter.
 
 Während des Turniers reicht es, mir die Updates per Chat zu schicken – ich
 aktualisiere die Dateien und du lädst die neue Version einfach erneut hoch
