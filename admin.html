@@ -116,10 +116,13 @@
   }
   .file-chip button:disabled, .img-chip button:disabled { opacity: 0.35; cursor: default; }
 
-  /* Auswahl 1- oder 2-spaltig fürs Bilder-Layout. */
-  .col-choice { display: flex; gap: 16px; margin-top: 10px; font-size: 0.85rem; font-weight: 400; }
-  .col-choice label { display: flex; align-items: center; gap: 4px; font-weight: 400; margin: 0; }
-  .col-choice input { margin: 0; }
+  /* Breite-Umschalt-Button (voll/halb) in Datei-/Bild-Chips optisch
+     etwas hervorheben. */
+  .file-chip button[data-w-toggle], .img-chip button[data-w-toggle] {
+    background: var(--bg-alt, var(--card));
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 
   /* Reihenfolge/Layout nachträglich bearbeiten (bei bereits veröffentlichten
      Einträgen mit mehreren Bildern). */
@@ -164,13 +167,9 @@
         <input type="datetime-local" name="time" required>
         <label>Text</label>
         <textarea name="text" placeholder="z.B. Finale läuft auf dem Center Court!" required></textarea>
-        <label>Bild(er) (optional, mehrere möglich, Reihenfolge mit den Pfeilen anpassbar)</label>
+        <label>Bild(er) (optional, mehrere möglich, Reihenfolge &amp; Breite je Bild unten anpassbar)</label>
         <input type="file" name="images" accept="image/*" multiple>
         <div class="file-preview" data-file-preview></div>
-        <div class="col-choice">
-          <label><input type="radio" name="cols" value="1"> 1 Spalte</label>
-          <label><input type="radio" name="cols" value="2" checked> 2 Spalten</label>
-        </div>
         <button type="submit">Veröffentlichen</button>
         <div class="status" data-status></div>
       </form>
@@ -187,13 +186,9 @@
         <input type="text" name="title" placeholder="z.B. Tag 1: Spannende Auftaktrunde" required>
         <label>Text</label>
         <textarea name="text" required></textarea>
-        <label>Bild(er) (optional, mehrere möglich, Reihenfolge mit den Pfeilen anpassbar)</label>
+        <label>Bild(er) (optional, mehrere möglich, Reihenfolge &amp; Breite je Bild unten anpassbar)</label>
         <input type="file" name="images" accept="image/*" multiple>
         <div class="file-preview" data-file-preview></div>
-        <div class="col-choice">
-          <label><input type="radio" name="cols" value="1"> 1 Spalte</label>
-          <label><input type="radio" name="cols" value="2" checked> 2 Spalten</label>
-        </div>
         <button type="submit">Veröffentlichen</button>
         <div class="status" data-status></div>
       </form>
@@ -208,13 +203,9 @@
         <input type="text" name="day" placeholder="z.B. Donnerstag, 30.07." required>
         <label>Gerichte (ein Gericht pro Zeile)</label>
         <textarea name="items" placeholder="Grillwürstchen mit Brötchen&#10;Nudelsalat&#10;Kuchenbuffet" required></textarea>
-        <label>Bild(er) (optional, mehrere möglich, Reihenfolge mit den Pfeilen anpassbar)</label>
+        <label>Bild(er) (optional, mehrere möglich, Reihenfolge &amp; Breite je Bild unten anpassbar)</label>
         <input type="file" name="images" accept="image/*" multiple>
         <div class="file-preview" data-file-preview></div>
-        <div class="col-choice">
-          <label><input type="radio" name="cols" value="1"> 1 Spalte</label>
-          <label><input type="radio" name="cols" value="2" checked> 2 Spalten</label>
-        </div>
         <button type="submit">Veröffentlichen</button>
         <div class="status" data-status></div>
       </form>
@@ -293,22 +284,31 @@ async function uploadImages(fileList, contextLabel) {
   return paths;
 }
 
-function withImages(entry, paths, columns) {
+// paths: hochgeladene Bildpfade in Anzeige-Reihenfolge.
+// widths: parallele Liste, pro Bild 1 (halbe Breite) oder 2 (volle Breite).
+function withImages(entry, paths, widths) {
   if (paths.length === 1) {
     entry.image = paths[0];
   } else if (paths.length > 1) {
-    entry.images = paths;
-    entry.columns = (columns === 1) ? 1 : 2;
+    entry.images = paths.map((src, i) => ({ src, width: (widths[i] === 1) ? 1 : 2 }));
   }
   return entry;
 }
 
 // Liest ein oder mehrere Bilder aus einem Eintrag (gleiche Logik wie in
 // assets/app.js) - wird hier gebraucht, um bestehende Einträge mit Bildern
-// in der Liste unten bearbeitbar (Reihenfolge/Layout) anzuzeigen.
+// in der Liste unten bearbeitbar (Reihenfolge/Breite) anzuzeigen. Liefert
+// immer ein Array von {src, width}.
 function imagesOfAdmin(entry) {
-  if (Array.isArray(entry.images) && entry.images.length) return entry.images;
-  if (entry.image) return [entry.image];
+  if (Array.isArray(entry.images) && entry.images.length) {
+    const fallbackWidth = entry.columns === 1 ? 2 : (entry.images.length > 1 ? 1 : 2);
+    return entry.images.map((img) => {
+      if (typeof img === 'string') return { src: img, width: fallbackWidth };
+      const w = (img.width === 1 || img.width === 2) ? img.width : fallbackWidth;
+      return { src: img.src, width: w };
+    });
+  }
+  if (entry.image) return [{ src: entry.image, width: 2 }];
   return [];
 }
 
@@ -320,35 +320,44 @@ function imagesOfAdmin(entry) {
 function setupImagePicker(formEl) {
   const input = formEl.querySelector('input[type=file]');
   const preview = formEl.querySelector('[data-file-preview]');
-  let files = [];
+  let items = []; // { file, width: 1|2 }, width 2 (voll) ist der Standard
 
   function render() {
-    preview.innerHTML = files.map((f, i) => `
+    preview.innerHTML = items.map((it, i) => `
       <div class="file-chip" data-i="${i}">
-        <span>${escapeHtml(f.name)}</span>
+        <span>${escapeHtml(it.file.name)}</span>
+        <button type="button" data-w-toggle title="Breite umschalten (voll/halb)">${it.width === 1 ? 'Halb' : 'Voll'}</button>
         <button type="button" data-dir="up" ${i === 0 ? 'disabled' : ''} title="Nach oben">↑</button>
-        <button type="button" data-dir="down" ${i === files.length - 1 ? 'disabled' : ''} title="Nach unten">↓</button>
+        <button type="button" data-dir="down" ${i === items.length - 1 ? 'disabled' : ''} title="Nach unten">↓</button>
       </div>`).join('');
   }
 
   input.addEventListener('change', () => {
-    files = Array.from(input.files || []);
+    items = Array.from(input.files || []).map((file) => ({ file, width: 2 }));
     render();
   });
 
   preview.addEventListener('click', (e) => {
+    const wBtn = e.target.closest('button[data-w-toggle]');
+    if (wBtn) {
+      const i = Number(wBtn.closest('[data-i]').dataset.i);
+      items[i].width = items[i].width === 1 ? 2 : 1;
+      render();
+      return;
+    }
     const btn = e.target.closest('button[data-dir]');
     if (!btn) return;
     const i = Number(btn.closest('[data-i]').dataset.i);
     const j = i + (btn.dataset.dir === 'up' ? -1 : 1);
-    if (j < 0 || j >= files.length) return;
-    [files[i], files[j]] = [files[j], files[i]];
+    if (j < 0 || j >= items.length) return;
+    [items[i], items[j]] = [items[j], items[i]];
     render();
   });
 
   return {
-    getFiles: () => files,
-    reset: () => { files = []; preview.innerHTML = ''; input.value = ''; },
+    getFiles: () => items.map((it) => it.file),
+    getWidths: () => items.map((it) => it.width),
+    reset: () => { items = []; preview.innerHTML = ''; input.value = ''; },
   };
 }
 
@@ -359,9 +368,10 @@ function setupImagePicker(formEl) {
 const imgEditState = {};
 
 function imgChipsHtml(imgs) {
-  return imgs.map((src, i) => `
+  return imgs.map((img, i) => `
     <div class="img-chip" data-i="${i}">
-      <img src="${escapeHtml(src)}" alt="">
+      <img src="${escapeHtml(img.src)}" alt="">
+      <button type="button" data-w-toggle title="Breite umschalten (voll/halb)">${img.width === 1 ? 'Halb' : 'Voll'}</button>
       <button type="button" data-dir="up" ${i === 0 ? 'disabled' : ''} title="Nach oben">↑</button>
       <button type="button" data-dir="down" ${i === imgs.length - 1 ? 'disabled' : ''} title="Nach unten">↓</button>
     </div>`).join('');
@@ -369,17 +379,12 @@ function imgChipsHtml(imgs) {
 
 function imgEditorHtml(kind, idx, entry) {
   const imgs = imagesOfAdmin(entry);
-  if (imgs.length < 2) return ''; // Reihenfolge/Layout nur bei mehreren Bildern relevant
+  if (imgs.length < 2) return ''; // Reihenfolge/Breite nur bei mehreren Bildern relevant
   imgEditState[kind + ':' + idx] = imgs.slice();
-  const cols = entry.columns === 1 ? 1 : 2;
   return `
     <details class="img-editor" data-kind="${kind}" data-idx="${idx}">
-      <summary>Bilder (${imgs.length}) – Reihenfolge &amp; Layout bearbeiten</summary>
+      <summary>Bilder (${imgs.length}) – Reihenfolge &amp; Breite bearbeiten</summary>
       <div class="img-editor-list">${imgChipsHtml(imgs)}</div>
-      <div class="col-choice">
-        <label><input type="radio" name="ecols-${kind}-${idx}" value="1" ${cols === 1 ? 'checked' : ''}> 1 Spalte</label>
-        <label><input type="radio" name="ecols-${kind}-${idx}" value="2" ${cols === 2 ? 'checked' : ''}> 2 Spalten</label>
-      </div>
       <button type="button" class="save-img-order" data-kind="${kind}" data-idx="${idx}">Speichern</button>
       <div class="status" data-img-status></div>
     </details>`;
@@ -422,10 +427,10 @@ document.getElementById('ticker-form').addEventListener('submit', async (e) => {
   try {
     const time = form.time.value;
     const text = form.text.value.trim();
-    const cols = Number(form.querySelector('input[name=cols]:checked')?.value || 2);
+    const widths = tickerPicker.getWidths();
     const paths = await uploadImages(tickerPicker.getFiles(), 'Liveticker');
     const { sha, list } = await ghGet('data/ticker.json');
-    list.push(withImages({ time, text }, paths, cols));
+    list.push(withImages({ time, text }, paths, widths));
     await ghPutJson('data/ticker.json', list, sha, 'Ticker-Meldung hinzugefügt');
     setStatus(statusEl, 'Veröffentlicht! Erscheint in ca. 1 Minute auf der Live-Seite.', false);
     form.reset();
@@ -465,10 +470,10 @@ document.getElementById('report-form').addEventListener('submit', async (e) => {
     const date = form.date.value;
     const title = form.title.value.trim();
     const text = form.text.value.trim();
-    const cols = Number(form.querySelector('input[name=cols]:checked')?.value || 2);
+    const widths = reportPicker.getWidths();
     const paths = await uploadImages(reportPicker.getFiles(), 'Tagesbericht');
     const { sha, list } = await ghGet('data/reports.json');
-    list.push(withImages({ date, title, text }, paths, cols));
+    list.push(withImages({ date, title, text }, paths, widths));
     await ghPutJson('data/reports.json', list, sha, 'Tagesbericht hinzugefügt: ' + title);
     setStatus(statusEl, 'Veröffentlicht! Erscheint in ca. 1 Minute auf der Live-Seite.', false);
     form.reset();
@@ -505,10 +510,10 @@ document.getElementById('menu-form').addEventListener('submit', async (e) => {
   try {
     const day = form.day.value.trim();
     const items = form.items.value.split('\n').map(s => s.trim()).filter(Boolean);
-    const cols = Number(form.querySelector('input[name=cols]:checked')?.value || 2);
+    const widths = menuPicker.getWidths();
     const paths = await uploadImages(menuPicker.getFiles(), 'Speiseplan');
     const { sha, list } = await ghGet('data/menu.json');
-    const entry = withImages({ day, items }, paths, cols);
+    const entry = withImages({ day, items }, paths, widths);
     const idx = list.findIndex(d => d.day === day);
     if (idx >= 0) list[idx] = entry; else list.push(entry);
     await ghPutJson('data/menu.json', list, sha, 'Speiseplan aktualisiert: ' + day);
@@ -543,6 +548,20 @@ document.getElementById('forms-box').addEventListener('click', async (e) => {
     return;
   }
 
+  // Breite (voll/halb) eines Bilds innerhalb eines bestehenden Eintrags
+  // umschalten (nur im Browser, bis "Speichern" geklickt wird)
+  const wBtn = e.target.closest('.img-editor-list button[data-w-toggle]');
+  if (wBtn) {
+    const details = wBtn.closest('.img-editor');
+    const key = details.dataset.kind + ':' + details.dataset.idx;
+    const i = Number(wBtn.closest('[data-i]').dataset.i);
+    const arr = imgEditState[key];
+    if (!arr || !arr[i]) return;
+    arr[i].width = arr[i].width === 1 ? 2 : 1;
+    details.querySelector('.img-editor-list').innerHTML = imgChipsHtml(arr);
+    return;
+  }
+
   // Bild innerhalb eines bestehenden Eintrags nach oben/unten verschieben
   // (nur im Browser, bis "Speichern" geklickt wird)
   const dirBtn = e.target.closest('.img-editor-list button[data-dir]');
@@ -558,15 +577,13 @@ document.getElementById('forms-box').addEventListener('click', async (e) => {
     return;
   }
 
-  // Neue Reihenfolge + Layout (1/2 Spalten) eines bestehenden Eintrags
-  // speichern
+  // Neue Reihenfolge + Breite je Bild eines bestehenden Eintrags speichern
   const saveBtn = e.target.closest('.save-img-order');
   if (saveBtn) {
     const kind = saveBtn.dataset.kind;
     const idx = Number(saveBtn.dataset.idx);
     const key = kind + ':' + idx;
     const details = saveBtn.closest('.img-editor');
-    const cols = Number(details.querySelector('input[type=radio]:checked')?.value || 2);
     const statusEl = details.querySelector('[data-img-status]');
     saveBtn.disabled = true;
     statusEl.textContent = 'Speichere…';
@@ -579,9 +596,9 @@ document.getElementById('forms-box').addEventListener('click', async (e) => {
       delete entry.image;
       delete entry.images;
       delete entry.columns;
-      if (imgs.length === 1) entry.image = imgs[0];
-      else if (imgs.length > 1) { entry.images = imgs; entry.columns = cols; }
-      await ghPutJson(FILE_MAP[kind], list, sha, 'Bilder-Reihenfolge/Layout aktualisiert');
+      if (imgs.length === 1) entry.image = imgs[0].src;
+      else if (imgs.length > 1) entry.images = imgs.map(({ src, width }) => ({ src, width }));
+      await ghPutJson(FILE_MAP[kind], list, sha, 'Bilder-Reihenfolge/Breite aktualisiert');
       statusEl.textContent = 'Gespeichert!';
       statusEl.className = 'status ok';
     } catch (err) {

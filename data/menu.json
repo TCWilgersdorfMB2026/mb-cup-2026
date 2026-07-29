@@ -2,29 +2,42 @@
   {
     "day": "Donnerstag, 30.07.",
     "images": [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Rostbratwurst_%282005%29-01.jpg/960px-Rostbratwurst_%282005%29-01.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Pasta_salad_with_cherry_tomatoes.jpg/960px-Pasta_salad_with_cherry_tomatoes.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Chocolate_cake_and_Victoria_sponge.jpg/960px-Chocolate_cake_and_Victoria_sponge.jpg"
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Rostbratwurst_%282005%29-01.jpg/960px-Rostbratwurst_%282005%29-01.jpg",
+        "width": 2
+      },
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Pasta_salad_with_cherry_tomatoes.jpg/960px-Pasta_salad_with_cherry_tomatoes.jpg",
+        "width": 1
+      },
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Chocolate_cake_and_Victoria_sponge.jpg/960px-Chocolate_cake_and_Victoria_sponge.jpg",
+        "width": 1
+      }
     ],
     "items": [
       "Grillwürstchen mit Brötchen",
       "Nudelsalat",
       "Kuchenbuffet"
-    ],
-    "columns": 2
+    ]
   },
   {
     "day": "Freitag, 31.07.",
     "images": [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Bayrisches_Schnitzel_%28mit_Obazda_gef%C3%BCllt%29_und_Kartoffelsalat_1.jpg/960px-Bayrisches_Schnitzel_%28mit_Obazda_gef%C3%BCllt%29_und_Kartoffelsalat_1.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Waffle%2C_Baytree_Waffle_House%2C_Remerton.jpg/960px-Waffle%2C_Baytree_Waffle_House%2C_Remerton.jpg"
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Bayrisches_Schnitzel_%28mit_Obazda_gef%C3%BCllt%29_und_Kartoffelsalat_1.jpg/960px-Bayrisches_Schnitzel_%28mit_Obazda_gef%C3%BCllt%29_und_Kartoffelsalat_1.jpg",
+        "width": 1
+      },
+      {
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Waffle%2C_Baytree_Waffle_House%2C_Remerton.jpg/960px-Waffle%2C_Baytree_Waffle_House%2C_Remerton.jpg",
+        "width": 1
+      }
     ],
     "items": [
       "Schnitzel mit Kartoffelsalat",
       "Vegetarische Gemüsepfanne",
       "Waffeln"
-    ],
-    "columns": 1
+    ]
   },
   {
     "day": "Sonntag, 02.08. (Finaltag)",

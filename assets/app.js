@@ -26,24 +26,35 @@ async function loadJSON(path) {
 }
 
 // Liest ein oder mehrere Bilder aus einem Eintrag: entweder "images": [...]
-// (mehrere Bilder) oder "image": "..." (ein einzelnes Bild, weiterhin
-// unterstützt). Liefert immer ein Array, ggf. leer.
+// (mehrere Bilder, jedes optional als {src, width} mit width 1 = halbe
+// Breite oder 2 = volle Breite - ältere Einträge mit einfachen Strings
+// und/oder dem alten Feld "columns" werden weiterhin unterstützt) oder
+// "image": "..." (ein einzelnes Bild, weiterhin unterstützt, immer volle
+// Breite). Liefert immer ein Array von {src, width}, ggf. leer.
 function imagesOf(entry) {
-  if (Array.isArray(entry.images) && entry.images.length) return entry.images;
-  if (entry.image) return [entry.image];
+  if (Array.isArray(entry.images) && entry.images.length) {
+    // Fallback-Breite für ältere Einträge ohne pro-Bild-Breite: aus dem
+    // alten Feld "columns" ableiten (columns:1 = alle Bilder voll,
+    // sonst/Standard = alle Bilder halb, wenn mehrere Bilder vorhanden).
+    const fallbackWidth = entry.columns === 1 ? 2 : (entry.images.length > 1 ? 1 : 2);
+    return entry.images.map((img) => {
+      if (typeof img === 'string') return { src: img, width: fallbackWidth };
+      const w = (img.width === 1 || img.width === 2) ? img.width : fallbackWidth;
+      return { src: img.src, width: w };
+    });
+  }
+  if (entry.image) return [{ src: entry.image, width: 2 }];
   return [];
 }
 
 // Baut eine kleine Bildergalerie in der Reihenfolge des "images"-Arrays.
-// Spaltenzahl (1 oder 2) kommt aus dem optionalen Feld "columns" am Eintrag
-// (wird in admin.html eingestellt) - ohne dieses Feld: 1 Bild = 1 Spalte,
-// mehrere Bilder = 2 Spalten (Rückwärtskompatibilität mit älteren Einträgen).
-// Bilder werden nie zugeschnitten, sondern skalieren auf volle Spaltenbreite.
+// Die Breite (voll oder halb) ist pro Bild frei wählbar (siehe admin.html).
+// Bilder werden nie zugeschnitten, sondern skalieren auf die volle Breite
+// ihrer Spalte(n).
 function galleryHtml(entry) {
   const imgs = imagesOf(entry);
   if (!imgs.length) return '';
-  const cols = (entry.columns === 1 || entry.columns === 2) ? entry.columns : (imgs.length > 1 ? 2 : 1);
-  return `<div class="gallery cols-${cols}">${imgs.map((src) => `<img src="${escapeHtml(src)}" alt="" loading="lazy">`).join('')}</div>`;
+  return `<div class="gallery">${imgs.map(({ src, width }) => `<img src="${escapeHtml(src)}" alt="" loading="lazy" class="w-${width}">`).join('')}</div>`;
 }
 
 function renderTicker(items) {

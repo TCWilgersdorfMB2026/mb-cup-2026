@@ -30,19 +30,26 @@ unverändert:
 Für Bilder gibt es zwei Möglichkeiten:
 
 - `"image": "..."` – genau ein Bild, volle Breite.
-- `"images": ["...", "...", ...]` – mehrere Bilder. Reihenfolge = Reihenfolge
-  im Array. Zusätzlich optional `"columns": 1` oder `"columns": 2`, um
-  festzulegen, ob die Bilder untereinander (1 Spalte) oder nebeneinander
-  (2 Spalten, auf sehr schmalen Screens automatisch wieder 1 Spalte)
-  erscheinen. Ohne dieses Feld: 2 Spalten bei mehreren Bildern. Bilder werden
-  nie zugeschnitten, sie skalieren immer auf die volle Spaltenbreite, die
-  Höhe ergibt sich automatisch aus dem Bild.
+- `"images": [...]` – mehrere Bilder, Reihenfolge = Reihenfolge im Array.
+  Jedes Bild kann als Objekt `{"src": "...", "width": 1}` bzw.
+  `{"src": "...", "width": 2}` angegeben werden, um **pro Bild einzeln**
+  festzulegen, ob es halbe (`1`) oder volle (`2`) Breite bekommt. Bilder mit
+  halber Breite stehen nebeneinander, ein Bild mit voller Breite spannt die
+  ganze Zeile – so lassen sich auch gemischte Layouts abbilden (z. B. ein
+  großes Bild oben, zwei kleinere darunter). Auf sehr schmalen Screens
+  erscheinen alle Bilder automatisch in voller Breite untereinander. Aus
+  Kompatibilitätsgründen werden auch einfache Strings im Array (ohne
+  `width`) noch unterstützt, ebenso das ältere, für die ganze Galerie
+  geltende Feld `"columns"` (`1` = alle Bilder voll, `2`/fehlend = alle
+  Bilder halb, sofern mehrere Bilder vorhanden sind). Bilder werden nie
+  zugeschnitten, sie skalieren immer auf die volle Breite ihrer Spalte(n),
+  die Höhe ergibt sich automatisch aus dem Bild.
 
 Beide Felder sind optional. Fehlen sie, wird einfach kein Bild angezeigt –
 bestehende Einträge ohne Bild funktionieren unverändert weiter. In
-`admin.html` lassen sich sowohl die Spaltenzahl als auch die Reihenfolge der
-Bilder (Pfeil-Buttons, auch nachträglich bei bereits veröffentlichten
-Einträgen) bequem per Klick einstellen.
+`admin.html` lassen sich die Breite (voll/halb) pro Bild sowie die
+Reihenfolge der Bilder (Pfeil-Buttons, auch nachträglich bei bereits
+veröffentlichten Einträgen) bequem per Klick einstellen.
 
 Eigene Fotos vom Turnier lassen sich einfach in `data/images/` hochladen
 ("Add file" → "Upload files") und dann per relativem Pfad eintragen, z. B.

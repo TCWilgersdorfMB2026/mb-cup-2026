@@ -114,19 +114,18 @@ body {
   margin-right: 8px;
 }
 
-/* Bilder-Galerie: Layout (1 oder 2 Spalten) ist pro Eintrag frei wählbar
-   (siehe admin.html, Feld "columns"). Bilder werden NICHT zugeschnitten -
-   sie skalieren immer auf die volle Spaltenbreite, die Höhe ergibt sich
-   automatisch aus dem Seitenverhältnis. Die Reihenfolge der Bilder folgt
-   einfach der Reihenfolge im "images"-Array. */
+/* Bilder-Galerie: Breite ist PRO BILD frei wählbar (voll oder halb,
+   siehe admin.html) - nicht mehr einheitlich pro Galerie. Das Grid hat
+   immer 2 Spalten; ein Bild mit Breite "halb" (w-1) nimmt eine Spalte,
+   ein Bild mit Breite "voll" (w-2) spannt beide Spalten. Bilder werden
+   NICHT zugeschnitten - sie skalieren immer auf die volle Breite ihrer
+   Spalte(n), die Höhe ergibt sich automatisch aus dem Seitenverhältnis.
+   Die Reihenfolge der Bilder folgt der Reihenfolge im "images"-Array. */
 .gallery {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
   margin: 8px 0;
-}
-.gallery.cols-2 {
-  grid-template-columns: 1fr 1fr;
 }
 .gallery img {
   width: 100%;
@@ -134,10 +133,14 @@ body {
   border-radius: 8px;
   display: block;
 }
+.gallery img.w-2 {
+  grid-column: 1 / -1;
+}
 @media (max-width: 480px) {
-  /* Auf sehr schmalen Screens auch 2-spaltige Galerien auf 1 Spalte
-     zusammenfallen lassen, damit Bilder nicht zu klein werden. */
-  .gallery.cols-2 { grid-template-columns: 1fr; }
+  /* Auf sehr schmalen Screens immer nur 1 Spalte, damit Bilder nicht zu
+     klein werden - unabhängig von der pro Bild gewählten Breite. */
+  .gallery { grid-template-columns: 1fr; }
+  .gallery img.w-1, .gallery img.w-2 { grid-column: 1 / -1; }
 }
 
 .card .comp { font-weight: 700; color: var(--navy); }
