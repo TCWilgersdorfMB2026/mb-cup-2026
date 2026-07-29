@@ -29,12 +29,20 @@ unverändert:
 
 Für Bilder gibt es zwei Möglichkeiten:
 
-- `"image": "..."` – genau ein Bild.
-- `"images": ["...", "...", ...]` – mehrere Bilder, werden nebeneinander
-  (bzw. auf schmalen Screens umbrechend) angezeigt.
+- `"image": "..."` – genau ein Bild, volle Breite.
+- `"images": ["...", "...", ...]` – mehrere Bilder. Reihenfolge = Reihenfolge
+  im Array. Zusätzlich optional `"columns": 1` oder `"columns": 2`, um
+  festzulegen, ob die Bilder untereinander (1 Spalte) oder nebeneinander
+  (2 Spalten, auf sehr schmalen Screens automatisch wieder 1 Spalte)
+  erscheinen. Ohne dieses Feld: 2 Spalten bei mehreren Bildern. Bilder werden
+  nie zugeschnitten, sie skalieren immer auf die volle Spaltenbreite, die
+  Höhe ergibt sich automatisch aus dem Bild.
 
 Beide Felder sind optional. Fehlen sie, wird einfach kein Bild angezeigt –
-bestehende Einträge ohne Bild funktionieren unverändert weiter.
+bestehende Einträge ohne Bild funktionieren unverändert weiter. In
+`admin.html` lassen sich sowohl die Spaltenzahl als auch die Reihenfolge der
+Bilder (Pfeil-Buttons, auch nachträglich bei bereits veröffentlichten
+Einträgen) bequem per Klick einstellen.
 
 Eigene Fotos vom Turnier lassen sich einfach in `data/images/` hochladen
 ("Add file" → "Upload files") und dann per relativem Pfad eintragen, z. B.

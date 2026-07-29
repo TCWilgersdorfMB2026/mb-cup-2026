@@ -2,5 +2,28 @@
   {
     "time": "2026-08-15T09:00:00",
     "text": "Herzlich willkommen zum 17. Wilgersdorfer LK-Turnier um den markenbaumarkt24-Cup! Der Ticker läuft ab Turnierstart."
+  },
+  {
+    "time": "2026-07-30T09:15:00",
+    "text": "Turnierstart! Erste Aufschläge auf Platz 1 und 2.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Tennis_Match_at_EuroGames_2024.jpg/960px-Tennis_Match_at_EuroGames_2024.jpg"
+  },
+  {
+    "time": "2026-07-30T11:05:00",
+    "text": "Kurze Regenpause – Spielbetrieb pausiert für ca. 20 Minuten."
+  },
+  {
+    "time": "2026-07-30T14:40:00",
+    "text": "Achtelfinale komplett durchgespielt, Viertelfinale steht fest.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Tennis_Match_at_EuroGames_2024_2.jpg/960px-Tennis_Match_at_EuroGames_2024_2.jpg"
+  },
+  {
+    "time": "2026-08-02T11:30:00",
+    "text": "Finale läuft auf dem Center Court – kommt vorbei und feuert an!",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Tennis_Match_at_EuroGames_2024_3.jpg/960px-Tennis_Match_at_EuroGames_2024_3.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Tennis_Match_at_EuroGames_2024.jpg/960px-Tennis_Match_at_EuroGames_2024.jpg"
+    ],
+    "columns": 2
   }
 ]

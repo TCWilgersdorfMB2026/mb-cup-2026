@@ -34,12 +34,16 @@ function imagesOf(entry) {
   return [];
 }
 
-// Baut eine kleine Bildergalerie (ein Bild volle Breite, mehrere Bilder
-// nebeneinander/umbrechend) - oder liefert nichts, wenn keine Bilder da sind.
+// Baut eine kleine Bildergalerie in der Reihenfolge des "images"-Arrays.
+// Spaltenzahl (1 oder 2) kommt aus dem optionalen Feld "columns" am Eintrag
+// (wird in admin.html eingestellt) - ohne dieses Feld: 1 Bild = 1 Spalte,
+// mehrere Bilder = 2 Spalten (Rückwärtskompatibilität mit älteren Einträgen).
+// Bilder werden nie zugeschnitten, sondern skalieren auf volle Spaltenbreite.
 function galleryHtml(entry) {
   const imgs = imagesOf(entry);
   if (!imgs.length) return '';
-  return `<div class="gallery">${imgs.map((src) => `<img src="${escapeHtml(src)}" alt="" loading="lazy">`).join('')}</div>`;
+  const cols = (entry.columns === 1 || entry.columns === 2) ? entry.columns : (imgs.length > 1 ? 2 : 1);
+  return `<div class="gallery cols-${cols}">${imgs.map((src) => `<img src="${escapeHtml(src)}" alt="" loading="lazy">`).join('')}</div>`;
 }
 
 function renderTicker(items) {
@@ -422,3 +426,21 @@ setupCompetitionSelect();
 setupSpielplanDaySelect();
 refreshAll();
 setInterval(refreshAll, REFRESH_MS);
+
+// Meldet die aktuelle Inhaltshöhe per postMessage ans einbettende
+// Elternfenster (z.B. das Wix-iframe), damit die Einbettung dort dynamisch
+// mitwachsen kann - man muss dann nicht mehr innerhalb der Box zusätzlich
+// scrollen, sondern die ganze Wix-Seite (inkl. Footer) wächst mit. Läuft
+// harmlos ins Leere, wenn die Seite gerade nicht eingebettet ist.
+function reportHeightToParent() {
+  if (window.parent === window) return; // nicht eingebettet, z.B. Vorschau-Seiten
+  const h = document.documentElement.scrollHeight;
+  window.parent.postMessage({ type: 'mbcup-resize', height: h }, '*');
+}
+window.addEventListener('load', reportHeightToParent);
+window.addEventListener('resize', reportHeightToParent);
+if (window.ResizeObserver) {
+  new ResizeObserver(reportHeightToParent).observe(document.body);
+} else {
+  setInterval(reportHeightToParent, 1000);
+}
