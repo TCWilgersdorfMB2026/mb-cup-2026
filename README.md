@@ -24,10 +24,18 @@ unverändert:
 - `data/ticker.json` – Liveticker-Meldungen (`time`, `text`, optional `image` oder `images`: Bild-URL(s))
 - `data/schedule.json` – Spielplan (`competition`, `player1`, `player2`, `round`, `time`, `court`)
 - `data/results.json` – Ergebnisse (wie schedule.json, zusätzlich `score`)
-- `data/reports.json` – Tagesberichte (`date`, `title`, `text`, optional `image` oder `images`: Bild-URL(s))
-- `data/menu.json` – Speiseplan (`day`, `items`: Liste von Strings, optional `image` oder `images`: Bild-URL(s))
+- `data/reports.json` – Tagesberichte (`date`, `title`, `text`, optional `image` oder `images`: Bild-URL(s)).
+  Pro Tag sind auch mehrere Berichte/Meldungen möglich (z. B. Vormittag und
+  Nachmittag getrennt) – es gibt keine Beschränkung auf einen Eintrag je Datum.
+- `data/menu.json` – Speiseplan (`day`, `items`: Liste von Gerichten). Jedes
+  Gericht ist ein Objekt `{"name": "...", "image": "..."}` bzw. mit
+  `"images": [...]` für mehrere Bilder – so ist die Zuordnung Bild↔Gericht
+  eindeutig (ein Gericht kann auch ganz ohne Bild bleiben). Aus
+  Kompatibilitätsgründen werden auch alte Einträge, bei denen `items` nur
+  einfache Strings enthält (ohne Bild), weiterhin unterstützt.
 
-Für Bilder gibt es zwei Möglichkeiten:
+Für Bilder bei Liveticker, Tagesberichten und je Gericht im Speiseplan gibt
+es zwei Möglichkeiten:
 
 - `"image": "..."` – genau ein Bild, volle Breite.
 - `"images": [...]` – mehrere Bilder, Reihenfolge = Reihenfolge im Array.
@@ -46,10 +54,16 @@ Für Bilder gibt es zwei Möglichkeiten:
   die Höhe ergibt sich automatisch aus dem Bild.
 
 Beide Felder sind optional. Fehlen sie, wird einfach kein Bild angezeigt –
-bestehende Einträge ohne Bild funktionieren unverändert weiter. In
-`admin.html` lassen sich die Breite (voll/halb) pro Bild sowie die
-Reihenfolge der Bilder (Pfeil-Buttons, auch nachträglich bei bereits
-veröffentlichten Einträgen) bequem per Klick einstellen.
+bestehende Einträge ohne Bild funktionieren unverändert weiter.
+
+In `admin.html` lassen sich alle Einträge (Liveticker, Tagesberichte,
+Speiseplan) nicht nur löschen, sondern über "Bearbeiten" auch nachträglich
+anpassen – vorhandene Bilder bleiben dabei erhalten, neue werden ergänzt.
+Auch die Breite (voll/halb) und Reihenfolge der Bilder lassen sich dort
+bequem per Klick einstellen (Pfeil-Buttons), ebenso bei bereits
+veröffentlichten Einträgen. Beim Speiseplan gibt es dafür pro Gericht ein
+eigenes Bildfeld ("+ Gericht hinzufügen"), damit klar ist, welches Bild zu
+welchem Gericht gehört.
 
 Eigene Fotos vom Turnier lassen sich einfach in `data/images/` hochladen
 ("Add file" → "Upload files") und dann per relativem Pfad eintragen, z. B.

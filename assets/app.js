@@ -370,14 +370,39 @@ function renderReports(items) {
     </div>`).join('');
 }
 
+// Liest Name + Bilder ({src,width}) eines Speiseplan-Gerichts. Unterstützt
+// weiterhin ältere Einträge, bei denen "items" nur Strings (ohne Bild)
+// enthält.
+function dishOf(item) {
+  if (typeof item === 'string') return { name: item, images: [] };
+  const name = item.name || '';
+  if (Array.isArray(item.images) && item.images.length) {
+    const images = item.images.map((img) => {
+      if (typeof img === 'string') return { src: img, width: 2 };
+      const w = (img.width === 1 || img.width === 2) ? img.width : 2;
+      return { src: img.src, width: w };
+    });
+    return { name, images };
+  }
+  if (item.image) return { name, images: [{ src: item.image, width: 2 }] };
+  return { name, images: [] };
+}
+
+function dishHtml(item) {
+  const { name, images } = dishOf(item);
+  const gallery = images.length
+    ? `<div class="gallery">${images.map(({ src, width }) => `<img src="${escapeHtml(src)}" alt="" loading="lazy" class="w-${width}">`).join('')}</div>`
+    : '';
+  return `<li>${escapeHtml(name)}${gallery}</li>`;
+}
+
 function renderMenu(days) {
   const el = qs('speiseplan-list');
   if (!days || !days.length) { el.innerHTML = '<p class="empty">Speiseplan wird noch veröffentlicht.</p>'; return; }
   el.innerHTML = days.map(d => `
     <div class="menu-day">
       <h3>${escapeHtml(d.day || '')}</h3>
-      ${galleryHtml(d)}
-      <ul>${(d.items || []).map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>
+      <ul class="dish-list">${(d.items || []).map(dishHtml).join('')}</ul>
     </div>`).join('');
 }
 

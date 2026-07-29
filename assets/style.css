@@ -271,6 +271,9 @@ body {
 
 .menu-day h3 { margin: 0 0 8px; color: var(--navy); }
 .menu-day ul { margin: 0; padding-left: 18px; }
+.menu-day .dish-list li { margin-bottom: 10px; }
+.menu-day .dish-list li:last-child { margin-bottom: 0; }
+.menu-day .dish-list .gallery { margin: 6px 0 0; max-width: 420px; }
 
 .site-footer {
   text-align: center;

@@ -83,8 +83,8 @@
     border-bottom: 1px solid var(--border);
   }
   .entry-row:last-child { border-bottom: none; }
-  .entry-row .del {
-    color: var(--danger);
+  .entry-actions { display: flex; gap: 4px; flex-shrink: 0; }
+  .entry-row .del, .entry-row .edit {
     background: none;
     border: none;
     cursor: pointer;
@@ -93,6 +93,9 @@
     margin: 0;
     text-decoration: underline;
   }
+  .entry-row .del { color: var(--danger); }
+  .entry-row .edit { color: var(--accent); }
+  button.cancel-edit { margin-left: 8px; margin-top: 14px; }
   .setup ol { padding-left: 20px; font-size: 0.9rem; }
   .setup li { margin-bottom: 8px; }
   .setup a { color: var(--accent); }
@@ -129,6 +132,20 @@
   .img-editor { margin-top: 8px; font-size: 0.85rem; }
   .img-editor summary { cursor: pointer; color: var(--accent); font-weight: 600; }
   .img-editor .save-img-order { margin-top: 10px; padding: 8px 14px; font-size: 0.85rem; }
+
+  /* Speiseplan: Liste der Gerichte, jedes mit eigenem Namensfeld und
+     eigener Bildauswahl. */
+  .dish-list-editor { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .dish-row { border: 1px solid var(--border); border-radius: 8px; padding: 10px; background: var(--bg); }
+  .dish-row-head { display: flex; gap: 8px; align-items: center; }
+  .dish-row-head input[type=text] { flex: 1; margin: 0; }
+  .dish-row-head .remove-dish {
+    margin: 0; padding: 8px 12px; font-weight: 700; cursor: pointer;
+    background: var(--card); color: var(--danger); border: 1px solid var(--border); border-radius: 6px;
+  }
+  .dish-file-label { font-size: 0.78rem; font-weight: 400; margin: 10px 0 2px; color: var(--muted); }
+  .dish-row input[type=file] { margin-top: 0; }
+  button.add-dish { margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -171,6 +188,7 @@
         <input type="file" name="images" accept="image/*" multiple>
         <div class="file-preview" data-file-preview></div>
         <button type="submit">Veröffentlichen</button>
+        <button type="button" class="secondary cancel-edit" data-kind="ticker" style="display:none;">Abbrechen</button>
         <div class="status" data-status></div>
       </form>
       <div class="entry-list" data-list="ticker"><h3>Bisherige Meldungen</h3><div data-items></div></div>
@@ -178,18 +196,19 @@
 
     <div class="card">
       <h2>Tagesbericht</h2>
-      <p class="hint">Ein Bericht pro Tag mit Titel und Text.</p>
+      <p class="hint">Berichte/Meldungen mit Titel und Text. Pro Tag können auch mehrere angelegt werden (z.B. Vormittag und Nachmittag getrennt) - dazu einfach das Formular mehrfach mit demselben Datum absenden, jede Meldung wird zusätzlich gespeichert statt ersetzt zu werden. Über "Bearbeiten" unten in der Liste lässt sich jede einzelne Meldung später wieder anpassen.</p>
       <form id="report-form">
         <label>Datum</label>
         <input type="date" name="date" required>
         <label>Titel</label>
-        <input type="text" name="title" placeholder="z.B. Tag 1: Spannende Auftaktrunde" required>
+        <input type="text" name="title" placeholder="z.B. Tag 1: Spannende Auftaktrunde (Vormittag)" required>
         <label>Text</label>
         <textarea name="text" required></textarea>
         <label>Bild(er) (optional, mehrere möglich, Reihenfolge &amp; Breite je Bild unten anpassbar)</label>
         <input type="file" name="images" accept="image/*" multiple>
         <div class="file-preview" data-file-preview></div>
         <button type="submit">Veröffentlichen</button>
+        <button type="button" class="secondary cancel-edit" data-kind="reports" style="display:none;">Abbrechen</button>
         <div class="status" data-status></div>
       </form>
       <div class="entry-list" data-list="reports"><h3>Bisherige Berichte</h3><div data-items></div></div>
@@ -197,16 +216,15 @@
 
     <div class="card">
       <h2>Speiseplan</h2>
-      <p class="hint">Ein Eintrag pro Tag. Gerichte: ein Gericht pro Zeile. Trägst du denselben Tag nochmal ein, wird der alte Eintrag ersetzt.</p>
+      <p class="hint">Ein Eintrag pro Tag. Jedes Gericht kann eigene Bilder haben, damit die Zuordnung klar ist. Trägst du denselben Tag nochmal ein (ohne "Bearbeiten"), wird der alte Eintrag komplett ersetzt.</p>
       <form id="menu-form">
         <label>Tag</label>
         <input type="text" name="day" placeholder="z.B. Donnerstag, 30.07." required>
-        <label>Gerichte (ein Gericht pro Zeile)</label>
-        <textarea name="items" placeholder="Grillwürstchen mit Brötchen&#10;Nudelsalat&#10;Kuchenbuffet" required></textarea>
-        <label>Bild(er) (optional, mehrere möglich, Reihenfolge &amp; Breite je Bild unten anpassbar)</label>
-        <input type="file" name="images" accept="image/*" multiple>
-        <div class="file-preview" data-file-preview></div>
+        <label>Gerichte (Name je Gericht, optional eigene Bilder dafür)</label>
+        <div class="dish-list-editor" data-dish-list></div>
+        <button type="button" class="secondary add-dish">+ Gericht hinzufügen</button>
         <button type="submit">Veröffentlichen</button>
+        <button type="button" class="secondary cancel-edit" data-kind="menu" style="display:none;">Abbrechen</button>
         <div class="status" data-status></div>
       </form>
       <div class="entry-list" data-list="menu"><h3>Bisheriger Speiseplan</h3><div data-items></div></div>
@@ -284,14 +302,19 @@ async function uploadImages(fileList, contextLabel) {
   return paths;
 }
 
-// paths: hochgeladene Bildpfade in Anzeige-Reihenfolge.
-// widths: parallele Liste, pro Bild 1 (halbe Breite) oder 2 (volle Breite).
-function withImages(entry, paths, widths) {
-  if (paths.length === 1) {
-    entry.image = paths[0];
-  } else if (paths.length > 1) {
-    entry.images = paths.map((src, i) => ({ src, width: (widths[i] === 1) ? 1 : 2 }));
-  }
+// Setzt die Bilder eines Eintrags: bestehende Bilder (existingImgs, als
+// {src,width}) bleiben erhalten, neu hochgeladene (newPaths/newWidths)
+// werden dahinter angehängt. So gehen beim Bearbeiten eines Eintrags keine
+// bereits vorhandenen Bilder verloren, auch wenn keine neuen ausgewählt
+// wurden.
+function applyImages(entry, existingImgs, newPaths, newWidths) {
+  const newImgs = newPaths.map((src, i) => ({ src, width: (newWidths[i] === 1) ? 1 : 2 }));
+  const all = [...existingImgs, ...newImgs];
+  delete entry.image;
+  delete entry.images;
+  delete entry.columns;
+  if (all.length === 1) entry.image = all[0].src;
+  else if (all.length > 1) entry.images = all;
   return entry;
 }
 
@@ -361,6 +384,151 @@ function setupImagePicker(formEl) {
   };
 }
 
+// ---- Speiseplan: Gerichte mit jeweils eigenen Bildern ----
+// Wandelt ein gespeichertes Gericht (String = alter Stand ohne Bild, oder
+// {name, image/images} = neuer Stand) in den internen Bearbeitungs-Zustand
+// {name, images:[{src,width}]} um.
+function dishItemToState(item) {
+  if (typeof item === 'string') return { name: item, images: [] };
+  const name = item.name || '';
+  let images = [];
+  if (Array.isArray(item.images) && item.images.length) {
+    images = item.images.map((img) => {
+      if (typeof img === 'string') return { src: img, width: 2 };
+      const w = (img.width === 1 || img.width === 2) ? img.width : 2;
+      return { src: img.src, width: w };
+    });
+  } else if (item.image) {
+    images = [{ src: item.image, width: 2 }];
+  }
+  return { name, images };
+}
+
+// Lädt neu ausgewählte Bild-Dateien eines Gerichts hoch und baut daraus,
+// zusammen mit bereits vorhandenen Bildern (mit "src"), die finale
+// {src,width}-Liste in der aktuellen Reihenfolge.
+async function resolveDishImages(dish, contextLabel) {
+  const fileEntries = dish.images.filter((img) => img.file);
+  const paths = fileEntries.length ? await uploadImages(fileEntries.map((img) => img.file), contextLabel) : [];
+  let pi = 0;
+  return dish.images.map((img) => img.file ? { src: paths[pi++], width: img.width } : { src: img.src, width: img.width });
+}
+
+// Verwaltet die Liste der Gerichte im Speiseplan-Formular: pro Gericht ein
+// Name-Feld und eine eigene, umsortierbare Bildauswahl (analog zu
+// setupImagePicker, aber mehrfach - einmal pro Gericht - und mit der
+// Möglichkeit, einzelne Bilder wieder zu entfernen).
+function setupDishList(formEl) {
+  const container = formEl.querySelector('[data-dish-list]');
+  let dishes = [{ name: '', images: [] }];
+
+  function dishChipsHtml(images, dishI) {
+    return images.map((img, i) => `
+      <div class="img-chip" data-i="${i}">
+        ${img.src ? `<img src="${escapeHtml(img.src)}" alt="">` : `<span>${escapeHtml(img.file.name)}</span>`}
+        <button type="button" data-dish-i="${dishI}" data-w-toggle title="Breite umschalten (voll/halb)">${img.width === 1 ? 'Halb' : 'Voll'}</button>
+        <button type="button" data-dish-i="${dishI}" data-dir="up" ${i === 0 ? 'disabled' : ''} title="Nach oben">↑</button>
+        <button type="button" data-dish-i="${dishI}" data-dir="down" ${i === images.length - 1 ? 'disabled' : ''} title="Nach unten">↓</button>
+        <button type="button" data-dish-i="${dishI}" data-remove-img title="Bild entfernen">✕</button>
+      </div>`).join('');
+  }
+
+  function render() {
+    container.innerHTML = dishes.map((d, i) => `
+      <div class="dish-row" data-dish-i="${i}">
+        <div class="dish-row-head">
+          <input type="text" class="dish-name" data-dish-i="${i}" placeholder="z.B. Grillwürstchen mit Brötchen" value="${escapeHtml(d.name)}">
+          <button type="button" class="remove-dish" data-dish-i="${i}" title="Gericht entfernen">✕</button>
+        </div>
+        <label class="dish-file-label">Bild(er) für dieses Gericht (optional)</label>
+        <input type="file" class="dish-file" data-dish-i="${i}" accept="image/*" multiple>
+        <div class="img-editor-list">${dishChipsHtml(d.images, i)}</div>
+      </div>`).join('');
+  }
+
+  container.addEventListener('input', (e) => {
+    const nameInput = e.target.closest('.dish-name');
+    if (nameInput) dishes[Number(nameInput.dataset.dishI)].name = nameInput.value;
+  });
+
+  container.addEventListener('change', (e) => {
+    const fileInput = e.target.closest('.dish-file');
+    if (!fileInput) return;
+    const i = Number(fileInput.dataset.dishI);
+    const added = Array.from(fileInput.files || []).map((file) => ({ file, width: 2 }));
+    dishes[i].images.push(...added);
+    render();
+  });
+
+  container.addEventListener('click', (e) => {
+    const removeDish = e.target.closest('.remove-dish');
+    if (removeDish) {
+      dishes.splice(Number(removeDish.dataset.dishI), 1);
+      if (!dishes.length) dishes.push({ name: '', images: [] });
+      render();
+      return;
+    }
+    const wToggle = e.target.closest('button[data-w-toggle]');
+    if (wToggle) {
+      const di = Number(wToggle.dataset.dishI);
+      const ii = Number(wToggle.closest('[data-i]').dataset.i);
+      dishes[di].images[ii].width = dishes[di].images[ii].width === 1 ? 2 : 1;
+      render();
+      return;
+    }
+    const dirBtn = e.target.closest('button[data-dir]');
+    if (dirBtn) {
+      const di = Number(dirBtn.dataset.dishI);
+      const ii = Number(dirBtn.closest('[data-i]').dataset.i);
+      const j = ii + (dirBtn.dataset.dir === 'up' ? -1 : 1);
+      const arr = dishes[di].images;
+      if (j < 0 || j >= arr.length) return;
+      [arr[ii], arr[j]] = [arr[j], arr[ii]];
+      render();
+      return;
+    }
+    const rmImg = e.target.closest('button[data-remove-img]');
+    if (rmImg) {
+      const di = Number(rmImg.dataset.dishI);
+      const ii = Number(rmImg.closest('[data-i]').dataset.i);
+      dishes[di].images.splice(ii, 1);
+      render();
+      return;
+    }
+  });
+
+  formEl.querySelector('.add-dish').addEventListener('click', () => {
+    dishes.push({ name: '', images: [] });
+    render();
+  });
+
+  render();
+
+  return {
+    load(items) {
+      dishes = (items && items.length) ? items.map(dishItemToState) : [{ name: '', images: [] }];
+      render();
+    },
+    reset() {
+      dishes = [{ name: '', images: [] }];
+      render();
+    },
+    async getItemsForSave() {
+      const results = [];
+      for (const d of dishes) {
+        const name = (d.name || '').trim();
+        if (!name) continue;
+        const images = await resolveDishImages(d, 'Speiseplan: ' + name);
+        const item = { name };
+        if (images.length === 1) item.image = images[0].src;
+        else if (images.length > 1) item.images = images;
+        results.push(item);
+      }
+      return results;
+    },
+  };
+}
+
 // ---- Reihenfolge/Layout bereits veröffentlichter Bilder bearbeiten ----
 // imgEditState hält pro Eintrag (Schlüssel "kind:index") die aktuell im
 // Editor angezeigte (ggf. schon umsortierte) Bilder-Reihenfolge, bis auf
@@ -409,7 +577,10 @@ async function refreshTickerList() {
     box.innerHTML = sorted.length ? sorted.map(it => `
       <div class="entry-row">
         <span>${escapeHtml(it.time || '')} — ${escapeHtml((it.text || '').slice(0, 60))}</span>
-        <button class="del" data-kind="ticker" data-idx="${it._i}">Löschen</button>
+        <span class="entry-actions">
+          <button class="edit" data-kind="ticker" data-idx="${it._i}">Bearbeiten</button>
+          <button class="del" data-kind="ticker" data-idx="${it._i}">Löschen</button>
+        </span>
       </div>
       ${imgEditorHtml('ticker', it._i, it)}`).join('') : '<p class="hint">Noch keine Einträge.</p>';
   } catch (e) { box.innerHTML = '<p class="status err">' + escapeHtml(e.message) + '</p>'; }
@@ -422,20 +593,28 @@ document.getElementById('ticker-form').addEventListener('submit', async (e) => {
   const form = e.target;
   const statusEl = form.querySelector('[data-status]');
   const btn = form.querySelector('button[type=submit]');
+  const isEdit = editState.ticker !== null;
   btn.disabled = true;
-  setStatus(statusEl, 'Speichere…', false);
+  setStatus(statusEl, isEdit ? 'Speichere Änderungen…' : 'Speichere…', false);
   try {
     const time = form.time.value;
     const text = form.text.value.trim();
     const widths = tickerPicker.getWidths();
     const paths = await uploadImages(tickerPicker.getFiles(), 'Liveticker');
     const { sha, list } = await ghGet('data/ticker.json');
-    list.push(withImages({ time, text }, paths, widths));
-    await ghPutJson('data/ticker.json', list, sha, 'Ticker-Meldung hinzugefügt');
-    setStatus(statusEl, 'Veröffentlicht! Erscheint in ca. 1 Minute auf der Live-Seite.', false);
-    form.reset();
-    tickerPicker.reset();
-    setDefaultTime(form);
+    if (isEdit) {
+      const idx = editState.ticker;
+      if (!list[idx]) throw new Error('Eintrag nicht mehr vorhanden – Seite neu laden.');
+      const existingImgs = imagesOfAdmin(list[idx]);
+      list[idx] = applyImages({ time, text }, existingImgs, paths, widths);
+      await ghPutJson('data/ticker.json', list, sha, 'Ticker-Meldung bearbeitet');
+      setStatus(statusEl, 'Änderungen gespeichert! Erscheinen in ca. 1 Minute auf der Live-Seite.', false);
+    } else {
+      list.push(applyImages({ time, text }, [], paths, widths));
+      await ghPutJson('data/ticker.json', list, sha, 'Ticker-Meldung hinzugefügt');
+      setStatus(statusEl, 'Veröffentlicht! Erscheint in ca. 1 Minute auf der Live-Seite.', false);
+    }
+    resetFormUI('ticker');
     refreshTickerList();
   } catch (err) { setStatus(statusEl, err.message, true); }
   btn.disabled = false;
@@ -451,7 +630,10 @@ async function refreshReportsList() {
     box.innerHTML = sorted.length ? sorted.map(it => `
       <div class="entry-row">
         <span>${escapeHtml(it.date || '')} — ${escapeHtml(it.title || '')}</span>
-        <button class="del" data-kind="reports" data-idx="${it._i}">Löschen</button>
+        <span class="entry-actions">
+          <button class="edit" data-kind="reports" data-idx="${it._i}">Bearbeiten</button>
+          <button class="del" data-kind="reports" data-idx="${it._i}">Löschen</button>
+        </span>
       </div>
       ${imgEditorHtml('reports', it._i, it)}`).join('') : '<p class="hint">Noch keine Einträge.</p>';
   } catch (e) { box.innerHTML = '<p class="status err">' + escapeHtml(e.message) + '</p>'; }
@@ -464,8 +646,9 @@ document.getElementById('report-form').addEventListener('submit', async (e) => {
   const form = e.target;
   const statusEl = form.querySelector('[data-status]');
   const btn = form.querySelector('button[type=submit]');
+  const isEdit = editState.reports !== null;
   btn.disabled = true;
-  setStatus(statusEl, 'Speichere…', false);
+  setStatus(statusEl, isEdit ? 'Speichere Änderungen…' : 'Speichere…', false);
   try {
     const date = form.date.value;
     const title = form.title.value.trim();
@@ -473,11 +656,19 @@ document.getElementById('report-form').addEventListener('submit', async (e) => {
     const widths = reportPicker.getWidths();
     const paths = await uploadImages(reportPicker.getFiles(), 'Tagesbericht');
     const { sha, list } = await ghGet('data/reports.json');
-    list.push(withImages({ date, title, text }, paths, widths));
-    await ghPutJson('data/reports.json', list, sha, 'Tagesbericht hinzugefügt: ' + title);
-    setStatus(statusEl, 'Veröffentlicht! Erscheint in ca. 1 Minute auf der Live-Seite.', false);
-    form.reset();
-    reportPicker.reset();
+    if (isEdit) {
+      const idx = editState.reports;
+      if (!list[idx]) throw new Error('Eintrag nicht mehr vorhanden – Seite neu laden.');
+      const existingImgs = imagesOfAdmin(list[idx]);
+      list[idx] = applyImages({ date, title, text }, existingImgs, paths, widths);
+      await ghPutJson('data/reports.json', list, sha, 'Tagesbericht bearbeitet: ' + title);
+      setStatus(statusEl, 'Änderungen gespeichert! Erscheinen in ca. 1 Minute auf der Live-Seite.', false);
+    } else {
+      list.push(applyImages({ date, title, text }, [], paths, widths));
+      await ghPutJson('data/reports.json', list, sha, 'Tagesbericht hinzugefügt: ' + title);
+      setStatus(statusEl, 'Veröffentlicht! Erscheint in ca. 1 Minute auf der Live-Seite.', false);
+    }
+    resetFormUI('reports');
     refreshReportsList();
   } catch (err) { setStatus(statusEl, err.message, true); }
   btn.disabled = false;
@@ -492,34 +683,38 @@ async function refreshMenuList() {
     box.innerHTML = list.length ? list.map((it, i) => `
       <div class="entry-row">
         <span>${escapeHtml(it.day || '')} (${(it.items || []).length} Gerichte)</span>
-        <button class="del" data-kind="menu" data-idx="${i}">Löschen</button>
-      </div>
-      ${imgEditorHtml('menu', i, it)}`).join('') : '<p class="hint">Noch keine Einträge.</p>';
+        <span class="entry-actions">
+          <button class="edit" data-kind="menu" data-idx="${i}">Bearbeiten</button>
+          <button class="del" data-kind="menu" data-idx="${i}">Löschen</button>
+        </span>
+      </div>`).join('') : '<p class="hint">Noch keine Einträge.</p>';
   } catch (e) { box.innerHTML = '<p class="status err">' + escapeHtml(e.message) + '</p>'; }
 }
 
-const menuPicker = setupImagePicker(document.getElementById('menu-form'));
+const menuDishList = setupDishList(document.getElementById('menu-form'));
 
 document.getElementById('menu-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const form = e.target;
   const statusEl = form.querySelector('[data-status]');
   const btn = form.querySelector('button[type=submit]');
+  const isEdit = editState.menu !== null;
   btn.disabled = true;
-  setStatus(statusEl, 'Speichere…', false);
+  setStatus(statusEl, isEdit ? 'Speichere Änderungen…' : 'Speichere…', false);
   try {
     const day = form.day.value.trim();
-    const items = form.items.value.split('\n').map(s => s.trim()).filter(Boolean);
-    const widths = menuPicker.getWidths();
-    const paths = await uploadImages(menuPicker.getFiles(), 'Speiseplan');
+    const items = await menuDishList.getItemsForSave();
+    if (!items.length) throw new Error('Bitte mindestens ein Gericht mit Namen eintragen.');
     const { sha, list } = await ghGet('data/menu.json');
-    const entry = withImages({ day, items }, paths, widths);
-    const idx = list.findIndex(d => d.day === day);
-    if (idx >= 0) list[idx] = entry; else list.push(entry);
-    await ghPutJson('data/menu.json', list, sha, 'Speiseplan aktualisiert: ' + day);
-    setStatus(statusEl, 'Veröffentlicht! Erscheint in ca. 1 Minute auf der Live-Seite.', false);
-    form.reset();
-    menuPicker.reset();
+    // Beim Bearbeiten zählt der ursprüngliche Index; sonst (neu/erneutes
+    // Eintragen desselben Tages) wird über den Tagesnamen gematcht und der
+    // alte Eintrag komplett ersetzt (siehe Hinweistext im Formular).
+    const matchIdx = isEdit ? editState.menu : list.findIndex(d => d.day === day);
+    const entry = { day, items };
+    if (matchIdx >= 0 && list[matchIdx]) list[matchIdx] = entry; else list.push(entry);
+    await ghPutJson('data/menu.json', list, sha, isEdit ? 'Speiseplan bearbeitet: ' + day : 'Speiseplan aktualisiert: ' + day);
+    setStatus(statusEl, (isEdit ? 'Änderungen gespeichert' : 'Veröffentlicht') + '! Erscheint in ca. 1 Minute auf der Live-Seite.', false);
+    resetFormUI('menu');
     refreshMenuList();
   } catch (err) { setStatus(statusEl, err.message, true); }
   btn.disabled = false;
@@ -527,11 +722,91 @@ document.getElementById('menu-form').addEventListener('submit', async (e) => {
 
 const FILE_MAP = { ticker: 'data/ticker.json', reports: 'data/reports.json', menu: 'data/menu.json' };
 const REFRESH_MAP = { ticker: refreshTickerList, reports: refreshReportsList, menu: refreshMenuList };
+const FORM_MAP = {
+  ticker: document.getElementById('ticker-form'),
+  reports: document.getElementById('report-form'),
+  menu: document.getElementById('menu-form'),
+};
+const PICKER_MAP = { ticker: tickerPicker, reports: reportPicker, menu: menuDishList };
+// Hält pro Formular den Index des gerade bearbeiteten Eintrags (oder null,
+// wenn gerade ein neuer Eintrag angelegt wird statt ein bestehender
+// bearbeitet zu werden).
+const editState = { ticker: null, reports: null, menu: null };
+
+// Formatiert einen ISO-Zeitstempel fürs datetime-local-Feld (wird beim
+// Bearbeiten einer Ticker-Meldung gebraucht).
+function toDatetimeLocalValue(iso) {
+  return (iso || '').slice(0, 16);
+}
+
+// Setzt ein Formular nach dem Speichern/Abbrechen wieder in den
+// "neuer Eintrag"-Zustand zurück (Statusmeldung bleibt unangetastet, damit
+// eine gerade gesetzte Erfolgsmeldung sichtbar bleibt).
+function resetFormUI(kind) {
+  const form = FORM_MAP[kind];
+  editState[kind] = null;
+  form.reset();
+  PICKER_MAP[kind].reset();
+  form.querySelector('button[type=submit]').textContent = 'Veröffentlichen';
+  const cancelBtn = form.querySelector('.cancel-edit');
+  if (cancelBtn) cancelBtn.style.display = 'none';
+  if (kind === 'ticker') setDefaultTime(form);
+}
+
+// Lädt einen bestehenden Eintrag zum Bearbeiten in sein Formular.
+async function startEdit(kind, idx) {
+  const form = FORM_MAP[kind];
+  const statusEl = form.querySelector('[data-status]');
+  setStatus(statusEl, 'Lade Eintrag…', false);
+  try {
+    const { list } = await ghGet(FILE_MAP[kind]);
+    const entry = list[idx];
+    if (!entry) throw new Error('Eintrag nicht mehr vorhanden – Liste neu laden.');
+    if (kind === 'ticker') {
+      form.time.value = toDatetimeLocalValue(entry.time);
+      form.text.value = entry.text || '';
+      tickerPicker.reset();
+    } else if (kind === 'reports') {
+      form.date.value = entry.date || '';
+      form.title.value = entry.title || '';
+      form.text.value = entry.text || '';
+      reportPicker.reset();
+    } else if (kind === 'menu') {
+      form.day.value = entry.day || '';
+      menuDishList.load(entry.items || []);
+    }
+    editState[kind] = idx;
+    form.querySelector('button[type=submit]').textContent = 'Änderungen speichern';
+    form.querySelector('.cancel-edit').style.display = 'inline-block';
+    setStatus(statusEl, 'Eintrag wird bearbeitet – Änderungen vornehmen und speichern, oder abbrechen. Vorhandene Bilder bleiben erhalten (neue werden angehängt, Reihenfolge/Breite unten in der Liste anpassbar).', false);
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } catch (err) {
+    setStatus(statusEl, err.message, true);
+  }
+}
 
 // ---- Delete- / Bild-Umsortieren- / Bild-Layout-Speichern-Handling
 // (alles per Event-Delegation auf #forms-box, da die Listen bei jedem
 // Refresh neu gerendert werden) ----
 document.getElementById('forms-box').addEventListener('click', async (e) => {
+  // Eintrag bearbeiten: Formular mit den vorhandenen Werten befüllen
+  const editBtn = e.target.closest('button.edit');
+  if (editBtn) {
+    await startEdit(editBtn.dataset.kind, Number(editBtn.dataset.idx));
+    return;
+  }
+
+  // Bearbeiten abbrechen
+  const cancelBtn = e.target.closest('button.cancel-edit');
+  if (cancelBtn) {
+    const kind = cancelBtn.dataset.kind;
+    resetFormUI(kind);
+    const statusEl = FORM_MAP[kind].querySelector('[data-status]');
+    statusEl.textContent = '';
+    statusEl.className = 'status';
+    return;
+  }
+
   // Eintrag löschen
   const delBtn = e.target.closest('button.del');
   if (delBtn) {
