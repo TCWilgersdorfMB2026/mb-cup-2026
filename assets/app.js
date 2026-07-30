@@ -54,7 +54,7 @@ function imagesOf(entry) {
 function galleryHtml(entry) {
   const imgs = imagesOf(entry);
   if (!imgs.length) return '';
-  return `<div class="gallery">${imgs.map(({ src, width }) => `<img src="${escapeHtml(src)}" alt="" loading="lazy" class="w-${width}">`).join('')}</div>`;
+  return `<div class="gallery">${imgs.map(({ src, width }) => `<img src="${escapeHtml(src)}" alt="" class="w-${width}">`).join('')}</div>`;
 }
 
 function renderTicker(items) {
@@ -391,7 +391,7 @@ function dishOf(item) {
 function dishHtml(item) {
   const { name, images } = dishOf(item);
   const gallery = images.length
-    ? `<div class="gallery">${images.map(({ src, width }) => `<img src="${escapeHtml(src)}" alt="" loading="lazy" class="w-${width}">`).join('')}</div>`
+    ? `<div class="gallery">${images.map(({ src, width }) => `<img src="${escapeHtml(src)}" alt="" class="w-${width}">`).join('')}</div>`
     : '';
   return `<li>${escapeHtml(name)}${gallery}</li>`;
 }
