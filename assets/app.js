@@ -14,6 +14,17 @@ function fmtTime(iso) {
   } catch (e) { return iso; }
 }
 
+  // Formatiert das Speiseplan-"Tag"-Feld: seit Umstellung auf <input type="date">
+  // in admin.html kommt hier ein ISO-Datum (YYYY-MM-DD) an, das wir wie
+  // "Donnerstag, 30.07." darstellen. Aeltere Eintraege, die noch als freier
+  // Text gespeichert wurden, werden unveraendert angezeigt.
+  function fmtDay(day) {
+        if (!day) return '';
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) return day;
+        const d = new Date(day + 'T00:00:00');
+        if (isNaN(d)) return day;
+        return d.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit' });
+  }
 async function loadJSON(path) {
   try {
     const res = await fetch(path + '?t=' + Date.now());
@@ -401,7 +412,7 @@ function renderMenu(days) {
   if (!days || !days.length) { el.innerHTML = '<p class="empty">Speiseplan wird noch veröffentlicht.</p>'; return; }
   el.innerHTML = days.map(d => `
     <div class="menu-day">
-      <h3>${escapeHtml(d.day || '')}</h3>
+      <h3>${escapeHtml(fmtDay(d.day))}</h3>
       <ul class="dish-list">${(d.items || []).map(dishHtml).join('')}</ul>
     </div>`).join('');
 }
