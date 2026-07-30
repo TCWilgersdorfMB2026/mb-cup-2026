@@ -219,7 +219,7 @@
       <p class="hint">Ein Eintrag pro Tag. Jedes Gericht kann eigene Bilder haben, damit die Zuordnung klar ist. Trägst du denselben Tag nochmal ein (ohne "Bearbeiten"), wird der alte Eintrag komplett ersetzt.</p>
       <form id="menu-form">
         <label>Tag</label>
-        <input type="text" name="day" placeholder="z.B. Donnerstag, 30.07." required>
+        <input type="date" name="day" required>
         <label>Gerichte (Name je Gericht, optional eigene Bilder dafür)</label>
         <div class="dish-list-editor" data-dish-list></div>
         <button type="button" class="secondary add-dish">+ Gericht hinzufügen</button>
@@ -563,7 +563,19 @@ function setStatus(el, msg, isErr) {
   el.className = 'status ' + (isErr ? 'err' : 'ok');
 }
 
-function escapeHtml(str) {
+// Formatiert das Speiseplan-"Tag"-Feld: seit Umstellung auf <input type="date">
+  // kommt hier ein ISO-Datum (YYYY-MM-DD) an, das wir wie "Donnerstag, 30.07."
+  // darstellen. Ältere Einträge, die noch als freier Text gespeichert wurden,
+  // werden unverändert angezeigt.
+  function fmtDay(day) {
+      if (!day) return '';
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) return day;
+      const d = new Date(day + 'T00:00:00');
+      if (isNaN(d)) return day;
+      return d.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit' });
+  }
+  
+  function escapeHtml(str) {
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
@@ -682,7 +694,7 @@ async function refreshMenuList() {
     const { list } = await ghGet('data/menu.json');
     box.innerHTML = list.length ? list.map((it, i) => `
       <div class="entry-row">
-        <span>${escapeHtml(it.day || '')} (${(it.items || []).length} Gerichte)</span>
+        <span>${escapeHtml(fmtDay(it.day))} (${(it.items || []).length} Gerichte)</span>
         <span class="entry-actions">
           <button class="edit" data-kind="menu" data-idx="${i}">Bearbeiten</button>
           <button class="del" data-kind="menu" data-idx="${i}">Löschen</button>
