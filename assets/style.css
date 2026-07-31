@@ -31,7 +31,7 @@ body {
             padding: 16px 16px 18px;
 }
 @media (max-width: 600px) {
-    .top-logo { padding-bottom: 10px; }
+        .top-logo { padding: 8px 8px 5px; }
 }
 .top-logo-img {
     display: inline-block;
