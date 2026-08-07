@@ -8,78 +8,230 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#002c58;
-    --navy-dark:#001a35;
-    --accent:#116dff;
-    --live:#e11d2e;
+    --navy:#b51014;
+    --navy-dark:#6c0a0c;
+    --accent:#b51014;
+    --bg:#eeeeee;
+    --card:#ffffff;
+    --text:#222;
+    --muted:#6b6b6b;
+    --border:#e0e0e0;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html,body{
     width:100%;height:100%;
-    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-dark) 100%);
-    color:#fff;
-    font-family:'Barlow',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Barlow',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     overflow:hidden;
   }
   body{
     display:flex;
     flex-direction:column;
     height:100vh;
-    padding:1.4vh 1.6vw;
   }
   header{
+    background:linear-gradient(135deg,var(--navy),var(--navy-dark));
+    color:#fff;
+    padding:1.6vh 2vw 1.3vh;
+    text-align:center;
+  }
+  .header-row{
     display:flex;
-    justify-content:space-between;
+    align-items:baseline;
+    justify-content:center;
+    gap:1.1vw;
+  }
+  .title{
+    font-size:clamp(2.1rem,4.4vw,4.6rem);
+    font-weight:800;
+    letter-spacing:0.01em;
+    white-space:nowrap;
+  }
+  .clock{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    line-height:1.05;
+  }
+  .clock .time{
+    font-size:clamp(1.5rem,2.8vw,2.8rem);
+    font-weight:700;
+    font-variant-numeric:tabular-nums;
+  }
+  .clock .date{
+    font-size:clamp(0.7rem,0.9vw,1rem);
+    opacity:0.85;
+  }
+  .subtitle{
+    margin-top:0.3vh;
+    font-size:clamp(0.8rem,1.1vw,1.2rem);
+    opacity:0.9;
+  }
+  .section-wrap{
+    padding:1vh 2vw 0;
+  }
+  .section-heading{
+    display:flex;
     align-items:center;
-    padding-bottom:1vh;
-    border-bottom:0.3vh solid rgba(255,255,255,0.15);
+    gap:0.8vw;
+    margin-bottom:1vh;
   }
-  .brand{display:flex;flex-direction:column;}
-  .brand .title{font-size:clamp(1.6rem,2.6vw,2.6rem);font-weight:800;letter-spacing:0.02em;}
-  .brand .subtitle{font-size:clamp(0.9rem,1.2vw,1.3rem);font-weight:400;color:#aac4e8;}
-  .clock{text-align:right;}
-  .clock .time{font-size:clamp(2rem,4vw,3.4rem);font-weight:700;font-variant-numeric:tabular-nums;}
-  .clock .date{font-size:clamp(0.9rem,1.2vw,1.3rem);color:#aac4e8;}
-  .section-heading{display:flex;align-items:center;gap:1vw;margin:1vh 0;}
-  .live-dot{width:1.4vw;height:1.4vw;max-width:22px;max-height:22px;border-radius:50%;background:var(--live);animation:pulse 1.4s infinite;}
+  .live-dot{
+    width:1.2vw;height:1.2vw;max-width:18px;max-height:18px;
+    border-radius:50%;
+    background:var(--navy);
+    animation:pulse 1.4s infinite;
+  }
   @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(225,29,46,0.7);}
-    70%{box-shadow:0 0 0 1.2vw rgba(225,29,46,0);}
-    100%{box-shadow:0 0 0 0 rgba(225,29,46,0);}
+    0%{box-shadow:0 0 0 0 rgba(181,16,20,0.6);}
+    70%{box-shadow:0 0 0 1vw rgba(181,16,20,0);}
+    100%{box-shadow:0 0 0 0 rgba(181,16,20,0);}
   }
-  .section-heading h2{font-size:clamp(1.4rem,2.2vw,2.2rem);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;}
-  .demo-badge{margin-left:auto;background:rgba(255,255,255,0.12);border:0.15vh solid rgba(255,255,255,0.35);color:#ffd75e;padding:0.4vh 1.2vw;border-radius:999px;font-size:clamp(0.8rem,1vw,1.1rem);font-weight:600;letter-spacing:0.04em;text-transform:uppercase;}
-  main{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:1vh 0.7vw;overflow:hidden;min-height:0;}
-  .match-card{background:rgba(255,255,255,0.06);border:0.15vh solid rgba(255,255,255,0.18);border-radius:1.2vh;padding:1vh 0.9vw;display:flex;flex-direction:column;justify-content:center;gap:0.6vh;position:relative;overflow:hidden;min-height:0;}
-  .match-card-empty{justify-content:center;align-items:center;background:rgba(255,255,255,0.03);}
-  .match-card .court-badge{position:absolute;top:0.9vh;left:0.9vw;background:var(--accent);color:#fff;font-weight:800;font-size:clamp(1.1rem,2vw,1.9rem);padding:0.6vh 1.3vw;border-radius:999px;letter-spacing:0.02em;box-shadow:0 0.3vh 1vh rgba(0,0,0,0.35);}
-  .match-card .competition{font-size:clamp(0.7rem,0.95vw,1rem);color:#aac4e8;text-transform:uppercase;letter-spacing:0.03em;font-weight:600;margin-top:3.6vh;}
-  .match-card .round{font-size:clamp(0.7rem,0.85vw,0.95rem);color:#7fa3d4;}
-  .players{display:flex;flex-direction:column;gap:0.4vh;margin:0.4vh 0;}
-  .player{font-size:clamp(1.9rem,5.6vh,4.2rem);font-weight:800;line-height:1.02;word-break:break-word;}
-  .vs{font-size:clamp(0.9rem,1.6vh,1.3rem);color:#7fa3d4;font-weight:600;text-align:center;}
-  .match-meta{display:flex;gap:1vw;font-size:clamp(0.85rem,1.6vh,1.3rem);color:#d7e6ff;font-weight:600;}
-  .court-empty{font-size:clamp(1.2rem,2.4vh,1.8rem);color:#5c85bd;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
-  .empty-state{grid-column:1/-1;display:flex;align-items:center;justify-content:center;font-size:clamp(1.4rem,2vw,2rem);color:#7fa3d4;text-align:center;}
-  footer{text-align:center;padding-top:1vh;font-size:clamp(0.8rem,1vw,1.1rem);color:#5c85bd;}
+  .section-heading h2{
+    font-size:clamp(1.3rem,2vw,2rem);
+    font-weight:700;
+    color:var(--navy);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  .demo-badge{
+    margin-left:auto;
+    background:#fff;
+    border:0.15vh solid var(--navy);
+    color:var(--navy);
+    padding:0.4vh 1.2vw;
+    border-radius:999px;
+    font-size:clamp(0.75rem,1vw,1.05rem);
+    font-weight:700;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+  }
+  main{
+    flex:1;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1vh 0.8vw;
+    padding:0 2vw 1.4vh;
+    overflow:hidden;
+    min-height:0;
+  }
+  .match-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:1.2vh;
+    padding:1vh 1vw;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0.5vh;
+    overflow:hidden;
+    min-height:0;
+    box-shadow:0 0.2vh 0.6vh rgba(0,0,0,0.06);
+  }
+  .match-card-empty{
+    align-items:center;
+    justify-content:center;
+    background:#f6f6f6;
+  }
+  .court-badge{
+    background:var(--navy);
+    color:#fff;
+    font-weight:800;
+    font-size:clamp(1.1rem,2vw,1.9rem);
+    padding:0.4vh 1.2vw;
+    border-radius:999px;
+    letter-spacing:0.02em;
+  }
+  .meta-top{
+    min-height:2.3em;
+    width:100%;
+  }
+  .competition{
+    font-size:clamp(0.7rem,0.95vw,1rem);
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    font-weight:600;
+  }
+  .round{
+    font-size:clamp(0.7rem,0.85vw,0.95rem);
+    color:var(--muted);
+  }
+  .players{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+  }
+  .players .player:first-child{
+    min-height:2.1em;
+    display:flex;
+    align-items:flex-start;
+  }
+  .player{
+    font-size:clamp(1.6rem,4.6vh,3.6rem);
+    font-weight:800;
+    line-height:1.02;
+    word-break:break-word;
+    color:var(--text);
+  }
+  .vs{
+    font-size:clamp(0.85rem,1.4vh,1.15rem);
+    color:var(--muted);
+    font-weight:600;
+    margin:0.1vh 0;
+  }
+  .match-meta{
+    margin-top:auto;
+    padding-top:0.4vh;
+    font-size:clamp(0.8rem,1.4vh,1.15rem);
+    color:var(--muted);
+    font-weight:600;
+  }
+  .court-empty{
+    font-size:clamp(1.1rem,2.2vh,1.6rem);
+    color:var(--muted);
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    font-style:italic;
+    margin-top:1vh;
+  }
+  .empty-state{
+    grid-column:1/-1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:clamp(1.2rem,1.8vw,1.8rem);
+    color:var(--muted);
+    font-style:italic;
+  }
+  footer{
+    text-align:center;
+    padding:0.8vh 0 1vh;
+    font-size:clamp(0.75rem,0.95vw,1rem);
+    color:var(--muted);
+  }
 </style>
 </head>
 <body>
   <header>
-    <div class="brand">
-      <div class="title">markenbaumarkt24-Cup 2026</div>
-      <div class="subtitle">17. Wilgersdorfer LK-Turnier · TC Wilgersdorf</div>
+    <div class="header-row">
+      <span class="title">markenbaumarkt24-Cup 2026</span>
+      <span class="clock">
+        <span class="time" id="clock-time">--:--</span>
+        <span class="date" id="clock-date">--</span>
+      </span>
     </div>
-    <div class="clock">
-      <div class="time" id="clock-time">--:--</div>
-      <div class="date" id="clock-date">--</div>
-    </div>
+    <div class="subtitle">17. Wilgersdorfer LK-Turnier · TC Wilgersdorf</div>
   </header>
 
-  <div class="section-heading">
-    <span class="live-dot"></span>
-    <h2>Jetzt auf dem Platz</h2>
-    <span class="demo-badge" id="demo-badge" hidden>Beispieldaten</span>
+  <div class="section-wrap">
+    <div class="section-heading">
+      <span class="live-dot"></span>
+      <h2>Jetzt auf dem Platz</h2>
+      <span class="demo-badge" id="demo-badge" hidden>Beispieldaten</span>
+    </div>
   </div>
 
   <main id="matches">
@@ -91,4 +243,5 @@
   <script src="assets/live.js"></script>
 </body>
 </html>
+
 
