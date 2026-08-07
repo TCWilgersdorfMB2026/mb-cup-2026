@@ -1,7 +1,7 @@
 (function () {
   var REFRESH_MS = 20000;
   var RELOAD_MS = 30 * 60 * 1000;
-  var COURTS = ['Platz 1', 'Platz 2', 'Platz 3', 'Center Court'];
+  var COURTS = ['Platz 1', 'Platz 2', 'Platz 3', 'Platz 4'];
 
   function qs(id) { return document.getElementById(id); }
 
@@ -38,8 +38,10 @@
     return (
       '<div class="match-card">' +
         '<span class="court-badge">' + escapeHtml(m.court) + '</span>' +
-        '<div class="competition">' + escapeHtml(m.competition) + '</div>' +
-        '<div class="round">' + escapeHtml(m.round) + '</div>' +
+        '<div class="meta-top">' +
+          '<div class="competition">' + escapeHtml(m.competition) + '</div>' +
+          '<div class="round">' + escapeHtml(m.round) + '</div>' +
+        '</div>' +
         '<div class="players">' +
           '<div class="player">' + escapeHtml(m.player1) + '</div>' +
           '<div class="vs">vs.</div>' +
@@ -110,3 +112,4 @@
   setInterval(refresh, REFRESH_MS);
   setTimeout(function () { location.reload(); }, RELOAD_MS);
 })();
+
