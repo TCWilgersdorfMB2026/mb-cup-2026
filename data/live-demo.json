@@ -1,26 +1,34 @@
 [
     {
-          "competition": "Herren Einzel KO LK 1,0-25,0",
-          "round": "Achtelfinale",
-          "player1": "Nies, Tim",
-          "player2": "Süßmann, Erik",
-          "time": "30.07.2025 10:30 Uhr",
-          "court": "Platz 1"
+        "competition": "Herren Einzel KO LK 1,0-25,0",
+        "round": "Achtelfinale",
+        "player1": "Nies, Tim",
+        "player2": "Süßmann, Erik",
+        "time": "30.07.2025 10:30 Uhr",
+        "court": "Platz 1"
     },
     {
-          "competition": "Herren Einzel KO LK 1,0-25,0",
-          "round": "Achtelfinale",
-          "player1": "Selter, Jan Lukas",
-          "player2": "Knebel, Philipp",
-          "time": "30.07.2025 10:30 Uhr",
-          "court": "Platz 3"
+        "competition": "Herren Einzel KO LK 1,0-25,0",
+        "round": "Achtelfinale",
+        "player1": "Motyka-Niehoff, Philipp",
+        "player2": "Klahold, Linus",
+        "time": "30.07.2025 12:00 Uhr",
+        "court": "Platz 2"
     },
     {
-          "competition": "Herren Einzel KO LK 1,0-25,0",
-          "round": "Achtelfinale",
-          "player1": "Motyka-Niehoff, Philipp",
-          "player2": "Klahold, Linus",
-          "time": "30.07.2025 12:00 Uhr",
-          "court": "Platz 2"
+        "competition": "Herren Einzel KO LK 1,0-25,0",
+        "round": "Achtelfinale",
+        "player1": "Selter, Jan Lukas",
+        "player2": "Knebel, Philipp",
+        "time": "30.07.2025 10:30 Uhr",
+        "court": "Platz 3"
+    },
+    {
+        "competition": "Herren Einzel KO LK 1,0-25,0",
+        "round": "Achtelfinale",
+        "player1": "Ballion, Silas",
+        "player2": "Ohlenburger, Yannik",
+        "time": "30.07.2025 14:00 Uhr",
+        "court": "Platz 4"
     }
 ]
