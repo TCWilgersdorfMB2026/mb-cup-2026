@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>markenbaumarkt24-Cup 2026 – Live auf dem Platz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#002c58;
+    --navy-dark:#001a35;
+    --accent:#116dff;
+    --live:#e11d2e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{
+    width:100%;height:100%;
+    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-dark) 100%);
+    color:#fff;
+    font-family:'Barlow',sans-serif;
+    overflow:hidden;
+  }
+  body{
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    padding:2.2vh 3vw;
+  }
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:1.5vh;
+    border-bottom:0.3vh solid rgba(255,255,255,0.15);
+  }
+  .brand{display:flex;flex-direction:column;}
+  .brand .title{font-size:clamp(1.6rem,2.6vw,2.6rem);font-weight:800;letter-spacing:0.02em;}
+  .brand .subtitle{font-size:clamp(0.9rem,1.2vw,1.3rem);font-weight:400;color:#aac4e8;}
+  .clock{text-align:right;}
+  .clock .time{font-size:clamp(2rem,4vw,3.4rem);font-weight:700;font-variant-numeric:tabular-nums;}
+  .clock .date{font-size:clamp(0.9rem,1.2vw,1.3rem);color:#aac4e8;}
+  .section-heading{display:flex;align-items:center;gap:1vw;margin:2vh 0;}
+  .live-dot{width:1.4vw;height:1.4vw;max-width:22px;max-height:22px;border-radius:50%;background:var(--live);animation:pulse 1.4s infinite;}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(225,29,46,0.7);}
+    70%{box-shadow:0 0 0 1.2vw rgba(225,29,46,0);}
+    100%{box-shadow:0 0 0 0 rgba(225,29,46,0);}
+  }
+  .section-heading h2{font-size:clamp(1.4rem,2.2vw,2.2rem);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;}
+  .demo-badge{margin-left:auto;background:rgba(255,255,255,0.12);border:0.15vh solid rgba(255,255,255,0.35);color:#ffd75e;padding:0.4vh 1.2vw;border-radius:999px;font-size:clamp(0.8rem,1vw,1.1rem);font-weight:600;letter-spacing:0.04em;text-transform:uppercase;}
+  main{flex:1;display:grid;gap:2vh 2vw;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));overflow:hidden;}
+  .match-card{background:rgba(255,255,255,0.06);border:0.15vh solid rgba(255,255,255,0.18);border-radius:1.4vh;padding:2.4vh 2.4vw;display:flex;flex-direction:column;justify-content:center;gap:1.4vh;position:relative;overflow:hidden;}
+  .match-card .court-badge{position:absolute;top:1.6vh;right:1.8vw;background:var(--accent);color:#fff;font-weight:700;font-size:clamp(1rem,1.4vw,1.6rem);padding:0.5vh 1.4vw;border-radius:999px;}
+  .match-card .competition{font-size:clamp(0.85rem,1.1vw,1.2rem);color:#aac4e8;text-transform:uppercase;letter-spacing:0.04em;font-weight:600;}
+  .match-card .round{font-size:clamp(0.8rem,1vw,1.1rem);color:#7fa3d4;}
+  .players{display:flex;flex-direction:column;gap:1vh;margin:1vh 0;}
+  .player{font-size:clamp(1.8rem,3.4vw,3.2rem);font-weight:700;line-height:1.15;}
+  .vs{font-size:clamp(1rem,1.4vw,1.4rem);color:#7fa3d4;font-weight:600;text-align:center;}
+  .match-meta{display:flex;gap:2vw;font-size:clamp(1rem,1.4vw,1.5rem);color:#d7e6ff;font-weight:600;}
+  .empty-state{grid-column:1/-1;display:flex;align-items:center;justify-content:center;font-size:clamp(1.4rem,2vw,2rem);color:#7fa3d4;text-align:center;}
+  footer{text-align:center;padding-top:1.5vh;font-size:clamp(0.8rem,1vw,1.1rem);color:#5c85bd;}
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="title">markenbaumarkt24-Cup 2026</div>
+      <div class="subtitle">17. Wilgersdorfer LK-Turnier · TC Wilgersdorf</div>
+    </div>
+    <div class="clock">
+      <div class="time" id="clock-time">--:--</div>
+      <div class="date" id="clock-date">--</div>
+    </div>
+  </header>
+
+  <div class="section-heading">
+    <span class="live-dot"></span>
+    <h2>Jetzt auf dem Platz</h2>
+    <span class="demo-badge" id="demo-badge" hidden>Beispieldaten</span>
+  </div>
+
+  <main id="matches">
+    <div class="empty-state">Lade Daten…</div>
+  </main>
+
+  <footer>Aktualisiert automatisch · <span id="last-updated">--</span></footer>
+
+  <script src="assets/live.js"></script>
+</body>
+</html>
