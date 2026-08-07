@@ -25,13 +25,13 @@
     display:flex;
     flex-direction:column;
     height:100vh;
-    padding:2.2vh 3vw;
+    padding:1.4vh 1.6vw;
   }
   header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding-bottom:1.5vh;
+    padding-bottom:1vh;
     border-bottom:0.3vh solid rgba(255,255,255,0.15);
   }
   .brand{display:flex;flex-direction:column;}
@@ -40,7 +40,7 @@
   .clock{text-align:right;}
   .clock .time{font-size:clamp(2rem,4vw,3.4rem);font-weight:700;font-variant-numeric:tabular-nums;}
   .clock .date{font-size:clamp(0.9rem,1.2vw,1.3rem);color:#aac4e8;}
-  .section-heading{display:flex;align-items:center;gap:1vw;margin:2vh 0;}
+  .section-heading{display:flex;align-items:center;gap:1vw;margin:1vh 0;}
   .live-dot{width:1.4vw;height:1.4vw;max-width:22px;max-height:22px;border-radius:50%;background:var(--live);animation:pulse 1.4s infinite;}
   @keyframes pulse{
     0%{box-shadow:0 0 0 0 rgba(225,29,46,0.7);}
@@ -49,17 +49,19 @@
   }
   .section-heading h2{font-size:clamp(1.4rem,2.2vw,2.2rem);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;}
   .demo-badge{margin-left:auto;background:rgba(255,255,255,0.12);border:0.15vh solid rgba(255,255,255,0.35);color:#ffd75e;padding:0.4vh 1.2vw;border-radius:999px;font-size:clamp(0.8rem,1vw,1.1rem);font-weight:600;letter-spacing:0.04em;text-transform:uppercase;}
-  main{flex:1;display:grid;gap:2vh 2vw;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));overflow:hidden;}
-  .match-card{background:rgba(255,255,255,0.06);border:0.15vh solid rgba(255,255,255,0.18);border-radius:1.4vh;padding:2.4vh 2.4vw;display:flex;flex-direction:column;justify-content:center;gap:1.4vh;position:relative;overflow:hidden;}
-  .match-card .court-badge{position:absolute;top:1.6vh;right:1.8vw;background:var(--accent);color:#fff;font-weight:700;font-size:clamp(1rem,1.4vw,1.6rem);padding:0.5vh 1.4vw;border-radius:999px;}
-  .match-card .competition{font-size:clamp(0.85rem,1.1vw,1.2rem);color:#aac4e8;text-transform:uppercase;letter-spacing:0.04em;font-weight:600;}
-  .match-card .round{font-size:clamp(0.8rem,1vw,1.1rem);color:#7fa3d4;}
-  .players{display:flex;flex-direction:column;gap:1vh;margin:1vh 0;}
-  .player{font-size:clamp(1.8rem,3.4vw,3.2rem);font-weight:700;line-height:1.15;}
-  .vs{font-size:clamp(1rem,1.4vw,1.4rem);color:#7fa3d4;font-weight:600;text-align:center;}
-  .match-meta{display:flex;gap:2vw;font-size:clamp(1rem,1.4vw,1.5rem);color:#d7e6ff;font-weight:600;}
+  main{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:1vh 0.7vw;overflow:hidden;min-height:0;}
+  .match-card{background:rgba(255,255,255,0.06);border:0.15vh solid rgba(255,255,255,0.18);border-radius:1.2vh;padding:1vh 0.9vw;display:flex;flex-direction:column;justify-content:center;gap:0.6vh;position:relative;overflow:hidden;min-height:0;}
+  .match-card-empty{justify-content:center;align-items:center;background:rgba(255,255,255,0.03);}
+  .match-card .court-badge{position:absolute;top:0.9vh;left:0.9vw;background:var(--accent);color:#fff;font-weight:800;font-size:clamp(1.1rem,2vw,1.9rem);padding:0.6vh 1.3vw;border-radius:999px;letter-spacing:0.02em;box-shadow:0 0.3vh 1vh rgba(0,0,0,0.35);}
+  .match-card .competition{font-size:clamp(0.7rem,0.95vw,1rem);color:#aac4e8;text-transform:uppercase;letter-spacing:0.03em;font-weight:600;margin-top:3.6vh;}
+  .match-card .round{font-size:clamp(0.7rem,0.85vw,0.95rem);color:#7fa3d4;}
+  .players{display:flex;flex-direction:column;gap:0.4vh;margin:0.4vh 0;}
+  .player{font-size:clamp(1.9rem,5.6vh,4.2rem);font-weight:800;line-height:1.02;word-break:break-word;}
+  .vs{font-size:clamp(0.9rem,1.6vh,1.3rem);color:#7fa3d4;font-weight:600;text-align:center;}
+  .match-meta{display:flex;gap:1vw;font-size:clamp(0.85rem,1.6vh,1.3rem);color:#d7e6ff;font-weight:600;}
+  .court-empty{font-size:clamp(1.2rem,2.4vh,1.8rem);color:#5c85bd;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;}
   .empty-state{grid-column:1/-1;display:flex;align-items:center;justify-content:center;font-size:clamp(1.4rem,2vw,2rem);color:#7fa3d4;text-align:center;}
-  footer{text-align:center;padding-top:1.5vh;font-size:clamp(0.8rem,1vw,1.1rem);color:#5c85bd;}
+  footer{text-align:center;padding-top:1vh;font-size:clamp(0.8rem,1vw,1.1rem);color:#5c85bd;}
 </style>
 </head>
 <body>
@@ -89,3 +91,4 @@
   <script src="assets/live.js"></script>
 </body>
 </html>
+
