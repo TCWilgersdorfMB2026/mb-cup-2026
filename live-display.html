@@ -214,47 +214,6 @@ padding-top:0.15vh;
     font-size:clamp(0.75rem,0.95vw,1rem);
     color:var(--muted);
   }
-
-  .menu-ticker{
-  display:flex;
-  align-items:center;
-  gap:1.2vw;
-  background:linear-gradient(135deg,var(--navy),var(--navy-dark));
-  color:#fff;
-  padding:0.5vh 2vw;
-  overflow:hidden;
-  }
-.menu-ticker[hidden]{
-display:none;
-}
-  .menu-ticker-label{
-  flex-shrink:0;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:0.04em;
-font-size:clamp(1.46rem,1.95vw,2.05rem);
-  background:rgba(255,255,255,0.15);
-  padding:0.3vh 1.1vw;
-  border-radius:999px;
-  white-space:nowrap;
-  }
-  .menu-ticker-track{
-  flex:1;
-  overflow:hidden;
-  white-space:nowrap;
-  }
-  .menu-ticker-content{
-  display:inline-block;
-  white-space:nowrap;
-  font-size:clamp(1.66rem,2.34vw,2.44rem);
-  font-weight:600;
-  padding-left:100%;
-  animation:ticker-scroll 30s linear infinite;
-  }
-  @keyframes ticker-scroll{
-  from{ transform:translateX(0); }
-  to{ transform:translateX(-100%); }
-  }
 .info-qr-bar{
 display:flex;
 align-items:center;
@@ -314,13 +273,7 @@ color:var(--muted);
   <main id="matches">
     <div class="empty-state">Lade Daten…</div>
   </main>
-
-<div class="menu-ticker" id="menu-ticker" hidden>
-<span class="menu-ticker-label">Speiseplan heute</span>
-<div class="menu-ticker-track"><div class="menu-ticker-content" id="menu-ticker-content"></div></div>
-</div>
-
-<div class="info-qr-bar">
+  <div class="info-qr-bar">
 <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fwww.tcwilgersdorf.de%2Fmb-cup-2026" alt="QR-Code zur MB-Cup-Seite" loading="lazy">
 <div class="info-qr-text">
 <span class="info-qr-caption">Alle Infos rund um den markenbaumarkt24-Cup 2026</span>
