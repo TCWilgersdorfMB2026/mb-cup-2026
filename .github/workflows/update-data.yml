@@ -1,15 +1,7 @@
 name: tennis.de Daten aktualisieren
 
+# WICHTIG: Automatischer 30-Minuten-Cron bis zur Auslosung am 11.08.2026 vorübergehend AUSGESCHALTET, damit die Demo-/Beispieldaten (Ticker, Ergebnisse, Berichte, Speiseplan) für eine Kundenpräsentation nicht durch einen automatischen Scrape-Lauf überschrieben werden (tennis.de liefert vor der Auslosung ohnehin nur leere Paarungen zurück). Ab dem 11.08.2026 hier wieder einen "schedule:"-Block mit "- cron: '*/30 * * * *'" ergänzen, um den automatischen Lauf zu reaktivieren.
 on:
-  schedule:
-    # WICHTIG: Bis zur Auslosung am 11.08.2026 vorübergehend AUSGESCHALTET,
-    # damit die Demo-/Beispieldaten (Ticker, Ergebnisse, Berichte,
-    # Speiseplan) für eine Kundenpräsentation nicht durch einen automatischen
-    # Scrape-Lauf überschrieben werden (tennis.de liefert vor der Auslosung
-    # ohnehin nur leere Paarungen zurück). Vor dem 11.08.2026 die Raute (#)
-    # in der Zeile darunter wieder entfernen, um den 30-Minuten-Takt zu
-    # reaktivieren!
-    # - cron: '*/30 * * * *'
   workflow_dispatch:
     inputs:
       test_tournament_id:
