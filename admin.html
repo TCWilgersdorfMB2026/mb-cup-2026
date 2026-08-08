@@ -780,11 +780,33 @@ function renderLiveCourts(optionsHtml) {
       <label>Spieler 2</label>
       <select class="live-player2" data-court-i="${i}">${optionsHtml}</select>
       <label>Runde (optional)</label>
-      <input type="text" class="live-round" data-court-i="${i}" placeholder="z.B. Achtelfinale">
+<select class="live-round-select" data-court-i="${i}">
+<option value="">– keine Angabe –</option>
+<option value="Gruppenphase">Gruppenphase</option>
+<option value="Vorrunde">Vorrunde</option>
+<option value="Achtelfinale">Achtelfinale</option>
+<option value="Viertelfinale">Viertelfinale</option>
+<option value="Halbfinale">Halbfinale</option>
+<option value="Finale">Finale</option>
+<option value="__custom__">Sonstige…</option>
+</select>
+<input type="text" class="live-round-custom" data-court-i="${i}" placeholder="Eigene Runde eingeben" style="display:none;">
       <label>Uhrzeit</label>
       <input type="text" class="live-time" data-court-i="${i}" placeholder="z.B. 08.08.2026 14:00 Uhr">
     </div>`).join('');
 }
+
+// Zeigt bei Auswahl von "Sonstige..." im Runde-Dropdown das Freitextfeld
+// an (und blendet es sonst wieder aus).
+document.querySelector('[data-live-court-list]').addEventListener('change', (e) => {
+const sel = e.target.closest('.live-round-select');
+if (!sel) return;
+const i = sel.dataset.courtI;
+const custom = document.querySelector(`.live-round-custom[data-court-i="${i}"]`);
+if (!custom) return;
+if (sel.value === '__custom__') { custom.style.display = 'block'; custom.focus(); }
+else { custom.style.display = 'none'; custom.value = ''; }
+});
 
 // Befüllt die 4 Court-Blöcke mit den aktuell gespeicherten Werten (falls
 // vorhanden), damit man beim erneuten Öffnen der Seite sieht, was gerade
@@ -796,12 +818,23 @@ function fillLiveForm(matches) {
     const m = byCourt[court];
     const p1 = document.querySelector(`.live-player1[data-court-i="${i}"]`);
     const p2 = document.querySelector(`.live-player2[data-court-i="${i}"]`);
-    const rd = document.querySelector(`.live-round[data-court-i="${i}"]`);
-    const tm = document.querySelector(`.live-time[data-court-i="${i}"]`);
-    if (p1) p1.value = m ? m.player1 : '';
-    if (p2) p2.value = m ? m.player2 : '';
-    if (rd) rd.value = m ? (m.round || '') : '';
-    if (tm) tm.value = m ? (m.time || '') : '';
+const rd = document.querySelector(`.live-round-select[data-court-i="${i}"]`);
+const rdCustom = document.querySelector(`.live-round-custom[data-court-i="${i}"]`);
+const tm = document.querySelector(`.live-time[data-court-i="${i}"]`);
+if (p1) p1.value = m ? m.player1 : '';
+if (p2) p2.value = m ? m.player2 : '';
+if (rd) {
+const roundVal = m ? (m.round || '') : '';
+const known = Array.from(rd.options).map(o => o.value).filter(v => v && v !== '__custom__');
+if (roundVal && !known.includes(roundVal)) {
+rd.value = '__custom__';
+if (rdCustom) { rdCustom.value = roundVal; rdCustom.style.display = 'block'; }
+} else {
+rd.value = roundVal;
+if (rdCustom) { rdCustom.value = ''; rdCustom.style.display = 'none'; }
+}
+}
+if (tm) tm.value = m ? (m.time || '') : '';
   });
 }
 
@@ -835,7 +868,12 @@ document.getElementById('live-form').addEventListener('submit', async (e) => {
       const player1 = p1sel.value;
       const player2 = p2sel.value;
       if (!player1 || !player2) return;
-      const round = document.querySelector(`.live-round[data-court-i="${i}"]`).value.trim();
+const roundSel = document.querySelector(`.live-round-select[data-court-i="${i}"]`);
+let round = roundSel ? roundSel.value : '';
+if (round === '__custom__') {
+const roundCustom = document.querySelector(`.live-round-custom[data-court-i="${i}"]`);
+round = roundCustom ? roundCustom.value.trim() : '';
+}
       const time = document.querySelector(`.live-time[data-court-i="${i}"]`).value.trim();
       const opt1 = p1sel.selectedOptions[0];
       const competition = (opt1 && opt1.dataset.competition) || '';
