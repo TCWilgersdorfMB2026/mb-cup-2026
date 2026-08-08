@@ -113,7 +113,7 @@
     display:grid;
     grid-template-columns:repeat(2,1fr);
     grid-template-rows:repeat(2,1fr);
-    gap:1.2vh 1vw;
+gap:0.8vh 1vw;
     padding:0 2vw 1.4vh;
     overflow:hidden;
     min-height:0;
@@ -122,11 +122,11 @@
     background:var(--card);
     border:1px solid var(--border);
     border-radius:1.2vh;
-    padding:1.2vh 1.4vw;
+padding:0.7vh 1.2vw;
     display:flex;
     flex-direction:column;
     align-items:flex-start;
-    gap:0.6vh;
+gap:0.3vh;
     overflow:hidden;
     min-height:0;
     box-shadow:0 0.2vh 0.6vh rgba(0,0,0,0.06);
@@ -166,12 +166,12 @@
     width:100%;
   }
   .players .player:first-child{
-    min-height:2.1em;
+min-height:1.7em;
     display:flex;
     align-items:flex-start;
   }
   .player{
-    font-size:clamp(1.8rem,6.4vh,4.4rem);
+font-size:clamp(1.6rem,5.4vh,3.6rem);
     font-weight:800;
     line-height:1.02;
     word-break:break-word;
@@ -185,7 +185,7 @@
   }
   .match-meta{
     margin-top:auto;
-    padding-top:0.4vh;
+padding-top:0.15vh;
     font-size:clamp(0.85rem,1.6vh,1.25rem);
     color:var(--muted);
     font-weight:600;
@@ -221,7 +221,7 @@
   gap:1.2vw;
   background:linear-gradient(135deg,var(--navy),var(--navy-dark));
   color:#fff;
-  padding:1.4vh 2vw;
+  padding:0.5vh 2vw;
   overflow:hidden;
   }
 .menu-ticker[hidden]{
@@ -234,7 +234,7 @@ display:none;
   letter-spacing:0.04em;
 font-size:clamp(2.25rem,3vw,3.15rem);
   background:rgba(255,255,255,0.15);
-  padding:0.8vh 1.4vw;
+  padding:0.3vh 1.1vw;
   border-radius:999px;
   white-space:nowrap;
   }
@@ -261,22 +261,33 @@ align-items:center;
 gap:1.4vw;
 background:var(--card);
 color:var(--navy);
-padding:0.8vh 2vw;
+padding:0.35vh 2vw;
 border-top:1px solid var(--border);
 }
 .info-qr-bar img{
-width:6.5vh;
-height:6.5vh;
-min-width:56px;
-min-height:56px;
+width:4vh;
+height:4vh;
+min-width:40px;
+min-height:40px;
 background:#fff;
 border-radius:8px;
 padding:4px;
 flex-shrink:0;
 }
-.info-qr-bar span{
+.info-qr-bar .info-qr-text{
+display:flex;
+flex-direction:column;
+gap:0.1vh;
+}
+.info-qr-caption{
 font-weight:700;
-font-size:clamp(1.1rem,1.6vw,1.6rem);
+font-size:clamp(0.85rem,1.2vw,1.15rem);
+color:var(--navy);
+}
+.info-qr-url{
+font-weight:600;
+font-size:clamp(0.7rem,0.95vw,0.9rem);
+color:var(--muted);
 }
 </style>
 </head>
@@ -311,7 +322,10 @@ font-size:clamp(1.1rem,1.6vw,1.6rem);
 
 <div class="info-qr-bar">
 <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fwww.tcwilgersdorf.de%2Fmb-cup-2026" alt="QR-Code zur MB-Cup-Seite" loading="lazy">
-<span>Alle Infos rund um den markenbaumarkt24-Cup 2026</span>
+<div class="info-qr-text">
+<span class="info-qr-caption">Alle Infos rund um den markenbaumarkt24-Cup 2026</span>
+<span class="info-qr-url">www.tcwilgersdorf.de/mb-cup-2026</span>
+</div>
 </div>
 
   <footer>Aktualisiert automatisch · <span id="last-updated">--</span></footer>
