@@ -146,6 +146,14 @@
   .dish-file-label { font-size: 0.78rem; font-weight: 400; margin: 10px 0 2px; color: var(--muted); }
   .dish-row input[type=file] { margin-top: 0; }
   button.add-dish { margin-top: 4px; }
+
+/* Live-Anzeige (4 Plaetze): Formular zur manuellen Eingabe der aktuell
+   angezeigten Spielpaarungen auf der Live-Display-Seite. */
+.live-court-list { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+.live-court { border: 1px solid var(--border); border-radius: 8px; padding: 10px; background: var(--bg); }
+.live-court h3 { margin: 0 0 8px; font-size: 0.95rem; color: var(--navy); }
+.live-court select { width: 100%; padding: 9px 10px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.9rem; background: #fff; margin-bottom: 2px; }
+.live-court input[type=text] { margin: 0 0 2px; }
 </style>
 </head>
 <body>
@@ -229,6 +237,16 @@
       </form>
       <div class="entry-list" data-list="menu"><h3>Bisheriger Speiseplan</h3><div data-items></div></div>
     </div>
+
+<div class="card">
+<h2>Live-Anzeige (4 Plätze)</h2>
+<p class="hint">Trage hier die aktuell laufenden Partien ein, die auf der Live-Display-Seite gezeigt werden. Spieler stammen aus der Meldeliste (nach Konkurrenz sortiert), die Uhrzeit wird frei eingetragen (Format: TT.MM.JJJJ HH:MM Uhr). Platz einfach ohne Spieler lassen, wenn dort gerade nichts läuft.</p>
+<form id="live-form">
+<div class="live-court-list" data-live-court-list></div>
+<button type="submit">Veröffentlichen</button>
+<div class="status" data-status></div>
+</form>
+</div>
   </div>
 
 </main>
@@ -732,6 +750,107 @@ document.getElementById('menu-form').addEventListener('submit', async (e) => {
   btn.disabled = false;
 });
 
+// ---- Live-Anzeige (4 Plätze) ----
+const LIVE_COURTS = ['Platz 1', 'Platz 2', 'Platz 3', 'Platz 4'];
+
+// Baut die <option>-Liste (gruppiert nach Konkurrenz als <optgroup>) für die
+// Spieler-Dropdowns aus den Meldelisten (data/entrants.json).
+function livePlayerOptionsHtml(entrantsList) {
+  let html = '<option value="">– keiner –</option>';
+  (entrantsList || []).forEach((group) => {
+    const players = group.entrants || [];
+    if (!players.length) return;
+    html += `<optgroup label="${escapeHtml(group.competition || '')}">`;
+    players.forEach((p) => {
+      const label = p.name + (p.lk ? ' (LK ' + p.lk + ')' : '');
+      html += `<option value="${escapeHtml(p.name)}" data-competition="${escapeHtml(group.competition || '')}">${escapeHtml(label)}</option>`;
+    });
+    html += '</optgroup>';
+  });
+  return html;
+}
+
+function renderLiveCourts(optionsHtml) {
+  const box = document.querySelector('[data-live-court-list]');
+  box.innerHTML = LIVE_COURTS.map((court, i) => `
+    <div class="live-court">
+      <h3>${court}</h3>
+      <label>Spieler 1</label>
+      <select class="live-player1" data-court-i="${i}">${optionsHtml}</select>
+      <label>Spieler 2</label>
+      <select class="live-player2" data-court-i="${i}">${optionsHtml}</select>
+      <label>Runde (optional)</label>
+      <input type="text" class="live-round" data-court-i="${i}" placeholder="z.B. Achtelfinale">
+      <label>Uhrzeit</label>
+      <input type="text" class="live-time" data-court-i="${i}" placeholder="z.B. 08.08.2026 14:00 Uhr">
+    </div>`).join('');
+}
+
+// Befüllt die 4 Court-Blöcke mit den aktuell gespeicherten Werten (falls
+// vorhanden), damit man beim erneuten Öffnen der Seite sieht, was gerade
+// eingetragen ist, statt bei leeren Feldern zu starten.
+function fillLiveForm(matches) {
+  const byCourt = {};
+  (matches || []).forEach((m) => { byCourt[m.court] = m; });
+  LIVE_COURTS.forEach((court, i) => {
+    const m = byCourt[court];
+    const p1 = document.querySelector(`.live-player1[data-court-i="${i}"]`);
+    const p2 = document.querySelector(`.live-player2[data-court-i="${i}"]`);
+    const rd = document.querySelector(`.live-round[data-court-i="${i}"]`);
+    const tm = document.querySelector(`.live-time[data-court-i="${i}"]`);
+    if (p1) p1.value = m ? m.player1 : '';
+    if (p2) p2.value = m ? m.player2 : '';
+    if (rd) rd.value = m ? (m.round || '') : '';
+    if (tm) tm.value = m ? (m.time || '') : '';
+  });
+}
+
+async function loadLiveSection() {
+  const statusEl = document.querySelector('#live-form [data-status]');
+  setStatus(statusEl, 'Lade Meldeliste & aktuelle Anzeige…', false);
+  try {
+    const { list: entrantsList } = await ghGet('data/entrants.json');
+    renderLiveCourts(livePlayerOptionsHtml(entrantsList));
+    const { list: current } = await ghGet('data/live-current.json');
+    fillLiveForm(current);
+    statusEl.textContent = '';
+    statusEl.className = 'status';
+  } catch (e) {
+    renderLiveCourts('<option value="">(Fehler beim Laden der Meldeliste)</option>');
+    setStatus(statusEl, e.message, true);
+  }
+}
+
+document.getElementById('live-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const statusEl = document.querySelector('#live-form [data-status]');
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.disabled = true;
+  setStatus(statusEl, 'Speichere…', false);
+  try {
+    const matches = [];
+    LIVE_COURTS.forEach((court, i) => {
+      const p1sel = document.querySelector(`.live-player1[data-court-i="${i}"]`);
+      const p2sel = document.querySelector(`.live-player2[data-court-i="${i}"]`);
+      const player1 = p1sel.value;
+      const player2 = p2sel.value;
+      if (!player1 || !player2) return;
+      const round = document.querySelector(`.live-round[data-court-i="${i}"]`).value.trim();
+      const time = document.querySelector(`.live-time[data-court-i="${i}"]`).value.trim();
+      const opt1 = p1sel.selectedOptions[0];
+      const competition = (opt1 && opt1.dataset.competition) || '';
+      matches.push({ competition, round, player1, player2, time, court });
+    });
+    const { sha } = await ghGet('data/live-current.json');
+    await ghPutJson('data/live-current.json', matches, sha, 'Live-Anzeige aktualisiert');
+    setStatus(statusEl, 'Veröffentlicht! Erscheint in ca. 1 Minute auf der Live-Display-Seite.', false);
+  } catch (err) {
+    setStatus(statusEl, err.message, true);
+  }
+  btn.disabled = false;
+});
+
+
 const FILE_MAP = { ticker: 'data/ticker.json', reports: 'data/reports.json', menu: 'data/menu.json' };
 const REFRESH_MAP = { ticker: refreshTickerList, reports: refreshReportsList, menu: refreshMenuList };
 const FORM_MAP = {
@@ -911,6 +1030,7 @@ function showForms() {
   refreshTickerList();
   refreshReportsList();
   refreshMenuList();
+    loadLiveSection();
 }
 function showSetup() {
   document.getElementById('setup-box').style.display = 'block';
