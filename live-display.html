@@ -255,6 +255,29 @@ font-size:clamp(2.25rem,3vw,3.15rem);
   from{ transform:translateX(0); }
   to{ transform:translateX(-100%); }
   }
+.info-qr-bar{
+display:flex;
+align-items:center;
+gap:1.4vw;
+background:var(--card);
+color:var(--navy);
+padding:0.8vh 2vw;
+border-top:1px solid var(--border);
+}
+.info-qr-bar img{
+width:6.5vh;
+height:6.5vh;
+min-width:56px;
+min-height:56px;
+background:#fff;
+border-radius:8px;
+padding:4px;
+flex-shrink:0;
+}
+.info-qr-bar span{
+font-weight:700;
+font-size:clamp(1.1rem,1.6vw,1.6rem);
+}
 </style>
 </head>
 <body>
@@ -284,6 +307,11 @@ font-size:clamp(2.25rem,3vw,3.15rem);
 <div class="menu-ticker" id="menu-ticker" hidden>
 <span class="menu-ticker-label">Speiseplan heute</span>
 <div class="menu-ticker-track"><div class="menu-ticker-content" id="menu-ticker-content"></div></div>
+</div>
+
+<div class="info-qr-bar">
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fwww.tcwilgersdorf.de%2Fmb-cup-2026" alt="QR-Code zur MB-Cup-Seite" loading="lazy">
+<span>Alle Infos rund um den markenbaumarkt24-Cup 2026</span>
 </div>
 
   <footer>Aktualisiert automatisch · <span id="last-updated">--</span></footer>
