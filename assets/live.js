@@ -2,6 +2,7 @@
   var REFRESH_MS = 20000;
   var RELOAD_MS = 30 * 60 * 1000;
   var COURTS = ['Platz 1', 'Platz 2', 'Platz 3', 'Platz 4'];
+  var MENU_REFRESH_MS = 5 * 60 * 1000;
 
   function qs(id) { return document.getElementById(id); }
 
@@ -61,9 +62,10 @@
     );
   }
 
-  function renderMatches(matches, isDemo) {
-    var container = qs('matches');
-    qs('demo-badge').hidden = !isDemo;
+function renderMatches(matches, badgeText) {
+      var container = qs('matches');
+      var badge = qs('demo-badge');
+      if (badgeText) { badge.textContent = badgeText; badge.hidden = false; } else { badge.hidden = true; }
 
     var byCourt = {};
     (matches || []).forEach(function (m) {
@@ -95,14 +97,53 @@
         return t <= now && !finishedKeys[matchKey(m)];
       });
       if (live.length > 0) {
-        renderMatches(live, false);
-        finishLastUpdated(now);
-        return null;
+          renderMatches(live, null);
+          finishLastUpdated(now);
+          return null;
+        }
+        return loadJSON('data/live-current.json').then(function (manual) {
+          if (manual && manual.length > 0) {
+            renderMatches(manual, null);
+            finishLastUpdated(now);
+            return null;
+          }
+          return loadJSON('data/live-demo.json').then(function (demo) {
+            renderMatches(demo || [], 'Beispieldaten');
+            finishLastUpdated(now);
+          });
+        });
+  }
+
+  // ---- Speiseplan-Laufband ----
+  function todayIso() {
+    var d = new Date();
+    var mo = String(d.getMonth() + 1);
+    if (mo.length < 2) mo = '0' + mo;
+    var da = String(d.getDate());
+    if (da.length < 2) da = '0' + da;
+    return d.getFullYear() + '-' + mo + '-' + da;
+  }
+
+  function loadMenuTicker() {
+    loadJSON('data/menu.json').then(function (menu) {
+      var bar = qs('menu-ticker');
+      var content = qs('menu-ticker-content');
+      if (!bar || !content) return;
+      var today = todayIso();
+      var entry = null;
+      (menu || []).forEach(function (e) { if (e.day === today) entry = e; });
+      var items = (entry && entry.items) ? entry.items : [];
+      var names = items.map(function (it) {
+        return typeof it === 'string' ? it : ((it && it.name) || '');
+      }).filter(function (n) { return !!n; });
+      if (!names.length) {
+        bar.hidden = true;
+        return;
       }
-      return loadJSON('data/live-demo.json').then(function (demo) {
-        renderMatches(demo || [], true);
-        finishLastUpdated(now);
-      });
+      var text = names.join('   \u2022   ');
+      content.textContent = text + '   \u2022   ' + text;
+      content.style.animationDuration = Math.max(18, text.length * 0.18) + 's';
+      bar.hidden = false;
     });
   }
 
@@ -110,6 +151,8 @@
   setInterval(renderClock, 1000);
   refresh();
   setInterval(refresh, REFRESH_MS);
+  loadMenuTicker();
+  setInterval(loadMenuTicker, MENU_REFRESH_MS);
   setTimeout(function () { location.reload(); }, RELOAD_MS);
 })();
 
