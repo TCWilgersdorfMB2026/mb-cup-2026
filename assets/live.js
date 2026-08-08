@@ -112,6 +112,7 @@ function renderMatches(matches, badgeText) {
             finishLastUpdated(now);
           });
         });
+      });
   }
 
   // ---- Speiseplan-Laufband ----
