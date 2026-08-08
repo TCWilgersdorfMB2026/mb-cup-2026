@@ -214,6 +214,44 @@
     font-size:clamp(0.75rem,0.95vw,1rem);
     color:var(--muted);
   }
+
+  .menu-ticker{
+  display:flex;
+  align-items:center;
+  gap:1.2vw;
+  background:linear-gradient(135deg,var(--navy),var(--navy-dark));
+  color:#fff;
+  padding:0.9vh 2vw;
+  overflow:hidden;
+  }
+  .menu-ticker-label{
+  flex-shrink:0;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  font-size:clamp(0.75rem,1vw,1.05rem);
+  background:rgba(255,255,255,0.15);
+  padding:0.5vh 1.1vw;
+  border-radius:999px;
+  white-space:nowrap;
+  }
+  .menu-ticker-track{
+  flex:1;
+  overflow:hidden;
+  white-space:nowrap;
+  }
+  .menu-ticker-content{
+  display:inline-block;
+  white-space:nowrap;
+  font-size:clamp(0.85rem,1.2vw,1.25rem);
+  font-weight:600;
+  padding-left:100%;
+  animation:ticker-scroll 30s linear infinite;
+  }
+  @keyframes ticker-scroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-100%); }
+  }
 </style>
 </head>
 <body>
@@ -239,6 +277,11 @@
   <main id="matches">
     <div class="empty-state">Lade Daten…</div>
   </main>
+
+<div class="menu-ticker" id="menu-ticker" hidden>
+<span class="menu-ticker-label">Speiseplan heute</span>
+<div class="menu-ticker-track"><div class="menu-ticker-content" id="menu-ticker-content"></div></div>
+</div>
 
   <footer>Aktualisiert automatisch · <span id="last-updated">--</span></footer>
 
