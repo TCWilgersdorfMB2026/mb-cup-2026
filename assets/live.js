@@ -48,8 +48,7 @@
           '<div class="vs">vs.</div>' +
           '<div class="player">' + escapeHtml(m.player2) + '</div>' +
         '</div>' +
-        '<div class="match-meta"><span>' + escapeHtml(m.time) + '</span></div>' +
-      '</div>'
+                '</div>'
     );
   }
 
