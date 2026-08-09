@@ -240,7 +240,7 @@
 
 <div class="card">
 <h2>Live-Anzeige (4 Plätze)</h2>
-<p class="hint">Trage hier die aktuell laufenden Partien ein, die auf der Live-Display-Seite gezeigt werden. Spieler stammen aus der Meldeliste (nach Konkurrenz sortiert), die Uhrzeit wird frei eingetragen (Format: TT.MM.JJJJ HH:MM Uhr). Platz einfach ohne Spieler lassen, wenn dort gerade nichts läuft.</p>
+<p class="hint">Trage hier die aktuell laufenden Partien ein, die auf der Live-Display-Seite gezeigt werden. Spieler stammen aus der Meldeliste (nach Konkurrenz sortiert), Datum und Uhrzeit werden über den Kalender bzw. die Uhrzeitauswahl eingestellt. Platz einfach ohne Spieler lassen, wenn dort gerade nichts läuft.</p>
 <form id="live-form">
 <div class="live-court-list" data-live-court-list></div>
 <button type="submit">Veröffentlichen</button>
@@ -791,9 +791,27 @@ function renderLiveCourts(optionsHtml) {
 <option value="__custom__">Sonstige…</option>
 </select>
 <input type="text" class="live-round-custom" data-court-i="${i}" placeholder="Eigene Runde eingeben" style="display:none;">
-      <label>Uhrzeit</label>
-      <input type="text" class="live-time" data-court-i="${i}" placeholder="z.B. 08.08.2026 14:00 Uhr">
+              <label>Datum &amp; Uhrzeit</label>
+        <input type="datetime-local" class="live-time" data-court-i="${i}">
     </div>`).join('');
+}
+
+// Wandelt das gespeicherte Zeitformat "TT.MM.JJJJ HH:MM Uhr" in den Wert
+// fuer <input type="datetime-local"> um ("JJJJ-MM-TTTHH:MM").
+function liveTimeToInputValue(str) {
+  if (!str) return '';
+  const m = str.match(/(\d{2})\.(\d{2})\.(\d{4})\s+(\d{2}):(\d{2})/);
+  if (!m) return '';
+  return `${m[3]}-${m[2]}-${m[1]}T${m[4]}:${m[5]}`;
+}
+
+// Wandelt den Wert von <input type="datetime-local"> zurueck in das von
+// live.js erwartete Format "TT.MM.JJJJ HH:MM Uhr".
+function inputValueToLiveTime(val) {
+  if (!val) return '';
+  const m = val.match(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
+  if (!m) return '';
+  return `${m[3]}.${m[2]}.${m[1]} ${m[4]}:${m[5]} Uhr`;
 }
 
 // Zeigt bei Auswahl von "Sonstige..." im Runde-Dropdown das Freitextfeld
@@ -834,7 +852,7 @@ rd.value = roundVal;
 if (rdCustom) { rdCustom.value = ''; rdCustom.style.display = 'none'; }
 }
 }
-if (tm) tm.value = m ? (m.time || '') : '';
+if (tm) tm.value = m ? liveTimeToInputValue(m.time || '') : '';
   });
 }
 
@@ -874,7 +892,7 @@ if (round === '__custom__') {
 const roundCustom = document.querySelector(`.live-round-custom[data-court-i="${i}"]`);
 round = roundCustom ? roundCustom.value.trim() : '';
 }
-      const time = document.querySelector(`.live-time[data-court-i="${i}"]`).value.trim();
+      const time = inputValueToLiveTime(document.querySelector(`.live-time[data-court-i="${i}"]`).value);
       const opt1 = p1sel.selectedOptions[0];
       const competition = (opt1 && opt1.dataset.competition) || '';
       matches.push({ competition, round, player1, player2, time, court });
