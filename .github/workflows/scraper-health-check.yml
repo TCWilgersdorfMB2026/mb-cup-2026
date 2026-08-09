@@ -1,0 +1,68 @@
+name: Scraper-Gesundheitscheck
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloudflare-Worker und mb-cup-Scraper pruefen
+        run: |
+          set +e
+          FAIL=0
+          TODAY=$(TZ=Europe/Berlin date +%d.%m.%Y)
+          echo "Heutiges Datum (Europe/Berlin): $TODAY"
+
+          check_stand() {
+            NAME="$1"
+            URL="$2"
+            BODY=$(curl -fsSL --max-time 20 "$URL" || echo "FETCH_ERROR")
+            if [ "$BODY" = "FETCH_ERROR" ]; then
+              echo "::error::$NAME ($URL) ist nicht erreichbar."
+              FAIL=1
+              return
+            fi
+            STAND=$(echo "$BODY" | grep -oE 'Stand: [0-9]{2}\.[0-9]{2}\.[0-9]{4}' | head -1 | sed 's/Stand: //')
+            if [ -z "$STAND" ]; then
+              echo "::error::$NAME ($URL) liefert keine Stand-Angabe mehr - Seite evtl. kaputt oder Format geaendert."
+              FAIL=1
+            elif [ "$STAND" != "$TODAY" ]; then
+              echo "::error::$NAME ($URL) zeigt Stand $STAND statt heute ($TODAY) - Scraper liefert evtl. veraltete Daten."
+              FAIL=1
+            else
+              echo "OK: $NAME zeigt Stand $STAND"
+            fi
+          }
+
+          check_stand "tcwspielplan (Spieltermine)" "https://tcwspielplan.rcdcjyz7bq.workers.dev/"
+          check_stand "tcwmannschaftenspielder (Ergebnisse)" "https://tcwmannschaftenspielder.rcdcjyz7bq.workers.dev/"
+
+          MANNSCHAFTEN_BODY=$(curl -fsSL --max-time 20 "https://mannschaften.rcdcjyz7bq.workers.dev/" || echo "FETCH_ERROR")
+          if [ "$MANNSCHAFTEN_BODY" = "FETCH_ERROR" ]; then
+            echo "::error::mannschaften (Kader) ist nicht erreichbar."
+            FAIL=1
+          elif ! echo "$MANNSCHAFTEN_BODY" | grep -q "LK"; then
+            echo "::error::mannschaften (Kader) liefert keine erkennbaren Spielerdaten (kein LK-Muster gefunden)."
+            FAIL=1
+          else
+            echo "OK: mannschaften liefert Spielerdaten"
+          fi
+
+          CUTOFF="2026-08-11"
+          TODAY_ISO=$(TZ=Europe/Berlin date +%Y-%m-%d)
+          if [[ "$TODAY_ISO" > "$CUTOFF" || "$TODAY_ISO" == "$CUTOFF" ]]; then
+            WORKFLOW_CONTENT=$(curl -fsSL --max-time 20 "https://raw.githubusercontent.com/TCWilgersdorfMB2026/mb-cup-2026/main/.github/workflows/update-data.yml" || echo "")
+            if ! echo "$WORKFLOW_CONTENT" | grep -q "schedule:"; then
+              echo "::error::Auslosung (11.08.2026) ist vorbei, aber der 30-Minuten-Cron in update-data.yml scheint noch nicht reaktiviert zu sein."
+              FAIL=1
+            fi
+          fi
+
+          if [ "$FAIL" -eq 1 ]; then
+            echo "Mindestens eine Pruefung ist fehlgeschlagen - siehe Fehler oben."
+            exit 1
+          fi
+          echo "Alle Checks ok."
