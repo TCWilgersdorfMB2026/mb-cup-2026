@@ -40,13 +40,11 @@
       '<div class="match-card">' +
         '<span class="court-badge">' + escapeHtml(m.court) + '</span>' +
         '<div class="meta-top">' +
-          '<div class="competition">' + escapeHtml(m.competition) + '</div>' +
-          '<div class="round">' + escapeHtml(m.round) + '</div>' +
+          '<div class="competition">' + escapeHtml(m.competition) + (m.round ? ' \u00b7 ' + escapeHtml(m.round) : '') + '</div>' +
           (m.time ? '<div class="match-time">' + escapeHtml(m.time) + '</div>' : '') +
         '</div>' +
         '<div class="players">' +
           '<div class="player">' + escapeHtml(m.player1) + '</div>' +
-          '<div class="vs">vs.</div>' +
           '<div class="player">' + escapeHtml(m.player2) + '</div>' +
         '</div>' +
                 '</div>'
