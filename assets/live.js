@@ -92,36 +92,40 @@ function renderMatches(matches, badgeText) {
   }
 
   function refresh() {
-    return Promise.all([loadJSON('data/schedule.json'), loadJSON('data/results.json')]).then(function (arr) {
+    return Promise.all([loadJSON('data/schedule.json'), loadJSON('data/results.json'), loadJSON('data/live-current.json')]).then(function (arr) {
       var schedule = arr[0] || [];
       var results = arr[1] || [];
+      var manual = arr[2] || [];
       var finishedKeys = {};
       results.forEach(function (r) {
         if (r.winner) finishedKeys[matchKey(r)] = true;
       });
       var now = new Date();
-      var live = schedule.filter(function (m) {
+      var autoLive = schedule.filter(function (m) {
         var t = parseDeTime(m.time);
         if (!t) return false;
         return t <= now && !finishedKeys[matchKey(m)];
       });
-      if (live.length > 0) {
-          renderMatches(live, null);
-          finishLastUpdated(now);
-          return null;
-        }
-        return loadJSON('data/live-current.json').then(function (manual) {
-          if (manual && manual.length > 0) {
-            renderMatches(manual, null);
-            finishLastUpdated(now);
-            return null;
-          }
-          return loadJSON('data/live-demo.json').then(function (demo) {
-            renderMatches(demo || [], 'Beispieldaten');
-            finishLastUpdated(now);
-          });
-        });
+
+      // tennis.de ist die Standardquelle; manuelle Eintraege aus admin.html
+      // (live-current.json) ueberschreiben pro Platz, falls dort etwas hinterlegt ist.
+      var byCourt = {};
+      autoLive.forEach(function (m) { byCourt[m.court] = m; });
+      (manual || []).forEach(function (m) { if (m && m.court) byCourt[m.court] = m; });
+
+      var merged = COURTS.map(function (c) { return byCourt[c]; }).filter(function (m) { return !!m; });
+
+      if (merged.length > 0) {
+        renderMatches(merged, null);
+        finishLastUpdated(now);
+        return null;
+      }
+
+      return loadJSON('data/live-demo.json').then(function (demo) {
+        renderMatches(demo || [], 'Beispieldaten');
+        finishLastUpdated(now);
       });
+    });
   }
 
   // ---- Speiseplan-Laufband ----
