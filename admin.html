@@ -240,7 +240,7 @@
 
 <div class="card">
 <h2>Live-Anzeige (4 Plätze)</h2>
-<p class="hint">Trage hier die aktuell laufenden Partien ein, die auf der Live-Display-Seite gezeigt werden. Spieler stammen aus der Meldeliste (nach Konkurrenz sortiert), Datum und Uhrzeit werden über den Kalender bzw. die Uhrzeitauswahl eingestellt. Platz einfach ohne Spieler lassen, wenn dort gerade nichts läuft.</p>
+<p class="hint">Trage hier die aktuell laufenden Partien ein, die auf der Live-Display-Seite gezeigt werden. Spieler stammen aus der Meldeliste (nach Konkurrenz sortiert); über "Sonstige (Name eingeben)…" kann auch ein Name manuell eingetragen werden, der nicht in der Meldeliste steht (z.B. Ersatzspieler oder Konkurrenz noch nicht erfasst). Datum und Uhrzeit werden über den Kalender bzw. die Uhrzeitauswahl eingestellt. Platz einfach ohne Spieler lassen, wenn dort gerade nichts läuft.</p>
 <form id="live-form">
 <div class="live-court-list" data-live-court-list></div>
 <button type="submit">Veröffentlichen</button>
@@ -592,7 +592,7 @@ function setStatus(el, msg, isErr) {
       if (isNaN(d)) return day;
       return d.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit' });
   }
-  
+
   function escapeHtml(str) {
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -754,9 +754,11 @@ document.getElementById('menu-form').addEventListener('submit', async (e) => {
 const LIVE_COURTS = ['Platz 1', 'Platz 2', 'Platz 3', 'Platz 4'];
 
 // Baut die <option>-Liste (gruppiert nach Konkurrenz als <optgroup>) für die
-// Spieler-Dropdowns aus den Meldelisten (data/entrants.json).
+// Spieler-Dropdowns aus den Meldelisten (data/entrants.json). Zusätzlich zur
+// Meldeliste gibt es immer die Option "Sonstige (Name eingeben)…", über die
+// ein Name manuell eingetragen werden kann, der nicht gemeldet ist.
 function livePlayerOptionsHtml(entrantsList) {
-  let html = '<option value="">– keiner –</option>';
+  let html = '<option value="">– keiner –</option><option value="__custom__">Sonstige (Name eingeben)…</option>';
   (entrantsList || []).forEach((group) => {
     const players = group.entrants || [];
     if (!players.length) return;
@@ -777,8 +779,10 @@ function renderLiveCourts(optionsHtml) {
       <h3>${court}</h3>
       <label>Spieler 1</label>
       <select class="live-player1" data-court-i="${i}">${optionsHtml}</select>
+      <input type="text" class="live-player1-custom" data-court-i="${i}" placeholder="Name eingeben" style="display:none;">
       <label>Spieler 2</label>
       <select class="live-player2" data-court-i="${i}">${optionsHtml}</select>
+      <input type="text" class="live-player2-custom" data-court-i="${i}" placeholder="Name eingeben" style="display:none;">
       <label>Runde (optional)</label>
 <select class="live-round-select" data-court-i="${i}">
 <option value="">– keine Angabe –</option>
@@ -815,16 +819,48 @@ function inputValueToLiveTime(val) {
 }
 
 // Zeigt bei Auswahl von "Sonstige..." im Runde-Dropdown das Freitextfeld
-// an (und blendet es sonst wieder aus).
+// an (und blendet es sonst wieder aus). Dasselbe Prinzip gilt fuer die
+// Spieler-Dropdowns: bei "Sonstige (Name eingeben)…" wird das zugehoerige
+// Freitextfeld eingeblendet, damit auch nicht gemeldete Spieler manuell
+// eingetragen werden koennen.
 document.querySelector('[data-live-court-list]').addEventListener('change', (e) => {
-const sel = e.target.closest('.live-round-select');
-if (!sel) return;
-const i = sel.dataset.courtI;
-const custom = document.querySelector(`.live-round-custom[data-court-i="${i}"]`);
-if (!custom) return;
-if (sel.value === '__custom__') { custom.style.display = 'block'; custom.focus(); }
-else { custom.style.display = 'none'; custom.value = ''; }
+const roundSel = e.target.closest('.live-round-select');
+if (roundSel) {
+  const i = roundSel.dataset.courtI;
+  const custom = document.querySelector(`.live-round-custom[data-court-i="${i}"]`);
+  if (!custom) return;
+  if (roundSel.value === '__custom__') { custom.style.display = 'block'; custom.focus(); }
+  else { custom.style.display = 'none'; custom.value = ''; }
+  return;
+}
+const playerSel = e.target.closest('.live-player1, .live-player2');
+if (playerSel) {
+  const i = playerSel.dataset.courtI;
+  const isP1 = playerSel.classList.contains('live-player1');
+  const custom = document.querySelector(`.live-player${isP1 ? '1' : '2'}-custom[data-court-i="${i}"]`);
+  if (!custom) return;
+  if (playerSel.value === '__custom__') { custom.style.display = 'block'; custom.focus(); }
+  else { custom.style.display = 'none'; custom.value = ''; }
+  return;
+}
 });
+
+// Traegt einen Spieler-Namen in ein Select (aus der Meldeliste) plus sein
+// zugehoeriges Freitextfeld ein. Ist der Name nicht unter den bekannten
+// Optionen (z.B. weil er manuell eingetragen wurde oder die Konkurrenz
+// nicht mehr in der Meldeliste steht), wird automatisch auf "Sonstige"
+// umgeschaltet und der Name im Freitextfeld angezeigt.
+function setPlayerField(select, customInput, name) {
+  if (!select) return;
+  const known = Array.from(select.options).map(o => o.value).filter(v => v && v !== '__custom__');
+  if (name && !known.includes(name)) {
+    select.value = '__custom__';
+    if (customInput) { customInput.value = name; customInput.style.display = 'block'; }
+  } else {
+    select.value = name || '';
+    if (customInput) { customInput.value = ''; customInput.style.display = 'none'; }
+  }
+}
 
 // Befüllt die 4 Court-Blöcke mit den aktuell gespeicherten Werten (falls
 // vorhanden), damit man beim erneuten Öffnen der Seite sieht, was gerade
@@ -836,11 +872,13 @@ function fillLiveForm(matches) {
     const m = byCourt[court];
     const p1 = document.querySelector(`.live-player1[data-court-i="${i}"]`);
     const p2 = document.querySelector(`.live-player2[data-court-i="${i}"]`);
+    const p1Custom = document.querySelector(`.live-player1-custom[data-court-i="${i}"]`);
+    const p2Custom = document.querySelector(`.live-player2-custom[data-court-i="${i}"]`);
 const rd = document.querySelector(`.live-round-select[data-court-i="${i}"]`);
 const rdCustom = document.querySelector(`.live-round-custom[data-court-i="${i}"]`);
 const tm = document.querySelector(`.live-time[data-court-i="${i}"]`);
-if (p1) p1.value = m ? m.player1 : '';
-if (p2) p2.value = m ? m.player2 : '';
+setPlayerField(p1, p1Custom, m ? m.player1 : '');
+setPlayerField(p2, p2Custom, m ? m.player2 : '');
 if (rd) {
 const roundVal = m ? (m.round || '') : '';
 const known = Array.from(rd.options).map(o => o.value).filter(v => v && v !== '__custom__');
@@ -883,8 +921,16 @@ document.getElementById('live-form').addEventListener('submit', async (e) => {
     LIVE_COURTS.forEach((court, i) => {
       const p1sel = document.querySelector(`.live-player1[data-court-i="${i}"]`);
       const p2sel = document.querySelector(`.live-player2[data-court-i="${i}"]`);
-      const player1 = p1sel.value;
-      const player2 = p2sel.value;
+      let player1 = p1sel.value;
+      let player2 = p2sel.value;
+      if (player1 === '__custom__') {
+        const c = document.querySelector(`.live-player1-custom[data-court-i="${i}"]`);
+        player1 = c ? c.value.trim() : '';
+      }
+      if (player2 === '__custom__') {
+        const c = document.querySelector(`.live-player2-custom[data-court-i="${i}"]`);
+        player2 = c ? c.value.trim() : '';
+      }
       if (!player1 || !player2) return;
 const roundSel = document.querySelector(`.live-round-select[data-court-i="${i}"]`);
 let round = roundSel ? roundSel.value : '';
@@ -894,7 +940,7 @@ round = roundCustom ? roundCustom.value.trim() : '';
 }
       const time = inputValueToLiveTime(document.querySelector(`.live-time[data-court-i="${i}"]`).value);
       const opt1 = p1sel.selectedOptions[0];
-      const competition = (opt1 && opt1.dataset.competition) || '';
+      const competition = (opt1 && p1sel.value !== '__custom__' && opt1.dataset.competition) || '';
       matches.push({ competition, round, player1, player2, time, court });
     });
     const { sha } = await ghGet('data/live-current.json');
