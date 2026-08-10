@@ -35,13 +35,24 @@
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  function matchTimeHtml(t) {
+    var s = String(t == null ? '' : t);
+    var m = s.match(/^(\d{2}\.\d{2}\.\d{4})\s+(.+)$/);
+    if (!m) return '<div class="match-time">' + escapeHtml(s) + '</div>';
+    return '<div class="match-time">' +
+      '<span class="match-date">' + escapeHtml(m[1]) + '</span>' +
+      '<span class="time-divider"></span>' +
+      '<span class="match-clock">' + escapeHtml(m[2]) + '</span>' +
+    '</div>';
+  }
+
   function matchCardHtml(m) {
     return (
       '<div class="match-card">' +
         '<span class="court-badge">' + escapeHtml(m.court) + '</span>' +
         '<div class="meta-top">' +
           '<div class="competition">' + escapeHtml(m.competition) + (m.round ? ' \u00b7 ' + escapeHtml(m.round) : '') + '</div>' +
-          (m.time ? '<div class="match-time">' + escapeHtml(m.time) + '</div>' : '') +
+          (m.time ? matchTimeHtml(m.time) : '') +
         '</div>' +
         '<div class="players">' +
           '<div class="player">' + escapeHtml(m.player1) + '</div>' +
