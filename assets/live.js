@@ -42,6 +42,7 @@
         '<div class="meta-top">' +
           '<div class="competition">' + escapeHtml(m.competition) + '</div>' +
           '<div class="round">' + escapeHtml(m.round) + '</div>' +
+          (m.time ? '<div class="match-time">' + escapeHtml(m.time) + '</div>' : '') +
         '</div>' +
         '<div class="players">' +
           '<div class="player">' + escapeHtml(m.player1) + '</div>' +
