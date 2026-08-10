@@ -152,26 +152,34 @@ gap:0.3vh;
     font-weight:600;
   }
 .match-time{
+  display:flex;
+  align-items:center;
+  gap:0.5em;
   font-size:clamp(1.05rem,1.45vw,1.5rem);
   color:var(--muted);
   font-weight:600;
 }
+  .time-divider{
+    width:1px;
+    align-self:stretch;
+    background:var(--muted);
+    opacity:0.5;
+  }
   .players{
     display:flex;
     flex-direction:column;
     width:100%;
-  }
-  .players .player:first-child{
-min-height:1.7em;
-    display:flex;
-    align-items:flex-start;
+    margin-top:0.8vh;
   }
   .player{
-font-size:clamp(1.6rem,5.4vh,3.6rem);
+    font-size:clamp(1.6rem,5.4vh,3.6rem);
     font-weight:800;
     line-height:1.02;
     word-break:break-word;
     color:var(--text);
+    min-height:1.7em;
+    display:flex;
+    align-items:center;
   }
   .players .player + .player{
     border-top:1px solid var(--border);
