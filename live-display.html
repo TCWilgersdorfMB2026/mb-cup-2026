@@ -64,11 +64,6 @@
     font-size:clamp(0.7rem,0.9vw,1rem);
     opacity:0.85;
   }
-  .subtitle{
-    margin-top:0.3vh;
-    font-size:clamp(0.8rem,1.1vw,1.2rem);
-    opacity:0.9;
-  }
   .section-wrap{
     padding:1vh 2vw 0;
   }
@@ -146,7 +141,7 @@ gap:0.3vh;
     letter-spacing:0.02em;
   }
   .meta-top{
-    min-height:4.6em;
+    min-height:3.6em;
     width:100%;
   }
   .competition{
@@ -155,10 +150,6 @@ gap:0.3vh;
     text-transform:uppercase;
     letter-spacing:0.03em;
     font-weight:600;
-  }
-  .round{
-    font-size:clamp(1.25rem,1.7vw,1.8rem);
-    color:var(--muted);
   }
 .match-time{
   font-size:clamp(1.05rem,1.45vw,1.5rem);
@@ -182,11 +173,10 @@ font-size:clamp(1.6rem,5.4vh,3.6rem);
     word-break:break-word;
     color:var(--text);
   }
-  .vs{
-    font-size:clamp(0.9rem,1.6vh,1.25rem);
-    color:var(--muted);
-    font-weight:600;
-    margin:0.1vh 0;
+  .players .player + .player{
+    border-top:1px solid var(--border);
+    margin-top:0.4vh;
+    padding-top:0.4vh;
   }
   .court-empty{
     font-size:clamp(1.2rem,2.6vh,1.8rem);
@@ -257,7 +247,6 @@ color:var(--muted);
         <span class="date" id="clock-date">--</span>
       </span>
     </div>
-    <div class="subtitle">17. Wilgersdorfer LK-Turnier · TC Wilgersdorf</div>
   </header>
 
   <div class="section-wrap">
