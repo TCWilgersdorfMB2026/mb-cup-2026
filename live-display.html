@@ -143,6 +143,7 @@ gap:0.3vh;
   .meta-top{
     min-height:3.6em;
     width:100%;
+    flex-shrink:0;
   }
   .competition{
     font-size:clamp(1.3rem,1.8vw,1.9rem);
@@ -150,6 +151,10 @@ gap:0.3vh;
     text-transform:uppercase;
     letter-spacing:0.03em;
     font-weight:600;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width:100%;
   }
 .match-time{
   display:flex;
@@ -158,6 +163,9 @@ gap:0.3vh;
   font-size:clamp(1.05rem,1.45vw,1.5rem);
   color:var(--muted);
   font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  max-width:100%;
 }
   .time-divider{
     width:1px;
