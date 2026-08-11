@@ -167,6 +167,12 @@ function listCompetitions() {
 // übereinander, Sieger:in fett, Ergebnis darunter bzw. "Noch offen", plus
 // Datum/Uhrzeit/Platz (falls vom Ausrichter in tennis.de hinterlegt - sonst
 // bleibt diese Zeile einfach weg, keine Pflichtangabe).
+function formatScore(raw) {
+  const s = (raw || '').trim();
+  if (!s) return s;
+  return s.split(/\s+/).join(', ');
+}
+
 function bracketBoxHtml(m) {
   const p1Wins = m.played && namesMatch(m.player1, m.winner);
   const p2Wins = m.played && namesMatch(m.player2, m.winner);
@@ -174,7 +180,7 @@ function bracketBoxHtml(m) {
     <div class="bracket-box">
       <div class="bracket-player${p1Wins ? ' winner' : ''}">${playerHtml(m.player1)}</div>
       <div class="bracket-player${p2Wins ? ' winner' : ''}">${playerHtml(m.player2)}</div>
-      ${m.played ? `<div class="bracket-score">${escapeHtml(m.score || '')}</div>` : '<div class="bracket-pending">Noch offen</div>'}
+      ${m.played ? `<div class="bracket-score">${escapeHtml(formatScore(m.score || ''))}</div>` : '<div class="bracket-pending">Noch offen</div>'}
       ${m.court ? `<div class="bracket-meta bracket-court">${escapeHtml(m.court)}</div>` : ''}
       ${m.time ? `<div class="bracket-meta bracket-time">${escapeHtml(m.time)}</div>` : ''}
     </div>`;
