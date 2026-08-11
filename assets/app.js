@@ -199,7 +199,7 @@ function renderBracket(matches) {
     if (roundName === 'Sieger') {
       cells += `
         <div class="bracket-match bracket-champion" style="grid-column:${col};grid-row:2 / span ${totalSubrows};">
-          <div class="bracket-box winner-box">${escapeHtml(finaleMatches[0].winner)}</div>
+          <div class="bracket-box winner-box">${playerHtml(finaleMatches[0].winner)}</div>
         </div>`;
       return;
     }
