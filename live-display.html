@@ -33,7 +33,7 @@
   header{
     background:linear-gradient(135deg,var(--navy),var(--navy-dark));
     color:#fff;
-    padding:1.6vh 2vw 1.3vh;
+    padding:0.5vh 1.5vw;
     text-align:left;
   }
   .header-row{
@@ -43,7 +43,7 @@
     gap:1vw;
   }
   .title{
-    font-size:clamp(2.1rem,4.4vw,4.6rem);
+    font-size:clamp(1.1rem,2vw,1.8rem);
     font-weight:800;
     letter-spacing:0.01em;
     white-space:nowrap;
@@ -56,12 +56,12 @@
     flex-shrink:0;
   }
   .clock .time{
-    font-size:clamp(1.5rem,2.8vw,2.8rem);
+    font-size:clamp(0.9rem,1.6vw,1.3rem);
     font-weight:700;
     font-variant-numeric:tabular-nums;
   }
   .clock .date{
-    font-size:clamp(0.7rem,0.9vw,1rem);
+    font-size:clamp(0.55rem,0.7vw,0.75rem);
     opacity:0.85;
   }
   .section-wrap{
@@ -122,7 +122,7 @@ padding:0.7vh 1.2vw;
     flex-direction:column;
     align-items:flex-start;
 gap:0.3vh;
-    overflow:hidden;
+    overflow:visible;
     min-height:0;
     box-shadow:0 0.2vh 0.6vh rgba(0,0,0,0.06);
   }
@@ -141,7 +141,7 @@ gap:0.3vh;
     letter-spacing:0.02em;
   }
   .meta-top{
-    min-height:3.6em;
+    min-height:3.0em;
     width:100%;
     flex-shrink:0;
   }
@@ -224,14 +224,14 @@ align-items:center;
 gap:1.4vw;
 background:var(--card);
 color:var(--navy);
-padding:0.35vh 2vw;
+padding:0.25vh 1.5vw;
 border-top:1px solid var(--border);
 }
 .info-qr-bar img{
-width:10vh;
-  height:10vh;
-  min-width:100px;
-  min-height:100px;
+width:6vh;
+  height:6vh;
+  min-width:56px;
+  min-height:56px;
 background:#fff;
 border-radius:8px;
 padding:4px;
@@ -244,12 +244,12 @@ gap:0.1vh;
 }
 .info-qr-caption{
 font-weight:700;
-font-size:clamp(1.3rem,1.8vw,1.9rem);
+font-size:clamp(0.85rem,1.1vw,1.2rem);
 color:var(--navy);
 }
 .info-qr-url{
 font-weight:600;
-font-size:38px;
+font-size:clamp(0.7rem,1vw,0.95rem);
 color:var(--muted);
 }
 </style>
