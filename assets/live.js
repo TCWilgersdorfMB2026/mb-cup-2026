@@ -59,7 +59,7 @@
     var club = entrant && entrant.club;
     var html = escapeHtml(raw);
     if (lk) html += ' <span class="player-lk">(LK ' + escapeHtml(lk) + ')</span>';
-    if (club) html += ' <span class="player-club">\u00b7 ' + escapeHtml(club) + '</span>';
+    if (club) html += '<span class="player-club">' + escapeHtml(club) + '</span>';
     return html;
   }
 
