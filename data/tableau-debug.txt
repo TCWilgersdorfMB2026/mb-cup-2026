@@ -169,386 +169,84 @@ WTV
 Favorit
 Termin exportieren
  
- Zurück zur Turniersuche
+ Zurück zur Übersicht
  
+Tableau
+Nach Runden
  
+Herren Einzel - Hauptfeld
  
-Termin
-15.08.2026 - 22.08.2026
+	Runde 1	Achtelfinale	Viertelfinale	Halbfinale	Finale	Sieger
+1	[1] - LK5,3 - Wagner, Matthias, 1987 - TC Oberwerth Koblenz, RPF					
+		Wagner, M.				
+	[Rast]					
+						
+	LK11,9 - Jud, Tobias, 1999 - TC Wilgersdorf, WTV					
+						
+	LK13,9 - Lotz, Federico, 2007 - Tennisverein Altenseelbach e.V., WTV					
+						
+	[Rast]					
+		Iordanidis, A.				
+	LK12,3 - Iordanidis, Aristotelis, 2009 - TC Siegen, WTV					
+						
+	[Rast]					
+		Nies, T.				
+5	[5] - LK8,0 - Nies, Tim, 2004 - TC Wilgersdorf, WTV					
+						
+3	[3] - LK6,9 - Gross, Ingo, 1977 - VfL Kirchen, RPF					
+		Gross, I.				
+	[Rast]					
+						
+	LK13,5 - Peters, Marvin, 2000 - TC Wilgersdorf, WTV					
+						
+	LK12,2 - Prado Saldana, Joan Ricardo, 2006 - TC Brachbach, RPF					
+						
+	[Rast]					
+		Schwedes, N.				
+	LK13,9 - Schwedes, Nick Luca, 1997 - TC 71 Netphen, WTV					
+						
+	[Rast]					
+		Dreysse, K.				
+7	[7] - LK9,3 - Dreysse, Kay, 1979 - TV Eiserfeld, WTV					
+						
+6	[6] - LK8,1 - Ebener, Frederik, 2004 - TC Grün-Weiß Königsforst, TVM					
+		Ebener, F.				
+	[Rast]					
+						
+	LK14,5 - Ebener, Sebastian, 1997 - TC Wilgersdorf, WTV					
+		Ebener, S.				
+	[Rast]					
+						
+	[Rast]					
+		Weber, L.				
+	LK11,7 - Weber, Louis, 2005 - TC Haiger, HTV					
+						
+	[Rast]					
+		Ballion, S.				
+4	[4] - LK7,9 - Ballion, Silas, 2002 - TC Siegen, WTV					
+						
+8	[8] - LK9,4 - Feldmann, Jonas Juttichai, 2009 - TC Rhode e.V., WTV					
+		Feldmann, J.				
+	[Rast]					
+						
+	LK9,8 - Wedding, Robin, 1994 - TC Lese Grün-Weiss Köln, TVM					
+		Wedding, R.				
+	[Rast]					
+						
+	LK9,4 - Menn, Jan Steffen, 1988 - TC Niederschelderhütte, RPF					
+						
+	LK11,3 - Müller, Nico, 1992 - Tennisverein Altenseelbach e.V., WTV					
+						
+	[Rast]					
+		Klahold, L.				
+2	[2] - LK6,6 - Klahold, Linus, 1999 - TC Haiger, HTV					
+						
+					Spiel um den 3. Platz	3. Platz
+						
+						
+						
  
- 
- 
-Meldebeginn
-18.01.2026 00:00 Uhr
- 
- 
- 
-Meldeschluss
-09.08.2026 23:59 Uhr
- 
- 
- 
-Auslosung
-11.08.2026 18:00 Uhr
- 
- 
- 
-Ausschreibung
- Download
- 
- 
- 
-Status
- 
- 
- 
- 
- 
- 
-Jetzt zum Turnier anmelden!
- 
-Konkurrenzen
-Konkurrenzen
-offen für
-Nenngeld
-Listen
-Ergebnisse
-Herren Einzel
-KO
-LK 1,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-Hauptfeld
-
-
-Herren Einzel
-KO
-LK 10,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-Hauptfeld
-
-
-Herren Einzel
-KO
-LK 17,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-Hauptfeld
-
-
-Herren Einzel
-KO
-LK 22,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-Hauptfeld
-
-
-Herren 40 Einzel
-KO
-LK 1,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-Hauptfeld
-
-
-Herren 40 Einzel
-KO
-LK 20,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-
-
-Herren 50 Einzel
-KO
-LK 1,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-Hauptfeld
-
-
-Herren 50 Einzel
-KO
-LK 20,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-
-
-Herren 60 Einzel
-KO
-LK 1,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-Hauptfeld
-
-
-Herren 60 Einzel
-KO
-LK 20,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-
-
-Herren 70 Einzel
-KO
-LK 1,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-Hauptfeld
-
-
-Herren 70 Einzel
-KO
-LK 20,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-
-
-Damen Einzel
-KO
-LK 1,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-
-
-Damen Einzel
-KO
-LK 10,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-Hauptfeld
-
-
-Damen Einzel
-KO
-LK 17,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-Hauptfeld
-
-
-Damen Einzel
-KO
-LK 22,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-Hauptfeld
-
-
-Damen 40 Einzel
-KO
-LK 1,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-
-
-Damen 40 Einzel
-KO
-LK 20,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-
-
-Damen 50 Einzel
-KO
-LK 1,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-
-
-Damen 50 Einzel
-KO
-LK 20,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-
-
-Damen 60 Einzel
-KO
-LK 1,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-
-
-Damen 60 Einzel
-KO
-LK 20,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-
-
-Damen 70 Einzel
-KO
-LK 1,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-
-
-Damen 70 Einzel
-KO
-LK 20,0-25,0
-	
-	
-Deutschland
-	
-25,00 € zzgl. 5 €
-	
-Meldeliste
-	
-
-
- 
-Turnierinformationen
- 
-Turnierdaten
-Veranstalter
-Platzanlagen
-Zahlungsmöglichkeiten
-Zulassungskriterien
-Zusatzinformationen
-Aktionen und Links
- 
- 
-Zurück zur Turniersuche
+Zurück zur Übersicht
  
  
 Projektpartner "Spielen"
