@@ -52,12 +52,28 @@
     return null;
   }
 
+  function formatPlayerName(rawName) {
+    var name = (rawName || '').trim();
+    if (!name) return name;
+    var commaIdx = name.indexOf(',');
+    if (commaIdx !== -1) {
+      var last = name.slice(0, commaIdx).trim();
+      var first = name.slice(commaIdx + 1).trim();
+      return first ? last + ', ' + first : last;
+    }
+    var spaceIdx = name.indexOf(' ');
+    if (spaceIdx === -1) return name;
+    var last2 = name.slice(0, spaceIdx).trim();
+    var first2 = name.slice(spaceIdx + 1).trim();
+    return last2 + ', ' + first2;
+  }
+
   function playerHtml(rawName) {
     var raw = rawName || '';
     var entrant = findEntrant(raw);
     var lk = entrant && entrant.lk;
     var club = entrant && entrant.club;
-    var html = escapeHtml(raw);
+    var html = escapeHtml(formatPlayerName(raw));
     if (lk) html += ' <span class="player-lk">(LK ' + escapeHtml(lk) + ')</span>';
     if (club) html += '<span class="player-club">' + escapeHtml(club) + '</span>';
     return html;
