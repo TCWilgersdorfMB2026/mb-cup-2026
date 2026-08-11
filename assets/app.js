@@ -109,7 +109,7 @@ function playerHtml(rawName) {
   const lk = entrant && entrant.lk;
   const club = entrant && entrant.club;
   let html = escapeHtml(raw) + (lk ? ' (LK ' + escapeHtml(lk) + ')' : '');
-  if (club) html += ' <span class="player-club">\u00b7 ' + escapeHtml(club) + '</span>';
+  if (club) html += '<span class="player-club">' + escapeHtml(club) + '</span>';
   return html;
 }
 
