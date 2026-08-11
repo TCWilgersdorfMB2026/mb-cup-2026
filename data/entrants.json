@@ -271,18 +271,6 @@
         "lk": "18,8"
       },
       {
-        "name": "Borodin Eugen",
-        "club": "TV Eiserfeld",
-        "dtbId": "18455584",
-        "lk": "21,8"
-      },
-      {
-        "name": "Deeken Matthias",
-        "club": "TC Siegen",
-        "dtbId": "18455519",
-        "lk": "20,0"
-      },
-      {
         "name": "Engel Peter",
         "club": "1. TC Wahlbach",
         "dtbId": "16994366",
@@ -413,12 +401,6 @@
         "club": "TC Ludwigseck Salchendorf e.V.",
         "dtbId": "18501592",
         "lk": "20,1"
-      },
-      {
-        "name": "Steinkohl Alexander",
-        "club": "TuS 09 Drolshagen e.V. TA",
-        "dtbId": "17656023",
-        "lk": "19,9"
       },
       {
         "name": "Traut Jan Lukas",
@@ -557,6 +539,18 @@
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
+        "name": "Borodin Eugen",
+        "club": "TV Eiserfeld",
+        "dtbId": "18455584",
+        "lk": "21,8"
+      },
+      {
+        "name": "Deeken Matthias",
+        "club": "TC Siegen",
+        "dtbId": "18455519",
+        "lk": "20,0"
+      },
+      {
         "name": "Hess Manuel",
         "club": "1. TC Wahlbach",
         "dtbId": "18156765",
@@ -579,6 +573,12 @@
         "club": "TC Wilgersdorf",
         "dtbId": "17355286",
         "lk": "19,7"
+      },
+      {
+        "name": "Steinkohl Alexander",
+        "club": "TuS 09 Drolshagen e.V. TA",
+        "dtbId": "17656023",
+        "lk": "19,9"
       },
       {
         "name": "Trappe Richard",
@@ -1002,12 +1002,6 @@
         "club": "VfL Kirchen",
         "dtbId": "21304598",
         "lk": "19,5"
-      },
-      {
-        "name": "Tröster Emily",
-        "club": "TC Brachbach",
-        "dtbId": "20162581",
-        "lk": "19,2"
       },
       {
         "name": "Wiegel Lea",
