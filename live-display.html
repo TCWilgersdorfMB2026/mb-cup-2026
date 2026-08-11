@@ -38,7 +38,7 @@
   }
   .header-row{
     display:flex;
-    align-items:baseline;
+    align-items:center;
     justify-content:space-between;
     gap:1vw;
   }
@@ -64,32 +64,30 @@
     font-size:clamp(0.55rem,0.7vw,0.75rem);
     opacity:0.85;
   }
-  .section-wrap{
-    padding:1vh 2vw 0;
-  }
   .section-heading{
     display:flex;
     align-items:center;
-    gap:0.8vw;
-    margin-bottom:1vh;
+    gap:0.6vw;
+    margin-bottom:0;
   }
   .live-dot{
-    width:1.2vw;height:1.2vw;max-width:18px;max-height:18px;
+    width:0.9vw;height:0.9vw;max-width:14px;max-height:14px;
     border-radius:50%;
-    background:var(--navy);
+    background:#fff;
     animation:pulse 1.4s infinite;
   }
   @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(181,16,20,0.6);}
-    70%{box-shadow:0 0 0 1vw rgba(181,16,20,0);}
-    100%{box-shadow:0 0 0 0 rgba(181,16,20,0);}
+    0%{box-shadow:0 0 0 0 rgba(255,255,255,0.6);}
+    70%{box-shadow:0 0 0 1vw rgba(255,255,255,0);}
+    100%{box-shadow:0 0 0 0 rgba(255,255,255,0);}
   }
   .section-heading h2{
-    font-size:clamp(1.3rem,2vw,2rem);
+    font-size:clamp(0.85rem,1.3vw,1.3rem);
     font-weight:700;
-    color:var(--navy);
+    color:#fff;
     text-transform:uppercase;
-    letter-spacing:0.05em;
+    letter-spacing:0.04em;
+    white-space:nowrap;
   }
   .demo-badge{
     margin-left:auto;
@@ -233,46 +231,17 @@ gap:0.3vh;
     font-size:clamp(0.75rem,0.95vw,1rem);
     color:var(--muted);
   }
-.info-qr-bar{
-display:flex;
-align-items:center;
-gap:1.4vw;
-background:var(--card);
-color:var(--navy);
-padding:0.25vh 1.5vw;
-border-top:1px solid var(--border);
-}
-.info-qr-bar img{
-width:9vh;
-  height:9vh;
-  min-width:84px;
-  min-height:84px;
-background:#fff;
-border-radius:8px;
-padding:4px;
-flex-shrink:0;
-}
-.info-qr-bar .info-qr-text{
-display:flex;
-flex-direction:column;
-gap:0.1vh;
-}
-.info-qr-caption{
-font-weight:700;
-font-size:clamp(0.85rem,1.1vw,1.2rem);
-color:var(--navy);
-}
-.info-qr-url{
-font-weight:600;
-font-size:clamp(0.7rem,1vw,0.95rem);
-color:var(--muted);
-}
 </style>
 </head>
 <body>
   <header>
     <div class="header-row">
       <span class="title">markenbaumarkt24-Cup 2026</span>
+      <div class="section-heading">
+        <span class="live-dot"></span>
+        <h2>Jetzt auf dem Platz</h2>
+        <span class="demo-badge" id="demo-badge" hidden>Beispieldaten</span>
+      </div>
       <span class="clock">
         <span class="time" id="clock-time">--:--</span>
         <span class="date" id="clock-date">--</span>
@@ -280,25 +249,9 @@ color:var(--muted);
     </div>
   </header>
 
-  <div class="section-wrap">
-    <div class="section-heading">
-      <span class="live-dot"></span>
-      <h2>Jetzt auf dem Platz</h2>
-      <span class="demo-badge" id="demo-badge" hidden>Beispieldaten</span>
-    </div>
-  </div>
-
   <main id="matches">
     <div class="empty-state">Lade Daten…</div>
   </main>
-  <div class="info-qr-bar">
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fwww.tcwilgersdorf.de%2Fmb-cup-2026" alt="QR-Code zur MB-Cup-Seite" loading="lazy">
-<div class="info-qr-text">
-<span class="info-qr-caption">Alle Infos rund um den markenbaumarkt24-Cup 2026</span>
-<span class="info-qr-url">www.tcwilgersdorf.de/mb-cup-2026</span>
-</div>
-</div>
-
   <footer>Aktualisiert automatisch · <span id="last-updated">--</span></footer>
 
   <script src="assets/live.js"></script>
