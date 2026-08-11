@@ -252,21 +252,18 @@ body {
    rundenweise hintereinander (Achtelfinale zuerst, dann Viertelfinale, ...) -
    die Grid-Positionierung (grid-column/grid-row) wird einfach wirkungslos,
    sobald der Container kein Grid mehr ist. */
-@media (max-width: 700px) {
-  .bracket-grid { display: block; }
-  .bracket-col-header {
-    text-align: left;
-    margin-top: 20px;
-    padding-bottom: 6px;
-    border-bottom: 2px solid var(--border);
-  }
-  .bracket-col-header:first-child { margin-top: 0; }
-  .bracket-match { margin-bottom: 8px; }
-  .bracket-champion { justify-content: flex-start; }
-  .bracket-champion .bracket-box.winner-box { max-width: 280px; }
-  .bracket-box { font-size: 1rem; }
-  .bracket-score, .bracket-pending { font-size: 1rem; margin-top: 13px; }
+.bracket-grid { display: block; }
+.bracket-col-header {
+  text-align: left;
+  margin-top: 20px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--border);
 }
+.bracket-col-header:first-child { margin-top: 0; }
+.bracket-match { margin-bottom: 8px; }
+.bracket-champion { justify-content: flex-start; }
+.bracket-champion .bracket-box.winner-box { max-width: 280px; }
+.bracket-score, .bracket-pending { font-size: 1rem; margin-top: 13px; }
 
 .schedule-rows { display: flex; flex-direction: column; gap: 8px; }
 .schedule-row {
