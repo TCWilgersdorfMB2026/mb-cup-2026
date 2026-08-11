@@ -33,12 +33,6 @@
         "lk": "9,4"
       },
       {
-        "name": "Galinski Johannes",
-        "club": "TuS Ferndorf",
-        "dtbId": "18353208",
-        "lk": "7,3"
-      },
-      {
         "name": "Gross Ingo",
         "club": "VfL Kirchen",
         "dtbId": "17701580",
@@ -158,12 +152,6 @@
         "lk": "15,5"
       },
       {
-        "name": "Hilberg Til",
-        "club": "TC Ludwigseck Salchendorf e.V.",
-        "dtbId": "10566966",
-        "lk": "16,8"
-      },
-      {
         "name": "Iordanidis Alexandros",
         "club": "TuS AdH Weidenau",
         "dtbId": "17953685",
@@ -174,12 +162,6 @@
         "club": "TC Wilgersdorf",
         "dtbId": "10920075",
         "lk": "16,7"
-      },
-      {
-        "name": "Kneppe Christian",
-        "club": "Tennisverein Altenseelbach e.V.",
-        "dtbId": "17753794",
-        "lk": "16,2"
       },
       {
         "name": "Koch Colin",
@@ -269,12 +251,6 @@
         "club": "Tennisverein Altenseelbach e.V.",
         "dtbId": "10825108",
         "lk": "18,8"
-      },
-      {
-        "name": "Engel Peter",
-        "club": "1. TC Wahlbach",
-        "dtbId": "16994366",
-        "lk": "19,2"
       },
       {
         "name": "Fries Leo",
@@ -549,6 +525,12 @@
         "club": "TC Siegen",
         "dtbId": "18455519",
         "lk": "20,0"
+      },
+      {
+        "name": "Engel Peter",
+        "club": "1. TC Wahlbach",
+        "dtbId": "16994366",
+        "lk": "19,2"
       },
       {
         "name": "Hess Manuel",
