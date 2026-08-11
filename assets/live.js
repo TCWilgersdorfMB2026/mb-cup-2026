@@ -57,7 +57,8 @@
     var entrant = findEntrant(raw);
     var lk = entrant && entrant.lk;
     var club = entrant && entrant.club;
-    var html = escapeHtml(raw) + (lk ? ' (LK ' + escapeHtml(lk) + ')' : '');
+    var html = escapeHtml(raw);
+    if (lk) html += ' <span class="player-lk">(LK ' + escapeHtml(lk) + ')</span>';
     if (club) html += ' <span class="player-club">\u00b7 ' + escapeHtml(club) + '</span>';
     return html;
   }
