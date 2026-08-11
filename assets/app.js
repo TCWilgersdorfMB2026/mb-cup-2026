@@ -103,12 +103,28 @@ function findEntrant(rawName) {
   return null;
 }
 
+function formatPlayerName(rawName) {
+  const name = (rawName || '').trim();
+  if (!name) return name;
+  const commaIdx = name.indexOf(',');
+  if (commaIdx !== -1) {
+    const last = name.slice(0, commaIdx).trim();
+    const first = name.slice(commaIdx + 1).trim();
+    return first ? last + ', ' + first : last;
+  }
+  const spaceIdx = name.indexOf(' ');
+  if (spaceIdx === -1) return name;
+  const last = name.slice(0, spaceIdx).trim();
+  const first = name.slice(spaceIdx + 1).trim();
+  return last + ', ' + first;
+}
+
 function playerHtml(rawName) {
   const raw = rawName || '';
   const entrant = findEntrant(raw);
   const lk = entrant && entrant.lk;
   const club = entrant && entrant.club;
-  let html = escapeHtml(raw) + (lk ? ' (LK ' + escapeHtml(lk) + ')' : '');
+  let html = escapeHtml(formatPlayerName(raw)) + (lk ? ' (LK ' + escapeHtml(lk) + ')' : '');
   if (club) html += '<span class="player-club">' + escapeHtml(club) + '</span>';
   return html;
 }
@@ -243,7 +259,7 @@ function renderCompetitionDetail() {
   if (entrantBlock && entrantBlock.entrants.length) {
     el.innerHTML = `
       <p class="hint">Auslosung steht noch aus – gemeldete Spieler:innen:</p>
-      <ul>${entrantBlock.entrants.map((p) => `<li>${escapeHtml(p.name || '')}${p.club ? ' · ' + escapeHtml(p.club) : ''}${p.lk ? ' · LK' + escapeHtml(p.lk) : ''}</li>`).join('')}</ul>`;
+      <ul>${entrantBlock.entrants.map((p) => `<li>${escapeHtml(formatPlayerName(p.name || ''))}${p.club ? ' · ' + escapeHtml(p.club) : ''}${p.lk ? ' · LK' + escapeHtml(p.lk) : ''}</li>`).join('')}</ul>`;
     return;
   }
   el.innerHTML = '<p class="empty">Wird vor Turnierstart eingepflegt.</p>';
