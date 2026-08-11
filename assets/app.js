@@ -319,8 +319,12 @@ function scheduleRowHtml(m) {
           : '<div class="schedule-time schedule-time-empty">Zeit offen</div>'}
       </div>
       <div class="schedule-match">
-        <div class="schedule-comp">${escapeHtml(m.competition || '')}${m.round ? ' · ' + escapeHtml(m.round) : ''}</div>
-        <div class="schedule-players">${playerHtml(m.player1)} – ${playerHtml(m.player2)}</div>
+        <div class="schedule-comp">${escapeHtml(m.competition || '')}</div>
+        ${m.round ? `<div class="schedule-round">${escapeHtml(m.round)}</div>` : ''}
+        <div class="schedule-players">
+          <div class="schedule-player">${playerHtml(m.player1)}</div>
+          <div class="schedule-player">${playerHtml(m.player2)}</div>
+        </div>
       </div>
     </div>`;
 }
