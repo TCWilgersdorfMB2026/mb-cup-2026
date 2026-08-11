@@ -265,7 +265,7 @@ body {
   .bracket-champion { justify-content: flex-start; }
   .bracket-champion .bracket-box.winner-box { max-width: 280px; }
   .bracket-box { font-size: 1rem; }
-  .bracket-score, .bracket-pending { font-size: 1rem; }
+  .bracket-score, .bracket-pending { font-size: 1rem; margin-top: 13px; }
 }
 
 .schedule-rows { display: flex; flex-direction: column; gap: 8px; }
@@ -284,6 +284,7 @@ body {
 .schedule-time-empty { font-style: italic; }
 .schedule-match { flex: 1; min-width: 0; }
 .schedule-comp, .schedule-round { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 3px; }
+.schedule-players { margin-top: 10px; }
 .schedule-player { font-weight: 600; }
 .schedule-players .schedule-player + .schedule-player { border-top: 1px solid var(--border); margin-top: 4px; padding-top: 4px; }
 .player-club { display: block; font-size: 0.7rem; font-weight: 400; color: var(--muted); margin-left: 0; margin-top: 2px; }
