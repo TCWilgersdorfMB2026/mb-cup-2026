@@ -39,24 +39,27 @@
   // Sucht die LK eines Spielers in den Meldelisten (ENTRANTS). Namen aus
   // Spielplan/Ergebnissen kommen im Format 'Nachname, Vorname' von tennis.de,
   // Namen aus Meldelisten/manuellen Live-Eintraegen im Format 'Nachname Vorname'.
-  function findLk(rawName) {
+  function findEntrant(rawName) {
     var name = (rawName || '').trim();
     if (!name) return null;
     var withoutComma = name.replace(/,\s*/, ' ');
     for (var i = 0; i < ENTRANTS.length; i++) {
       var list = ENTRANTS[i].entrants || [];
       for (var j = 0; j < list.length; j++) {
-        if (list[j].name === name || list[j].name === withoutComma) {
-          if (list[j].lk) return list[j].lk;
-        }
+        if (list[j].name === name || list[j].name === withoutComma) return list[j];
       }
     }
     return null;
   }
 
-  function playerLabel(rawName) {
-    var lk = findLk(rawName);
-    return (rawName || '') + (lk ? ' (LK ' + lk + ')' : '');
+  function playerHtml(rawName) {
+    var raw = rawName || '';
+    var entrant = findEntrant(raw);
+    var lk = entrant && entrant.lk;
+    var club = entrant && entrant.club;
+    var html = escapeHtml(raw) + (lk ? ' (LK ' + escapeHtml(lk) + ')' : '');
+    if (club) html += ' <span class="player-club">\u00b7 ' + escapeHtml(club) + '</span>';
+    return html;
   }
 
   function matchTimeHtml(t) {
@@ -79,8 +82,8 @@
           (m.time ? matchTimeHtml(m.time) : '') +
         '</div>' +
         '<div class="players">' +
-          '<div class="player">' + escapeHtml(playerLabel(m.player1)) + '</div>' +
-          '<div class="player">' + escapeHtml(playerLabel(m.player2)) + '</div>' +
+          '<div class="player">' + playerHtml(m.player1) + '</div>' +
+          '<div class="player">' + playerHtml(m.player2) + '</div>' +
         '</div>' +
                 '</div>'
     );
