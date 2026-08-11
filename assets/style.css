@@ -276,6 +276,7 @@ body {
 .schedule-match { flex: 1; min-width: 0; }
 .schedule-comp { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 3px; }
 .schedule-players { font-weight: 600; }
+.player-club { font-size: 0.7rem; font-weight: 400; color: var(--muted); margin-left: 4px; }
 
 .report-item h3 { margin: 0 0 6px; color: var(--navy); }
 .report-item .date { color: var(--muted); font-size: 0.8rem; margin-bottom: 8px; }
