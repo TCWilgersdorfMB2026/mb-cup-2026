@@ -155,7 +155,7 @@ function listCompetitions() {
     }
   }
   for (const c of state.entrants) {
-    if (c.competition && !seen.has(c.competition)) {
+    if (c.competition && (c.entrants || []).length && !seen.has(c.competition)) {
       seen.add(c.competition);
       names.push(c.competition);
     }
