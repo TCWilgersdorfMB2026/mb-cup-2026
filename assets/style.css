@@ -222,6 +222,8 @@ body {
   word-break: break-word;
 }
 .bracket-player { padding: 2px 0; color: var(--text); }
+.bracket-player + .bracket-player { border-top: 1px solid var(--border); margin-top: 4px; padding-top: 6px; }
+.winner-box .player-club { color: #fff; }
 .bracket-player.winner { font-weight: 700; color: var(--navy); }
 .bracket-score { color: var(--accent); font-weight: 700; font-size: 0.72rem; margin-top: 3px; }
 .bracket-pending { color: var(--muted); font-style: italic; font-size: 0.72rem; margin-top: 3px; }
