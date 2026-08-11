@@ -3,6 +3,7 @@
   var RELOAD_MS = 30 * 60 * 1000;
   var COURTS = ['Platz 1', 'Platz 2', 'Platz 3', 'Platz 4'];
   var MENU_REFRESH_MS = 5 * 60 * 1000;
+  var ENTRANTS = [];
 
   function qs(id) { return document.getElementById(id); }
 
@@ -35,6 +36,29 @@
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  // Sucht die LK eines Spielers in den Meldelisten (ENTRANTS). Namen aus
+  // Spielplan/Ergebnissen kommen im Format 'Nachname, Vorname' von tennis.de,
+  // Namen aus Meldelisten/manuellen Live-Eintraegen im Format 'Nachname Vorname'.
+  function findLk(rawName) {
+    var name = (rawName || '').trim();
+    if (!name) return null;
+    var withoutComma = name.replace(/,\s*/, ' ');
+    for (var i = 0; i < ENTRANTS.length; i++) {
+      var list = ENTRANTS[i].entrants || [];
+      for (var j = 0; j < list.length; j++) {
+        if (list[j].name === name || list[j].name === withoutComma) {
+          if (list[j].lk) return list[j].lk;
+        }
+      }
+    }
+    return null;
+  }
+
+  function playerLabel(rawName) {
+    var lk = findLk(rawName);
+    return (rawName || '') + (lk ? ' (LK ' + lk + ')' : '');
+  }
+
   function matchTimeHtml(t) {
     var s = String(t == null ? '' : t);
     var m = s.match(/^(\d{2}\.\d{2}\.\d{4})\s+(.+)$/);
@@ -55,8 +79,8 @@
           (m.time ? matchTimeHtml(m.time) : '') +
         '</div>' +
         '<div class="players">' +
-          '<div class="player">' + escapeHtml(m.player1) + '</div>' +
-          '<div class="player">' + escapeHtml(m.player2) + '</div>' +
+          '<div class="player">' + escapeHtml(playerLabel(m.player1)) + '</div>' +
+          '<div class="player">' + escapeHtml(playerLabel(m.player2)) + '</div>' +
         '</div>' +
                 '</div>'
     );
@@ -92,10 +116,11 @@ function renderMatches(matches, badgeText) {
   }
 
   function refresh() {
-    return Promise.all([loadJSON('data/schedule.json'), loadJSON('data/results.json'), loadJSON('data/live-current.json')]).then(function (arr) {
+    return Promise.all([loadJSON('data/schedule.json'), loadJSON('data/results.json'), loadJSON('data/live-current.json'), loadJSON('data/entrants.json')]).then(function (arr) {
       var schedule = arr[0] || [];
       var results = arr[1] || [];
       var manual = arr[2] || [];
+      ENTRANTS = arr[3] || [];
       var finishedKeys = {};
       results.forEach(function (r) {
         if (r.winner) finishedKeys[matchKey(r)] = true;
