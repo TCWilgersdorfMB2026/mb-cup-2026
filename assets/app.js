@@ -88,6 +88,26 @@ function namesMatch(a, b) {
   return (a || '').trim() && (a || '').trim() === (b || '').trim();
 }
 
+// Sucht die LK eines Spielers in den Meldelisten (state.entrants). Namen aus
+// Spielplan/Ergebnissen kommen im Format "Nachname, Vorname" von tennis.de,
+// Namen aus den Meldelisten (und manuellen Live-Eintraegen) im Format
+// "Nachname Vorname" - deshalb wird zusaetzlich ohne Komma verglichen.
+function findLk(rawName) {
+  const name = (rawName || '').trim();
+  if (!name) return null;
+  const withoutComma = name.replace(/,\s*/, ' ');
+  for (const block of state.entrants) {
+    const hit = (block.entrants || []).find((p) => p.name === name || p.name === withoutComma);
+    if (hit && hit.lk) return hit.lk;
+  }
+  return null;
+}
+
+function playerLabel(rawName) {
+  const lk = findLk(rawName);
+  return (rawName || '') + (lk ? ' (LK ' + lk + ')' : '');
+}
+
 // Hält die zuletzt geladenen Daten und die aktuell im Dropdown gewählte
 // Konkurrenz, damit ein Refresh (alle 60s) die Auswahl der Person nicht
 // zurücksetzt und das Dropdown nicht bei jedem Tick neu aufgebaut werden muss.
@@ -131,8 +151,8 @@ function bracketBoxHtml(m) {
   const p2Wins = m.played && namesMatch(m.player2, m.winner);
   return `
     <div class="bracket-box">
-      <div class="bracket-player${p1Wins ? ' winner' : ''}">${escapeHtml(m.player1 || '')}</div>
-      <div class="bracket-player${p2Wins ? ' winner' : ''}">${escapeHtml(m.player2 || '')}</div>
+      <div class="bracket-player${p1Wins ? ' winner' : ''}">${escapeHtml(playerLabel(m.player1))}</div>
+      <div class="bracket-player${p2Wins ? ' winner' : ''}">${escapeHtml(playerLabel(m.player2))}</div>
       ${m.played ? `<div class="bracket-score">${escapeHtml(m.score || '')}</div>` : '<div class="bracket-pending">Noch offen</div>'}
       ${m.court ? `<div class="bracket-meta bracket-court">${escapeHtml(m.court)}</div>` : ''}
       ${m.time ? `<div class="bracket-meta bracket-time">${escapeHtml(m.time)}</div>` : ''}
@@ -295,7 +315,7 @@ function scheduleRowHtml(m) {
       </div>
       <div class="schedule-match">
         <div class="schedule-comp">${escapeHtml(m.competition || '')}${m.round ? ' · ' + escapeHtml(m.round) : ''}</div>
-        <div class="schedule-players">${escapeHtml(m.player1 || '')} – ${escapeHtml(m.player2 || '')}</div>
+        <div class="schedule-players">${escapeHtml(playerLabel(m.player1))} – ${escapeHtml(playerLabel(m.player2))}</div>
       </div>
     </div>`;
 }
