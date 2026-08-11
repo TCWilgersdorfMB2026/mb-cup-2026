@@ -337,12 +337,6 @@
         "lk": "19,5"
       },
       {
-        "name": "Ossenbühl Udo",
-        "club": "Tennisverein Altenseelbach e.V.",
-        "dtbId": "16455384",
-        "lk": "21,8"
-      },
-      {
         "name": "Polzer Timo",
         "club": "TC Oranien Frohnhausen",
         "dtbId": "18157118",
@@ -549,6 +543,12 @@
         "club": "TC Wilgersdorf",
         "dtbId": "17457511",
         "lk": "22,1"
+      },
+      {
+        "name": "Ossenbühl Udo",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "16455384",
+        "lk": "21,8"
       },
       {
         "name": "Schmidt Carsten",
