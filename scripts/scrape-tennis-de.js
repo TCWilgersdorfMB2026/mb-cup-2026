@@ -761,6 +761,28 @@ async function fetchNuligaTerminMap(page) {
     await ensureNuligaLogin(page);
     await page.waitForTimeout(1500);
 
+    try {
+      fs.writeFileSync(
+        path.join(DATA_DIR, `${FILE_PREFIX}nuliga-debug.json`),
+        JSON.stringify(
+          {
+            url: page.url(),
+            title: await page.title(),
+            hasEmailInput: await page
+              .locator('input[type="email"], input[name*="user" i], input[name*="mail" i]')
+              .first()
+              .isVisible({ timeout: 2000 })
+              .catch(() => false),
+            bodySnippet: (await page.evaluate(() => document.body.innerText)).slice(0, 1000),
+          },
+          null,
+          2
+        ) + '\n'
+      );
+    } catch (e) {
+      console.warn('Konnte nuLiga-Diagnose nicht schreiben:', e.message);
+    }
+
     const href = await page.evaluate(() => {
       const link = Array.from(document.querySelectorAll('a')).find(
         (a) => a.textContent.trim() === 'Terminliste'
