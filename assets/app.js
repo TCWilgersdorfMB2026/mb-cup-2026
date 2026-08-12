@@ -174,16 +174,25 @@ function formatScore(raw) {
 }
 
 function bracketBoxHtml(m) {
-  const p1Wins = m.played && namesMatch(m.player1, m.winner);
-  const p2Wins = m.played && namesMatch(m.player2, m.winner);
-  return `
-    <div class="bracket-box">
-      <div class="bracket-player${p1Wins ? ' winner' : ''}">${playerHtml(m.player1)}</div>
-      <div class="bracket-player${p2Wins ? ' winner' : ''}">${playerHtml(m.player2)}</div>
-      ${m.played ? `<div class="bracket-score">${escapeHtml(formatScore(m.score || ''))}</div>` : '<div class="bracket-pending">Noch offen</div>'}
-      ${m.court ? `<div class="bracket-meta bracket-court">${escapeHtml(m.court)}</div>` : ''}
-      ${m.time ? `<div class="bracket-meta bracket-time">${escapeHtml(m.time)}</div>` : ''}
-    </div>`;
+const isFreilos = m.score === 'Freilos';
+const p1Wins = (m.played || isFreilos) && namesMatch(m.player1, m.winner);
+const p2Wins = m.played && namesMatch(m.player2, m.winner);
+let resultHtml;
+if (isFreilos) {
+resultHtml = '<div class="bracket-freilos">Freilos – kommt kampflos weiter</div>';
+} else if (m.played) {
+resultHtml = `<div class="bracket-score">${escapeHtml(formatScore(m.score || ''))}</div>`;
+} else {
+resultHtml = '<div class="bracket-pending">Noch offen</div>';
+}
+return `
+<div class="bracket-box">
+<div class="bracket-player${p1Wins ? ' winner' : ''}">${playerHtml(m.player1)}</div>
+${m.player2 ? `<div class="bracket-player${p2Wins ? ' winner' : ''}">${playerHtml(m.player2)}</div>` : ''}
+${resultHtml}
+${m.court ? `<div class="bracket-meta bracket-court">${escapeHtml(m.court)}</div>` : ''}
+${m.time ? `<div class="bracket-meta bracket-time">${escapeHtml(m.time)}</div>` : ''}
+</div>`;
 }
 
 // Rendert eine Konkurrenz als Turnierbaum (Spalte pro Runde), analog zur
@@ -329,26 +338,31 @@ function dayLabelOf(date) {
 // Ergebnis/Sieger - der Spielplan zeigt, wer wann wo spielt, nicht wer
 // gewonnen hat (das steht im "Ergebnisse"-Tab).
 function scheduleRowHtml(m) {
-  const timePart = m._date
-    ? m._date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr'
-    : '';
-  return `
-    <div class="schedule-row">
-      <div class="schedule-when">
-        ${m.court ? `<div class="schedule-court">${escapeHtml(m.court)}</div>` : ''}
-        ${timePart
-          ? `<div class="schedule-time">${escapeHtml(timePart)}</div>`
-          : '<div class="schedule-time schedule-time-empty">Zeit offen</div>'}
-      </div>
-      <div class="schedule-match">
-        <div class="schedule-comp">${escapeHtml(m.competition || '')}</div>
-        ${m.round ? `<div class="schedule-round">${escapeHtml(m.round)}</div>` : ''}
-        <div class="schedule-players">
-          <div class="schedule-player">${playerHtml(m.player1)}</div>
-          <div class="schedule-player">${playerHtml(m.player2)}</div>
-        </div>
-      </div>
-    </div>`;
+const timePart = m._date
+? m._date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr'
+: '';
+const playersHtml = m.player2
+? `
+<div class="schedule-player">${playerHtml(m.player1)}</div>
+<div class="schedule-player">${playerHtml(m.player2)}</div>`
+: `
+<div class="schedule-player">${playerHtml(m.player1)}</div>
+<div class="schedule-freilos">Freilos – kommt kampflos weiter</div>`;
+return `
+<div class="schedule-row">
+<div class="schedule-when">
+${m.court ? `<div class="schedule-court">${escapeHtml(m.court)}</div>` : ''}
+${timePart
+? `<div class="schedule-time">${escapeHtml(timePart)}</div>`
+: '<div class="schedule-time schedule-time-empty">Zeit offen</div>'}
+</div>
+<div class="schedule-match">
+<div class="schedule-comp">${escapeHtml(m.competition || '')}</div>
+${m.round ? `<div class="schedule-round">${escapeHtml(m.round)}</div>` : ''}
+<div class="schedule-players">${playersHtml}
+</div>
+</div>
+</div>`;
 }
 
 // Baut das Tages-Dropdown für den "Spielplan"-Tab auf: eine Option pro Tag,
