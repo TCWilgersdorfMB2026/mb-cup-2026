@@ -249,10 +249,11 @@ body {
    sobald der Container kein Grid mehr ist. */
 .bracket-grid { display: block; }
 .bracket-col-header {
-  text-align: left;
-  margin-top: 20px;
-  padding-bottom: 6px;
-  border-bottom: 2px solid var(--border);
+text-align: left;
+margin-top: 20px;
+padding-bottom: 6px;
+border-bottom: 2px solid var(--border);
+margin-bottom: 10px;
 }
 .bracket-col-header:first-child { margin-top: 0; }
 .bracket-match { margin-bottom: 8px; }
