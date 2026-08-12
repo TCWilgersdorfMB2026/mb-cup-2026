@@ -347,6 +347,15 @@ function buildRound1Pairs(rows) {
         slot = { isBye: true };
       }
     }
+    // Ergebnis-Spalte IMMER prüfen, auch wenn diese Zeile selbst schon den
+    // zweiten Slot enthält - bei einem entschiedenen Match stehen Kurzname
+    // des Siegers und Ergebnis-Score oft NICHT in einer eigenen Zwischen-
+    // zeile, sondern das Ergebnis steht in derselben Zeile wie Slot B (am
+    // echten, abgeschlossenen Referenzturnier 713418 verifiziert - vorher
+    // wurde dieser Fall übersehen und das Ergebnis ging verloren).
+    if (pendingSlot && row[2]) {
+      pendingEntries.push(row[2]);
+    }
     if (slot) {
       if (!pendingSlot) {
         pendingSlot = slot;
@@ -356,8 +365,6 @@ function buildRound1Pairs(rows) {
         pendingSlot = null;
         pendingEntries = [];
       }
-    } else if (pendingSlot && row[2]) {
-      pendingEntries.push(row[2]);
     }
   }
   return pairs;
