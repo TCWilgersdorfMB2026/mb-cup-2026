@@ -1,1 +1,1412 @@
-[]
+[
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Runde 1",
+    "player1": "Jud, Tobias",
+    "player2": "Lotz, Federico",
+    "winner": "Jud, Tobias",
+    "score": "15.08. 12:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Runde 1",
+    "player1": "Peters, Marvin",
+    "player2": "Prado Saldana, Joan Ricardo",
+    "winner": "Peters, Marvin",
+    "score": "15.08. 09:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Runde 1",
+    "player1": "Menn, Jan Steffen",
+    "player2": "Müller, Nico",
+    "winner": "Menn, Jan Steffen",
+    "score": "15.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Wagner, Matthias",
+    "player2": "Jud, Tobias",
+    "winner": "Wagner, Matthias",
+    "score": "16.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Iordanidis, Aristotelis",
+    "player2": "Nies, Tim",
+    "winner": "Iordanidis, Aristotelis",
+    "score": "16.08. 09:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Gross, Ingo",
+    "player2": "Peters, Marvin",
+    "winner": "Gross, Ingo",
+    "score": "16.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schwedes, Nick Luca",
+    "player2": "Dreysse, Kay",
+    "winner": "Schwedes, Nick Luca",
+    "score": "16.08. 18:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Ebener, Frederik",
+    "player2": "Ebener, Sebastian",
+    "winner": "Ebener, Frederik",
+    "score": "16.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Weber, Louis",
+    "player2": "Ballion, Silas",
+    "winner": "Weber, Louis",
+    "score": "15.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Feldmann, Jonas Juttichai",
+    "player2": "Wedding, Robin",
+    "winner": "Feldmann, Jonas Juttichai",
+    "score": "15.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Menn, Jan Steffen",
+    "player2": "Klahold, Linus",
+    "winner": "Menn, Jan Steffen",
+    "score": "17.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Wagner, Matthias",
+    "player2": "Iordanidis, Aristotelis",
+    "winner": "Wagner, Matthias",
+    "score": "18.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Gross, Ingo",
+    "player2": "Schwedes, Nick Luca",
+    "winner": "Gross, Ingo",
+    "score": "19.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Ebener, Frederik",
+    "player2": "Weber, Louis",
+    "winner": "Ebener, Frederik",
+    "score": "18.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Feldmann, Jonas Juttichai",
+    "player2": "Menn, Jan Steffen",
+    "winner": "Feldmann, Jonas Juttichai",
+    "score": "19.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Wagner, Matthias",
+    "player2": "Gross, Ingo",
+    "winner": "Wagner, Matthias",
+    "score": "21.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Ebener, Frederik",
+    "player2": "Feldmann, Jonas Juttichai",
+    "winner": "Ebener, Frederik",
+    "score": "21.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Finale",
+    "player1": "Wagner, Matthias",
+    "player2": "Ebener, Frederik",
+    "winner": "Wagner, Matthias",
+    "score": "22.08. 16:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Bahlmann, Niclas Hans",
+    "player2": "Böhl, Timo",
+    "winner": "Bahlmann, Niclas Hans",
+    "score": "15.08. 12:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Reuter, Marco",
+    "player2": "Kettner, Paul",
+    "winner": "Reuter, Marco",
+    "score": "16.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Lotz, Mike",
+    "player2": "Mauk, Andreas",
+    "winner": "Lotz, Mike",
+    "score": "16.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Koch, Colin",
+    "player2": "Löhl, Moritz",
+    "winner": "Koch, Colin",
+    "score": "16.08. 12:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Iordanidis, Alexandros",
+    "player2": "Göckus, Maximilian",
+    "winner": "Iordanidis, Alexandros",
+    "score": "15.08. 16:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Tempel, Marian",
+    "player2": "Solbach, Tim",
+    "winner": "Tempel, Marian",
+    "score": "16.08. 16:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Rötzel, Johannes",
+    "player2": "Türk, Michael",
+    "winner": "Rötzel, Johannes",
+    "score": "15.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Henrichs, Lukas",
+    "player2": "Ermert, Martin",
+    "winner": "Henrichs, Lukas",
+    "score": "15.08. 16:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Bahlmann, Niclas Hans",
+    "player2": "Reuter, Marco",
+    "winner": "Bahlmann, Niclas Hans",
+    "score": "19.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Lotz, Mike",
+    "player2": "Koch, Colin",
+    "winner": "Lotz, Mike",
+    "score": "19.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Iordanidis, Alexandros",
+    "player2": "Tempel, Marian",
+    "winner": "Iordanidis, Alexandros",
+    "score": "18.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Rötzel, Johannes",
+    "player2": "Henrichs, Lukas",
+    "winner": "Rötzel, Johannes",
+    "score": "19.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Bahlmann, Niclas Hans",
+    "player2": "Lotz, Mike",
+    "winner": "Bahlmann, Niclas Hans",
+    "score": "21.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Iordanidis, Alexandros",
+    "player2": "Rötzel, Johannes",
+    "winner": "Iordanidis, Alexandros",
+    "score": "21.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Finale",
+    "player1": "Bahlmann, Niclas Hans",
+    "player2": "Iordanidis, Alexandros",
+    "winner": "Bahlmann, Niclas Hans",
+    "score": "22.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Margeit, Ben",
+    "player2": "Schläger, Lorenz",
+    "winner": "Margeit, Ben",
+    "score": "15.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Gün, Bulut",
+    "player2": "Müller, Joachim",
+    "winner": "Gün, Bulut",
+    "score": "15.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Malore Govindarajan, Suhas",
+    "player2": "Binsack, Jarno",
+    "winner": "Malore Govindarajan, Suhas",
+    "score": "16.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Metzger, Tim",
+    "player2": "Koch, Heico",
+    "winner": "Metzger, Tim",
+    "score": "15.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Becker, Volker",
+    "player2": "Fries, Leo",
+    "winner": "Becker, Volker",
+    "score": "16.08. 16:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Schneider, Dominik",
+    "player2": "Traut, Jan Lukas",
+    "winner": "Schneider, Dominik",
+    "score": "16.08. 16:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Backaus, Ole Fiete",
+    "player2": "Mai, Lennart",
+    "winner": "Backaus, Ole Fiete",
+    "score": "16.08. 18:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Schmidt, Torben",
+    "player2": "Lück, Markus",
+    "winner": "Schmidt, Torben",
+    "score": "16.08. 16:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Mayenschein, Dennis",
+    "player2": "Stader, Dominik",
+    "winner": "Mayenschein, Dennis",
+    "score": "15.08. 09:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Hilberg, Max",
+    "player2": "Hartmann, Nils",
+    "winner": "Hilberg, Max",
+    "score": "15.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Anders, Denis",
+    "player2": "Margeit, Ben",
+    "winner": "Anders, Denis",
+    "score": "16.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Gün, Bulut",
+    "player2": "Malore Govindarajan, Suhas",
+    "winner": "Gün, Bulut",
+    "score": "17.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Polzer, Timo",
+    "player2": "Metzger, Tim",
+    "winner": "Polzer, Timo",
+    "score": "16.08. 16:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Becker, Volker",
+    "player2": "Gyurcsi, Robert Denes",
+    "winner": "Becker, Volker",
+    "score": "17.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schneider, Dominik",
+    "player2": "Backaus, Ole Fiete",
+    "winner": "Schneider, Dominik",
+    "score": "18.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schmidt, Torben",
+    "player2": "Baldus, Jonas",
+    "winner": "Schmidt, Torben",
+    "score": "17.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Kamyab, Taymas",
+    "player2": "Mayenschein, Dennis",
+    "winner": "Kamyab, Taymas",
+    "score": "16.08. 18:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Hilberg, Max",
+    "player2": "Schauerte, Andre",
+    "winner": "Hilberg, Max",
+    "score": "16.08. 18:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Anders, Denis",
+    "player2": "Gün, Bulut",
+    "winner": "Anders, Denis",
+    "score": "19.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Polzer, Timo",
+    "player2": "Becker, Volker",
+    "winner": "Polzer, Timo",
+    "score": "19.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Schneider, Dominik",
+    "player2": "Schmidt, Torben",
+    "winner": "Schneider, Dominik",
+    "score": "20.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Kamyab, Taymas",
+    "player2": "Hilberg, Max",
+    "winner": "Kamyab, Taymas",
+    "score": "20.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Anders, Denis",
+    "player2": "Polzer, Timo",
+    "winner": "Anders, Denis",
+    "score": "21.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Schneider, Dominik",
+    "player2": "Kamyab, Taymas",
+    "winner": "Schneider, Dominik",
+    "score": "21.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Finale",
+    "player1": "Anders, Denis",
+    "player2": "Schneider, Dominik",
+    "winner": "Anders, Denis",
+    "score": "22.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Runde 1",
+    "player1": "Freudenstein, Manuel",
+    "player2": "Nickel, Jan",
+    "winner": "Freudenstein, Manuel",
+    "score": "15.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Runde 1",
+    "player1": "Zahlmann, Jörg Michael",
+    "player2": "Schmidt, Fabian",
+    "winner": "Zahlmann, Jörg Michael",
+    "score": "15.08. 09:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Runde 1",
+    "player1": "Dielmann, Benedikt",
+    "player2": "Windisch, Marcus",
+    "winner": "Dielmann, Benedikt",
+    "score": "15.08. 09:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Runde 1",
+    "player1": "Högemann, Simon",
+    "player2": "Anders, Gero",
+    "winner": "Högemann, Simon",
+    "score": "15.08. 09:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Laarmann, Mark",
+    "player2": "Meyer, Dirk",
+    "winner": "Laarmann, Mark",
+    "score": "15.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Freudenstein, Manuel",
+    "player2": "Damm, Robin",
+    "winner": "Freudenstein, Manuel",
+    "score": "16.08. 12:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Roth, Marvin",
+    "player2": "Zahlmann, Jörg Michael",
+    "winner": "Roth, Marvin",
+    "score": "16.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schürbusch, Nico",
+    "player2": "Braun, Sebastian",
+    "winner": "Schürbusch, Nico",
+    "score": "15.08. 12:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Zöller, Robin",
+    "player2": "Dielmann, Benedikt",
+    "winner": "Zöller, Robin",
+    "score": "16.08. 12:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Wissenbach, Jan",
+    "player2": "Scheuermann, Florian",
+    "winner": "Wissenbach, Jan",
+    "score": "16.08. 09:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Baak, Matthäus",
+    "player2": "Klein, Thilo",
+    "winner": "Baak, Matthäus",
+    "score": "15.08. 09:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Högemann, Simon",
+    "player2": "Büdenbender, Jens",
+    "winner": "Högemann, Simon",
+    "score": "16.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Laarmann, Mark",
+    "player2": "Freudenstein, Manuel",
+    "winner": "Laarmann, Mark",
+    "score": "18.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Roth, Marvin",
+    "player2": "Schürbusch, Nico",
+    "winner": "Roth, Marvin",
+    "score": "18.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Zöller, Robin",
+    "player2": "Wissenbach, Jan",
+    "winner": "Zöller, Robin",
+    "score": "18.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Baak, Matthäus",
+    "player2": "Högemann, Simon",
+    "winner": "Baak, Matthäus",
+    "score": "18.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Laarmann, Mark",
+    "player2": "Roth, Marvin",
+    "winner": "Laarmann, Mark",
+    "score": "20.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Zöller, Robin",
+    "player2": "Baak, Matthäus",
+    "winner": "Zöller, Robin",
+    "score": "20.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Finale",
+    "player1": "Laarmann, Mark",
+    "player2": "Zöller, Robin",
+    "winner": "Laarmann, Mark",
+    "score": "22.08. 12:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Müller, Stefan",
+    "player2": "Ossenbühl, Udo",
+    "winner": "Müller, Stefan",
+    "score": "15.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Trappe, Richard",
+    "player2": "Borodin, Eugen",
+    "winner": "Trappe, Richard",
+    "score": "15.08. 12:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Weber, Holger",
+    "player2": "Hess, Manuel",
+    "winner": "Weber, Holger",
+    "score": "15.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Lerscht, Michael",
+    "player2": "Wroben, Thorsten",
+    "winner": "Lerscht, Michael",
+    "score": "17.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Engel, Peter",
+    "player2": "Müller, Stefan",
+    "winner": "Engel, Peter",
+    "score": "17.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Deeken, Matthias",
+    "player2": "Trappe, Richard",
+    "winner": "Deeken, Matthias",
+    "score": "16.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Weber, Holger",
+    "player2": "Steinkohl, Alexander",
+    "winner": "Weber, Holger",
+    "score": "16.08. 16:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Lerscht, Michael",
+    "player2": "Schmidt, Carsten",
+    "winner": "Lerscht, Michael",
+    "score": "18.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Engel, Peter",
+    "player2": "Deeken, Matthias",
+    "winner": "Engel, Peter",
+    "score": "20.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Weber, Holger",
+    "player2": "Lerscht, Michael",
+    "winner": "Weber, Holger",
+    "score": "20.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Finale",
+    "player1": "Engel, Peter",
+    "player2": "Weber, Holger",
+    "winner": "Engel, Peter",
+    "score": "22.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Lück, Marco",
+    "player2": "Hermann, Torsten",
+    "winner": "Lück, Marco",
+    "score": "15.08. 16:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Hofacker, Mathias",
+    "player2": "Schreiber, Oliver",
+    "winner": "Hofacker, Mathias",
+    "score": "17.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Koehler, Michael",
+    "player2": "Stauf, Michael",
+    "winner": "Koehler, Michael",
+    "score": "15.08. 12:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Klink, Peter",
+    "player2": "Galbas, Jörg",
+    "winner": "Klink, Peter",
+    "score": "15.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schwarzer, Martin",
+    "player2": "Dumke, Bernd",
+    "winner": "Schwarzer, Martin",
+    "score": "15.08. 16:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Durow, Thorsten",
+    "player2": "Schmelzeisen, Frank",
+    "winner": "Durow, Thorsten",
+    "score": "16.08. 18:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Rothe, Michael",
+    "player2": "Feldmann, Jürgen",
+    "winner": "Rothe, Michael",
+    "score": "15.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Becker, Henning",
+    "player2": "Mosch, Rüdiger",
+    "winner": "Becker, Henning",
+    "score": "17.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Simon, Reinhard",
+    "player2": "Germies, Bernd",
+    "winner": "Simon, Reinhard",
+    "score": "17.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Hebestreit, Thorsten",
+    "player2": "Schwarz, Volker",
+    "winner": "Hebestreit, Thorsten",
+    "score": "17.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Rothe, Michael",
+    "player2": "Becker, Henning",
+    "winner": "Rothe, Michael",
+    "score": "19.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Simon, Reinhard",
+    "player2": "Hebestreit, Thorsten",
+    "winner": "Simon, Reinhard",
+    "score": "19.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Finale",
+    "player1": "Rothe, Michael",
+    "player2": "Simon, Reinhard",
+    "winner": "Rothe, Michael",
+    "score": "22.08. 09:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Sprenger, Axel",
+    "player2": "Vogels, Reiner",
+    "winner": "Sprenger, Axel",
+    "score": "17.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Flath, Werner",
+    "player2": "Bieker, Joachim",
+    "winner": "Flath, Werner",
+    "score": "18.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Rauen, Werner",
+    "player2": "Sommer, Rainer",
+    "winner": "Rauen, Werner",
+    "score": "18.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Simmerl, Mario",
+    "player2": "Sprenger, Axel",
+    "winner": "Simmerl, Mario",
+    "score": "20.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Flath, Werner",
+    "player2": "Rauen, Werner",
+    "winner": "Flath, Werner",
+    "score": "20.08. 15:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "round": "Finale",
+    "player1": "Simmerl, Mario",
+    "player2": "Flath, Werner",
+    "winner": "Simmerl, Mario",
+    "score": "22.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Heide, Miriam",
+    "player2": "Hoffmann, Nicole",
+    "winner": "Heide, Miriam",
+    "score": "15.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Demirdöven, Mehtap",
+    "player2": "Voth, Eva",
+    "winner": "Demirdöven, Mehtap",
+    "score": "15.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Hees, Sabrina",
+    "player2": "Tempel, Carolin",
+    "winner": "Hees, Sabrina",
+    "score": "15.08. 12:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schumacher-Markowski, Claudia",
+    "player2": "Hörner, Judith",
+    "winner": "Schumacher-Markowski, Claudia",
+    "score": "15.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Burghardt, Jule",
+    "player2": "Gyurcsi, Lili",
+    "winner": "Burghardt, Jule",
+    "score": "15.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Panning- Dornseifer, Nicole",
+    "player2": "Heide, Miriam",
+    "winner": "Panning- Dornseifer, Nicole",
+    "score": "17.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Lübke, Bettina",
+    "player2": "Demirdöven, Mehtap",
+    "winner": "Lübke, Bettina",
+    "score": "17.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Hees, Sabrina",
+    "player2": "Schumacher-Markowski, Claudia",
+    "winner": "Hees, Sabrina",
+    "score": "17.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Burghardt, Jule",
+    "player2": "Backaus, Hedda Lotta",
+    "winner": "Burghardt, Jule",
+    "score": "17.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Panning- Dornseifer, Nicole",
+    "player2": "Lübke, Bettina",
+    "winner": "Panning- Dornseifer, Nicole",
+    "score": "20.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Hees, Sabrina",
+    "player2": "Burghardt, Jule",
+    "winner": "Hees, Sabrina",
+    "score": "20.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Finale",
+    "player1": "Panning- Dornseifer, Nicole",
+    "player2": "Hees, Sabrina",
+    "winner": "Panning- Dornseifer, Nicole",
+    "score": "22.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Schläger, Antonia",
+    "player2": "Menn, Svenja",
+    "winner": "Schläger, Antonia",
+    "score": "15.08. 09:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Kamyab, Maya",
+    "player2": "Müller, Karin",
+    "winner": "Kamyab, Maya",
+    "score": "15.08. 12:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schläger, Antonia",
+    "player2": "Ohm, Michaela",
+    "winner": "Schläger, Antonia",
+    "score": "16.08. 18:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Herking, Lea-Marie",
+    "player2": "Göckus, Luisa",
+    "winner": "Herking, Lea-Marie",
+    "score": "16.08. 12:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Hercher, Elise",
+    "player2": "Dörr, Vanessa",
+    "winner": "Hercher, Elise",
+    "score": "15.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Grau, Neela Marlen",
+    "player2": "Müller, Lea",
+    "winner": "Grau, Neela Marlen",
+    "score": "15.08. 09:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Hussing, Mara",
+    "player2": "Wiegel, Lea",
+    "winner": "Hussing, Mara",
+    "score": "16.08. 09:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Palić, Nina",
+    "player2": "Pilz, Melanie",
+    "winner": "Palić, Nina",
+    "score": "15.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Becker, Birgit",
+    "player2": "Anders, Xenia",
+    "winner": "Becker, Birgit",
+    "score": "16.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Kamyab, Maya",
+    "player2": "Schläger, Antonia",
+    "winner": "Kamyab, Maya",
+    "score": "17.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Herking, Lea-Marie",
+    "player2": "Hercher, Elise",
+    "winner": "Herking, Lea-Marie",
+    "score": "17.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Grau, Neela Marlen",
+    "player2": "Hussing, Mara",
+    "winner": "Grau, Neela Marlen",
+    "score": "18.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Palić, Nina",
+    "player2": "Becker, Birgit",
+    "winner": "Palić, Nina",
+    "score": "18.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Kamyab, Maya",
+    "player2": "Herking, Lea-Marie",
+    "winner": "Kamyab, Maya",
+    "score": "21.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Grau, Neela Marlen",
+    "player2": "Palić, Nina",
+    "winner": "Grau, Neela Marlen",
+    "score": "21.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Finale",
+    "player1": "Kamyab, Maya",
+    "player2": "Grau, Neela Marlen",
+    "winner": "Kamyab, Maya",
+    "score": "22.08. 10:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Giebeler, Ina",
+    "player2": "Becker, Sarah",
+    "winner": "Giebeler, Ina",
+    "score": "16.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Steuber, Melina",
+    "player2": "Pfeifer, Jasmin",
+    "winner": "Steuber, Melina",
+    "score": "15.08. 13:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Fiedler, Julia",
+    "player2": "Gerich, Verena",
+    "winner": "Fiedler, Julia",
+    "score": "16.08. 09:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Herrmann Solbach, Sophia",
+    "player2": "Giebeler, Ina",
+    "winner": "Herrmann Solbach, Sophia",
+    "score": "19.08. 17:00",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Steuber, Melina",
+    "player2": "Fiedler, Julia",
+    "winner": "Steuber, Melina",
+    "score": "19.08. 18:30",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Finale",
+    "player1": "Herrmann Solbach, Sophia",
+    "player2": "Steuber, Melina",
+    "winner": "Herrmann Solbach, Sophia",
+    "score": "22.08. 12:00",
+    "time": "",
+    "court": ""
+  }
+]

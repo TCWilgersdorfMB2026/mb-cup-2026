@@ -223,6 +223,8 @@ Deutschland
 25,00 € zzgl. 5 €
 	
 Meldeliste
+Zulassungsliste
+Termine
 	
 Hauptfeld
 
@@ -237,6 +239,8 @@ Deutschland
 25,00 € zzgl. 5 €
 	
 Meldeliste
+Zulassungsliste
+Termine
 	
 Hauptfeld
 
@@ -251,6 +255,8 @@ Deutschland
 25,00 € zzgl. 5 €
 	
 Meldeliste
+Zulassungsliste
+Termine
 	
 Hauptfeld
 
@@ -265,7 +271,10 @@ Deutschland
 25,00 € zzgl. 5 €
 	
 Meldeliste
+Zulassungsliste
+Termine
 	
+Hauptfeld
 
 
 Herren 40 Einzel
@@ -278,6 +287,8 @@ Deutschland
 25,00 € zzgl. 5 €
 	
 Meldeliste
+Zulassungsliste
+Termine
 	
 Hauptfeld
 
@@ -305,6 +316,8 @@ Deutschland
 25,00 € zzgl. 5 €
 	
 Meldeliste
+Zulassungsliste
+Termine
 	
 Hauptfeld
 
@@ -332,6 +345,8 @@ Deutschland
 25,00 € zzgl. 5 €
 	
 Meldeliste
+Zulassungsliste
+Termine
 	
 Hauptfeld
 
@@ -359,6 +374,8 @@ Deutschland
 25,00 € zzgl. 5 €
 	
 Meldeliste
+Zulassungsliste
+Termine
 	
 Hauptfeld
 
@@ -399,6 +416,8 @@ Deutschland
 25,00 € zzgl. 5 €
 	
 Meldeliste
+Zulassungsliste
+Termine
 	
 Hauptfeld
 
@@ -413,6 +432,8 @@ Deutschland
 25,00 € zzgl. 5 €
 	
 Meldeliste
+Zulassungsliste
+Termine
 	
 Hauptfeld
 
@@ -427,6 +448,8 @@ Deutschland
 25,00 € zzgl. 5 €
 	
 Meldeliste
+Zulassungsliste
+Termine
 	
 Hauptfeld
 
