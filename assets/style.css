@@ -221,6 +221,7 @@ body {
 .bracket-player.winner { font-weight: 700; color: var(--navy); }
 .bracket-score { color: var(--accent); font-weight: 700; font-size: 0.72rem; margin-top: 3px; }
 .bracket-pending { color: var(--muted); font-style: italic; font-size: 0.72rem; margin-top: 3px; }
+.bracket-freilos { color: var(--muted); font-style: italic; font-size: 0.72rem; margin-top: 3px; }
 .bracket-meta { color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
 
 /* Der Sieger-Kasten steht in einer Grid-Zelle, die über die volle Höhe des
@@ -273,6 +274,7 @@ body {
 .schedule-court { font-weight: 700; color: var(--navy); font-size: 0.9rem; }
 .schedule-time { color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
 .schedule-time-empty { font-style: italic; }
+.schedule-freilos { font-weight: 600; font-size: 1.15rem; color: var(--muted); font-style: italic; }
 .schedule-match { flex: 1; min-width: 0; }
 .schedule-comp, .schedule-round { font-size: 0.81rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 3px; }
 .schedule-players { margin-top: 10px; }
