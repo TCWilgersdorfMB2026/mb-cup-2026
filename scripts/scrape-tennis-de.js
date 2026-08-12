@@ -744,14 +744,6 @@ async function fetchNuligaTerminMap(page) {
     const pdfParse = require('pdf-parse');
     const parsed = await pdfParse(buffer);
     const raw = parsed.text;
-    try {
-      fs.writeFileSync(
-        path.join(DATA_DIR, FILE_PREFIX + 'nuliga-pdf-debug.txt'),
-        raw.slice(0, 4000)
-      );
-    } catch (e) {
-      console.warn('Konnte PDF-Debug nicht schreiben:', e.message);
-    }
 
     const cleaned = raw
       .replace(/^Turnier:.*$/gm, '')
@@ -760,14 +752,18 @@ async function fetchNuligaTerminMap(page) {
       .replace(/^Terminliste$/gm, '')
       .replace(/^(Damen|Herren)( \d+)? (Einzel|Doppel)$/gm, '')
       .replace(/^Hauptfeld$/gm, '')
-      .replace(/Name Setzung LK[^\n]*?Verein Anlage Termin/g, '')
-      .replace(/^nu \.Dokument.*$/gm, '');
+      .replace(/^NameSetzungLK.*Termin$/gm, '')
+      .replace(/^nu\s*\.?Dokument.*$/gm, '');
 
     const text = cleaned.replace(/\s+/g, ' ').trim();
-    const WORD = "[A-ZÄÖÜ][\\wÀ-ÿ'\\-#]*";
+    // pdf-parse fuegt an Zellengrenzen (Name|Setzung, Setzung|LK, Platz-Nr.|Datum)
+    // KEINE Leerzeichen ein (anders als andere PDF-Text-Extraktoren) - die Regex
+    // unten beruecksichtigt das: Setzung ist optional ohne Leerzeichen vor "LK",
+    // und die Platz-Nummer wird nicht-gierig VOR dem folgenden TT.MM.-Datum gelesen.
+    const WORD = "[A-ZÄÖÜ][A-Za-zÀ-ÿß'\\-#]*";
     const NAME = `(${WORD}(?:\\s${WORD}){0,2},\\s${WORD}(?:\\s${WORD}){0,2})`;
     const re = new RegExp(
-      NAME + "\\s+(?:\\d+\\s+)?LK[\\d,]+.*?Platz\\s*(\\d+)[^0-9]*?(\\d{2})\\.(\\d{2})\\.\\s+(\\d{2}):(\\d{2})",
+      NAME + "\\d{0,2}LK[\\d,]+.*?Platz\\s*(\\d+?)(\\d{2})\\.(\\d{2})\\.\\s+(\\d{2}):(\\d{2})",
       'g'
     );
 
@@ -781,8 +777,7 @@ async function fetchNuligaTerminMap(page) {
         time: `${day}.${month}.${year} ${hh}:${mm} Uhr`,
       });
     }
-    console.log(`nuLiga-Terminliste: ${map.size} Termine gefunden.`);
-    return map;
+        return map;
   } catch (e) {
     console.warn('nuLiga-Terminliste konnte nicht geladen werden:', e.message);
     return null;
