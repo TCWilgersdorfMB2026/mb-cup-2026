@@ -31,6 +31,7 @@ const { chromium } = require('playwright');
 // (test-entrants.json usw.) statt der echten entrants.json/schedule.json/
 // results.json. Der reguläre 30-Minuten-Cron setzt diese Variable nie.
 const TOURNAMENT_ID = process.env.TEST_TOURNAMENT_ID || '796221'; // Standard: 17. Wilgersdorfer LK-Turnier um den markenbaumarkt24-Cup
+const NULIGA_TOURNAMENT_ID = process.env.NULIGA_TOURNAMENT_ID || '873333'; // Internes nuLiga-Turnier-ID (fuer Terminliste-PDF, Vereinsbereich htv.liga.nu)
 const FILE_PREFIX = process.env.TEST_TOURNAMENT_ID ? 'test-' : '';
 const DETAIL_URL = `https://www.tennis.de/spielen/spielbetrieb/turniersuche.html#detail/${TOURNAMENT_ID}`;
 const DATA_DIR = path.join(__dirname, '..', 'data');
@@ -722,6 +723,113 @@ async function scrapeCompetition(page, meldelisteIndex, hauptfeldIndex, termineI
   return result;
 }
 
+async function ensureNuligaLogin(page) {
+  const username = process.env.TENNIS_DE_USERNAME;
+  const password = process.env.TENNIS_DE_PASSWORD;
+  if (!username || !password) return false;
+  try {
+    const emailInput = page
+      .locator('input[type="email"], input[name*="user" i], input[name*="mail" i]')
+      .first();
+    const isLoginPage = await emailInput.isVisible({ timeout: 3000 }).catch(() => false);
+    if (!isLoginPage) return true; // schon eingeloggt (SSO von tennis.de uebernommen)
+    const passwordInput = page.locator('input[type="password"]').first();
+    await emailInput.fill(username);
+    await passwordInput.fill(password);
+    const submitBtn = page
+      .locator('button[type="submit"], button:has-text("Einloggen"), button:has-text("Login")')
+      .first();
+    await submitBtn.click({ timeout: 5000 }).catch(() => {});
+    await page.waitForTimeout(2000);
+    return true;
+  } catch (e) {
+    console.warn('nuLiga-Login fehlgeschlagen:', e.message);
+    return false;
+  }
+}
+
+// Liest die Termine (Platz + Uhrzeit) direkt aus der offiziellen nuLiga-Terminliste
+// (PDF-Export im Vereinsbereich), da diese Angaben auf der oeffentlichen tennis.de-
+// Turnierseite trotz vollstaendiger Erfassung durch den Turnierleiter nicht angezeigt
+// werden (Luecke zwischen nuLiga und tennis.de, siehe Diagnose vom 12.08.2026).
+async function fetchNuligaTerminMap(page) {
+  try {
+    await page.goto(
+      `https://tende-apps.liga.nu/cgi-bin/WebObjects/nuTurnierTENDE.woa/wa/nuTurnier?tournament=${NULIGA_TOURNAMENT_ID}`,
+      { waitUntil: 'domcontentloaded', timeout: 30000 }
+    );
+    await ensureNuligaLogin(page);
+    await page.waitForTimeout(1500);
+
+    const href = await page.evaluate(() => {
+      const link = Array.from(document.querySelectorAll('a')).find(
+        (a) => a.textContent.trim() === 'Terminliste'
+      );
+      return link ? link.getAttribute('href') : null;
+    });
+    if (!href) {
+      console.warn('nuLiga: Terminliste-Link nicht gefunden - ueberspringe Termine-Import.');
+      return null;
+    }
+
+    const response = await page.context().request.get(href);
+    if (!response.ok()) {
+      console.warn('nuLiga: Terminliste-PDF konnte nicht geladen werden, Status', response.status());
+      return null;
+    }
+    const buffer = await response.body();
+    const pdfParse = require('pdf-parse');
+    const parsed = await pdfParse(buffer);
+    const raw = parsed.text;
+
+    const cleaned = raw
+      .replace(/^Turnier:.*$/gm, '')
+      .replace(/^LK:.*$/gm, '')
+      .replace(/^Bewerb:.*$/gm, '')
+      .replace(/^Terminliste$/gm, '')
+      .replace(/^(Damen|Herren)( \d+)? (Einzel|Doppel)$/gm, '')
+      .replace(/^Hauptfeld$/gm, '')
+      .replace(/Name Setzung LK[^\n]*?Verein Anlage Termin/g, '')
+      .replace(/^nu \.Dokument.*$/gm, '');
+
+    const text = cleaned.replace(/\s+/g, ' ').trim();
+    const WORD = "[A-ZÄÖÜ][\\wÀ-ÿ'\\-#]*";
+    const NAME = `(${WORD}(?:\\s${WORD}){0,2},\\s${WORD}(?:\\s${WORD}){0,2})`;
+    const re = new RegExp(
+      NAME + "\\s+(?:\\d+\\s+)?LK[\\d,]+.*?Platz\\s*(\\d+)[^0-9]*?(\\d{2})\\.(\\d{2})\\.\\s+(\\d{2}):(\\d{2})",
+      'g'
+    );
+
+    const year = new Date().getFullYear();
+    const map = new Map();
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      const [, name, platz, day, month, hh, mm] = m;
+      map.set(name.trim(), {
+        court: `Platz ${platz}`,
+        time: `${day}.${month}.${year} ${hh}:${mm} Uhr`,
+      });
+    }
+    console.log(`nuLiga-Terminliste: ${map.size} Termine gefunden.`);
+    return map;
+  } catch (e) {
+    console.warn('nuLiga-Terminliste konnte nicht geladen:', e.message);
+    return null;
+  }
+}
+
+function mergeNuligaTermine(matches, terminMap) {
+  if (!terminMap || !terminMap.size) return;
+  for (const m of matches) {
+    const t = terminMap.get(m.player1) || terminMap.get(m.player2);
+    if (t) {
+      m.time = t.time;
+      m.court = t.court;
+    }
+  }
+}
+
+
 async function main() {
   const browser = await chromium.launch({
     args: ['--disable-blink-features=AutomationControlled'],
@@ -818,6 +926,9 @@ async function main() {
   // "Freilos"-Einträge (Spieler kommt ohne Spiel weiter) zählen NICHT als
   // Ergebnis mit Score, gehören aber weiterhin in den Spielplan, damit der
   // Spieler dort sichtbar bleibt statt komplett zu verschwinden.
+    const nuligaTerminMap = await fetchNuligaTerminMap(page);
+  mergeNuligaTermine(allMatches, nuligaTerminMap);
+
   const results = allMatches.filter((m) => m.score && m.score !== 'Freilos' && /\d:\d/.test(m.score));
   const schedule = allMatches.filter((m) => !m.score || m.score === 'Freilos');
 
