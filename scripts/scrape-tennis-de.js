@@ -22,6 +22,11 @@
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
+
+const TOURNAMENT_ID = process.env.TEST_TOURNAMENT_ID || '796221'; // Standard: 17. Wilgersdorfer LK-Turnier um den markenbaumarkt24-Cup
+const FILE_PREFIX = process.env.TEST_TOURNAMENT_ID ? 'test-' : '';
+const DETAIL_URL = `https://www.tennis.de/spielen/spielbetrieb/turniersuche.html#detail/${TOURNAMENT_ID}`;
+const DATA_DIR = path.join(__dirname, '..', 'data');
 function readJSON(file, fallback) {
     try {
           return JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), 'utf8'));
