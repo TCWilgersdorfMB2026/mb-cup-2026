@@ -744,6 +744,14 @@ async function fetchNuligaTerminMap(page) {
     const pdfParse = require('pdf-parse');
     const parsed = await pdfParse(buffer);
     const raw = parsed.text;
+    try {
+      fs.writeFileSync(
+        path.join(DATA_DIR, FILE_PREFIX + 'nuliga-pdf-debug.txt'),
+        raw.slice(0, 4000)
+      );
+    } catch (e) {
+      console.warn('Konnte PDF-Debug nicht schreiben:', e.message);
+    }
 
     const cleaned = raw
       .replace(/^Turnier:.*$/gm, '')
