@@ -82,7 +82,7 @@ function renderTicker(items) {
 // Reihenfolge, in der Runden innerhalb einer Konkurrenz angezeigt werden.
 // Unbekannte/leere Rundennamen (z.B. bei Konkurrenzen ohne Tableau) landen
 // einfach ans Ende, statt den Sortiervorgang zu verwirren.
-const ROUND_ORDER = ['Sechzehntelfinale', 'Achtelfinale', 'Viertelfinale', 'Halbfinale', 'Finale'];
+const ROUND_ORDER = ['Runde 1', 'Sechzehntelfinale', 'Achtelfinale', 'Viertelfinale', 'Halbfinale', 'Finale'];
 
 function namesMatch(a, b) {
   return (a || '').trim() && (a || '').trim() === (b || '').trim();
