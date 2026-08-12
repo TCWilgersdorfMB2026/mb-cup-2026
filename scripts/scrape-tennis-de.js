@@ -316,29 +316,143 @@ function fullNameMatchesShort(fullName, short) {
 // z.B. steht das Ergebnis eines Achtelfinale-Matches in der
 // "Viertelfinale"-Spalte. Wir verarbeiten deshalb Spalte für Spalte und
 // reichen die jeweiligen Sieger als Teilnehmer der nächsten Runde weiter.
+// Gruppiert die Runde-1-Rohzeilen paarweise: eine "Slot"-Zeile ist eine
+// Zeile, in der die Runde-1-Spalte (Index 1) gefüllt ist - entweder ein
+// echter Spieler ODER "[Rast]" (Freilos). Alle Zeilen ZWISCHEN Slot A und
+// Slot B eines Paares gehören zu diesem Duell (dort steht - falls
+// vorhanden - dessen Ergebnis-Kurzform).
+//
+// WICHTIG (Bug behoben): Vorher wurden "[Rast]"-Zeilen beim Aufbau von
+// "participants" stillschweigend übersprungen. Das hat nicht nur dazu
+// geführt, dass Freilos-Spieler komplett aus schedule.json verschwanden,
+// sondern auch alle NACHFOLGENDEN Paarungen um die Anzahl der übersprungenen
+// Freilose verschoben - z.B. wurden zwei Spieler, die beide nur ein Freilos
+// hatten und sich in Wirklichkeit noch gar nicht gegenüberstanden (z.B.
+// Weber/Ballion im MB-Cup 2026), fälschlich als "Runde 1"-Gegner mit
+// erfundenem Sieger ausgegeben. Diese paarweise Gruppierung anhand der
+// tatsächlichen Zeilenposition verhindert das, weil Freilose als echter
+// Slot (nur ohne Namen) mitgezählt werden statt entfernt zu werden.
+function buildRound1Pairs(rows) {
+  const pairs = [];
+  let pendingSlot = null;
+  let pendingEntries = [];
+  for (const row of rows) {
+    const cell = row[1];
+    let slot = null;
+    if (cell) {
+      const m = cell.match(FULL_PLAYER_RE);
+      if (m) {
+        slot = { lk: m[1], fullName: `${m[2].trim()}, ${m[3].trim()}`, club: m[5].trim() };
+      } else if (/\[Rast\]/.test(cell)) {
+        slot = { isBye: true };
+      }
+    }
+    if (slot) {
+      if (!pendingSlot) {
+        pendingSlot = slot;
+        pendingEntries = [];
+      } else {
+        pairs.push({ s1: pendingSlot, s2: slot, entries: pendingEntries });
+        pendingSlot = null;
+        pendingEntries = [];
+      }
+    } else if (pendingSlot && row[2]) {
+      pendingEntries.push(row[2]);
+    }
+  }
+  return pairs;
+}
+
 function parseTableau(tableData, competition) {
   if (!tableData) return [];
   const { headers, rows } = tableData;
   const roundNames = headers.slice(1);
   if (roundNames.length < 2) return [];
 
-  let participants = [];
-  for (const row of rows) {
-    const cell = row[1];
-    if (!cell) continue;
-    const m = cell.match(FULL_PLAYER_RE);
-    if (m) {
-      participants.push({
-        lk: m[1],
-        fullName: `${m[2].trim()}, ${m[3].trim()}`,
-        club: m[5].trim(),
-      });
-    }
-  }
-  if (participants.length < 2) return [];
+  // --- Runde 1: separat behandelt, weil hier (und nur hier) Freilose
+  // ("[Rast]") auftreten können - Freilose gleichen die Teilnehmerzahl nur
+  // in Runde 1 auf eine Zweierpotenz aus, ab Runde 2 gibt es keine mehr. ---
+  const round1Pairs = buildRound1Pairs(rows);
+  if (round1Pairs.length < 1) return [];
 
   const matches = [];
-  for (let colIdx = 2; colIdx < headers.length; colIdx++) {
+  let participants = [];
+  const roundLabelR1 = roundNames[0];
+  let roundIncomplete = false;
+
+  for (const { s1, s2, entries } of round1Pairs) {
+    if (s1.isBye || s2.isBye) {
+      // Freilos: der andere Spieler kommt automatisch weiter, OHNE echtes
+      // Match. Trotzdem als Spielplan-Eintrag aufnehmen (statt den Spieler
+      // stillschweigend verschwinden zu lassen), damit z.B. Seed-1-Spieler
+      // wie ein Freilos-Gewinner in Runde 1 sichtbar bleiben.
+      const advancing = s1.isBye ? s2 : s1;
+      if (advancing) {
+        matches.push({
+          competition,
+          round: roundLabelR1,
+          player1: advancing.fullName,
+          player2: null,
+          winner: advancing.fullName,
+          score: 'Freilos',
+          time: '',
+          court: '',
+        });
+        participants.push(advancing);
+      }
+      continue;
+    }
+
+    const label = entries[0] || null;
+    const score = entries[1] || null;
+
+    if (!label) {
+      // Dieses Match ist auf der Seite noch nicht entschieden (Turnier
+      // läuft noch) - als Spielplan-Eintrag ohne Ergebnis aufnehmen, aber
+      // NICHT als Teilnehmer der nächsten Runde weiterreichen, da wir noch
+      // nicht wissen, wer gewinnt. Nachfolgende Runden können deshalb erst
+      // in einem späteren Lauf ausgewertet werden.
+      matches.push({
+        competition,
+        round: roundLabelR1,
+        player1: s1.fullName,
+        player2: s2.fullName,
+        winner: null,
+        score: null,
+        time: '',
+        court: '',
+      });
+      roundIncomplete = true;
+      continue;
+    }
+
+    const short = parseShortName(label);
+    let winner = null;
+    if (short) {
+      if (fullNameMatchesShort(s1.fullName, short)) winner = s1;
+      else if (fullNameMatchesShort(s2.fullName, short)) winner = s2;
+    }
+    if (!winner) winner = s1; // Fallback, falls Kurzname nicht zuordenbar ist
+
+    matches.push({
+      competition,
+      round: roundLabelR1,
+      player1: s1.fullName,
+      player2: s2.fullName,
+      winner: winner.fullName,
+      score,
+      time: '',
+      court: '',
+    });
+    participants.push(winner);
+  }
+
+  if (roundIncomplete) return matches;
+
+  // --- Ab Runde 2 (Achtelfinale-Ergebnis-Spalte usw.): keine Freilose mehr
+  // möglich, hier greift die ursprüngliche, an echten Bracket-Daten
+  // verifizierte Index-Logik unverändert. ---
+  for (let colIdx = 3; colIdx < headers.length; colIdx++) {
     const roundLabel = roundNames[colIdx - 2];
     const entries = [];
     for (const row of rows) {
@@ -348,7 +462,7 @@ function parseTableau(tableData, competition) {
 
     const pairCount = Math.floor(participants.length / 2);
     const nextParticipants = [];
-    let roundIncomplete = false;
+    let incomplete = false;
     for (let i = 0; i < pairCount; i++) {
       const p1 = participants[2 * i];
       const p2 = participants[2 * i + 1];
@@ -358,11 +472,6 @@ function parseTableau(tableData, competition) {
       const score = entries[2 * i + 1] || null;
 
       if (!label) {
-        // Dieses Match ist auf der Seite noch nicht entschieden (Turnier
-        // läuft noch) - als Spielplan-Eintrag ohne Ergebnis aufnehmen, aber
-        // NICHT als Teilnehmer der nächsten Runde weiterreichen, da wir noch
-        // nicht wissen, wer gewinnt. Nachfolgende Runden können deshalb erst
-        // in einem späteren Lauf ausgewertet werden.
         matches.push({
           competition,
           round: roundLabel,
@@ -373,7 +482,7 @@ function parseTableau(tableData, competition) {
           time: '',
           court: '',
         });
-        roundIncomplete = true;
+        incomplete = true;
         continue;
       }
 
@@ -398,7 +507,7 @@ function parseTableau(tableData, competition) {
       nextParticipants.push(winner);
     }
     participants = nextParticipants;
-    if (roundIncomplete) break;
+    if (incomplete) break;
   }
 
   return matches;
@@ -695,8 +804,11 @@ async function main() {
   writeJSON(`${FILE_PREFIX}entrants.json`, allEntrants);
 
   // Ergebnisse (mit Score) und Spielplan (ohne Score) trennen
-  const results = allMatches.filter((m) => m.score && /\d:\d/.test(m.score));
-  const schedule = allMatches.filter((m) => !m.score);
+  // "Freilos"-Einträge (Spieler kommt ohne Spiel weiter) zählen NICHT als
+  // Ergebnis mit Score, gehören aber weiterhin in den Spielplan, damit der
+  // Spieler dort sichtbar bleibt statt komplett zu verschwinden.
+  const results = allMatches.filter((m) => m.score && m.score !== 'Freilos' && /\d:\d/.test(m.score));
+  const schedule = allMatches.filter((m) => !m.score || m.score === 'Freilos');
 
   // WICHTIG: Immer schreiben, auch wenn leer - sonst bleibt beim Wechsel von
   // "hat Ergebnisse" zurück zu "keine Ergebnisse" (oder wenn die Datei vorher
