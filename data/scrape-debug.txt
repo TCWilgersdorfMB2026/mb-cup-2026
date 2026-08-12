@@ -134,7 +134,7 @@ Badischer Tennisverband
 BAD
 Bayerischer Tennis-Verband
 BTV
-Hamburger Tennis-Verband
+Hamburger Tennisverband
 HAM
 Hessischer Tennis-Verband
 HTV
@@ -266,7 +266,6 @@ Deutschland
 	
 Meldeliste
 	
-Hauptfeld
 
 
 Herren 40 Einzel
