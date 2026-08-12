@@ -1,6 +1,0 @@
-{
-  "url": "https://tende-id.liga.nu/oauth2/authz?redirect_uri=https%3A%2F%2Ftende-apps.liga.nu%2Fcgi-bin%2FWebObjects%2FnuTurnierTENDE.woa%2Fwa%2Flogin&client_id=6458635fdae5283a04e121d30d43fcdad6931e76eac0b1fa4d9f8d6c0de89588&scope=tournament&response_type=code&state=nonce%3DfNBmzs0RzmOLeoGnsiTSD%252FAL6oUFBjBQ",
-  "title": "nuLiga ID",
-  "hasEmailInput": true,
-  "bodySnippet": "nuLiga ID\nUsername\nPassword\n\nSie haben Ihr Passwort vergessen?\n\nSie haben noch keinen Zugang? Registrieren"
-}
