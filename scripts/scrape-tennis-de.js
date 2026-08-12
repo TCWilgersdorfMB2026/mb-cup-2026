@@ -557,7 +557,11 @@ async function scrapeCompetition(page, meldelisteIndex, hauptfeldIndex, termineI
                 if (termineIndex < count) {
                           await termineLinks.nth(termineIndex).click({ timeout: 5000 });
                           await page.waitForTimeout(1200);
-                          const termineTable = await extractTermineTable(page);
+                          let termineTable = await extractTermineTable(page);
+                          for (let retry = 0; retry < 4 && (!termineTable || !termineTable.rows.length); retry++) {
+                            await page.waitForTimeout(1000);
+                            termineTable = await extractTermineTable(page);
+                          }
                           const termineRows = (termineTable ? termineTable.rows : []).map(parseTermineRow);
                           mergeTermineIntoMatches(result.matches, termineRows);
 
