@@ -31,7 +31,9 @@ const { chromium } = require('playwright');
 // (test-entrants.json usw.) statt der echten entrants.json/schedule.json/
 // results.json. Der reguläre 30-Minuten-Cron setzt diese Variable nie.
 const TOURNAMENT_ID = process.env.TEST_TOURNAMENT_ID || '796221'; // Standard: 17. Wilgersdorfer LK-Turnier um den markenbaumarkt24-Cup
-const NULIGA_TOURNAMENT_ID = process.env.NULIGA_TOURNAMENT_ID || '873333'; // Internes nuLiga-Turnier-ID (fuer Terminliste-PDF, Vereinsbereich htv.liga.nu)
+const NULIGA_TERMINLISTE_URL =
+  process.env.NULIGA_TERMINLISTE_URL ||
+  `https://wtv.liga.nu/cgi-bin/WebObjects/nuLigaDokumentTENDE.woa/wa/nuDokument?dokument=TournamentPlayersReportFOP&tournament=${TOURNAMENT_ID}&securitytoken=RP6o3s74L6YrIGbY0b2D3A%3D%3D&type=2&mode=0&showSponsorLogo=true`; // Oeffentlicher, unauthentifizierter Freigabe-Link fuer die Terminliste (kein nuLiga-Login noetig)
 const FILE_PREFIX = process.env.TEST_TOURNAMENT_ID ? 'test-' : '';
 const DETAIL_URL = `https://www.tennis.de/spielen/spielbetrieb/turniersuche.html#detail/${TOURNAMENT_ID}`;
 const DATA_DIR = path.join(__dirname, '..', 'data');
@@ -723,78 +725,17 @@ async function scrapeCompetition(page, meldelisteIndex, hauptfeldIndex, termineI
   return result;
 }
 
-async function ensureNuligaLogin(page) {
-  const username = process.env.TENNIS_DE_USERNAME;
-  const password = process.env.TENNIS_DE_PASSWORD;
-  if (!username || !password) return false;
-  try {
-    const emailInput = page
-      .locator('input[type="email"], input[name*="user" i], input[name*="mail" i]')
-      .first();
-    const isLoginPage = await emailInput.isVisible({ timeout: 3000 }).catch(() => false);
-    if (!isLoginPage) return true; // schon eingeloggt (SSO von tennis.de uebernommen)
-    const passwordInput = page.locator('input[type="password"]').first();
-    await emailInput.fill(username);
-    await passwordInput.fill(password);
-    const submitBtn = page
-      .locator('button[type="submit"], button:has-text("Einloggen"), button:has-text("Login")')
-      .first();
-    await submitBtn.click({ timeout: 5000 }).catch(() => {});
-    await page.waitForTimeout(2000);
-    return true;
-  } catch (e) {
-    console.warn('nuLiga-Login fehlgeschlagen:', e.message);
-    return false;
-  }
-}
-
 // Liest die Termine (Platz + Uhrzeit) direkt aus der offiziellen nuLiga-Terminliste
-// (PDF-Export im Vereinsbereich), da diese Angaben auf der oeffentlichen tennis.de-
-// Turnierseite trotz vollstaendiger Erfassung durch den Turnierleiter nicht angezeigt
-// werden (Luecke zwischen nuLiga und tennis.de, siehe Diagnose vom 12.08.2026).
+// (oeffentlicher PDF-Export ueber einen fest hinterlegten Freigabe-Link, KEIN Login
+// noetig - ein Testlauf hat gezeigt, dass nuLiga fuer die Turnierverwaltung ein
+// eigenes Login ("nuLiga ID") verlangt, das nichts mit den tennis.de-Zugangsdaten
+// zu tun hat; der PDF-Export selbst ist aber oeffentlich abrufbar), da diese Angaben
+// auf der oeffentlichen tennis.de-Turnierseite trotz vollstaendiger Erfassung durch
+// den Turnierleiter nicht angezeigt werden (Luecke zwischen nuLiga und tennis.de,
+// siehe Diagnose vom 12.08.2026).
 async function fetchNuligaTerminMap(page) {
   try {
-    await page.goto(
-      `https://tende-apps.liga.nu/cgi-bin/WebObjects/nuTurnierTENDE.woa/wa/nuTurnier?tournament=${NULIGA_TOURNAMENT_ID}`,
-      { waitUntil: 'domcontentloaded', timeout: 30000 }
-    );
-    await ensureNuligaLogin(page);
-    await page.waitForTimeout(1500);
-
-    try {
-      fs.writeFileSync(
-        path.join(DATA_DIR, `${FILE_PREFIX}nuliga-debug.json`),
-        JSON.stringify(
-          {
-            url: page.url(),
-            title: await page.title(),
-            hasEmailInput: await page
-              .locator('input[type="email"], input[name*="user" i], input[name*="mail" i]')
-              .first()
-              .isVisible({ timeout: 2000 })
-              .catch(() => false),
-            bodySnippet: (await page.evaluate(() => document.body.innerText)).slice(0, 1000),
-          },
-          null,
-          2
-        ) + '\n'
-      );
-    } catch (e) {
-      console.warn('Konnte nuLiga-Diagnose nicht schreiben:', e.message);
-    }
-
-    const href = await page.evaluate(() => {
-      const link = Array.from(document.querySelectorAll('a')).find(
-        (a) => a.textContent.trim() === 'Terminliste'
-      );
-      return link ? link.getAttribute('href') : null;
-    });
-    if (!href) {
-      console.warn('nuLiga: Terminliste-Link nicht gefunden - ueberspringe Termine-Import.');
-      return null;
-    }
-
-    const response = await page.context().request.get(href);
+    const response = await page.context().request.get(NULIGA_TERMINLISTE_URL);
     if (!response.ok()) {
       console.warn('nuLiga: Terminliste-PDF konnte nicht geladen werden, Status', response.status());
       return null;
@@ -835,7 +776,7 @@ async function fetchNuligaTerminMap(page) {
     console.log(`nuLiga-Terminliste: ${map.size} Termine gefunden.`);
     return map;
   } catch (e) {
-    console.warn('nuLiga-Terminliste konnte nicht geladen:', e.message);
+    console.warn('nuLiga-Terminliste konnte nicht geladen werden:', e.message);
     return null;
   }
 }
