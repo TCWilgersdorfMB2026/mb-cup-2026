@@ -1,6 +1,86 @@
 [
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schmitt, Pascal",
+    "player2": "Frykowski, Sam Noah",
+    "winner": "Schmitt, Pascal",
+    "score": "6:1 6:0",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schiep, Pascal",
+    "player2": "Schmitz, Julian",
+    "winner": "Schmitz, Julian",
+    "score": "4:6 7:5 10:4",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Nies, Tim",
+    "player2": "Süßmann, Erik",
+    "winner": "Nies, Tim",
+    "score": "6:1 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Selter, Jan Lukas",
+    "player2": "Knebel, Philipp",
+    "winner": "Knebel, Philipp",
+    "score": "6:2 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Jud, Tobias",
+    "player2": "Galinski, Johannes",
+    "winner": "Galinski, Johannes",
+    "score": "6:1 6:2",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Motyka-Niehoff, Philipp",
+    "player2": "Klahold, Linus",
+    "winner": "Klahold, Linus",
+    "score": "1:6 7:6 10:7",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Ballion, Silas",
+    "player2": "Ohlenburger, Yannik",
+    "winner": "Ohlenburger, Yannik",
+    "score": "6:3 6:2",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Unterkalmsteiner, Patrick",
+    "player2": "Wagner, Matthias",
+    "winner": "Wagner, Matthias",
+    "score": "4:6 6:1 10:5",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "Viertelfinale",
     "player1": "Schmitt, Pascal",
     "player2": "Schmitz, Julian",
@@ -56,6 +136,46 @@
     "player2": "Galinski, Johannes",
     "winner": "Schmitt, Pascal",
     "score": "3:6 6:2 10:7",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Rötzel, Johannes",
+    "player2": "Lotz, Federico",
+    "winner": "Lotz, Federico",
+    "score": "4:6 6:2 10:6",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Trappe, Tim",
+    "player2": "Kersting, Matthias",
+    "winner": "Trappe, Tim",
+    "score": "6:0 5:7 10:2",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Stauf, Michael",
+    "player2": "Trappe, Jan",
+    "winner": "Trappe, Jan",
+    "score": "6:2 3:6 10:5",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Peters, Marvin",
+    "player2": "Bahlmann, Niclas Hans",
+    "winner": "Peters, Marvin",
+    "score": "4:6 6:3 10:6",
     "time": "",
     "court": ""
   },
@@ -131,6 +251,46 @@
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Mosch, Rüdiger",
+    "player2": "Füllenbach, Jonas",
+    "winner": "Füllenbach, Jonas",
+    "score": "6:3 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Hilberg, Max",
+    "player2": "Wolf, Philipp",
+    "winner": "Wolf, Philipp",
+    "score": "6:4 6:2",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Trappe, Richard",
+    "player2": "Traut, Jan Lukas",
+    "winner": "Traut, Jan Lukas",
+    "score": "6:2 1:6 10:4",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Gyurcsi, Robert Denes",
+    "player2": "Türk, Michael",
+    "winner": "Türk, Michael",
+    "score": "4:6 7:6 10:7",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Viertelfinale",
     "player1": "Schneider, Dennis",
     "player2": "Füllenbach, Jonas",
@@ -186,6 +346,56 @@
     "player2": "Kettner, Paul",
     "winner": "Kettner, Paul",
     "score": "6:4 6:4",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Habig, Nils",
+    "player2": "Marburger, Jan",
+    "winner": "Marburger, Jan",
+    "score": "6:4 3:6 10:7",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Ossenbühl, Udo",
+    "player2": "Schweisfurth, Frank",
+    "winner": "Schweisfurth, Frank",
+    "score": "6:2 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Baldus, Jonas",
+    "player2": "Zahlmann, Jörg Michael",
+    "winner": "Baldus, Jonas",
+    "score": "6:1 6:0",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Braun, Sebastian",
+    "player2": "Rosenthal, Sebastian",
+    "winner": "Rosenthal, Sebastian",
+    "score": "6:2 6:2",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Simon, Reinhard",
+    "player2": "Büdenbender, Jens",
+    "winner": "Büdenbender, Jens",
+    "score": "6:2 6:2",
     "time": "",
     "court": ""
   },
