@@ -1,86 +1,6 @@
 [
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Schmitt, Pascal",
-    "player2": "Frykowski, Sam Noah",
-    "winner": "Schmitt, Pascal",
-    "score": "6:1 6:0",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Schiep, Pascal",
-    "player2": "Schmitz, Julian",
-    "winner": "Schmitz, Julian",
-    "score": "4:6 7:5 10:4",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Nies, Tim",
-    "player2": "Süßmann, Erik",
-    "winner": "Nies, Tim",
-    "score": "6:1 6:1",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Selter, Jan Lukas",
-    "player2": "Knebel, Philipp",
-    "winner": "Knebel, Philipp",
-    "score": "6:2 6:3",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Jud, Tobias",
-    "player2": "Galinski, Johannes",
-    "winner": "Galinski, Johannes",
-    "score": "6:1 6:2",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Motyka-Niehoff, Philipp",
-    "player2": "Klahold, Linus",
-    "winner": "Klahold, Linus",
-    "score": "1:6 7:6 10:7",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Ballion, Silas",
-    "player2": "Ohlenburger, Yannik",
-    "winner": "Ohlenburger, Yannik",
-    "score": "6:3 6:2",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Unterkalmsteiner, Patrick",
-    "player2": "Wagner, Matthias",
-    "winner": "Wagner, Matthias",
-    "score": "4:6 6:1 10:5",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "Viertelfinale",
     "player1": "Schmitt, Pascal",
     "player2": "Schmitz, Julian",
@@ -141,36 +61,6 @@
   },
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Trappe, Tim",
-    "player2": "Kersting, Matthias",
-    "winner": "Trappe, Tim",
-    "score": "6:0 5:7 10:2",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 10,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Stauf, Michael",
-    "player2": "Trappe, Jan",
-    "winner": "Trappe, Jan",
-    "score": "6:2 3:6 10:5",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 10,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Peters, Marvin",
-    "player2": "Bahlmann, Niclas Hans",
-    "winner": "Peters, Marvin",
-    "score": "4:6 6:3 10:6",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 10,0-25,0",
     "round": "Viertelfinale",
     "player1": "Sting, Dominik",
     "player2": "Lotz, Federico",
@@ -182,9 +72,9 @@
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Trappe, Tim",
-    "player2": "Trappe, Jan",
-    "winner": "Trappe, Tim",
+    "player1": "Wüstenhöfer, Jan",
+    "player2": "Trappe, Tim",
+    "winner": "Wüstenhöfer, Jan",
     "score": "6:2 6:2",
     "time": "",
     "court": ""
@@ -192,8 +82,8 @@
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Peters, Marvin",
-    "player2": "Habig, Andree",
+    "player1": "Trappe, Jan",
+    "player2": "Peters, Marvin",
     "winner": "Peters, Marvin",
     "score": "6:4 6:4",
     "time": "",
@@ -201,31 +91,41 @@
   },
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Habig, Andree",
+    "player2": "Diekert, Justin",
+    "winner": "Diekert, Justin",
+    "score": "6:3 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
     "round": "Halbfinale",
     "player1": "Sting, Dominik",
-    "player2": "Trappe, Tim",
-    "winner": "Sting, Dominik",
+    "player2": "Wüstenhöfer, Jan",
+    "winner": "Wüstenhöfer, Jan",
     "score": "4:6 6:3 10:3",
     "time": "",
     "court": ""
   },
   {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Hilberg, Max",
-    "player2": "Wolf, Philipp",
-    "winner": "Wolf, Philipp",
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Peters, Marvin",
+    "player2": "Diekert, Justin",
+    "winner": "Diekert, Justin",
     "score": "6:4 6:2",
     "time": "",
     "court": ""
   },
   {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Trappe, Richard",
-    "player2": "Traut, Jan Lukas",
-    "winner": "Traut, Jan Lukas",
-    "score": "6:2 1:6 10:4",
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Finale",
+    "player1": "Wüstenhöfer, Jan",
+    "player2": "Diekert, Justin",
+    "winner": "Wüstenhöfer, Jan",
+    "score": "6:3 6:1",
     "time": "",
     "court": ""
   },
@@ -242,9 +142,9 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Wolf, Philipp",
-    "player2": "Traut, Jan Lukas",
-    "winner": "Wolf, Philipp",
+    "player1": "Schulz, Ben Jonah",
+    "player2": "Wolf, Philipp",
+    "winner": "Schulz, Ben Jonah",
     "score": "4:6 7:5 10:7",
     "time": "",
     "court": ""
@@ -252,8 +152,8 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Löcherbach, Steffen",
-    "player2": "Türk, Michael",
+    "player1": "Traut, Jan Lukas",
+    "player2": "Löcherbach, Steffen",
     "winner": "Löcherbach, Steffen",
     "score": "6:1 6:2",
     "time": "",
@@ -261,11 +161,31 @@
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Türk, Michael",
+    "player2": "Kettner, Paul",
+    "winner": "Kettner, Paul",
+    "score": "6:3 2:6 10:3",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Halbfinale",
     "player1": "Schneider, Dennis",
-    "player2": "Wolf, Philipp",
-    "winner": "Schneider, Dennis",
+    "player2": "Schulz, Ben Jonah",
+    "winner": "Schulz, Ben Jonah",
     "score": "2:6 7:6 10:5",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Finale",
+    "player1": "Schulz, Ben Jonah",
+    "player2": "Kettner, Paul",
+    "winner": "Kettner, Paul",
+    "score": "6:4 6:4",
     "time": "",
     "court": ""
   },
@@ -283,8 +203,8 @@
     "competition": "Herren Einzel KO LK 22,0-25,0",
     "round": "Viertelfinale",
     "player1": "Schweisfurth, Frank",
-    "player2": "Zahlmann, Jörg Michael",
-    "winner": "Schweisfurth, Frank",
+    "player2": "Baldus, Jonas",
+    "winner": "Baldus, Jonas",
     "score": "6:3 6:2",
     "time": "",
     "court": ""
@@ -301,111 +221,41 @@
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Büdenbender, Jens",
+    "player2": "Neuser, Bent David",
+    "winner": "Neuser, Bent David",
+    "score": "6:3 6:7 10:7",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
     "round": "Halbfinale",
     "player1": "Rupprich, Klaus-Dieter",
-    "player2": "Schweisfurth, Frank",
-    "winner": "Rupprich, Klaus-Dieter",
+    "player2": "Baldus, Jonas",
+    "winner": "Baldus, Jonas",
     "score": "2:6 6:3 10:8",
     "time": "",
     "court": ""
   },
   {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Mauk, Andreas",
-    "player2": "Groß, Tomm",
-    "winner": "Groß, Tomm",
-    "score": "6:0 6:3",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Schnorrenberg, Florian",
-    "player2": "Zimmermann, Kai",
-    "winner": "Schnorrenberg, Florian",
-    "score": "6:1 6:1",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Kneppe, Christian",
-    "player2": "Groß, Tomm",
-    "winner": "Kneppe, Christian",
-    "score": "6:2 6:0",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "competition": "Herren Einzel KO LK 22,0-25,0",
     "round": "Halbfinale",
-    "player1": "Schnorrenberg, Florian",
-    "player2": "Kneppe, Christian",
-    "winner": "Schnorrenberg, Florian",
-    "score": "6:3 6:1",
+    "player1": "Schmidt, Carsten",
+    "player2": "Neuser, Bent David",
+    "winner": "Schmidt, Carsten",
+    "score": "6:2 4:6 10:8",
     "time": "",
     "court": ""
   },
   {
-    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Sommer, Rainer",
-    "player2": "Nies, Wolfgang",
-    "winner": "Nies, Wolfgang",
-    "score": "6:3 3:6 10:7",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 15,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Moos, Annika",
-    "player2": "Wiegel, Lea",
-    "winner": "Wiegel, Lea",
-    "score": "6:1 3:6 10:7",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 15,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Wiegel, Nadine",
-    "player2": "Habig, Linn",
-    "winner": "Wiegel, Nadine",
-    "score": "6:3 6:2",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 15,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Gün, Ira",
-    "player2": "Schiep, Celine",
-    "winner": "Gün, Ira",
-    "score": "6:3 6:3",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 15,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Wiegel, Lea",
-    "player2": "Wiegel, Nadine",
-    "winner": "Wiegel, Lea",
-    "score": "6:2 6:2",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 15,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Gün, Ira",
-    "player2": "Wiegel, Lea",
-    "winner": "Gün, Ira",
-    "score": "6:4 6:0",
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Finale",
+    "player1": "Baldus, Jonas",
+    "player2": "Schmidt, Carsten",
+    "winner": "Baldus, Jonas",
+    "score": "6:1 6:2",
     "time": "",
     "court": ""
   }
