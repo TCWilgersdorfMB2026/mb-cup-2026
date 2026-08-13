@@ -436,13 +436,11 @@ function renderScheduleDay() {
     ? (state.scheduleWithoutDate || [])
     : ((state.scheduleDays && state.scheduleDays.get(day)) ? state.scheduleDays.get(day).matches : []);
   const sorted = [...matches].sort((a, b) => {
-    const homeA = isHomeCourt(a) ? 0 : 1;
-    const homeB = isHomeCourt(b) ? 0 : 1;
-    if (homeA !== homeB) return homeA - homeB;
-    const courtDiff = courtNumberOf(a) - courtNumberOf(b);
-    if (courtDiff !== 0) return courtDiff;
-    if (a._date && b._date) return a._date - b._date;
-    return 0;
+    if (a._date && b._date) {
+      const diff = a._date - b._date;
+      if (diff !== 0) return diff;
+    }
+    return courtNumberOf(a) - courtNumberOf(b);
   });
 
   if (!sorted.length) {
