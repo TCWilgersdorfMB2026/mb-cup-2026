@@ -335,6 +335,18 @@ function fullNameMatchesShort(fullName, short) {
 // erfundenem Sieger ausgegeben. Diese paarweise Gruppierung anhand der
 // tatsächlichen Zeilenposition verhindert das, weil Freilose als echter
 // Slot (nur ohne Namen) mitgezählt werden statt entfernt zu werden.
+// Prueft, ob ein aus der Tableau-Zelle gelesener Text wie ein echtes Satz-
+// Ergebnis aussieht (z.B. "6:2 6:3" oder "4:6 7:5 10:4"). tennis.de zeigt in
+// derselben Tabellenposition, bevor ein Match gespielt wurde, manchmal
+// stattdessen einen geplanten Termin an ("15.08. 09:00") - ohne diese
+// Pruefung wuerde das faelschlich als Ergebnis samt "Sieger" interpretiert,
+// obwohl das Match noch gar nicht stattgefunden hat (Fund vom 13.08.2026,
+// ausgeloest durch doppelt angezeigte Termine bei Peters, Marvin).
+function isValidScore(score) {
+  if (!score) return false;
+  return /^\d{1,2}:\d{1,2}(\s+\d{1,2}:\d{1,2}){0,4}$/.test(score.trim());
+}
+
 function buildRound1Pairs(rows) {
   const pairs = [];
   let pendingSlot = null;
@@ -416,7 +428,7 @@ function parseTableau(tableData, competition) {
     const label = entries[0] || null;
     const score = entries[1] || null;
 
-    if (!label) {
+    if (!label || !isValidScore(score)) {
       // Dieses Match ist auf der Seite noch nicht entschieden (Turnier
       // läuft noch) - als Spielplan-Eintrag ohne Ergebnis aufnehmen, aber
       // NICHT als Teilnehmer der nächsten Runde weiterreichen, da wir noch
@@ -481,7 +493,7 @@ function parseTableau(tableData, competition) {
       const label = entries[2 * i] || null;
       const score = entries[2 * i + 1] || null;
 
-      if (!label) {
+      if (!label || !isValidScore(score)) {
         matches.push({
           competition,
           round: roundLabel,
@@ -763,7 +775,7 @@ async function fetchNuligaTerminMap(page) {
     const WORD = "[A-ZÄÖÜ][A-Za-zÀ-ÿß'\\-#]*";
     const NAME = `(${WORD}(?:\\s${WORD}){0,2},\\s${WORD}(?:\\s${WORD}){0,2})`;
     const re = new RegExp(
-      NAME + "\\d{0,2}LK[\\d,]+.*?Platz\\s*(\\d+?)(\\d{2})\\.(\\d{2})\\.\\s+(\\d{2}):(\\d{2})",
+      NAME + "\\d{0,2}LK[\\d,]+(.*?)Platz\\s*(\\d+?)(\\d{2})\\.(\\d{2})\\.\\s+(\\d{2}):(\\d{2})",
       'g'
     );
 
@@ -771,9 +783,17 @@ async function fetchNuligaTerminMap(page) {
     const map = new Map();
     let m;
     while ((m = re.exec(text)) !== null) {
-      const [, name, platz, day, month, hh, mm] = m;
+      const [, name, venueRaw, platz, day, month, hh, mm] = m;
+      // Verein (Heimatclub des Spielers) und Anlage (wo gespielt wird) stehen
+      // im PDF-Text ohne Trennzeichen direkt hintereinander, z.B.
+      // "TC BuschhuettenTC Wilgersdorf e.V.". Die Anlage ist immer das
+      // letzte "TC ..."-Segment direkt vor "Platz".
+      const cleanedVenue = venueRaw.replace(/[,\s]+$/, '').trim();
+      const lastClubIdx = cleanedVenue.lastIndexOf('TC ');
+      const venueName = lastClubIdx >= 0 ? cleanedVenue.slice(lastClubIdx).trim() : cleanedVenue;
+      const isHome = /Wilgersdorf/i.test(venueName);
       map.set(name.trim(), {
-        court: `Platz ${platz}`,
+        court: isHome ? `Platz ${platz}` : `${venueName}, Platz ${platz}`,
         time: `${day}.${month}.${year} ${hh}:${mm} Uhr`,
       });
     }
@@ -786,11 +806,32 @@ async function fetchNuligaTerminMap(page) {
 
 function mergeNuligaTermine(matches, terminMap) {
   if (!terminMap || !terminMap.size) return;
+  // Nur offene (noch nicht entschiedene) Paarungen bekommen einen nuLiga-
+  // Termin - abgeschlossene oder andere Runden desselben Spielers sollen
+  // NICHT denselben Termin erben (Fund vom 13.08.2026: Peters, Marvin zeigte
+  // sonst zeitgleich in Runde 1 UND Achtelfinale denselben Termin an). Ist
+  // ein Spieler gleichzeitig in mehreren offenen Partien gemeldet (z.B.
+  // Einzel UND Doppel), koennen wir aus der Terminliste nicht sicher sagen,
+  // welche gemeint ist - dann lieber leer lassen statt zu raten.
+  const openCountByName = new Map();
   for (const m of matches) {
-    const t = terminMap.get(m.player1) || terminMap.get(m.player2);
-    if (t) {
-      m.time = t.time;
-      m.court = t.court;
+    if (m.winner !== null) continue;
+    for (const name of [m.player1, m.player2]) {
+      if (!name) continue;
+      openCountByName.set(name, (openCountByName.get(name) || 0) + 1);
+    }
+  }
+  for (const m of matches) {
+    if (m.winner !== null) continue;
+    for (const name of [m.player1, m.player2]) {
+      if (!name) continue;
+      if ((openCountByName.get(name) || 0) > 1) continue;
+      const t = terminMap.get(name);
+      if (t) {
+        m.time = t.time;
+        m.court = t.court;
+        break;
+      }
     }
   }
 }
