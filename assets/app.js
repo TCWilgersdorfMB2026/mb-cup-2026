@@ -190,7 +190,7 @@ return `
 <div class="bracket-player${p1Wins ? ' winner' : ''}">${playerHtml(m.player1)}</div>
 ${m.player2 ? `<div class="bracket-player${p2Wins ? ' winner' : ''}">${playerHtml(m.player2)}</div>` : ''}
 ${resultHtml}
-${m.court ? `<div class="bracket-meta bracket-court">${escapeHtml(m.court)}</div>` : ''}
+${m.court ? `<div class="bracket-meta bracket-court">${escapeHtml(displayCourt(m))}</div>` : ''}
 ${m.time ? `<div class="bracket-meta bracket-time">${escapeHtml(m.time)}</div>` : ''}
 </div>`;
 }
@@ -351,7 +351,7 @@ const playersHtml = m.player2
 return `
 <div class="schedule-row">
 <div class="schedule-when">
-${m.court ? `<div class="schedule-court">${escapeHtml(m.court)}</div>` : ''}
+${m.court ? `<div class="schedule-court">${escapeHtml(displayCourt(m))}</div>` : ''}
 ${timePart
 ? `<div class="schedule-time">${escapeHtml(timePart)}</div>`
 : '<div class="schedule-time schedule-time-empty">Zeit offen</div>'}
@@ -415,6 +415,17 @@ function renderSpielplanOverview() {
 
 // Rendert NUR die Begegnungen des im Dropdown gewählten Tages, sortiert
 // nach Uhrzeit.
+function isHomeCourt(m) {
+  return m.court ? /^Platz\s*\d+$/.test(m.court.trim()) : false;
+}
+function courtNumberOf(m) {
+  const match = m.court ? /Platz\s*(\d+)/.exec(m.court) : null;
+  return match ? parseInt(match[1], 10) : 999;
+}
+function displayCourt(m) {
+  if (!m.court) return m.court;
+  return isHomeCourt(m) ? `TC Wilgersdorf, ${m.court}` : m.court;
+}
 function renderScheduleDay() {
   const el = qs('spielplan-list');
   if (!el) return;
@@ -424,16 +435,14 @@ function renderScheduleDay() {
   const matches = day === '__none__'
     ? (state.scheduleWithoutDate || [])
     : ((state.scheduleDays && state.scheduleDays.get(day)) ? state.scheduleDays.get(day).matches : []);
-  function courtNumberOf(m) {
-    const match = m.court ? /Platz\s*(\d+)/.exec(m.court) : null;
-    return match ? parseInt(match[1], 10) : 999;
-  }
   const sorted = [...matches].sort((a, b) => {
-    if (a._date && b._date) {
-      const diff = a._date - b._date;
-      if (diff !== 0) return diff;
-    }
-    return courtNumberOf(a) - courtNumberOf(b);
+    const homeA = isHomeCourt(a) ? 0 : 1;
+    const homeB = isHomeCourt(b) ? 0 : 1;
+    if (homeA !== homeB) return homeA - homeB;
+    const courtDiff = courtNumberOf(a) - courtNumberOf(b);
+    if (courtDiff !== 0) return courtDiff;
+    if (a._date && b._date) return a._date - b._date;
+    return 0;
   });
 
   if (!sorted.length) {
