@@ -190,7 +190,7 @@ return `
 <div class="bracket-player${p1Wins ? ' winner' : ''}">${playerHtml(m.player1)}</div>
 ${m.player2 ? `<div class="bracket-player${p2Wins ? ' winner' : ''}">${playerHtml(m.player2)}</div>` : ''}
 ${resultHtml}
-${m.court ? `<div class="bracket-meta bracket-court">${escapeHtml(displayCourt(m))}</div>` : ''}
+${m.court ? `<div class="bracket-meta bracket-court">${displayCourt(m)}</div>` : ''}
 ${m.time ? `<div class="bracket-meta bracket-time">${escapeHtml(m.time)}</div>` : ''}
 </div>`;
 }
@@ -351,7 +351,7 @@ const playersHtml = m.player2
 return `
 <div class="schedule-row">
 <div class="schedule-when">
-${m.court ? `<div class="schedule-court">${escapeHtml(displayCourt(m))}</div>` : ''}
+${m.court ? `<div class="schedule-court">${displayCourt(m)}</div>` : ''}
 ${timePart
 ? `<div class="schedule-time">${escapeHtml(timePart)}</div>`
 : '<div class="schedule-time schedule-time-empty">Zeit offen</div>'}
@@ -423,8 +423,9 @@ function courtNumberOf(m) {
   return match ? parseInt(match[1], 10) : 999;
 }
 function displayCourt(m) {
-  if (!m.court) return m.court;
-  return isHomeCourt(m) ? `TC Wilgersdorf, ${m.court}` : m.court;
+  if (!m.court) return '';
+  const raw = isHomeCourt(m) ? `TC Wilgersdorf, ${m.court}` : m.court;
+  return raw.split(/,\s*/).map(escapeHtml).join('<br>');
 }
 function renderScheduleDay() {
   const el = qs('spielplan-list');
