@@ -768,6 +768,12 @@ async function fetchNuligaTerminMap(page) {
       .replace(/^nu\s*\.?Dokument.*$/gm, '');
 
     const text = cleaned.replace(/\s+/g, ' ').trim();
+    {
+      const _i1 = raw.indexOf('Bahlmann');
+      console.log('NULIGA_DEBUG_RAW:', JSON.stringify(raw.slice(Math.max(0,_i1-80), _i1+350)));
+      const _i2 = text.indexOf('Bahlmann');
+      console.log('NULIGA_DEBUG_CLEAN:', JSON.stringify(text.slice(Math.max(0,_i2-80), _i2+350)));
+    }
     // pdf-parse fuegt an Zellengrenzen (Name|Setzung, Setzung|LK, Platz-Nr.|Datum)
     // KEINE Leerzeichen ein (anders als andere PDF-Text-Extraktoren) - die Regex
     // unten beruecksichtigt das: Setzung ist optional ohne Leerzeichen vor "LK",
@@ -797,6 +803,13 @@ async function fetchNuligaTerminMap(page) {
         time: `${day}.${month}.${year} ${hh}:${mm} Uhr`,
       });
     }
+    console.log('NULIGA_DEBUG_MAP:', JSON.stringify({
+      Bahlmann: map.get('Bahlmann, Niclas Hans'),
+      Boehl: map.get('Böhl, Timo'),
+      Ermert: map.get('Ermert, Martin'),
+      Goeckus: map.get('Göckus, Maximilian'),
+      Henrichs: map.get('Henrichs, Lukas'),
+    }));
         return map;
   } catch (e) {
     console.warn('nuLiga-Terminliste konnte nicht geladen werden:', e.message);
