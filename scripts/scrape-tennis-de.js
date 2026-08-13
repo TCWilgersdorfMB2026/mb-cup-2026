@@ -297,7 +297,7 @@ async function extractTableauTable(page) {
   });
 }
 
-const FULL_PLAYER_RE = /LK([\d.,]+)\s*-\s*([^,]+),\s*([^,]+),\s*(\d{4})\s*-\s*(.+)$/;
+const FULL_PLAYER_RE = /(?:LK([\d.,]+)|(\d+))\s*-\s*([^,]+),\s*([^,]+),\s*(\d{4})\s*-\s*(.+)$/;
 
 function parseShortName(label) {
   const m = label.match(/^([^,]+),\s*([A-ZÄÖÜ])\.?$/);
@@ -357,7 +357,7 @@ function buildRound1Pairs(rows) {
     if (cell) {
       const m = cell.match(FULL_PLAYER_RE);
       if (m) {
-        slot = { lk: m[1], fullName: `${m[2].trim()}, ${m[3].trim()}`, club: m[5].trim() };
+        slot = { lk: m[1] || m[2], fullName: `${m[3].trim()}, ${m[4].trim()}`, club: m[6].trim() };
       } else if (/\[Rast\]/.test(cell)) {
         slot = { isBye: true };
       }
