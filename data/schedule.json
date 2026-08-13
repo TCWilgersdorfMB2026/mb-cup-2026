@@ -217,7 +217,7 @@
     "winner": null,
     "score": null,
     "time": "16.08.2026 16:30 Uhr",
-    "court": "Platz 2"
+    "court": "Platz 3"
   },
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
@@ -237,7 +237,7 @@
     "winner": null,
     "score": null,
     "time": "15.08.2026 16:30 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 3"
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
@@ -307,7 +307,7 @@
     "winner": null,
     "score": null,
     "time": "16.08.2026 16:30 Uhr",
-    "court": "Platz 3"
+    "court": "TC Ludwigseck Salchendorf, Platz 3"
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
@@ -326,7 +326,7 @@
     "player2": "Traut, Jan Lukas",
     "winner": null,
     "score": null,
-    "time": "16.08.2026 18:00 Uhr",
+    "time": "16.08.2026 18:30 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 4"
   },
   {
@@ -686,8 +686,8 @@
     "player2": "Dumke, Bernd",
     "winner": null,
     "score": null,
-    "time": "15.08.2026 16:30 Uhr",
-    "court": "Platz 3"
+    "time": "16.08.2026 16:30 Uhr",
+    "court": "Platz 2"
   },
   {
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
