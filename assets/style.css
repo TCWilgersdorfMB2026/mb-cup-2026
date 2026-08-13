@@ -285,7 +285,7 @@ margin-bottom: 10px;
 
 @media (max-width: 600px) {
   .schedule-row { flex-direction: column; gap: 4px; }
-  .schedule-when { display: flex; flex-direction: row; gap: 10px; align-items: baseline; flex: 0 0 auto; }
+  .schedule-when { display: flex; flex-direction: column; gap: 2px; flex: 0 0 auto; }
 }
 
 .report-item h3 { margin: 0 0 6px; color: var(--navy); }
