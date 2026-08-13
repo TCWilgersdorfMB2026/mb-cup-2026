@@ -146,7 +146,16 @@ function renderMatches(matches, badgeText) {
         if (r.winner) finishedKeys[matchKey(r)] = true;
       });
       var now = new Date();
+
+      // Auf der Liveanzeige duerfen nur Begegnungen auf den 4 TCW-Plaetzen
+      // auftauchen - Auswaertsspiele (Platzangabe mit fremdem Vereinsnamen,
+      // z.B. "TC Ludwigseck Salchendorf, Platz 3") werden hier ausgeblendet.
+      function isHomeCourt(m) {
+        return m.court ? /^Platz\s*\d+$/.test(m.court.trim()) : false;
+      }
+
       var autoLive = schedule.filter(function (m) {
+        if (!isHomeCourt(m)) return false;
         var t = parseDeTime(m.time);
         if (!t) return false;
         return t <= now && !finishedKeys[matchKey(m)];
@@ -156,12 +165,32 @@ function renderMatches(matches, badgeText) {
       // (live-current.json) ueberschreiben pro Platz, falls dort etwas hinterlegt ist.
       var byCourt = {};
       autoLive.forEach(function (m) { byCourt[m.court] = m; });
-      (manual || []).forEach(function (m) { if (m && m.court) byCourt[m.court] = m; });
+      (manual || []).forEach(function (m) { if (m && m.court && isHomeCourt(m)) byCourt[m.court] = m; });
 
       var merged = COURTS.map(function (c) { return byCourt[c]; }).filter(function (m) { return !!m; });
 
       if (merged.length > 0) {
         renderMatches(merged, null);
+        finishLastUpdated(now);
+        return null;
+      }
+
+      // Vor Turnierstart (oder wenn gerade nirgends gespielt wird): die
+      // Kacheln mit den ersten angesetzten TCW-Heimspielen je Platz aus der
+      // echten Auslosung fuellen, statt den Bildschirm leer zu lassen.
+      var upcomingByCourt = {};
+      schedule.filter(isHomeCourt).forEach(function (m) {
+        var t = parseDeTime(m.time);
+        if (!t) return;
+        var existing = upcomingByCourt[m.court];
+        if (!existing || t < parseDeTime(existing.time)) {
+          upcomingByCourt[m.court] = m;
+        }
+      });
+      var preview = COURTS.map(function (c) { return upcomingByCourt[c]; }).filter(function (m) { return !!m; });
+
+      if (preview.length > 0) {
+        renderMatches(preview, 'Vorschau – erste Begegnungen');
         finishLastUpdated(now);
         return null;
       }
