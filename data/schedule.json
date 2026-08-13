@@ -6,7 +6,17 @@
     "player2": null,
     "winner": "Wagner, Matthias",
     "score": "Freilos",
-    "time": "16.08.2026 13:30 Uhr",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Runde 1",
+    "player1": "Jud, Tobias",
+    "player2": "Lotz, Federico",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 12:00 Uhr",
     "court": "Platz 1"
   },
   {
@@ -16,8 +26,8 @@
     "player2": null,
     "winner": "Iordanidis, Aristotelis",
     "score": "Freilos",
-    "time": "16.08.2026 09:00 Uhr",
-    "court": "Platz 1"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
@@ -26,8 +36,8 @@
     "player2": null,
     "winner": "Nies, Tim",
     "score": "Freilos",
-    "time": "16.08.2026 09:00 Uhr",
-    "court": "Platz 1"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
@@ -42,12 +52,22 @@
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "Runde 1",
+    "player1": "Peters, Marvin",
+    "player2": "Prado Saldana, Joan Ricardo",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 09:00 Uhr",
+    "court": "Platz 1"
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Runde 1",
     "player1": "Schwedes, Nick Luca",
     "player2": null,
     "winner": "Schwedes, Nick Luca",
     "score": "Freilos",
-    "time": "16.08.2026 18:00 Uhr",
-    "court": "Platz 2"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
@@ -56,8 +76,8 @@
     "player2": null,
     "winner": "Dreysse, Kay",
     "score": "Freilos",
-    "time": "16.08.2026 18:00 Uhr",
-    "court": "Platz 2"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
@@ -66,8 +86,8 @@
     "player2": null,
     "winner": "Ebener, Frederik",
     "score": "Freilos",
-    "time": "16.08.2026 15:00 Uhr",
-    "court": "Platz 1"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
@@ -76,8 +96,8 @@
     "player2": null,
     "winner": "Ebener, Sebastian",
     "score": "Freilos",
-    "time": "16.08.2026 15:00 Uhr",
-    "court": "Platz 1"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
@@ -86,8 +106,8 @@
     "player2": null,
     "winner": "Weber, Louis",
     "score": "Freilos",
-    "time": "15.08.2026 15:00 Uhr",
-    "court": "Platz 2"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
@@ -96,8 +116,8 @@
     "player2": null,
     "winner": "Ballion, Silas",
     "score": "Freilos",
-    "time": "15.08.2026 15:00 Uhr",
-    "court": "Platz 2"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
@@ -106,8 +126,8 @@
     "player2": null,
     "winner": "Feldmann, Jonas Juttichai",
     "score": "Freilos",
-    "time": "16.08.2026 10:30 Uhr",
-    "court": "Platz 1"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
@@ -116,8 +136,18 @@
     "player2": null,
     "winner": "Wedding, Robin",
     "score": "Freilos",
-    "time": "16.08.2026 10:30 Uhr",
-    "court": "Platz 2"
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Runde 1",
+    "player1": "Menn, Jan Steffen",
+    "player2": "Müller, Nico",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 10:30 Uhr",
+    "court": "Platz 1"
   },
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
@@ -126,8 +156,88 @@
     "player2": null,
     "winner": "Klahold, Linus",
     "score": "Freilos",
-    "time": "17.08.2026 17:00 Uhr",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Bahlmann, Niclas Hans",
+    "player2": "Böhl, Timo",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 16:30 Uhr",
+    "court": "Platz 4"
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Reuter, Marco",
+    "player2": "Kettner, Paul",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 13:30 Uhr",
+    "court": "Platz 2"
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Lotz, Mike",
+    "player2": "Mauk, Andreas",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 15:00 Uhr",
+    "court": "Platz 2"
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Koch, Colin",
+    "player2": "Löhl, Moritz",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 12:00 Uhr",
     "court": "Platz 1"
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Iordanidis, Alexandros",
+    "player2": "Göckus, Maximilian",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 16:30 Uhr",
+    "court": "Platz 2"
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Tempel, Marian",
+    "player2": "Solbach, Tim",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 16:30 Uhr",
+    "court": "Platz 2"
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Rötzel, Johannes",
+    "player2": "Türk, Michael",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 10:30 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Henrichs, Lukas",
+    "player2": "Ermert, Martin",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 16:30 Uhr",
+    "court": "Platz 4"
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
@@ -142,6 +252,36 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
+    "player1": "Margeit, Ben",
+    "player2": "Schläger, Lorenz",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 10:30 Uhr",
+    "court": "Platz 4"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Gün, Bulut",
+    "player2": "Müller, Joachim",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 18:00 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Malore Govindarajan, Suhas",
+    "player2": "Binsack, Jarno",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 10:30 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
     "player1": "Polzer, Timo",
     "player2": null,
     "winner": "Polzer, Timo",
@@ -152,12 +292,62 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
+    "player1": "Metzger, Tim",
+    "player2": "Koch, Heico",
+    "winner": null,
+    "score": null,
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Becker, Volker",
+    "player2": "Fries, Leo",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 16:30 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
     "player1": "Gyurcsi, Robert Denes",
     "player2": null,
     "winner": "Gyurcsi, Robert Denes",
     "score": "Freilos",
-    "time": "17.08.2026 18:30 Uhr",
-    "court": "Platz 4"
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Schneider, Dominik",
+    "player2": "Traut, Jan Lukas",
+    "winner": null,
+    "score": null,
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Backaus, Ole Fiete",
+    "player2": "Mai, Lennart",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 18:00 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Schmidt, Torben",
+    "player2": "Lück, Markus",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 10:30 Uhr",
+    "court": "Platz 2"
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
@@ -166,8 +356,8 @@
     "player2": null,
     "winner": "Baldus, Jonas",
     "score": "Freilos",
-    "time": "16.08.2026 16:30 Uhr",
-    "court": "Platz 3"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
@@ -176,6 +366,26 @@
     "player2": null,
     "winner": "Kamyab, Taymas",
     "score": "Freilos",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Mayenschein, Dennis",
+    "player2": "Stader, Dominik",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 10:30 Uhr",
+    "court": "Platz 4"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Hilberg, Max",
+    "player2": "Hartmann, Nils",
+    "winner": null,
+    "score": null,
     "time": "",
     "court": ""
   },
@@ -212,12 +422,22 @@
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
     "round": "Runde 1",
+    "player1": "Freudenstein, Manuel",
+    "player2": "Nickel, Jan",
+    "winner": null,
+    "score": null,
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Runde 1",
     "player1": "Damm, Robin",
     "player2": null,
     "winner": "Damm, Robin",
     "score": "Freilos",
-    "time": "16.08.2026 12:00 Uhr",
-    "court": "Platz 3"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -226,8 +446,18 @@
     "player2": null,
     "winner": "Roth, Marvin",
     "score": "Freilos",
-    "time": "16.08.2026 10:30 Uhr",
-    "court": "Platz 4"
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Runde 1",
+    "player1": "Zahlmann, Jörg Michael",
+    "player2": "Schmidt, Fabian",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 09:00 Uhr",
+    "court": "Platz 3"
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -236,8 +466,8 @@
     "player2": null,
     "winner": "Schürbusch, Nico",
     "score": "Freilos",
-    "time": "15.08.2026 12:00 Uhr",
-    "court": "Platz 4"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -256,8 +486,18 @@
     "player2": null,
     "winner": "Zöller, Robin",
     "score": "Freilos",
-    "time": "16.08.2026 12:00 Uhr",
-    "court": "Platz 4"
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Runde 1",
+    "player1": "Dielmann, Benedikt",
+    "player2": "Windisch, Marcus",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 15:00 Uhr",
+    "court": "Platz 3"
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -276,8 +516,8 @@
     "player2": null,
     "winner": "Scheuermann, Florian",
     "score": "Freilos",
-    "time": "16.08.2026 09:00 Uhr",
-    "court": "Platz 3"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -286,8 +526,8 @@
     "player2": null,
     "winner": "Baak, Matthäus",
     "score": "Freilos",
-    "time": "15.08.2026 12:00 Uhr",
-    "court": "Platz 4"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -296,8 +536,18 @@
     "player2": null,
     "winner": "Klein, Thilo",
     "score": "Freilos",
-    "time": "15.08.2026 15:00 Uhr",
-    "court": "Platz 3"
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Runde 1",
+    "player1": "Högemann, Simon",
+    "player2": "Anders, Gero",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 10:30 Uhr",
+    "court": "Platz 2"
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -306,8 +556,8 @@
     "player2": null,
     "winner": "Büdenbender, Jens",
     "score": "Freilos",
-    "time": "16.08.2026 15:00 Uhr",
-    "court": "Platz 3"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",
@@ -316,7 +566,17 @@
     "player2": null,
     "winner": "Engel, Peter",
     "score": "Freilos",
-    "time": "17.08.2026 15:00 Uhr",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Müller, Stefan",
+    "player2": "Ossenbühl, Udo",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 15:00 Uhr",
     "court": "Platz 4"
   },
   {
@@ -332,12 +592,42 @@
   {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",
     "round": "Achtelfinale",
+    "player1": "Trappe, Richard",
+    "player2": "Borodin, Eugen",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 15:00 Uhr",
+    "court": "Platz 4"
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Weber, Holger",
+    "player2": "Hess, Manuel",
+    "winner": null,
+    "score": null,
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
     "player1": "Steinkohl, Alexander",
     "player2": null,
     "winner": "Steinkohl, Alexander",
     "score": "Freilos",
-    "time": "16.08.2026 16:30 Uhr",
-    "court": "Platz 4"
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Lerscht, Michael",
+    "player2": "Wroben, Thorsten",
+    "winner": null,
+    "score": null,
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",
@@ -346,8 +636,68 @@
     "player2": null,
     "winner": "Schmidt, Carsten",
     "score": "Freilos",
-    "time": "18.08.2026 18:30 Uhr",
-    "court": "Platz 4"
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Lück, Marco",
+    "player2": "Hermann, Torsten",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 16:30 Uhr",
+    "court": "Platz 1"
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Hofacker, Mathias",
+    "player2": "Schreiber, Oliver",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 18:30 Uhr",
+    "court": "Platz 2"
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Koehler, Michael",
+    "player2": "Stauf, Michael",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 16:30 Uhr",
+    "court": "Platz 1"
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Klink, Peter",
+    "player2": "Galbas, Jörg",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 15:00 Uhr",
+    "court": "Platz 1"
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schwarzer, Martin",
+    "player2": "Dumke, Bernd",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 16:30 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Durow, Thorsten",
+    "player2": "Schmelzeisen, Frank",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 18:00 Uhr",
+    "court": "Platz 1"
   },
   {
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
@@ -360,13 +710,83 @@
     "court": "Platz 1"
   },
   {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Rothe, Michael",
+    "player2": "Feldmann, Jürgen",
+    "winner": null,
+    "score": null,
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Becker, Henning",
+    "player2": "Mosch, Rüdiger",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 15:00 Uhr",
+    "court": "Platz 1"
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Simon, Reinhard",
+    "player2": "Germies, Bernd",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 15:00 Uhr",
+    "court": "Platz 2"
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Hebestreit, Thorsten",
+    "player2": "Schwarz, Volker",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 15:00 Uhr",
+    "court": "Platz 1"
+  },
+  {
     "competition": "Herren 70 Einzel KO LK 1,0-25,0",
     "round": "Viertelfinale",
     "player1": "Simmerl, Mario",
     "player2": null,
     "winner": "Simmerl, Mario",
     "score": "Freilos",
-    "time": "20.08.2026 15:00 Uhr",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Sprenger, Axel",
+    "player2": "Vogels, Reiner",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 15:00 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Flath, Werner",
+    "player2": "Bieker, Joachim",
+    "winner": null,
+    "score": null,
+    "time": "18.08.2026 15:00 Uhr",
+    "court": "Platz 2"
+  },
+  {
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Rauen, Werner",
+    "player2": "Sommer, Rainer",
+    "winner": null,
+    "score": null,
+    "time": "18.08.2026 15:00 Uhr",
     "court": "Platz 1"
   },
   {
@@ -376,7 +796,17 @@
     "player2": null,
     "winner": "Panning- Dornseifer, Nicole",
     "score": "Freilos",
-    "time": "17.08.2026 18:30 Uhr",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Heide, Miriam",
+    "player2": "Hoffmann, Nicole",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 13:30 Uhr",
     "court": "Platz 1"
   },
   {
@@ -386,8 +816,48 @@
     "player2": null,
     "winner": "Lübke, Bettina",
     "score": "Freilos",
-    "time": "17.08.2026 17:00 Uhr",
-    "court": "Platz 4"
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Demirdöven, Mehtap",
+    "player2": "Voth, Eva",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 13:30 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Hees, Sabrina",
+    "player2": "Tempel, Carolin",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 12:00 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schumacher-Markowski, Claudia",
+    "player2": "Hörner, Judith",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 09:00 Uhr",
+    "court": "Platz 2"
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Burghardt, Jule",
+    "player2": "Gyurcsi, Lili",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 13:30 Uhr",
+    "court": "Platz 2"
   },
   {
     "competition": "Damen Einzel KO LK 10,0-25,0",
@@ -396,8 +866,8 @@
     "player2": null,
     "winner": "Backaus, Hedda Lotta",
     "score": "Freilos",
-    "time": "17.08.2026 17:00 Uhr",
-    "court": "Platz 3"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -406,8 +876,8 @@
     "player2": null,
     "winner": "Kamyab, Maya",
     "score": "Freilos",
-    "time": "15.08.2026 12:00 Uhr",
-    "court": "Platz 2"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -416,8 +886,18 @@
     "player2": null,
     "winner": "Müller, Karin",
     "score": "Freilos",
-    "time": "15.08.2026 12:00 Uhr",
-    "court": "Platz 2"
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Schläger, Antonia",
+    "player2": "Menn, Svenja",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 09:00 Uhr",
+    "court": "Platz 4"
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -456,8 +936,8 @@
     "player2": null,
     "winner": "Hercher, Elise",
     "score": "Freilos",
-    "time": "16.08.2026 12:00 Uhr",
-    "court": "Platz 2"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -466,8 +946,8 @@
     "player2": null,
     "winner": "Dörr, Vanessa",
     "score": "Freilos",
-    "time": "16.08.2026 12:00 Uhr",
-    "court": "Platz 2"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -486,8 +966,8 @@
     "player2": null,
     "winner": "Müller, Lea",
     "score": "Freilos",
-    "time": "15.08.2026 09:00 Uhr",
-    "court": "Platz 4"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -496,8 +976,8 @@
     "player2": null,
     "winner": "Hussing, Mara",
     "score": "Freilos",
-    "time": "16.08.2026 09:00 Uhr",
-    "court": "Platz 2"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -506,8 +986,8 @@
     "player2": null,
     "winner": "Wiegel, Lea",
     "score": "Freilos",
-    "time": "16.08.2026 09:00 Uhr",
-    "court": "Platz 2"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -536,8 +1016,8 @@
     "player2": null,
     "winner": "Becker, Birgit",
     "score": "Freilos",
-    "time": "16.08.2026 13:30 Uhr",
-    "court": "Platz 4"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -546,8 +1026,8 @@
     "player2": null,
     "winner": "Anders, Xenia",
     "score": "Freilos",
-    "time": "16.08.2026 13:30 Uhr",
-    "court": "Platz 4"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Damen Einzel KO LK 22,0-25,0",
@@ -556,7 +1036,37 @@
     "player2": null,
     "winner": "Herrmann Solbach, Sophia",
     "score": "Freilos",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Giebeler, Ina",
+    "player2": "Becker, Sarah",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 13:30 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Steuber, Melina",
+    "player2": "Pfeifer, Jasmin",
+    "winner": null,
+    "score": null,
     "time": "15.08.2026 13:30 Uhr",
+    "court": "Platz 4"
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Fiedler, Julia",
+    "player2": "Gerich, Verena",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 09:00 Uhr",
     "court": "Platz 4"
   }
 ]
