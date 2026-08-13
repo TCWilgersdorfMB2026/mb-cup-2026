@@ -693,7 +693,7 @@
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
     "round": "Achtelfinale",
     "player1": "Durow, Thorsten",
-    "player2": "Schmelzeisen, Frank",
+    "player2": "Pavicic, Peter",
     "winner": null,
     "score": null,
     "time": "16.08.2026 18:00 Uhr",
@@ -702,12 +702,22 @@
   {
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
     "round": "Achtelfinale",
-    "player1": "Glied, Alexander",
-    "player2": "Siegwolf, Volker",
+    "player1": "Schmelzeisen, Frank",
+    "player2": "Glied, Alexander",
     "winner": null,
     "score": null,
     "time": "16.08.2026 16:30 Uhr",
     "court": "Platz 1"
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Siegwolf, Volker",
+    "player2": "Hussing, Frank",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 18:00 Uhr",
+    "court": "Platz 4"
   },
   {
     "competition": "Herren 60 Einzel KO LK 1,0-25,0",
