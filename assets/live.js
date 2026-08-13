@@ -74,8 +74,12 @@
     var lk = entrant && entrant.lk;
     var club = entrant && entrant.club;
     var html = escapeHtml(formatPlayerName(raw));
-    if (lk) html += ' <span class="player-lk">(LK ' + escapeHtml(lk) + ')</span>';
-    if (club) html += '<span class="player-club">' + escapeHtml(club) + '</span>';
+    // Platzsparend: LK steht jetzt auf der Vereinszeile, hinter dem Verein
+    // (statt direkt hinter dem Namen).
+    var lkHtml = lk ? '<span class="player-lk">(LK ' + escapeHtml(lk) + ')</span>' : '';
+    if (club || lk) {
+      html += '<span class="player-club">' + (club ? escapeHtml(club) : '') + (club && lk ? ' ' : '') + lkHtml + '</span>';
+    }
     return html;
   }
 
