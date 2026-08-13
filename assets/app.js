@@ -424,7 +424,17 @@ function renderScheduleDay() {
   const matches = day === '__none__'
     ? (state.scheduleWithoutDate || [])
     : ((state.scheduleDays && state.scheduleDays.get(day)) ? state.scheduleDays.get(day).matches : []);
-  const sorted = [...matches].sort((a, b) => (a._date && b._date) ? a._date - b._date : 0);
+  function courtNumberOf(m) {
+    const match = m.court ? /Platz\s*(\d+)/.exec(m.court) : null;
+    return match ? parseInt(match[1], 10) : 999;
+  }
+  const sorted = [...matches].sort((a, b) => {
+    if (a._date && b._date) {
+      const diff = a._date - b._date;
+      if (diff !== 0) return diff;
+    }
+    return courtNumberOf(a) - courtNumberOf(b);
+  });
 
   if (!sorted.length) {
     el.innerHTML = '<p class="empty">Für diesen Tag liegen keine Begegnungen vor.</p>';
