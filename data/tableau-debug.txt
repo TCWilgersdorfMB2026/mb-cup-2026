@@ -182,7 +182,7 @@ Herren Einzel - Hauptfeld
 	[Rast]					
 			TC Wilger..., Platz 1			
 	LK11,9 - Jud, Tobias, 1999 - TC Wilgersdorf, WTV		16.08. 13:30			
-		TC Wilger..., Platz 1				
+		TC Wilger..., Platz 2				
 	LK13,9 - Lotz, Federico, 2007 - Tennisverein Altenseelbach e.V., WTV	15.08. 12:00				
 				TC Wilger..., Platz 1		
 	[Rast]			18.08. 17:00		
@@ -199,7 +199,7 @@ Herren Einzel - Hauptfeld
 			TC Wilger..., Platz 1			
 	LK13,5 - Peters, Marvin, 2000 - TC Wilgersdorf, WTV		16.08. 10:30			
 		TC Wilger..., Platz 1				
-	LK12,2 - Prado Saldana, Joan Ricardo, 2006 - TC Brachbach, RPF	15.08. 09:00				
+	LK12,2 - Prado Saldana, Joan Ricardo, 2006 - TC Brachbach, RPF	15.08. 12:00				
 				TC Wilger..., Platz 1		
 	[Rast]			19.08. 18:30		
 		Schwedes, N.				
