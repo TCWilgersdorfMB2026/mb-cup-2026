@@ -140,6 +140,7 @@ const state = {
   selectedScheduleDay: null,
   scheduleDays: null,
   scheduleWithoutDate: [],
+  resultsView: 'list',
 };
 
 // Liefert die Namen ALLER Konkurrenzen, die entweder Paarungen (Tableau)
@@ -253,13 +254,81 @@ function renderBracket(matches) {
     </div>`;
 }
 
+// Wimbledon-artige Turnierbaum-Ansicht: Runden als Spalten nebeneinander mit
+// echten Verbindungslinien zwischen den Runden. Nur ueber den
+// Liste/Turnierbaum-Umschalter erreichbar (Umschalter selbst ist per CSS auf
+// Desktop beschraenkt, siehe @media in style.css).
+function renderBracketTree(matches) {
+  const byRound = new Map();
+  for (const m of matches) {
+    const r = m.round || '';
+    if (!byRound.has(r)) byRound.set(r, []);
+    byRound.get(r).push(m);
+  }
+  const roundsPresent = ROUND_ORDER.filter((r) => byRound.has(r));
+  if (!roundsPresent.length) {
+    return '<p class="empty">Für diese Konkurrenz liegen noch keine Paarungen vor.</p>';
+  }
+
+  const firstRoundCount = byRound.get(roundsPresent[0]).length;
+  const totalSubrows = firstRoundCount * 2;
+
+  const finaleMatches = byRound.get('Finale');
+  const finaleDone = finaleMatches && finaleMatches.length === 1 && finaleMatches[0].winner;
+  const columns = finaleDone ? [...roundsPresent, 'Sieger'] : roundsPresent;
+
+  // Jede Runde bekommt eine eigene Spalte; zwischen zwei Runden-Spalten steht
+  // eine schmale Connector-Spalte fuer die Turnierbaum-Linien (wie beim
+  // Wimbledon-Draw).
+  const colTemplate = columns
+    .map((_, idx) => (idx === 0 ? 'minmax(190px, 1fr)' : '28px minmax(190px, 1fr)'))
+    .join(' ');
+
+  let cells = '';
+  columns.forEach((roundName, colIdx) => {
+    const col = colIdx === 0 ? 1 : colIdx * 2 + 1;
+    const connectorCol = col - 1;
+
+    cells += `<div class="bt-col-header" style="grid-column:${col};grid-row:1;">${escapeHtml(roundName)}</div>`;
+
+    if (roundName === 'Sieger') {
+      cells += `
+        <div class="bt-match bt-champion" style="grid-column:${col};grid-row:2 / span ${totalSubrows};">
+          <div class="bracket-box winner-box">${escapeHtml(finaleMatches[0].winner)}</div>
+        </div>`;
+      return;
+    }
+
+    const rowUnit = Math.pow(2, colIdx + 1);
+    byRound.get(roundName).forEach((m, i) => {
+      const rowStart = i * rowUnit + 2;
+      if (colIdx > 0) {
+        cells += `<div class="bt-connector" style="grid-column:${connectorCol};grid-row:${rowStart} / span ${rowUnit};"></div>`;
+      }
+      cells += `
+        <div class="bt-match" style="grid-column:${col};grid-row:${rowStart} / span ${rowUnit};">
+          ${bracketBoxHtml(m)}
+        </div>`;
+    });
+  });
+
+  return `
+    <div class="bt-scroll">
+      <div class="bt-grid" style="grid-template-columns:${colTemplate}; grid-template-rows:auto repeat(${totalSubrows}, minmax(34px, 1fr));">
+        ${cells}
+      </div>
+    </div>`;
+}
+
 // Rendert die aktuell im Dropdown gewählte Konkurrenz: Turnierbaum, wenn
 // bereits Paarungen existieren, sonst die gemeldeten Spieler:innen aus der
 // Meldeliste (Auslosung steht noch aus).
 function renderCompetitionDetail() {
   const el = qs('spiele-list');
+  const viewToggle = qs('results-view-toggle');
   if (!state.selectedCompetition) {
     el.innerHTML = '<p class="empty">Wird vor Turnierstart eingepflegt.</p>';
+    if (viewToggle) viewToggle.hidden = true;
     return;
   }
   const matches = [
@@ -267,9 +336,11 @@ function renderCompetitionDetail() {
     ...state.schedule.filter((m) => m.competition === state.selectedCompetition).map((m) => ({ ...m, played: false })),
   ];
   if (matches.length) {
-    el.innerHTML = renderBracket(matches);
+    if (viewToggle) viewToggle.hidden = false;
+    el.innerHTML = state.resultsView === 'bracket' ? renderBracketTree(matches) : renderBracket(matches);
     return;
   }
+  if (viewToggle) viewToggle.hidden = true;
   const entrantBlock = state.entrants.find((c) => c.competition === state.selectedCompetition);
   if (entrantBlock && entrantBlock.entrants.length) {
     el.innerHTML = `
@@ -547,6 +618,19 @@ function setupCompetitionSelect() {
   });
 }
 
+function setupResultsViewToggle() {
+  const toggle = qs('results-view-toggle');
+  if (!toggle) return;
+  const buttons = toggle.querySelectorAll('.view-btn');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.resultsView = btn.dataset.view;
+      buttons.forEach((b) => b.classList.toggle('active', b === btn));
+      renderCompetitionDetail();
+    });
+  });
+}
+
 function setupSpielplanDaySelect() {
   const el = qs('spielplan-day-select');
   if (!el) return;
@@ -558,6 +642,7 @@ function setupSpielplanDaySelect() {
 
 setupTabs();
 setupCompetitionSelect();
+setupResultsViewToggle();
 setupSpielplanDaySelect();
 refreshAll();
 setInterval(refreshAll, REFRESH_MS);
