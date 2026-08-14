@@ -7,156 +7,156 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --navy:#b51014;
-    --navy-dark:#6c0a0c;
-    --accent:#b51014;
-    --bg:#eeeeee;
-    --card:#ffffff;
-    --text:#222;
-    --muted:#6b6b6b;
-    --border:#e0e0e0;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html,body{
-    width:100%;height:100%;
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Barlow',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    overflow:hidden;
-  }
-  body{
-    display:flex;
-    flex-direction:column;
-    height:100vh;
-  }
-  header{
-    background:linear-gradient(135deg,var(--navy),var(--navy-dark));
-    color:#fff;
-    padding:0.5vh 1.5vw;
-    text-align:left;
-  }
-  .header-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:1vw;
-  }
-  .title{
-    font-size:clamp(1.1rem,2vw,1.8rem);
-    font-weight:800;
-    letter-spacing:0.01em;
-    white-space:nowrap;
-  }
-  .clock{
-    display:flex;
-    flex-direction:row;
-    align-items:baseline;
-    gap:0.5em;
-    line-height:1.05;
-    flex-shrink:0;
-  }
-  .clock .time{
-    font-size:clamp(0.9rem,1.6vw,1.3rem);
-    font-weight:700;
-    font-variant-numeric:tabular-nums;
-  }
-  .clock .date{
-    font-size:clamp(0.55rem,0.7vw,0.75rem);
-    opacity:0.85;
-  }
-  .section-heading{
-    display:flex;
-    align-items:center;
-    gap:0.6vw;
-    margin-bottom:0;
-  }
-  .live-dot{
-    width:0.9vw;height:0.9vw;max-width:14px;max-height:14px;
-    border-radius:50%;
-    background:#fff;
-    animation:pulse 1.4s infinite;
-  }
-  @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(255,255,255,0.6);}
-    70%{box-shadow:0 0 0 1vw rgba(255,255,255,0);}
-    100%{box-shadow:0 0 0 0 rgba(255,255,255,0);}
-  }
-  .section-heading h2{
-    font-size:clamp(0.85rem,1.3vw,1.3rem);
-    font-weight:700;
-    color:#fff;
-    text-transform:uppercase;
-    letter-spacing:0.04em;
-    white-space:nowrap;
-  }
-  .demo-badge{
-    margin-left:auto;
-    background:#fff;
-    border:0.15vh solid var(--navy);
-    color:var(--navy);
-    padding:0.4vh 1.2vw;
-    border-radius:999px;
-    font-size:clamp(0.75rem,1vw,1.05rem);
-    font-weight:700;
-    letter-spacing:0.03em;
-    text-transform:uppercase;
-  }
-  main{
-    flex:1;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    grid-template-rows:repeat(2,1fr);
-gap:0.8vh 1vw;
-    padding:0 2vw 1.4vh;
-    overflow:hidden;
-    min-height:0;
-  }
-  .match-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:1.2vh;
-padding:0.7vh 1.2vw;
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-gap:0.3vh;
-    overflow:visible;
-    min-height:0;
-    box-shadow:0 0.2vh 0.6vh rgba(0,0,0,0.06);
-  }
-  .match-card-empty{
-    align-items:center;
-    justify-content:center;
-    background:#f6f6f6;
-  }
-  .court-badge{
-    background:var(--navy);
-    color:#fff;
-    font-weight:800;
-    font-size:clamp(1.2rem,2.2vw,2.1rem);
-    padding:0.4vh 1.2vw;
-    border-radius:999px;
-    letter-spacing:0.02em;
-    margin-top:15px;
-    margin-bottom:10px;
-  }
-  .meta-top{
-    min-height:3.0em;
-    width:100%;
-    flex-shrink:0;
-  }
-  .competition{
-    font-size:clamp(1.3rem,1.8vw,1.9rem);
-    color:var(--muted);
-    text-transform:uppercase;
-    letter-spacing:0.03em;
-    font-weight:600;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    max-width:100%;
-  }
+:root{
+  --navy:#b51014;
+  --navy-dark:#6c0a0c;
+  --accent:#b51014;
+  --bg:#eeeeee;
+  --card:#ffffff;
+  --text:#222;
+  --muted:#6b6b6b;
+  --border:#e0e0e0;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{
+  width:100%;height:100%;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Barlow',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  overflow:hidden;
+}
+body{
+  display:flex;
+  flex-direction:column;
+  height:100vh;
+}
+header{
+  background:linear-gradient(135deg,var(--navy),var(--navy-dark));
+  color:#fff;
+  padding:0.5vh 1.5vw;
+  text-align:left;
+}
+.header-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1vw;
+}
+.title{
+  font-size:clamp(1.1rem,2vw,1.8rem);
+  font-weight:800;
+  letter-spacing:0.01em;
+  white-space:nowrap;
+}
+.clock{
+  display:flex;
+  flex-direction:row;
+  align-items:baseline;
+  gap:0.5em;
+  line-height:1.05;
+  flex-shrink:0;
+}
+.clock .time{
+  font-size:clamp(0.9rem,1.6vw,1.3rem);
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+}
+.clock .date{
+  font-size:clamp(0.55rem,0.7vw,0.75rem);
+  opacity:0.85;
+}
+.section-heading{
+  display:flex;
+  align-items:center;
+  gap:0.6vw;
+  margin-bottom:0;
+}
+.live-dot{
+  width:0.9vw;height:0.9vw;max-width:14px;max-height:14px;
+  border-radius:50%;
+  background:#fff;
+  animation:pulse 1.4s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(255,255,255,0.6);}
+  70%{box-shadow:0 0 0 1vw rgba(255,255,255,0);}
+  100%{box-shadow:0 0 0 0 rgba(255,255,255,0);}
+}
+.section-heading h2{
+  font-size:clamp(0.85rem,1.3vw,1.3rem);
+  font-weight:700;
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  white-space:nowrap;
+}
+.demo-badge{
+  margin-left:auto;
+  background:#fff;
+  border:0.15vh solid var(--navy);
+  color:var(--navy);
+  padding:0.4vh 1.2vw;
+  border-radius:999px;
+  font-size:clamp(0.75rem,1vw,1.05rem);
+  font-weight:700;
+  letter-spacing:0.03em;
+  text-transform:uppercase;
+}
+main{
+  flex:1;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  grid-template-rows:repeat(2,1fr);
+  gap:0.8vh 1vw;
+  padding:0 2vw 1.4vh;
+  overflow:hidden;
+  min-height:0;
+}
+.match-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:1.2vh;
+  padding:0.7vh 1.2vw;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:0.3vh;
+  overflow:visible;
+  min-height:0;
+  box-shadow:0 0.2vh 0.6vh rgba(0,0,0,0.06);
+}
+.match-card-empty{
+  align-items:center;
+  justify-content:center;
+  background:#f6f6f6;
+}
+.court-badge{
+  background:var(--navy);
+  color:#fff;
+  font-weight:800;
+  font-size:clamp(1.2rem,2.2vw,2.1rem);
+  padding:0.4vh 1.2vw;
+  border-radius:999px;
+  letter-spacing:0.02em;
+  margin-top:15px;
+  margin-bottom:10px;
+}
+.meta-top{
+  min-height:3.0em;
+  width:100%;
+  flex-shrink:0;
+}
+.competition{
+  font-size:clamp(1.3rem,1.8vw,1.9rem);
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:0.03em;
+  font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:100%;
+}
 .match-time{
   display:flex;
   align-items:center;
@@ -168,98 +168,95 @@ gap:0.3vh;
   overflow:hidden;
   max-width:100%;
 }
-  .time-divider{
-    width:1px;
-    align-self:stretch;
-    background:var(--muted);
-    opacity:0.5;
-  }
-  .players{
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    margin-top:25px;
-  }
-  .player{
-    font-size:clamp(1.6rem,5.4vh,3.6rem);
-    font-weight:800;
-    line-height:1.02;
-    word-break:break-word;
-    color:var(--text);
-    min-height:1.7em;
-    display:flex;
-    align-items:baseline;
-    flex-wrap:wrap;
-    row-gap:0.05em;
-  }
-  .player-lk{
-    font-size:1em;
-    font-weight:600;
-    color:var(--muted);
-    margin-left:0.3em;
-  }
-  .player-club{
-    flex-basis:100%;
-    font-size:clamp(1.05rem,1.45vw,1.5rem);
-    font-weight:600;
-    color:var(--muted);
-    margin-left:0;
-  }
-  .players .player + .player{
-    border-top:1px solid var(--border);
-    margin-top:1vh;
-    padding-top:1vh;
-  }
-  .court-empty{
-    font-size:clamp(1.2rem,2.6vh,1.8rem);
-    color:var(--muted);
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:0.04em;
-    font-style:italic;
-    margin-top:1vh;
-  }
-  .empty-state{
-    grid-column:1/-1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:clamp(1.2rem,1.8vw,1.8rem);
-    color:var(--muted);
-    font-style:italic;
-  }
-  footer{
-    text-align:center;
-    padding:0.8vh 0 1vh;
-    font-size:clamp(0.75rem,0.95vw,1rem);
-    color:var(--muted);
-  }
+.time-divider{
+  width:1px;
+  align-self:stretch;
+  background:var(--muted);
+  opacity:0.5;
+}
+.players{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  margin-top:25px;
+}
+.player{
+  font-size:clamp(1.6rem,5.4vh,3.6rem);
+  font-weight:800;
+  line-height:1.02;
+  word-break:break-word;
+  color:var(--text);
+  min-height:1.7em;
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  row-gap:0.05em;
+}
+.player-lk{
+  font-size:1em;
+  font-weight:600;
+  color:var(--muted);
+  margin-left:0.3em;
+}
+.player-club{
+  flex-basis:100%;
+  font-size:clamp(1.05rem,1.45vw,1.5rem);
+  font-weight:600;
+  color:var(--muted);
+  margin-left:0;
+}
+.players .player + .player{
+  border-top:1px solid var(--border);
+  margin-top:1vh;
+  padding-top:1vh;
+}
+.court-empty{
+  font-size:clamp(1.2rem,2.6vh,1.8rem);
+  color:var(--muted);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  font-style:italic;
+  margin-top:1vh;
+}
+.empty-state{
+  grid-column:1/-1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:clamp(1.2rem,1.8vw,1.8rem);
+  color:var(--muted);
+  font-style:italic;
+}
+footer{
+  text-align:center;
+  padding:0.8vh 0 1vh;
+  font-size:clamp(0.75rem,0.95vw,1rem);
+  color:var(--muted);
+}
 </style>
 </head>
 <body>
-  <header>
-    <div class="header-row">
-      <span class="title">markenbaumarkt24-Cup 2026</span>
-      <div class="section-heading">
-        <span class="live-dot"></span>
-        <h2>Jetzt auf dem Platz</h2>
-        <span class="demo-badge" id="demo-badge" hidden>Beispieldaten</span>
-      </div>
-      <span class="clock">
-        <span class="date" id="clock-date">--</span>
-        <span class="time" id="clock-time">--:--</span>
-      </span>
-    </div>
-  </header>
+<header>
+<div class="header-row">
+<span class="title">markenbaumarkt24-Cup 2026</span>
+<div class="section-heading">
+<span class="live-dot"></span>
+<h2>Jetzt auf dem Platz</h2>
+<span class="demo-badge" id="demo-badge" hidden>Beispieldaten</span>
+</div>
+<span class="clock">
+<span class="date" id="clock-date">--</span>
+<span class="time" id="clock-time">--:--</span>
+</span>
+</div>
+</header>
 
-  <main id="matches">
-    <div class="empty-state">Lade Daten…</div>
-  </main>
-  <footer>Aktualisiert automatisch · <span id="last-updated">--</span></footer>
+<main id="matches">
+<div class="empty-state">Lade Daten…</div>
+</main>
+<footer>Aktualisiert automatisch · <span id="last-updated">--</span> · Datenstand: <span id="data-stand">--</span></footer>
 
-  <script src="assets/live.js?v=2"></script>
+<script src="assets/live.js?v=3"></script>
 </body>
 </html>
-
-
-
