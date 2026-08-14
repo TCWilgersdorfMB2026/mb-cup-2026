@@ -48,8 +48,8 @@ jobs:
         run: npm run scrape:nuliga
         continue-on-error: true
         env:
-          TENNIS_DE_USERNAME: ${{ secrets.TENNIS_DE_USERNAME }}
-          TENNIS_DE_PASSWORD: ${{ secrets.TENNIS_DE_PASSWORD }}
+          NULIGA_USERNAME: ${{ secrets.NULIGA_USERNAME }}
+          NULIGA_PASSWORD: ${{ secrets.NULIGA_PASSWORD }}
 
       - name: Änderungen committen (falls vorhanden)
         run: |
