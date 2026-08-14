@@ -1,250 +1,235 @@
 (function () {
-  var REFRESH_MS = 20000;
-  var RELOAD_MS = 30 * 60 * 1000;
-  var COURTS = ['Platz 1', 'Platz 2', 'Platz 3', 'Platz 4'];
-  var MENU_REFRESH_MS = 5 * 60 * 1000;
-  var ENTRANTS = [];
+    var REFRESH_MS = 20000;
+    var RELOAD_MS = 30 * 60 * 1000;
+    var COURTS = ['Platz 1', 'Platz 2', 'Platz 3', 'Platz 4'];
+    var MENU_REFRESH_MS = 5 * 60 * 1000;
+    var ENTRANTS = [];
 
-  function qs(id) { return document.getElementById(id); }
+    function qs(id) { return document.getElementById(id); }
 
-  function parseDeTime(str) {
-    if (!str) return null;
-    var m = str.match(/(\d{2})\.(\d{2})\.(\d{4})\s+(\d{2}):(\d{2})/);
-    if (!m) return null;
-    var d = m[1], mo = m[2], y = m[3], h = m[4], mi = m[5];
-    return new Date(y + '-' + mo + '-' + d + 'T' + h + ':' + mi + ':00');
-  }
-
-  function matchKey(m) {
-    return [m.competition, m.round, m.player1, m.player2].join('|');
-  }
-
-  function loadJSON(path) {
-    return fetch(path + '?t=' + Date.now())
-      .then(function (res) { return res.ok ? res.json() : null; })
-      .catch(function () { return null; });
-  }
-
-  function renderClock() {
-    var now = new Date();
-    qs('clock-time').textContent = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
-    qs('clock-date').textContent = now.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
-  }
-
-  function escapeHtml(str) {
-    var s = String(str == null ? '' : str);
-    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-
-  // Sucht die LK eines Spielers in den Meldelisten (ENTRANTS). Namen aus
-  // Spielplan/Ergebnissen kommen im Format 'Nachname, Vorname' von tennis.de,
-  // Namen aus Meldelisten/manuellen Live-Eintraegen im Format 'Nachname Vorname'.
-  function findEntrant(rawName) {
-    var name = (rawName || '').trim();
-    if (!name) return null;
-    var withoutComma = name.replace(/,\s*/, ' ');
-    for (var i = 0; i < ENTRANTS.length; i++) {
-      var list = ENTRANTS[i].entrants || [];
-      for (var j = 0; j < list.length; j++) {
-        if (list[j].name === name || list[j].name === withoutComma) return list[j];
-      }
+    function parseDeTime(str) {
+          if (!str) return null;
+          var m = str.match(/(\d{2})\.(\d{2})\.(\d{4})\s+(\d{2}):(\d{2})/);
+          if (!m) return null;
+          var d = m[1], mo = m[2], y = m[3], h = m[4], mi = m[5];
+          return new Date(y + '-' + mo + '-' + d + 'T' + h + ':' + mi + ':00');
     }
-    return null;
-  }
 
-  function formatPlayerName(rawName) {
-    var name = (rawName || '').trim();
-    if (!name) return name;
-    var commaIdx = name.indexOf(',');
-    if (commaIdx !== -1) {
-      var last = name.slice(0, commaIdx).trim();
-      var first = name.slice(commaIdx + 1).trim();
-      return first ? last + ', ' + first : last;
+    function matchKey(m) {
+          return [m.competition, m.round, m.player1, m.player2].join('|');
     }
-    var spaceIdx = name.indexOf(' ');
-    if (spaceIdx === -1) return name;
-    var last2 = name.slice(0, spaceIdx).trim();
-    var first2 = name.slice(spaceIdx + 1).trim();
-    return last2 + ', ' + first2;
-  }
 
-  function playerHtml(rawName) {
-    var raw = rawName || '';
-    var entrant = findEntrant(raw);
-    var lk = entrant && entrant.lk;
-    var club = entrant && entrant.club;
-    var html = escapeHtml(formatPlayerName(raw));
-    // Platzsparend: LK steht jetzt auf der Vereinszeile, hinter dem Verein
-    // (statt direkt hinter dem Namen).
-    var lkHtml = lk ? '<span class="player-lk">(LK ' + escapeHtml(lk) + ')</span>' : '';
-    if (club || lk) {
-      html += '<span class="player-club">' + (club ? escapeHtml(club) : '') + (club && lk ? ' ' : '') + lkHtml + '</span>';
+    function loadJSON(path) {
+          return fetch(path + '?t=' + Date.now())
+            .then(function (res) { return res.ok ? res.json() : null; })
+            .catch(function () { return null; });
     }
-    return html;
-  }
 
-  function matchTimeHtml(t) {
-    var s = String(t == null ? '' : t);
-    var m = s.match(/^(\d{2}\.\d{2}\.\d{4})\s+(.+)$/);
-    if (!m) return '<div class="match-time">' + escapeHtml(s) + '</div>';
-    return '<div class="match-time">' +
-      '<span class="match-date">' + escapeHtml(m[1]) + '</span>' +
-      '<span class="time-divider"></span>' +
-      '<span class="match-clock">' + escapeHtml(m[2]) + '</span>' +
-    '</div>';
-  }
+    function renderClock() {
+          var now = new Date();
+          qs('clock-time').textContent = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+          qs('clock-date').textContent = now.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });
+    }
 
-  function matchCardHtml(m) {
-    return (
-      '<div class="match-card">' +
-        '<span class="court-badge">' + escapeHtml(m.court) + '</span>' +
-        '<div class="meta-top">' +
-          '<div class="competition">' + escapeHtml(m.competition) + (m.round ? ' \u00b7 ' + escapeHtml(m.round) : '') + '</div>' +
-          (m.time ? matchTimeHtml(m.time) : '') +
-        '</div>' +
-        '<div class="players">' +
-          '<div class="player">' + playerHtml(m.player1) + '</div>' +
-          '<div class="player">' + playerHtml(m.player2) + '</div>' +
-        '</div>' +
-                '</div>'
-    );
-  }
+    function escapeHtml(str) {
+          var s = String(str == null ? '' : str);
+          return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
 
-  function emptyCardHtml(court) {
-    return (
-      '<div class="match-card match-card-empty">' +
-        '<span class="court-badge">' + escapeHtml(court) + '</span>' +
-        '<div class="court-empty">Keine Partie</div>' +
-      '</div>'
-    );
-  }
+    function findEntrant(rawName) {
+          var name = (rawName || '').trim();
+          if (!name) return null;
+          var withoutComma = name.replace(/,\s*/, ' ');
+          for (var i = 0; i < ENTRANTS.length; i++) {
+                  var list = ENTRANTS[i].entrants || [];
+                  for (var j = 0; j < list.length; j++) {
+                            if (list[j].name === name || list[j].name === withoutComma) return list[j];
+                  }
+          }
+          return null;
+    }
 
-function renderMatches(matches, badgeText) {
-      var container = qs('matches');
-      var badge = qs('demo-badge');
-      if (badgeText) { badge.textContent = badgeText; badge.hidden = false; } else { badge.hidden = true; }
+    function formatPlayerName(rawName) {
+          var name = (rawName || '').trim();
+          if (!name) return name;
+          var commaIdx = name.indexOf(',');
+          if (commaIdx !== -1) {
+                  var last = name.slice(0, commaIdx).trim();
+                  var first = name.slice(commaIdx + 1).trim();
+                  return first ? last + ', ' + first : last;
+          }
+          var spaceIdx = name.indexOf(' ');
+          if (spaceIdx === -1) return name;
+          var last2 = name.slice(0, spaceIdx).trim();
+          var first2 = name.slice(spaceIdx + 1).trim();
+          return last2 + ', ' + first2;
+    }
 
-    var byCourt = {};
-    (matches || []).forEach(function (m) {
-      if (!byCourt[m.court]) byCourt[m.court] = m;
-    });
+    function playerHtml(rawName) {
+          var raw = rawName || '';
+          var entrant = findEntrant(raw);
+          var lk = entrant && entrant.lk;
+          var club = entrant && entrant.club;
+          var html = escapeHtml(formatPlayerName(raw));
+          var lkHtml = lk ? '<span class="player-lk">(LK ' + escapeHtml(lk) + ')</span>' : '';
+          if (club || lk) {
+                  html += '<span class="player-club">' + (club ? escapeHtml(club) : '') + (club && lk ? ' ' : '') + lkHtml + '</span>';
+          }
+          return html;
+    }
 
-    container.innerHTML = COURTS.map(function (court) {
-      var m = byCourt[court];
-      return m ? matchCardHtml(m) : emptyCardHtml(court);
-    }).join('');
-  }
+    function matchTimeHtml(t) {
+          var s = String(t == null ? '' : t);
+          var m = s.match(/^(\d{2}\.\d{2}\.\d{4})\s+(.+)$/);
+          if (!m) return '<div class="match-time">' + escapeHtml(s) + '</div>';
+          return '<div class="match-time">' +
+                  '<span class="match-date">' + escapeHtml(m[1]) + '</span>' +
+                  '<span class="time-divider"></span>' +
+                  '<span class="match-clock">' + escapeHtml(m[2]) + '</span>' +
+                '</div>';
+    }
 
-  function finishLastUpdated(now) {
-    qs('last-updated').textContent = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-  }
+    function matchCardHtml(m) {
+          return (
+                  '<div class="match-card">' +
+                    '<span class="court-badge">' + escapeHtml(m.court) + '</span>' +
+                    '<div class="meta-top">' +
+                      '<div class="competition">' + escapeHtml(m.competition) + (m.round ? ' · ' + escapeHtml(m.round) : '') + '</div>' +
+                      (m.time ? matchTimeHtml(m.time) : '') +
+                    '</div>' +
+                    '<div class="players">' +
+                      '<div class="player">' + playerHtml(m.player1) + '</div>' +
+                      '<div class="player">' + playerHtml(m.player2) + '</div>' +
+                    '</div>' +
+                  '</div>'
+                );
+    }
 
-  function refresh() {
-    return Promise.all([loadJSON('data/schedule.json'), loadJSON('data/results.json'), loadJSON('data/live-current.json'), loadJSON('data/entrants.json')]).then(function (arr) {
-      var schedule = arr[0] || [];
-      var results = arr[1] || [];
-      var manual = arr[2] || [];
-      ENTRANTS = arr[3] || [];
-      var finishedKeys = {};
-      results.forEach(function (r) {
-        if (r.winner) finishedKeys[matchKey(r)] = true;
-      });
-      var now = new Date();
+    function emptyCardHtml(court) {
+          return (
+                  '<div class="match-card match-card-empty">' +
+                    '<span class="court-badge">' + escapeHtml(court) + '</span>' +
+                    '<div class="court-empty">Keine Partie</div>' +
+                  '</div>'
+                );
+    }
 
-      // Auf der Liveanzeige duerfen nur Begegnungen auf den 4 TCW-Plaetzen
-      // auftauchen - Auswaertsspiele (Platzangabe mit fremdem Vereinsnamen,
-      // z.B. "TC Ludwigseck Salchendorf, Platz 3") werden hier ausgeblendet.
-      function isHomeCourt(m) {
-        return m.court ? /^Platz\s*\d+$/.test(m.court.trim()) : false;
-      }
+    function renderMatches(matches, badgeText) {
+          var container = qs('matches');
+          var badge = qs('demo-badge');
+          if (badgeText) { badge.textContent = badgeText; badge.hidden = false; } else { badge.hidden = true; }
 
-      var autoLive = schedule.filter(function (m) {
-        if (!isHomeCourt(m)) return false;
-        var t = parseDeTime(m.time);
-        if (!t) return false;
-        return t <= now && !finishedKeys[matchKey(m)];
-      });
+          var byCourt = {};
+          (matches || []).forEach(function (m) {
+                  if (!byCourt[m.court]) byCourt[m.court] = m;
+          });
 
-      // tennis.de ist die Standardquelle; manuelle Eintraege aus admin.html
-      // (live-current.json) ueberschreiben pro Platz, falls dort etwas hinterlegt ist.
-      var byCourt = {};
-      autoLive.forEach(function (m) { byCourt[m.court] = m; });
-      (manual || []).forEach(function (m) { if (m && m.court && isHomeCourt(m)) byCourt[m.court] = m; });
+          container.innerHTML = COURTS.map(function (court) {
+                  var m = byCourt[court];
+                  return m ? matchCardHtml(m) : emptyCardHtml(court);
+          }).join('');
+    }
 
-      var merged = COURTS.map(function (c) { return byCourt[c]; }).filter(function (m) { return !!m; });
+    function finishLastUpdated(now) {
+          qs('last-updated').textContent = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
 
-      if (merged.length > 0) {
-        renderMatches(merged, null);
-        finishLastUpdated(now);
-        return null;
-      }
+    function refresh() {
+          return Promise.all([loadJSON('data/nuliga-live.json'), loadJSON('data/live-current.json'), loadJSON('data/entrants.json')]).then(function (arr) {
+                  var nuliga = arr[0] || [];
+                  var manual = arr[1] || [];
+                  ENTRANTS = arr[2] || [];
+                  var finishedKeys = {};
+                  nuliga.forEach(function (r) {
+                            if (r.winner) finishedKeys[matchKey(r)] = true;
+                  });
+                  var now = new Date();
 
-      // Vor Turnierstart (oder wenn gerade nirgends gespielt wird): die
-      // Kacheln mit den ersten angesetzten TCW-Heimspielen je Platz aus der
-      // echten Auslosung fuellen, statt den Bildschirm leer zu lassen.
-      var upcomingByCourt = {};
-      schedule.filter(isHomeCourt).forEach(function (m) {
-        var t = parseDeTime(m.time);
-        if (!t) return;
-        var existing = upcomingByCourt[m.court];
-        if (!existing || t < parseDeTime(existing.time)) {
-          upcomingByCourt[m.court] = m;
-        }
-      });
-      var preview = COURTS.map(function (c) { return upcomingByCourt[c]; }).filter(function (m) { return !!m; });
+                  function isHomeCourt(m) {
+                            return m.court ? /^Platz\s*\d+$/.test(m.court.trim()) : false;
+                  }
 
-      if (preview.length > 0) {
-        renderMatches(preview, 'Vorschau – erste Begegnungen');
-        finishLastUpdated(now);
-        return null;
-      }
+                  var autoLive = nuliga.filter(function (m) {
+                            if (!isHomeCourt(m)) return false;
+                            var t = parseDeTime(m.time);
+                            if (!t) return false;
+                            return t <= now && !finishedKeys[matchKey(m)];
+                  });
 
-      return loadJSON('data/live-demo.json').then(function (demo) {
-        renderMatches(demo || [], 'Beispieldaten');
-        finishLastUpdated(now);
-      });
-    });
-  }
+                  var byCourt = {};
+                  autoLive.forEach(function (m) { byCourt[m.court] = m; });
+                  (manual || []).forEach(function (m) { if (m && m.court && isHomeCourt(m)) byCourt[m.court] = m; });
 
-  // ---- Speiseplan-Laufband ----
-  function todayIso() {
-    var d = new Date();
-    var mo = String(d.getMonth() + 1);
-    if (mo.length < 2) mo = '0' + mo;
-    var da = String(d.getDate());
-    if (da.length < 2) da = '0' + da;
-    return d.getFullYear() + '-' + mo + '-' + da;
-  }
+                  var merged = COURTS.map(function (c) { return byCourt[c]; }).filter(function (m) { return !!m; });
 
-  function loadMenuTicker() {
-    loadJSON('data/menu.json').then(function (menu) {
-      var bar = qs('menu-ticker');
-      var content = qs('menu-ticker-content');
-      if (!bar || !content) return;
-      var today = todayIso();
-      var entry = null;
-      (menu || []).forEach(function (e) { if (e.day === today) entry = e; });
-      var items = (entry && entry.items) ? entry.items : [];
-      var names = items.map(function (it) {
-        return typeof it === 'string' ? it : ((it && it.name) || '');
-      }).filter(function (n) { return !!n; });
-      if (!names.length) {
-        bar.hidden = true;
-        return;
-      }
-      var text = names.join('   \u2022   ');
-      content.textContent = text + '   \u2022   ' + text;
-      content.style.animationDuration = Math.max(18, text.length * 0.18) + 's';
-      bar.hidden = false;
-    });
-  }
+                  if (merged.length > 0) {
+                            renderMatches(merged, null);
+                            finishLastUpdated(now);
+                            return null;
+                  }
 
-  renderClock();
-  setInterval(renderClock, 1000);
-  refresh();
-  setInterval(refresh, REFRESH_MS);
-  loadMenuTicker();
-  setInterval(loadMenuTicker, MENU_REFRESH_MS);
-  setTimeout(function () { location.reload(); }, RELOAD_MS);
+                  var upcomingByCourt = {};
+                  nuliga.filter(isHomeCourt).forEach(function (m) {
+                            var t = parseDeTime(m.time);
+                            if (!t) return;
+                            var existing = upcomingByCourt[m.court];
+                            if (!existing || t < parseDeTime(existing.time)) {
+                                        upcomingByCourt[m.court] = m;
+                            }
+                  });
+                  var preview = COURTS.map(function (c) { return upcomingByCourt[c]; }).filter(function (m) { return !!m; });
+
+                  if (preview.length > 0) {
+                            renderMatches(preview, 'Vorschau – erste Begegnungen');
+                            finishLastUpdated(now);
+                            return null;
+                  }
+
+                  return loadJSON('data/live-demo.json').then(function (demo) {
+                            renderMatches(demo || [], 'Beispieldaten');
+                            finishLastUpdated(now);
+                  });
+          });
+    }
+
+    function todayIso() {
+          var d = new Date();
+          var mo = String(d.getMonth() + 1);
+          if (mo.length < 2) mo = '0' + mo;
+          var da = String(d.getDate());
+          if (da.length < 2) da = '0' + da;
+          return d.getFullYear() + '-' + mo + '-' + da;
+    }
+
+    function loadMenuTicker() {
+          loadJSON('data/menu.json').then(function (menu) {
+                  var bar = qs('menu-ticker');
+                  var content = qs('menu-ticker-content');
+                  if (!bar || !content) return;
+                  var today = todayIso();
+                  var entry = null;
+                  (menu || []).forEach(function (e) { if (e.day === today) entry = e; });
+                  var items = (entry && entry.items) ? entry.items : [];
+                  var names = items.map(function (it) {
+                            return typeof it === 'string' ? it : ((it && it.name) || '');
+                  }).filter(function (n) { return !!n; });
+                  if (!names.length) {
+                            bar.hidden = true;
+                            return;
+                  }
+                  var text = names.join('   •   ');
+                  content.textContent = text + '   •   ' + text;
+                  content.style.animationDuration = Math.max(18, text.length * 0.18) + 's';
+                  bar.hidden = false;
+          });
+    }
+
+    renderClock();
+    setInterval(renderClock, 1000);
+    refresh();
+    setInterval(refresh, REFRESH_MS);
+    loadMenuTicker();
+    setInterval(loadMenuTicker, MENU_REFRESH_MS);
+    setTimeout(function () { location.reload(); }, RELOAD_MS);
 })();
 
