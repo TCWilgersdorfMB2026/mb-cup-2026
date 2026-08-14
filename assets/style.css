@@ -383,3 +383,17 @@ margin-bottom: 10px;
   border-right-width: 2px;
   border-bottom-width: 2px;
 }
+
+
+.bt-placeholder {
+  border-style: dashed;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  min-height: 44px;
+}
