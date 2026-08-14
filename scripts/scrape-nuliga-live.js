@@ -35,6 +35,11 @@
  *
  * Wir filtern hier auf Spiele am TC Wilgersdorf (Platz 1-4), da die
  * Live-Anzeige ohnehin ausschliesslich Heimspiele zeigt.
+ *
+ * Zusaetzlich schreiben wir data/nuliga-live-meta.json mit dem echten
+ * Scrape-Zeitpunkt (generatedAt, deutsche Ortszeit) - die Live-Anzeige
+ * zeigt das getrennt vom Browser-Polling-Zeitpunkt als "Datenstand" an,
+ * damit vor Ort erkennbar ist, ob die Daten wirklich frisch sind.
  */
 
 const fs = require('fs');
@@ -63,6 +68,24 @@ function formatDeDateTime(isoStr) {
     const d = new Date(isoStr);
     if (isNaN(d.getTime())) return '';
     return `${pad(d.getDate())}.${pad(d.getMonth() + 1)}.${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())} Uhr`;
+}
+
+// Aktueller Zeitpunkt (Server laeuft auf GitHub Actions in UTC) in echte
+// deutsche Ortszeit (MEZ/MESZ) umgerechnet - Intl.DateTimeFormat uebernimmt
+// hier die DST-Umrechnung, unabhaengig von der Zeitzone des Runners.
+function formatDeNow() {
+    const parts = new Intl.DateTimeFormat('de-DE', {
+        timeZone: 'Europe/Berlin',
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+    }).formatToParts(new Date());
+    const map = {};
+    parts.forEach((p) => { map[p.type] = p.value; });
+    return `${map.day}.${map.month}.${map.year} ${map.hour}:${map.minute} Uhr`;
 }
 
 // nuLiga-Rundennamen kommen als interne Kurzformen ("½ F", "¼ F", "⅛ F",
@@ -218,6 +241,7 @@ async function main() {
     const data = await loginAndFetch(page);
     const records = buildRecords(data);
     writeJSON('nuliga-live.json', records);
+    writeJSON('nuliga-live-meta.json', { generatedAt: formatDeNow() });
     console.log(`Fertig: ${records.length} Heimspiele aus nuLiga geschrieben.`);
 
   await browser.close();
