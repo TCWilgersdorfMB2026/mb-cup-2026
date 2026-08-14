@@ -130,7 +130,7 @@ async function loginAndFetch(page) {
     const username = process.env.NULIGA_USERNAME;
     const password = process.env.NULIGA_PASSWORD;
 
-  await page.goto(DATA_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
+  await page.goto(DATA_URL, { waitUntil: 'domcontentloaded', timeout: 120000 });
 
   if (/tende-id\.liga\.nu/.test(page.url())) {
         console.log('nuLiga verlangt Login - melde mich an...');
@@ -154,7 +154,7 @@ async function loginAndFetch(page) {
       // danach explizit erneut aufrufen (jetzt mit gueltiger Session).
       await page.waitForURL((u) => /tende-apps\.liga\.nu/.test(u.toString()), { timeout: 20000 }).catch(() => {});
         await page.waitForTimeout(1500);
-        await page.goto(DATA_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await page.goto(DATA_URL, { waitUntil: 'domcontentloaded', timeout: 120000 });
   }
 
   const bodyText = await page.locator('body').innerText();
