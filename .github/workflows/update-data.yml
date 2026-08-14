@@ -1,10 +1,9 @@
 name: tennis.de Daten aktualisieren
 
-# Automatischer 5-Minuten-Cron, taeglich 8-18 Uhr deutscher Zeit (MESZ, UTC+2) waehrend des Turniers.
+# Automatischer 30-Minuten-Cron - laeuft ganztaegig, unabhaengig von der Live-Anzeige (siehe update-nuliga-live.yml fuer deren eigenen 5-Minuten-Cron 8-18 Uhr).
 on:
   schedule:
-    - cron: '*/5 6-15 * * *'
-    - cron: '0 16 * * *'
+      - cron: '*/30 * * * *'
   workflow_dispatch:
     inputs:
       test_tournament_id:
@@ -44,13 +43,6 @@ jobs:
           TENNIS_DE_USERNAME: ${{ secrets.TENNIS_DE_USERNAME }}
           TENNIS_DE_PASSWORD: ${{ secrets.TENNIS_DE_PASSWORD }}
           TEST_TOURNAMENT_ID: ${{ github.event.inputs.test_tournament_id }}
-
-      - name: nuLiga Live-Daten auslesen
-        run: npm run scrape:nuliga
-        continue-on-error: true
-        env:
-          NULIGA_USERNAME: ${{ secrets.NULIGA_USERNAME }}
-          NULIGA_PASSWORD: ${{ secrets.NULIGA_PASSWORD }}
 
       - name: Änderungen committen (falls vorhanden)
         run: |
