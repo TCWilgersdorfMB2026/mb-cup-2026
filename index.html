@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=19">
+<link rel="stylesheet" href="assets/style.css?v=20">
 </head>
 <body>
 
@@ -55,6 +55,10 @@
     <div class="bracket-picker">
       <select id="competition-select"></select>
     </div>
+    <div id="results-view-toggle" class="results-view-toggle" hidden>
+      <button type="button" class="view-btn active" data-view="list">Liste</button>
+      <button type="button" class="view-btn" data-view="bracket">Turnierbaum</button>
+    </div>
     <div id="spiele-list">
       <p class="empty">Wird vor Turnierstart eingepflegt.</p>
     </div>
@@ -81,5 +85,5 @@
   <p class="updated" id="last-updated"></p>
 </footer>
 
-<script src="assets/app.js?v=16"></script></body>
+<script src="assets/app.js?v=17"></script></body>
 </html>
