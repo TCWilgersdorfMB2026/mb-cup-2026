@@ -44,6 +44,13 @@ jobs:
           TENNIS_DE_PASSWORD: ${{ secrets.TENNIS_DE_PASSWORD }}
           TEST_TOURNAMENT_ID: ${{ github.event.inputs.test_tournament_id }}
 
+      - name: nuLiga Live-Daten auslesen
+        run: npm run scrape:nuliga
+        continue-on-error: true
+        env:
+          TENNIS_DE_USERNAME: ${{ secrets.TENNIS_DE_USERNAME }}
+          TENNIS_DE_PASSWORD: ${{ secrets.TENNIS_DE_PASSWORD }}
+
       - name: Änderungen committen (falls vorhanden)
         run: |
           git config user.name "mb-cup-bot"
