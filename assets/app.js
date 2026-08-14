@@ -340,7 +340,7 @@ function renderBracketTree(matches) {
         const rowStart = i * rowUnit + 2;
         cells += `
           <div class="bt-match" style="grid-column:${col};grid-row:${rowStart} / span ${rowUnit};">
-            <div class="bracket-box bt-placeholder">Paarung steht noch nicht fest</div>
+            <div class="bracket-box bt-placeholder">Paarung / Termin / Spielort noch offen</div>
           </div>`;
       }
     }
