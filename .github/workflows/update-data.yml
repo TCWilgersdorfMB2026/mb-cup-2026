@@ -1,9 +1,10 @@
 name: tennis.de Daten aktualisieren
 
-# Automatischer 30-Minuten-Cron nach der Auslosung (11.08.2026, 18:00 Uhr) wieder aktiviert.
+# Automatischer 5-Minuten-Cron, taeglich 8-18 Uhr deutscher Zeit (MESZ, UTC+2) waehrend des Turniers.
 on:
   schedule:
-    - cron: '*/30 * * * *'
+      - cron: '*/5 6-15 * * *'
+    - cron: '0 16 * * *'
   workflow_dispatch:
     inputs:
       test_tournament_id:
