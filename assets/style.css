@@ -305,3 +305,81 @@ margin-bottom: 10px;
   padding: 20px 16px 30px;
 }
 .updated { margin-top: 4px; }
+
+
+/* --- Turnierbaum-Ansicht (Wimbledon-Stil), nur Desktop --- */
+/* Umschalter Liste / Turnierbaum im Ergebnisse-Tab. */
+.results-view-toggle {
+  display: inline-flex;
+  gap: 6px;
+  margin: 0 0 14px;
+}
+.results-view-toggle .view-btn {
+  padding: 7px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.results-view-toggle .view-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
+/* Der Umschalter (und damit die Turnierbaum-Ansicht) ist nur auf breiteren
+   Bildschirmen (Desktop) verfuegbar - auf Mobilgeraeten bleibt es bei der
+   vertikalen Listen-Ansicht (.bracket-grid / .bracket-box). */
+@media (max-width: 900px) {
+  .results-view-toggle { display: none; }
+}
+
+.bt-scroll { overflow-x: auto; padding-bottom: 8px; }
+.bt-grid { display: grid; gap: 4px 0; align-items: stretch; }
+.bt-col-header {
+  font-size: 0.81rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-align: center;
+  padding-bottom: 8px;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.bt-match { display: flex; align-items: center; padding: 0 8px; }
+.bt-match .bracket-box { width: 100%; }
+.bt-champion { justify-content: center; }
+
+/* Verbindungslinien zwischen zwei Runden: eine schmale Spalte je Uebergang,
+   die ueber die volle Zeilenspanne des naechsten (zusammengefassten) Matches
+   geht. Das obere/untere Viertel bekommt je einen Rahmen (vertikale Linie
+   + horizontaler Stub), sodass die klassische Turnierbaum-Klammer "⊐"
+   rein per CSS entsteht - ohne SVG oder JS-Pixelberechnung. */
+.bt-connector { position: relative; }
+.bt-connector::before,
+.bt-connector::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 50%;
+  border-color: var(--accent);
+  border-style: solid;
+  border-width: 0;
+}
+.bt-connector::before {
+  top: 0;
+  height: 50%;
+  border-right-width: 2px;
+  border-top-width: 2px;
+}
+.bt-connector::after {
+  bottom: 0;
+  height: 50%;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+}
