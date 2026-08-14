@@ -105,6 +105,27 @@
     );
   }
 
+  // Wie matchCardHtml(), aber fuer einen Platz, auf dem gerade keine Partie
+  // laeuft und stattdessen die naechste bevorstehende Begegnung als Vorschau
+  // gezeigt wird - deutlich als "Naechste Partie" gekennzeichnet, damit vor
+  // Ort kein Zweifel aufkommt, ob die Partie live ist oder erst noch beginnt.
+  function upcomingCardHtml(m) {
+    return (
+      '<div class="match-card match-card-upcoming">' +
+        '<span class="court-badge">' + escapeHtml(m.court) + '</span>' +
+        '<div class="upcoming-label">Nächste Partie</div>' +
+        '<div class="meta-top">' +
+          '<div class="competition">' + escapeHtml(m.competition) + (m.round ? ' · ' + escapeHtml(m.round) : '') + '</div>' +
+          (m.time ? matchTimeHtml(m.time) : '') +
+        '</div>' +
+        '<div class="players">' +
+          '<div class="player">' + playerHtml(m.player1) + '</div>' +
+          '<div class="player">' + playerHtml(m.player2) + '</div>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
   function emptyCardHtml(court) {
     return (
       '<div class="match-card match-card-empty">' +
@@ -121,12 +142,13 @@
 
     var byCourt = {};
     (matches || []).forEach(function (m) {
-      if (!byCourt[m.court]) byCourt[m.court] = m;
+      if (m && !byCourt[m.court]) byCourt[m.court] = m;
     });
 
     container.innerHTML = COURTS.map(function (court) {
       var m = byCourt[court];
-      return m ? matchCardHtml(m) : emptyCardHtml(court);
+      if (!m) return emptyCardHtml(court);
+      return m.__upcoming ? upcomingCardHtml(m) : matchCardHtml(m);
     }).join('');
   }
 
@@ -134,27 +156,15 @@
     qs('last-updated').textContent = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
   }
 
-  // Zeigt den echten Scrape-Zeitpunkt von nuLiga (aus nuliga-live-meta.json)
-  // an - getrennt vom Browser-Polling-Zeitpunkt in finishLastUpdated(), damit
-  // vor Ort erkennbar ist, ob die zugrundeliegenden Daten wirklich frisch
-  // sind (und nicht nur der Browser erfolgreich nachgefragt hat).
-  function finishDataStand(meta) {
-    var el = qs('data-stand');
-    if (!el) return;
-    el.textContent = (meta && meta.generatedAt) ? meta.generatedAt : '--';
-  }
-
   function refresh() {
     return Promise.all([
       loadJSON('data/nuliga-live.json'),
       loadJSON('data/live-current.json'),
-      loadJSON('data/entrants.json'),
-      loadJSON('data/nuliga-live-meta.json')
+      loadJSON('data/entrants.json')
     ]).then(function (arr) {
       var nuliga = arr[0] || [];
       var manual = arr[1] || [];
       ENTRANTS = arr[2] || [];
-      var meta = arr[3] || null;
       var finishedKeys = {};
       nuliga.forEach(function (r) {
         if (r.winner) finishedKeys[matchKey(r)] = true;
@@ -165,48 +175,65 @@
         return m.court ? /^Platz\s*\d+$/.test(m.court.trim()) : false;
       }
 
-      var autoLive = nuliga.filter(function (m) {
-        if (!isHomeCourt(m)) return false;
+      var homeMatches = nuliga.filter(isHomeCourt);
+
+      // Pro Platz einzeln ermitteln - nicht global fuer alle 4 Plaetze auf
+      // einmal - sonst zeigt ein Platz faelschlich "Keine Partie", nur weil
+      // ein ANDERER Platz noch eine laufende Partie hat. Jeder Platz bekommt
+      // entweder seine aktuell laufende Partie oder, falls gerade keine
+      // laeuft, die naechste bevorstehende Partie als Vorschau.
+      var liveByCourt = {};
+      homeMatches.forEach(function (m) {
         var t = parseDeTime(m.time);
-        if (!t) return false;
-        return t <= now && !finishedKeys[matchKey(m)];
+        if (!t || t > now || finishedKeys[matchKey(m)]) return;
+        var existing = liveByCourt[m.court];
+        // Falls mehrere unfertige Partien mit Startzeit <= jetzt vorliegen,
+        // gewinnt die zuletzt gestartete - das ist die tatsaechlich laufende.
+        if (!existing || t > parseDeTime(existing.time)) {
+          liveByCourt[m.court] = m;
+        }
       });
 
-      var byCourt = {};
-      autoLive.forEach(function (m) { byCourt[m.court] = m; });
-      (manual || []).forEach(function (m) { if (m && m.court && isHomeCourt(m)) byCourt[m.court] = m; });
-
-      var merged = COURTS.map(function (c) { return byCourt[c]; }).filter(function (m) { return !!m; });
-
-      if (merged.length > 0) {
-        renderMatches(merged, null);
-        finishLastUpdated(now);
-        finishDataStand(meta);
-        return null;
-      }
-
       var upcomingByCourt = {};
-      nuliga.filter(isHomeCourt).forEach(function (m) {
+      homeMatches.forEach(function (m) {
         var t = parseDeTime(m.time);
-        if (!t) return;
+        if (!t || t <= now) return;
         var existing = upcomingByCourt[m.court];
         if (!existing || t < parseDeTime(existing.time)) {
           upcomingByCourt[m.court] = m;
         }
       });
-      var preview = COURTS.map(function (c) { return upcomingByCourt[c]; }).filter(function (m) { return !!m; });
 
-      if (preview.length > 0) {
-        renderMatches(preview, 'Vorschau – erste Begegnungen');
+      // Manuelle Admin-Overrides gewinnen immer gegen die automatische
+      // nuLiga-Ermittlung fuer den jeweiligen Platz.
+      (manual || []).forEach(function (m) { if (m && m.court && isHomeCourt(m)) liveByCourt[m.court] = m; });
+
+      var anyLive = COURTS.some(function (c) { return !!liveByCourt[c]; });
+      var anyData = COURTS.some(function (c) { return !!liveByCourt[c] || !!upcomingByCourt[c]; });
+
+      if (anyData) {
+        var display = COURTS.map(function (c) {
+          if (liveByCourt[c]) return liveByCourt[c];
+          if (upcomingByCourt[c]) {
+            var u = {};
+            for (var k in upcomingByCourt[c]) { u[k] = upcomingByCourt[c][k]; }
+            u.__upcoming = true;
+            return u;
+          }
+          return null;
+        });
+        // Der globale "Vorschau"-Hinweis erscheint nur, wenn wirklich noch
+        // KEIN Platz aktiv ist (z. B. vor Turnierbeginn). Sobald mindestens
+        // ein Platz laeuft, tragen die einzelnen Karten ihr "Naechste
+        // Partie"-Label selbst - ein globaler Hinweis waere dann irrefuehrend.
+        renderMatches(display, anyLive ? null : 'Vorschau – erste Begegnungen');
         finishLastUpdated(now);
-        finishDataStand(meta);
         return null;
       }
 
       return loadJSON('data/live-demo.json').then(function (demo) {
         renderMatches(demo || [], 'Beispieldaten');
         finishLastUpdated(now);
-        finishDataStand(meta);
       });
     });
   }
