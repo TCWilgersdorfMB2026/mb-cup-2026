@@ -1,0 +1,52 @@
+name: nuLiga Live-Daten aktualisieren
+
+# Nur fuer die Live-Anzeige (live-display.html) - laeuft alle 5 Minuten,
+# aber nur taeglich von 8 bis 18 Uhr deutscher Zeit (MESZ, UTC+2), waehrend
+# auf der Anlage gespielt wird. Die Hauptseite (index.html: Spielplan/
+# Ergebnisse/Turnierbaum) nutzt weiterhin ausschliesslich tennis.de ueber
+# den unveraenderten 30-Minuten-Cron in update-data.yml - dieser Workflow
+# ruehrt schedule.json/results.json/entrants.json nicht an.
+on:
+  schedule:
+    - cron: '*/5 6-15 * * *'
+    - cron: '0 16 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repo auschecken
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Abhängigkeiten installieren
+        run: npm install
+
+      - name: Playwright-Browser installieren
+        run: npx playwright install --with-deps chromium
+
+      - name: nuLiga Live-Daten auslesen
+        run: npm run scrape:nuliga
+        env:
+          NULIGA_USERNAME: ${{ secrets.NULIGA_USERNAME }}
+          NULIGA_PASSWORD: ${{ secrets.NULIGA_PASSWORD }}
+
+      - name: Änderungen committen (falls vorhanden)
+        run: |
+          git config user.name "mb-cup-bot"
+          git config user.email "actions@github.com"
+          git add data/
+          if ! git diff --cached --quiet; then
+            git commit -m "Automatisches Update: Live-Daten von nuLiga"
+            git push
+          else
+            echo "Keine Änderungen gefunden."
+          fi
