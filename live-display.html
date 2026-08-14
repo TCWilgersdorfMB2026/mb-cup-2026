@@ -130,6 +130,22 @@ main{
   justify-content:center;
   background:#f6f6f6;
 }
+.match-card-upcoming{
+  background:#fbfbfb;
+  border-style:dashed;
+  border-color:var(--navy);
+}
+.upcoming-label{
+  background:var(--navy);
+  color:#fff;
+  font-weight:800;
+  font-size:clamp(0.7rem,1vw,0.95rem);
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  padding:0.3vh 1vw;
+  border-radius:999px;
+  margin-top:0.2vh;
+}
 .court-badge{
   background:var(--navy);
   color:#fff;
@@ -255,8 +271,8 @@ footer{
 <main id="matches">
 <div class="empty-state">Lade Daten…</div>
 </main>
-<footer>Aktualisiert automatisch · <span id="last-updated">--</span> · Datenstand: <span id="data-stand">--</span></footer>
+<footer>Aktualisiert automatisch · <span id="last-updated">--</span></footer>
 
-<script src="assets/live.js?v=3"></script>
+<script src="assets/live.js?v=4"></script>
 </body>
 </html>
