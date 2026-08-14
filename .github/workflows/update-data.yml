@@ -3,7 +3,7 @@ name: tennis.de Daten aktualisieren
 # Automatischer 5-Minuten-Cron, taeglich 8-18 Uhr deutscher Zeit (MESZ, UTC+2) waehrend des Turniers.
 on:
   schedule:
-      - cron: '*/5 6-15 * * *'
+    - cron: '*/5 6-15 * * *'
     - cron: '0 16 * * *'
   workflow_dispatch:
     inputs:
