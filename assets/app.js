@@ -441,10 +441,12 @@ function renderScheduleDay() {
       const diff = a._date - b._date;
       if (diff !== 0) return diff;
     }
-    const courtDiff = courtNumberOf(a) - courtNumberOf(b);
-    if (courtDiff !== 0) return courtDiff;
-    // Bei gleicher Uhrzeit und gleichem Platz: TCW-Begegnung zuerst, danach das Auswaertsspiel.
-    return (isHomeCourt(a) ? 0 : 1) - (isHomeCourt(b) ? 0 : 1);
+    // Bei gleicher Uhrzeit: zuerst alle TCW-Heimplaetze (Platz 1-4), danach
+    // die Auswaertsplaetze (z.B. Ludwigseck, Platz 1-4) - jeweils aufsteigend
+    // nach Platznummer sortiert.
+    const homeDiff = (isHomeCourt(a) ? 0 : 1) - (isHomeCourt(b) ? 0 : 1);
+    if (homeDiff !== 0) return homeDiff;
+    return courtNumberOf(a) - courtNumberOf(b);
   });
 
   if (!sorted.length) {
