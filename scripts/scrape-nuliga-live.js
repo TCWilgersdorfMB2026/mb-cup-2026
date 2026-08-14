@@ -26,9 +26,9 @@
  *
  * Ein Aufruf ohne gueltige Session leitet automatisch auf die nuLiga-ID-
  * Anmeldemaske (tende-id.liga.nu, OAuth2, Felder "Username"/"Password")
- * um - loginAndFetch() meldet sich deshalb mit denselben Zugangsdaten an,
- * die bereits als TENNIS_DE_USERNAME/TENNIS_DE_PASSWORD hinterlegt sind
- * (laut Nutzer derselbe nuLiga-Account). Die genauen Feld-Selektoren sind
+ * um - loginAndFetch() meldet sich deshalb mit einem eigenen nuLiga-Login
+ * an (NULIGA_USERNAME/NULIGA_PASSWORD), getrennt vom tennis.de-Login
+ * (TENNIS_DE_USERNAME/TENNIS_DE_PASSWORD). Die genauen Feld-Selektoren sind
  * nach bestem Wissen generisch gehalten (kein Zugriff auf die Login-Maske
  * im ausgeloggten Zustand moeglich, ohne die echte Vereinssitzung zu
  * gefaehrden) - bei einem Fehlschlag hilft data/nuliga-debug.png/.txt.
@@ -104,15 +104,15 @@ function playerLabel(playersSide) {
 // gueltige Session aufgerufen wird, und liefert das geparste JSON-Objekt der
 // Turnierdaten zurueck.
 async function loginAndFetch(page) {
-    const username = process.env.TENNIS_DE_USERNAME;
-    const password = process.env.TENNIS_DE_PASSWORD;
+    const username = process.env.NULIGA_USERNAME;
+    const password = process.env.NULIGA_PASSWORD;
 
   await page.goto(DATA_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
   if (/tende-id\.liga\.nu/.test(page.url())) {
         console.log('nuLiga verlangt Login - melde mich an...');
         if (!username || !password) {
-                throw new Error('nuLiga-Login erforderlich, aber TENNIS_DE_USERNAME/TENNIS_DE_PASSWORD nicht gesetzt.');
+                throw new Error('nuLiga-Login erforderlich, aber NULIGA_USERNAME/NULIGA_PASSWORD nicht gesetzt.');
         }
         const userInput = page.locator('input[type="text"], input[type="email"]').first();
         const passInput = page.locator('input[type="password"]').first();
