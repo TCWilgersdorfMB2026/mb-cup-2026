@@ -270,16 +270,23 @@ function renderBracketTree(matches) {
     return '<p class="empty">Für diese Konkurrenz liegen noch keine Paarungen vor.</p>';
   }
 
+  // Ab der ersten vorhandenen Runde wird die komplette restliche Kette bis zum
+  // Finale angezeigt - auch wenn spaetere Runden noch nicht ausgelost/terminiert
+  // sind. So ist die gesamte Turnierbaum-Struktur von Anfang an sichtbar; die
+  // noch offenen Felder werden erst nach und nach mit echten Paarungen befuellt,
+  // sobald tennis.de sie veroeffentlicht.
+  const firstIdx = ROUND_ORDER.indexOf(roundsPresent[0]);
+  const finaleIdx = ROUND_ORDER.indexOf('Finale');
+  const roundsFull = firstIdx === -1 || finaleIdx === -1 ? roundsPresent : ROUND_ORDER.slice(firstIdx, finaleIdx + 1);
+
   const firstRoundCount = byRound.get(roundsPresent[0]).length;
   const totalSubrows = firstRoundCount * 2;
 
   const finaleMatches = byRound.get('Finale');
   const finaleDone = finaleMatches && finaleMatches.length === 1 && finaleMatches[0].winner;
-  const columns = finaleDone ? [...roundsPresent, 'Sieger'] : roundsPresent;
 
-  // Jede Runde bekommt eine eigene Spalte; zwischen zwei Runden-Spalten steht
-  // eine schmale Connector-Spalte fuer die Turnierbaum-Linien (wie beim
-  // Wimbledon-Draw).
+  const columns = [...roundsFull, 'Sieger'];
+
   const colTemplate = columns
     .map((_, idx) => (idx === 0 ? 'minmax(190px, 1fr)' : '28px minmax(190px, 1fr)'))
     .join(' ');
@@ -288,28 +295,55 @@ function renderBracketTree(matches) {
   columns.forEach((roundName, colIdx) => {
     const col = colIdx === 0 ? 1 : colIdx * 2 + 1;
     const connectorCol = col - 1;
+    const rowUnit = Math.pow(2, colIdx + 1);
 
-    cells += `<div class="bt-col-header" style="grid-column:${col};grid-row:1;">${escapeHtml(roundName)}</div>`;
+    cells += `<div class="bt-col-header" style="grid-column:${col};grid-row:1;">${escapeHtml(roundName === 'Sieger' ? roundName : roundName)}</div>`;
 
     if (roundName === 'Sieger') {
-      cells += `
-        <div class="bt-match bt-champion" style="grid-column:${col};grid-row:2 / span ${totalSubrows};">
-          <div class="bracket-box winner-box">${escapeHtml(finaleMatches[0].winner)}</div>
-        </div>`;
+      if (colIdx > 0) {
+        cells += `<div class="bt-connector" style="grid-column:${connectorCol};grid-row:2 / span ${totalSubrows};"></div>`;
+      }
+      if (finaleDone) {
+        cells += `
+          <div class="bt-match bt-champion" style="grid-column:${col};grid-row:2 / span ${totalSubrows};">
+            <div class="bracket-box winner-box">${escapeHtml(finaleMatches[0].winner)}</div>
+          </div>`;
+      } else {
+        cells += `
+          <div class="bt-match bt-champion" style="grid-column:${col};grid-row:2 / span ${totalSubrows};">
+            <div class="bracket-box bt-placeholder">Sieger steht noch nicht fest</div>
+          </div>`;
+      }
       return;
     }
 
-    const rowUnit = Math.pow(2, colIdx + 1);
-    byRound.get(roundName).forEach((m, i) => {
-      const rowStart = i * rowUnit + 2;
-      if (colIdx > 0) {
+    const roundMatches = byRound.get(roundName);
+    const expectedCount = Math.max(1, firstRoundCount / Math.pow(2, colIdx));
+
+    if (colIdx > 0) {
+      for (let i = 0; i < expectedCount; i++) {
+        const rowStart = i * rowUnit + 2;
         cells += `<div class="bt-connector" style="grid-column:${connectorCol};grid-row:${rowStart} / span ${rowUnit};"></div>`;
       }
-      cells += `
-        <div class="bt-match" style="grid-column:${col};grid-row:${rowStart} / span ${rowUnit};">
-          ${bracketBoxHtml(m)}
-        </div>`;
-    });
+    }
+
+    if (roundMatches && roundMatches.length) {
+      roundMatches.forEach((m, i) => {
+        const rowStart = i * rowUnit + 2;
+        cells += `
+          <div class="bt-match" style="grid-column:${col};grid-row:${rowStart} / span ${rowUnit};">
+            ${bracketBoxHtml(m)}
+          </div>`;
+      });
+    } else {
+      for (let i = 0; i < expectedCount; i++) {
+        const rowStart = i * rowUnit + 2;
+        cells += `
+          <div class="bt-match" style="grid-column:${col};grid-row:${rowStart} / span ${rowUnit};">
+            <div class="bracket-box bt-placeholder">Paarung steht noch nicht fest</div>
+          </div>`;
+      }
+    }
   });
 
   return `
