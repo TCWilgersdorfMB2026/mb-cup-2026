@@ -288,7 +288,7 @@ function renderBracketTree(matches) {
   const columns = [...roundsFull, 'Sieger'];
 
   const colTemplate = columns
-    .map((_, idx) => (idx === 0 ? 'minmax(190px, 1fr)' : '28px minmax(190px, 1fr)'))
+    .map((_, idx) => (idx === 0 ? 'minmax(380px, 1fr)' : '28px minmax(380px, 1fr)'))
     .join(' ');
 
   let cells = '';
