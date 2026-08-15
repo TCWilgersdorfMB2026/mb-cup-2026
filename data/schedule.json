@@ -342,16 +342,6 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
-    "player1": "Hilberg, Max",
-    "player2": "Hartmann, Nils",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 15:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 1"
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
     "player1": "Schauerte, Andre",
     "player2": null,
     "winner": "Schauerte, Andre",
@@ -712,16 +702,6 @@
   {
     "competition": "Damen Einzel KO LK 10,0-25,0",
     "round": "Achtelfinale",
-    "player1": "Heide, Miriam",
-    "player2": "Hoffmann, Nicole",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 13:30 Uhr",
-    "court": "Platz 1"
-  },
-  {
-    "competition": "Damen Einzel KO LK 10,0-25,0",
-    "round": "Achtelfinale",
     "player1": "Lübke, Bettina",
     "player2": null,
     "winner": "Lübke, Bettina",
@@ -738,6 +718,46 @@
     "score": "Freilos",
     "time": "",
     "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Panning- Dornseifer, Nicole",
+    "player2": "Hoffmann, Nicole",
+    "winner": null,
+    "score": null,
+    "time": "18.08.2026 18:30 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 3"
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Lübke, Bettina",
+    "player2": "Voth, Eva",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 17:00 Uhr",
+    "court": "Platz 4"
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Hees, Sabrina",
+    "player2": "Hörner, Judith",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 18:30 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Burghardt, Jule",
+    "player2": "Backaus, Hedda Lotta",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 17:00 Uhr",
+    "court": "Platz 3"
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -926,7 +946,7 @@
     "player2": "Müller, Lea",
     "winner": null,
     "score": null,
-    "time": "16.08.2026 11:00 Uhr",
+    "time": "16.08.2026 12:00 Uhr",
     "court": "TC Wieland-Wilnsdorf, Platz 1"
   },
   {

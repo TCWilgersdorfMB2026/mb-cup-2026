@@ -120,6 +120,16 @@
     "court": ""
   },
   {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Hilberg, Max",
+    "player2": "Hartmann, Nils",
+    "winner": "Hilberg, Max",
+    "score": "4:6 6:4 10:5",
+    "time": "",
+    "court": ""
+  },
+  {
     "competition": "Herren Einzel KO LK 22,0-25,0",
     "round": "Runde 1",
     "player1": "Zahlmann, Jörg Michael",
@@ -176,6 +186,16 @@
     "player2": "Stauf, Michael",
     "winner": "Koehler, Michael",
     "score": "6:4 6:4",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Heide, Miriam",
+    "player2": "Hoffmann, Nicole",
+    "winner": "Hoffmann, Nicole",
+    "score": "7:5 6:4",
     "time": "",
     "court": ""
   },
