@@ -198,8 +198,8 @@ Herren Einzel - Hauptfeld
 	[Rast]					
 			TC Wilger..., Platz 1			
 	LK13,5 - Peters, Marvin, 2000 - TC Wilgersdorf, WTV		16.08. 10:30			
-		TC Wilger..., Platz 1				
-	LK12,2 - Prado Saldana, Joan Ricardo, 2006 - TC Brachbach, RPF	15.08. 12:00				
+		Prado Saldana, J.				
+	LK12,2 - Prado Saldana, Joan Ricardo, 2006 - TC Brachbach, RPF	6:4 6:3				
 				TC Wilger..., Platz 1		
 	[Rast]			19.08. 18:30		
 		Schwedes, N.				
