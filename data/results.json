@@ -10,6 +10,26 @@
     "court": ""
   },
   {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Koch, Colin",
+    "player2": "Löhl, Moritz",
+    "winner": "Koch, Colin",
+    "score": "7:6 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Rötzel, Johannes",
+    "player2": "Türk, Michael",
+    "winner": "Türk, Michael",
+    "score": "1:6 6:3 10:7",
+    "time": "",
+    "court": ""
+  },
+  {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
     "player1": "Margeit, Ben",
@@ -56,6 +76,16 @@
     "player2": "Anders, Gero",
     "winner": "Högemann, Simon",
     "score": "6:0 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Trappe, Richard",
+    "player2": "Borodin, Eugen",
+    "winner": "Borodin, Eugen",
+    "score": "6:2 6:2",
     "time": "",
     "court": ""
   },

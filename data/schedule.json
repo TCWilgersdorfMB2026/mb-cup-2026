@@ -182,16 +182,6 @@
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
     "round": "Achtelfinale",
-    "player1": "Koch, Colin",
-    "player2": "Löhl, Moritz",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 10:30 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 3"
-  },
-  {
-    "competition": "Herren Einzel KO LK 10,0-25,0",
-    "round": "Achtelfinale",
     "player1": "Iordanidis, Alexandros",
     "player2": "Göckus, Maximilian",
     "winner": null,
@@ -208,16 +198,6 @@
     "score": null,
     "time": "16.08.2026 16:30 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 3"
-  },
-  {
-    "competition": "Herren Einzel KO LK 10,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Rötzel, Johannes",
-    "player2": "Türk, Michael",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 10:30 Uhr",
-    "court": "Platz 3"
   },
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
@@ -528,16 +508,6 @@
     "score": "Freilos",
     "time": "",
     "court": ""
-  },
-  {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Trappe, Richard",
-    "player2": "Borodin, Eugen",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 12:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 1"
   },
   {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",
@@ -1006,8 +976,8 @@
     "player2": "Pilz, Melanie",
     "winner": null,
     "score": null,
-    "time": "15.08.2026 10:30 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 4"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
