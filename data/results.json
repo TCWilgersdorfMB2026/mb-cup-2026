@@ -12,10 +12,30 @@
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
     "round": "Runde 1",
+    "player1": "Zahlmann, Jörg Michael",
+    "player2": "Schmidt, Fabian",
+    "winner": "Zahlmann, Jörg Michael",
+    "score": "6:3 6:7 10:4",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Runde 1",
     "player1": "Dielmann, Benedikt",
     "player2": "Windisch, Marcus",
     "winner": "Windisch, Marcus",
     "score": "6:1 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Runde 1",
+    "player1": "Högemann, Simon",
+    "player2": "Anders, Gero",
+    "winner": "Högemann, Simon",
+    "score": "6:0 6:1",
     "time": "",
     "court": ""
   },
