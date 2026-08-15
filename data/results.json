@@ -92,6 +92,16 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
+    "player1": "Gün, Bulut",
+    "player2": "Müller, Joachim",
+    "winner": "Müller, Joachim",
+    "score": "6:4 6:4",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
     "player1": "Metzger, Tim",
     "player2": "Koch, Heico",
     "winner": "Koch, Heico",
@@ -206,6 +216,16 @@
     "player2": "Müller, Karin",
     "winner": "Kamyab, Maya",
     "score": "6:2 6:4",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Steuber, Melina",
+    "player2": "Pfeifer, Jasmin",
+    "winner": "Pfeifer, Jasmin",
+    "score": "6:1 6:1",
     "time": "",
     "court": ""
   }

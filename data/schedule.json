@@ -252,16 +252,6 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
-    "player1": "Gün, Bulut",
-    "player2": "Müller, Joachim",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 13:30 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 2"
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
     "player1": "Malore Govindarajan, Suhas",
     "player2": "Binsack, Jarno",
     "winner": null,
@@ -756,8 +746,8 @@
     "player2": "Gyurcsi, Lili",
     "winner": null,
     "score": null,
-    "time": "15.08.2026 13:30 Uhr",
-    "court": "Platz 2"
+    "time": "17.08.2026 17:00 Uhr",
+    "court": "Platz 3"
   },
   {
     "competition": "Damen Einzel KO LK 10,0-25,0",
@@ -1008,16 +998,6 @@
     "score": null,
     "time": "16.08.2026 13:30 Uhr",
     "court": "Platz 3"
-  },
-  {
-    "competition": "Damen Einzel KO LK 22,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Steuber, Melina",
-    "player2": "Pfeifer, Jasmin",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 13:30 Uhr",
-    "court": "Platz 4"
   },
   {
     "competition": "Damen Einzel KO LK 22,0-25,0",
