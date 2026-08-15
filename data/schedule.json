@@ -142,16 +142,6 @@
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "Runde 1",
-    "player1": "Menn, Jan Steffen",
-    "player2": "Müller, Nico",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 10:30 Uhr",
-    "court": "Platz 1"
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
     "player1": "Klahold, Linus",
     "player2": null,
     "winner": "Klahold, Linus",
@@ -248,16 +238,6 @@
     "score": "Freilos",
     "time": "",
     "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Margeit, Ben",
-    "player2": "Schläger, Lorenz",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 10:30 Uhr",
-    "court": "Platz 4"
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
@@ -558,16 +538,6 @@
     "score": null,
     "time": "15.08.2026 12:00 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 1"
-  },
-  {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Weber, Holger",
-    "player2": "Hess, Manuel",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 10:30 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 2"
   },
   {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",

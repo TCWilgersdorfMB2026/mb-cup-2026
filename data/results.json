@@ -1,5 +1,25 @@
 [
   {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Runde 1",
+    "player1": "Menn, Jan Steffen",
+    "player2": "Müller, Nico",
+    "winner": "Menn, Jan Steffen",
+    "score": "7:5 6:0",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Margeit, Ben",
+    "player2": "Schläger, Lorenz",
+    "winner": "Margeit, Ben",
+    "score": "6:3 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
     "player1": "Mayenschein, Dennis",
@@ -36,6 +56,16 @@
     "player2": "Anders, Gero",
     "winner": "Högemann, Simon",
     "score": "6:0 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Weber, Holger",
+    "player2": "Hess, Manuel",
+    "winner": "Weber, Holger",
+    "score": "7:5 6:1",
     "time": "",
     "court": ""
   },
