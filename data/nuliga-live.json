@@ -763,7 +763,7 @@
     "competition": "Herren 40 Einzel LK1,0-25,0",
     "round": "Halbfinale",
     "player1": null,
-    "player2": null,
+    "player2": "Deeken, Matthias / Borodin, Eugen",
     "winner": null,
     "score": null,
     "time": "20.08.2026 18:30 Uhr",
@@ -783,11 +783,21 @@
     "competition": "Herren 40 Einzel LK1,0-25,0",
     "round": "Viertelfinale",
     "player1": "Deeken, Matthias",
-    "player2": "Trappe, Richard / Borodin, Eugen",
+    "player2": "Borodin, Eugen",
     "winner": null,
     "score": null,
     "time": "16.08.2026 15:00 Uhr",
     "court": "Platz 4"
+  },
+  {
+    "competition": "Herren 40 Einzel LK1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Weber, Holger",
+    "player2": "Steinkohl, Alexander",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 16:30 Uhr",
+    "court": "Platz 3"
   },
   {
     "competition": "Herren 40 Einzel LK1,0-25,0",
@@ -1113,7 +1123,7 @@
     "competition": "Herren Einzel LK10,0-25,0",
     "round": "Viertelfinale",
     "player1": "Lotz, Mike / Mauk, Andreas",
-    "player2": "Koch, Colin / Löhl, Moritz",
+    "player2": "Koch, Colin",
     "winner": null,
     "score": null,
     "time": "19.08.2026 17:00 Uhr",
@@ -1132,7 +1142,7 @@
   {
     "competition": "Herren Einzel LK10,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Rötzel, Johannes / Türk, Michael",
+    "player1": "Türk, Michael",
     "player2": "Henrichs, Lukas / Ermert, Martin",
     "winner": null,
     "score": null,
@@ -1172,20 +1182,10 @@
   {
     "competition": "Herren Einzel LK10,0-25,0",
     "round": "Achtelfinale",
-    "player1": "Tempel, Marian",
-    "player2": "Solbach, Tim",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 16:30 Uhr",
-    "court": "Platz 3"
-  },
-  {
-    "competition": "Herren Einzel LK10,0-25,0",
-    "round": "Achtelfinale",
     "player1": "Rötzel, Johannes",
     "player2": "Türk, Michael",
-    "winner": null,
-    "score": null,
+    "winner": "Türk, Michael",
+    "score": "1:6 6:3 10:7",
     "time": "15.08.2026 10:30 Uhr",
     "court": "Platz 3"
   },
