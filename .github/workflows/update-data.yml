@@ -3,7 +3,7 @@ name: tennis.de Daten aktualisieren
 # Automatischer 5-Minuten-Cron - laeuft ganztaegig, unabhaengig von der Live-Anzeige (siehe update-nuliga-live.yml fuer deren eigenen 5-Minuten-Cron 8-18 Uhr).
 on:
   schedule:
-      - cron: '*/5 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
       test_tournament_id:
@@ -51,7 +51,19 @@ jobs:
           git add data/
           if ! git diff --cached --quiet; then
             git commit -m "Automatisches Update: Spielplan/Ergebnisse von tennis.de"
-            git push
+            # Bei mehreren parallel laufenden/ueberlappenden Scraper-Laeufen (5-Minuten-
+            # Cron, Laufzeit oft laenger als 4 Minuten) kann "git push" fehlschlagen,
+            # weil zwischenzeitlich ein anderer Lauf bereits gepusht hat ("fetch first").
+            # Deshalb vor jedem Push-Versuch die neuesten Aenderungen per Rebase holen
+            # und bei einem Fehlschlag mit kurzer Pause bis zu 5x erneut versuchen,
+            # statt den ganzen Workflow-Lauf fehlschlagen zu lassen.
+            for i in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push; then
+                break
+              fi
+              echo "Push fehlgeschlagen (Versuch $i von 5) - erneuter Versuch in 5s..."
+              sleep 5
+            done
           else
             echo "Keine Änderungen gefunden."
           fi
