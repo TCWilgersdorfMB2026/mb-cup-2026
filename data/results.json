@@ -2,6 +2,16 @@
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "Runde 1",
+    "player1": "Jud, Tobias",
+    "player2": "Lotz, Federico",
+    "winner": "Jud, Tobias",
+    "score": "6:3 6:4",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Runde 1",
     "player1": "Peters, Marvin",
     "player2": "Prado Saldana, Joan Ricardo",
     "winner": "Prado Saldana, Joan Ricardo",
@@ -16,6 +26,36 @@
     "player2": "Müller, Nico",
     "winner": "Menn, Jan Steffen",
     "score": "7:5 6:0",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Weber, Louis",
+    "player2": "Ballion, Silas",
+    "winner": "Ballion, Silas",
+    "score": "6:1 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Feldmann, Jonas Juttichai",
+    "player2": "Wedding, Robin",
+    "winner": "Wedding, Robin",
+    "score": "7:6 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Bahlmann, Niclas Hans",
+    "player2": "Böhl, Timo",
+    "winner": "Bahlmann, Niclas Hans",
+    "score": "6:1 6:4",
     "time": "",
     "court": ""
   },
@@ -46,6 +86,16 @@
     "player2": "Schläger, Lorenz",
     "winner": "Margeit, Ben",
     "score": "6:3 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Metzger, Tim",
+    "player2": "Koch, Heico",
+    "winner": "Koch, Heico",
+    "score": "6:0 6:1",
     "time": "",
     "court": ""
   },
@@ -146,6 +196,16 @@
     "player2": "Menn, Svenja",
     "winner": "Schläger, Antonia",
     "score": "6:2 6:2",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Kamyab, Maya",
+    "player2": "Müller, Karin",
+    "winner": "Kamyab, Maya",
+    "score": "6:2 6:4",
     "time": "",
     "court": ""
   }

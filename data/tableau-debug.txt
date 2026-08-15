@@ -182,8 +182,8 @@ Herren Einzel - Hauptfeld
 	[Rast]					
 			TC Wilger..., Platz 1			
 	LK11,9 - Jud, Tobias, 1999 - TC Wilgersdorf, WTV		16.08. 13:30			
-		TC Wilger..., Platz 2				
-	LK13,9 - Lotz, Federico, 2007 - Tennisverein Altenseelbach e.V., WTV	15.08. 12:00				
+		Jud, T.				
+	LK13,9 - Lotz, Federico, 2007 - Tennisverein Altenseelbach e.V., WTV	6:3 6:4				
 				TC Wilger..., Platz 1		
 	[Rast]			18.08. 17:00		
 		Iordanidis, A.				
@@ -228,8 +228,8 @@ Herren Einzel - Hauptfeld
 8	[8] - LK9,4 - Feldmann, Jonas Juttichai, 2009 - TC Rhode e.V., WTV				21.08. 17:00	
 		Feldmann, J.				
 	[Rast]					
-			TC Ludwig..., Platz 1			
-	LK9,8 - Wedding, Robin, 1994 - TC Lese Grün-Weiss Köln, TVM		15.08. 13:30			
+			Wedding, R.			
+	LK9,8 - Wedding, Robin, 1994 - TC Lese Grün-Weiss Köln, TVM		7:6 6:1			
 		Wedding, R.				
 	[Rast]					
 				TC Wilger..., Platz 2		

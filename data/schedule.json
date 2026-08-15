@@ -12,16 +12,6 @@
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "Runde 1",
-    "player1": "Jud, Tobias",
-    "player2": "Lotz, Federico",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 13:30 Uhr",
-    "court": "Platz 1"
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
     "player1": "Iordanidis, Aristotelis",
     "player2": null,
     "winner": "Iordanidis, Aristotelis",
@@ -140,14 +130,64 @@
     "court": ""
   },
   {
-    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "Achtelfinale",
-    "player1": "Bahlmann, Niclas Hans",
-    "player2": "Böhl, Timo",
+    "player1": "Wagner, Matthias",
+    "player2": "Jud, Tobias",
     "winner": null,
     "score": null,
-    "time": "15.08.2026 12:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 3"
+    "time": "16.08.2026 13:30 Uhr",
+    "court": "Platz 1"
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Iordanidis, Aristotelis",
+    "player2": "Nies, Tim",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 09:00 Uhr",
+    "court": "Platz 1"
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Gross, Ingo",
+    "player2": "Prado Saldana, Joan Ricardo",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 10:30 Uhr",
+    "court": "Platz 1"
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schwedes, Nick Luca",
+    "player2": "Dreysse, Kay",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 18:00 Uhr",
+    "court": "Platz 2"
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Ebener, Frederik",
+    "player2": "Ebener, Sebastian",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 15:00 Uhr",
+    "court": "Platz 1"
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Menn, Jan Steffen",
+    "player2": "Klahold, Linus",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 17:00 Uhr",
+    "court": "Platz 1"
   },
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
@@ -238,16 +278,6 @@
     "score": "Freilos",
     "time": "",
     "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Metzger, Tim",
-    "player2": "Koch, Heico",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 13:30 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 3"
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
@@ -367,7 +397,7 @@
     "winner": null,
     "score": null,
     "time": "15.08.2026 15:00 Uhr",
-    "court": "Platz 2"
+    "court": "Platz 4"
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -486,8 +516,8 @@
     "player2": "Ossenbühl, Udo",
     "winner": null,
     "score": null,
-    "time": "15.08.2026 15:00 Uhr",
-    "court": "Platz 3"
+    "time": "17.08.2026 18:30 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 1"
   },
   {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",
@@ -557,7 +587,7 @@
     "winner": null,
     "score": null,
     "time": "15.08.2026 15:00 Uhr",
-    "court": "Platz 1"
+    "court": "Platz 2"
   },
   {
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
@@ -888,16 +918,6 @@
     "score": "Freilos",
     "time": "",
     "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Kamyab, Maya",
-    "player2": "Müller, Karin",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 12:00 Uhr",
-    "court": "Platz 3"
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
