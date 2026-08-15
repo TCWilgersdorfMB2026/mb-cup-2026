@@ -1,9 +1,9 @@
 name: tennis.de Daten aktualisieren
 
-# Automatischer 30-Minuten-Cron - laeuft ganztaegig, unabhaengig von der Live-Anzeige (siehe update-nuliga-live.yml fuer deren eigenen 5-Minuten-Cron 8-18 Uhr).
+# Automatischer 5-Minuten-Cron - laeuft ganztaegig, unabhaengig von der Live-Anzeige (siehe update-nuliga-live.yml fuer deren eigenen 5-Minuten-Cron 8-18 Uhr).
 on:
   schedule:
-      - cron: '*/30 * * * *'
+      - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
       test_tournament_id:
