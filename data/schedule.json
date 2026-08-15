@@ -372,16 +372,6 @@
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
     "round": "Runde 1",
-    "player1": "Freudenstein, Manuel",
-    "player2": "Nickel, Jan",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 12:00 Uhr",
-    "court": "Platz 3"
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
     "player1": "Damm, Robin",
     "player2": null,
     "winner": "Damm, Robin",
@@ -478,6 +468,56 @@
     "score": "Freilos",
     "time": "",
     "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Freudenstein, Manuel",
+    "player2": "Damm, Robin",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 12:00 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Roth, Marvin",
+    "player2": "Zahlmann, Jörg Michael",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 10:30 Uhr",
+    "court": "Platz 4"
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Zöller, Robin",
+    "player2": "Windisch, Marcus",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 12:00 Uhr",
+    "court": "Platz 1"
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Wissenbach, Jan",
+    "player2": "Scheuermann, Florian",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 09:00 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Högemann, Simon",
+    "player2": "Büdenbender, Jens",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 09:00 Uhr",
+    "court": "Platz 2"
   },
   {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",

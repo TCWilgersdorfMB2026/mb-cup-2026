@@ -132,6 +132,16 @@
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
     "round": "Runde 1",
+    "player1": "Freudenstein, Manuel",
+    "player2": "Nickel, Jan",
+    "winner": "Freudenstein, Manuel",
+    "score": "6:1 6:0",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Runde 1",
     "player1": "Zahlmann, Jörg Michael",
     "player2": "Schmidt, Fabian",
     "winner": "Zahlmann, Jörg Michael",
@@ -156,6 +166,36 @@
     "player2": "Anders, Gero",
     "winner": "Högemann, Simon",
     "score": "6:0 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Laarmann, Mark",
+    "player2": "Meyer, Dirk",
+    "winner": "Laarmann, Mark",
+    "score": "6:1 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schürbusch, Nico",
+    "player2": "Braun, Sebastian",
+    "winner": "Schürbusch, Nico",
+    "score": "6:2 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Baak, Matthäus",
+    "player2": "Klein, Thilo",
+    "winner": "Klein, Thilo",
+    "score": "6:2 6:0",
     "time": "",
     "court": ""
   },
