@@ -372,16 +372,6 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
-    "player1": "Mayenschein, Dennis",
-    "player2": "Stader, Dominik",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 09:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 3"
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
     "player1": "Hilberg, Max",
     "player2": "Hartmann, Nils",
     "winner": null,
@@ -488,16 +478,6 @@
     "score": "Freilos",
     "time": "",
     "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
-    "player1": "Dielmann, Benedikt",
-    "player2": "Windisch, Marcus",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 09:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 2"
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -842,26 +822,6 @@
   {
     "competition": "Damen Einzel KO LK 10,0-25,0",
     "round": "Achtelfinale",
-    "player1": "Hees, Sabrina",
-    "player2": "Tempel, Carolin",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 09:00 Uhr",
-    "court": "Platz 1"
-  },
-  {
-    "competition": "Damen Einzel KO LK 10,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Schumacher-Markowski, Claudia",
-    "player2": "Hörner, Judith",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 09:00 Uhr",
-    "court": "Platz 2"
-  },
-  {
-    "competition": "Damen Einzel KO LK 10,0-25,0",
-    "round": "Achtelfinale",
     "player1": "Burghardt, Jule",
     "player2": "Gyurcsi, Lili",
     "winner": null,
@@ -898,16 +858,6 @@
     "score": "Freilos",
     "time": "",
     "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Schläger, Antonia",
-    "player2": "Menn, Svenja",
-    "winner": null,
-    "score": null,
-    "time": "15.08.2026 09:00 Uhr",
-    "court": "Platz 4"
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -1038,6 +988,86 @@
     "score": "Freilos",
     "time": "",
     "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Kamyab, Maya",
+    "player2": "Müller, Karin",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 12:00 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schläger, Antonia",
+    "player2": "Ohm, Michaela",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 18:00 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 2"
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Herking, Lea-Marie",
+    "player2": "Göckus, Luisa",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 12:00 Uhr",
+    "court": "Platz 2"
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Hercher, Elise",
+    "player2": "Dörr, Vanessa",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 17:00 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 3"
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Grau, Neela Marlen",
+    "player2": "Müller, Lea",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 11:00 Uhr",
+    "court": "TC Wieland-Wilnsdorf, Platz 1"
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Hussing, Mara",
+    "player2": "Wiegel, Lea",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 15:00 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Palić, Nina",
+    "player2": "Pilz, Melanie",
+    "winner": null,
+    "score": null,
+    "time": "15.08.2026 10:30 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 4"
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Becker, Birgit",
+    "player2": "Anders, Xenia",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 13:30 Uhr",
+    "court": "Platz 4"
   },
   {
     "competition": "Damen Einzel KO LK 22,0-25,0",

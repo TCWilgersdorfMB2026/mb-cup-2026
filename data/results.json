@@ -1,1 +1,52 @@
-[]
+[
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Mayenschein, Dennis",
+    "player2": "Stader, Dominik",
+    "winner": "Stader, Dominik",
+    "score": "6:3 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Runde 1",
+    "player1": "Dielmann, Benedikt",
+    "player2": "Windisch, Marcus",
+    "winner": "Windisch, Marcus",
+    "score": "6:1 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Hees, Sabrina",
+    "player2": "Tempel, Carolin",
+    "winner": "Hees, Sabrina",
+    "score": "6:1 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schumacher-Markowski, Claudia",
+    "player2": "Hörner, Judith",
+    "winner": "Hörner, Judith",
+    "score": "6:0 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Schläger, Antonia",
+    "player2": "Menn, Svenja",
+    "winner": "Schläger, Antonia",
+    "score": "6:2 6:2",
+    "time": "",
+    "court": ""
+  }
+]
