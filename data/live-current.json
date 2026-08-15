@@ -8,10 +8,18 @@
     "court": "Platz 1"
   },
   {
-    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "",
-    "player1": "Rötzel Johannes",
-    "player2": "Türk Michael",
+    "player1": "Jud Tobias",
+    "player2": "Lotz Federico",
+    "time": "",
+    "court": "Platz 2"
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "",
+    "player1": "Kamyab Maya",
+    "player2": "Müller Karin",
     "time": "",
     "court": "Platz 3"
   }
