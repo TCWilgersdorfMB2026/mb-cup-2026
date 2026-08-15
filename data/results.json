@@ -124,7 +124,7 @@
     "round": "Runde 1",
     "player1": "Hilberg, Max",
     "player2": "Hartmann, Nils",
-    "winner": "Hilberg, Max",
+    "winner": "Hartmann, Nils",
     "score": "4:6 6:4 10:5",
     "time": "",
     "court": ""
@@ -222,10 +222,30 @@
   {
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
     "round": "Achtelfinale",
+    "player1": "Lück, Marco",
+    "player2": "Hermann, Torsten",
+    "winner": "Lück, Marco",
+    "score": "6:1 6:2",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
     "player1": "Koehler, Michael",
     "player2": "Stauf, Michael",
     "winner": "Koehler, Michael",
     "score": "6:4 6:4",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Klink, Peter",
+    "player2": "Galbas, Jörg",
+    "winner": "Klink, Peter",
+    "score": "6:2 7:5",
     "time": "",
     "court": ""
   },
