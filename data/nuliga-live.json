@@ -352,7 +352,7 @@
   {
     "competition": "Damen Einzel LK10,0-25,0",
     "round": "Halbfinale",
-    "player1": null,
+    "player1": "Panning- Dornseifer, Nicole / Hoffmann, Nicole",
     "player2": "Lübke, Bettina / Voth, Eva",
     "winner": null,
     "score": null,
@@ -368,16 +368,6 @@
     "score": null,
     "time": "20.08.2026 18:30 Uhr",
     "court": "Platz 2"
-  },
-  {
-    "competition": "Damen Einzel LK10,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Panning- Dornseifer, Nicole",
-    "player2": "Heide, Miriam / Hoffmann, Nicole",
-    "winner": null,
-    "score": null,
-    "time": "17.08.2026 18:30 Uhr",
-    "court": "Platz 1"
   },
   {
     "competition": "Damen Einzel LK10,0-25,0",
@@ -414,8 +404,8 @@
     "round": "Achtelfinale",
     "player1": "Heide, Miriam",
     "player2": "Hoffmann, Nicole",
-    "winner": null,
-    "score": null,
+    "winner": "Hoffmann, Nicole",
+    "score": "7:5 6:4",
     "time": "15.08.2026 13:30 Uhr",
     "court": "Platz 1"
   },
@@ -872,7 +862,7 @@
   {
     "competition": "Herren Einzel LK22,0-25,0",
     "round": "Achtelfinale",
-    "player1": "Freudenstein, Manuel / Nickel, Jan",
+    "player1": "Freudenstein, Manuel",
     "player2": "Damm, Robin",
     "winner": null,
     "score": null,
@@ -934,8 +924,8 @@
     "round": "1. Runde",
     "player1": "Freudenstein, Manuel",
     "player2": "Nickel, Jan",
-    "winner": null,
-    "score": null,
+    "winner": "Freudenstein, Manuel",
+    "score": "6:1 6:0",
     "time": "15.08.2026 15:00 Uhr",
     "court": "Platz 4"
   },
@@ -1177,7 +1167,7 @@
     "winner": null,
     "score": null,
     "time": "15.08.2026 16:30 Uhr",
-    "court": "Platz 2"
+    "court": "Platz 4"
   },
   {
     "competition": "Herren Einzel LK10,0-25,0",
