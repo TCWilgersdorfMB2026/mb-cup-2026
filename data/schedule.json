@@ -146,8 +146,8 @@
     "player2": "Kettner, Paul",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:30 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 2"
+    "time": "18.08.2026 17:00 Uhr",
+    "court": "Platz 2"
   },
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
@@ -156,8 +156,8 @@
     "player2": "Koch, Colin",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 17:00 Uhr",
-    "court": "Platz 2"
+    "time": "19.08.2026 18:30 Uhr",
+    "court": "Platz 3"
   },
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
@@ -166,8 +166,8 @@
     "player2": "Solbach, Tim",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 17:00 Uhr",
-    "court": "Platz 4"
+    "time": "19.08.2026 18:30 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 1"
   },
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
@@ -267,7 +267,7 @@
     "winner": null,
     "score": null,
     "time": "18.08.2026 17:00 Uhr",
-    "court": "Platz 2"
+    "court": "Platz 3"
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
@@ -857,7 +857,7 @@
     "winner": null,
     "score": null,
     "time": "19.08.2026 17:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 3"
+    "court": "TC Ludwigseck Salchendorf, Platz 2"
   },
   {
     "competition": "Damen Einzel KO LK 22,0-25,0",
@@ -867,6 +867,6 @@
     "winner": null,
     "score": null,
     "time": "19.08.2026 18:30 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 3"
+    "court": "TC Ludwigseck Salchendorf, Platz 2"
   }
 ]
