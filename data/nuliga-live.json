@@ -652,7 +652,7 @@
   {
     "competition": "Herren 50 Einzel LK1,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Schwarzer, Martin / Dumke, Bernd",
+    "player1": "Schwarzer, Martin",
     "player2": "Durow, Thorsten / Pavicic, Peter",
     "winner": null,
     "score": null,
@@ -662,7 +662,7 @@
   {
     "competition": "Herren 50 Einzel LK1,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Schmelzeisen, Frank / Glied, Alexander",
+    "player1": "Schmelzeisen, Frank",
     "player2": "Siegwolf, Volker / Hussing, Frank",
     "winner": null,
     "score": null,
@@ -704,8 +704,8 @@
     "round": "Achtelfinale",
     "player1": "Schwarzer, Martin",
     "player2": "Dumke, Bernd",
-    "winner": null,
-    "score": null,
+    "winner": "Schwarzer, Martin",
+    "score": "6:1 6:0",
     "time": "16.08.2026 16:30 Uhr",
     "court": "Platz 2"
   },
@@ -724,8 +724,8 @@
     "round": "Achtelfinale",
     "player1": "Schmelzeisen, Frank",
     "player2": "Glied, Alexander",
-    "winner": null,
-    "score": null,
+    "winner": "Schmelzeisen, Frank",
+    "score": "6:1 6:0",
     "time": "16.08.2026 16:30 Uhr",
     "court": "Platz 1"
   },
