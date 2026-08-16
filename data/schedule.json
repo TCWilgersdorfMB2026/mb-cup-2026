@@ -132,16 +132,6 @@
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "Achtelfinale",
-    "player1": "Wagner, Matthias",
-    "player2": "Jud, Tobias",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 13:30 Uhr",
-    "court": "Platz 1"
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
     "player1": "Schwedes, Nick Luca",
     "player2": "Dreysse, Kay",
     "winner": null,
@@ -168,16 +158,6 @@
     "score": null,
     "time": "17.08.2026 17:00 Uhr",
     "court": "Platz 1"
-  },
-  {
-    "competition": "Herren Einzel KO LK 10,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Reuter, Marco",
-    "player2": "Kettner, Paul",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 13:30 Uhr",
-    "court": "Platz 2"
   },
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
@@ -878,16 +858,6 @@
     "score": null,
     "time": "",
     "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Becker, Birgit",
-    "player2": "Anders, Xenia",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 13:30 Uhr",
-    "court": "Platz 3"
   },
   {
     "competition": "Damen Einzel KO LK 22,0-25,0",
