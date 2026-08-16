@@ -212,16 +212,6 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
-    "player1": "Malore Govindarajan, Suhas",
-    "player2": "Binsack, Jarno",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 10:30 Uhr",
-    "court": "Platz 4"
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
     "player1": "Polzer, Timo",
     "player2": null,
     "winner": "Polzer, Timo",
@@ -937,7 +927,7 @@
     "winner": null,
     "score": null,
     "time": "16.08.2026 13:30 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 3"
   },
   {
     "competition": "Damen Einzel KO LK 22,0-25,0",
@@ -957,6 +947,6 @@
     "winner": null,
     "score": null,
     "time": "16.08.2026 13:30 Uhr",
-    "court": "Platz 3"
+    "court": "Platz 4"
   }
 ]
