@@ -52,7 +52,7 @@
   {
     "competition": "Herren Einzel LK1,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Gross, Ingo / Prado Saldana, Joan Ricardo",
+    "player1": "Gross, Ingo",
     "player2": "Schwedes, Nick Luca / Dreysse, Kay",
     "winner": null,
     "score": null,
@@ -104,8 +104,8 @@
     "round": "Achtelfinale",
     "player1": "Gross, Ingo",
     "player2": "Prado Saldana, Joan Ricardo",
-    "winner": null,
-    "score": null,
+    "winner": "Gross, Ingo",
+    "score": "6:0 6:0",
     "time": "16.08.2026 10:30 Uhr",
     "court": "Platz 1"
   },
@@ -247,7 +247,7 @@
     "winner": null,
     "score": null,
     "time": "16.08.2026 12:00 Uhr",
-    "court": "Platz 2"
+    "court": "Platz 1"
   },
   {
     "competition": "Damen Einzel LK17,0-25,0",
@@ -267,7 +267,7 @@
     "winner": null,
     "score": null,
     "time": "16.08.2026 13:30 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 3"
   },
   {
     "competition": "Damen Einzel LK17,0-25,0",
@@ -307,7 +307,7 @@
     "winner": null,
     "score": null,
     "time": "16.08.2026 13:30 Uhr",
-    "court": "Platz 3"
+    "court": "Platz 4"
   },
   {
     "competition": "Damen Einzel LK22,0-25,0",
@@ -897,7 +897,7 @@
     "winner": null,
     "score": null,
     "time": "16.08.2026 12:00 Uhr",
-    "court": "Platz 1"
+    "court": "Platz 2"
   },
   {
     "competition": "Herren Einzel LK22,0-25,0",
@@ -972,8 +972,8 @@
   {
     "competition": "Herren Einzel LK17,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Anders, Denis / Margeit, Ben",
-    "player2": null,
+    "player1": "Anders, Denis",
+    "player2": "Müller, Joachim / Binsack, Jarno",
     "winner": null,
     "score": null,
     "time": "19.08.2026 18:30 Uhr",
@@ -994,8 +994,8 @@
     "round": "Achtelfinale",
     "player1": "Anders, Denis",
     "player2": "Margeit, Ben",
-    "winner": null,
-    "score": null,
+    "winner": "Anders, Denis",
+    "score": "6:0 6:3",
     "time": "16.08.2026 10:30 Uhr",
     "court": "Platz 2"
   },
@@ -1034,8 +1034,8 @@
     "round": "1. Runde",
     "player1": "Malore Govindarajan, Suhas",
     "player2": "Binsack, Jarno",
-    "winner": null,
-    "score": null,
+    "winner": "Binsack, Jarno",
+    "score": "2:6 6:1 11:9",
     "time": "16.08.2026 10:30 Uhr",
     "court": "Platz 4"
   },
