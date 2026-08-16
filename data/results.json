@@ -232,6 +232,16 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
+    "player1": "Schneider, Dominik",
+    "player2": "Traut, Jan Lukas",
+    "winner": "Schneider, Dominik",
+    "score": "6:0 6:0",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
     "player1": "Backaus, Ole Fiete",
     "player2": "Mai, Lennart",
     "winner": "Mai, Lennart",
@@ -266,6 +276,46 @@
     "player2": "Hartmann, Nils",
     "winner": "Hartmann, Nils",
     "score": "4:6 6:4 10:5",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Anders, Denis",
+    "player2": "Margeit, Ben",
+    "winner": "Anders, Denis",
+    "score": "6:0 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Polzer, Timo",
+    "player2": "Koch, Heico",
+    "winner": "Polzer, Timo",
+    "score": "6:3 7:6",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Kamyab, Taymas",
+    "player2": "Stader, Dominik",
+    "winner": "Kamyab, Taymas",
+    "score": "6:0 7:5",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Hartmann, Nils",
+    "player2": "Schauerte, Andre",
+    "winner": "Hartmann, Nils",
+    "score": "5:7 7:6 10:8",
     "time": "",
     "court": ""
   },
@@ -536,6 +586,16 @@
     "player2": "Müller, Karin",
     "winner": "Kamyab, Maya",
     "score": "6:2 6:4",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schläger, Antonia",
+    "player2": "Ohm, Michaela",
+    "winner": "Schläger, Antonia",
+    "score": "3:6 6:2 10:7",
     "time": "",
     "court": ""
   },

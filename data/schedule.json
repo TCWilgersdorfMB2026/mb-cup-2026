@@ -212,16 +212,6 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
-    "player1": "Schneider, Dominik",
-    "player2": "Traut, Jan Lukas",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 18:30 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 4"
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
     "player1": "Baldus, Jonas",
     "player2": null,
     "winner": "Baldus, Jonas",
@@ -248,6 +238,46 @@
     "score": "Freilos",
     "time": "",
     "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Müller, Joachim",
+    "player2": "Binsack, Jarno",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 18:30 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 3"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Becker, Volker",
+    "player2": "Gyurcsi, Robert Denes",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 18:30 Uhr",
+    "court": "Platz 4"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Schneider, Dominik",
+    "player2": "Mai, Lennart",
+    "winner": null,
+    "score": null,
+    "time": "18.08.2026 17:00 Uhr",
+    "court": "Platz 2"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Lück, Markus",
+    "player2": "Baldus, Jonas",
+    "winner": null,
+    "score": null,
+    "time": "17.08.2026 18:30 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 2"
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -507,7 +537,7 @@
     "winner": null,
     "score": null,
     "time": "17.08.2026 17:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 2"
+    "court": "TC Ludwigseck Salchendorf, Platz 1"
   },
   {
     "competition": "Herren 60 Einzel KO LK 1,0-25,0",
@@ -792,22 +822,12 @@
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
     "round": "Achtelfinale",
-    "player1": "Schläger, Antonia",
-    "player2": "Ohm, Michaela",
-    "winner": null,
-    "score": null,
-    "time": "17.08.2026 17:00 Uhr",
-    "court": "Platz 2"
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Achtelfinale",
     "player1": "Hercher, Elise",
     "player2": "Dörr, Vanessa",
     "winner": null,
     "score": null,
     "time": "17.08.2026 17:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 3"
+    "court": "TC Ludwigseck Salchendorf, Platz 2"
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",

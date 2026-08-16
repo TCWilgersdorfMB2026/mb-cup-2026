@@ -506,6 +506,118 @@
     ]
   },
   {
+    "competition": "Herren Einzel KO LK 22,0-25,0 (Nebenrunde)",
+    "entrants": [
+      {
+        "name": "Böhl Timo",
+        "club": "TC 71 Netphen",
+        "dtbId": "18201150",
+        "lk": "15,5"
+      },
+      {
+        "name": "Ermert Martin",
+        "club": "TC Wilgersdorf",
+        "dtbId": "18065110",
+        "lk": "14,2"
+      },
+      {
+        "name": "Iordanidis Alexandros",
+        "club": "TuS AdH Weidenau",
+        "dtbId": "17953685",
+        "lk": "16,6"
+      },
+      {
+        "name": "Löhl Moritz",
+        "club": "TV Eiserfeld",
+        "dtbId": "19662356",
+        "lk": "15,5"
+      },
+      {
+        "name": "Mauk Andreas",
+        "club": "TC Wilgersdorf",
+        "dtbId": "18001166",
+        "lk": "15,9"
+      },
+      {
+        "name": "Reuter Marco",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "19257652",
+        "lk": "16,6"
+      },
+      {
+        "name": "Rötzel Johannes",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19761635",
+        "lk": "14,5"
+      },
+      {
+        "name": "Tempel Marian",
+        "club": "TC Wilgersdorf",
+        "dtbId": "18353201",
+        "lk": "16,1"
+      }
+    ]
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0 (Nebenrunde)",
+    "entrants": [
+      {
+        "name": "Anders Gero",
+        "club": "TC 71 Netphen",
+        "dtbId": "11218345",
+        "lk": "24,1"
+      },
+      {
+        "name": "Baak Matthäus",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "10672929",
+        "lk": "23,6"
+      },
+      {
+        "name": "Braun Sebastian",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19077989",
+        "lk": "23,5"
+      },
+      {
+        "name": "Damm Robin",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "19764574",
+        "lk": "23,7"
+      },
+      {
+        "name": "Dielmann Benedikt",
+        "club": "TuS 1900 Eisern",
+        "dtbId": "19765006",
+        "lk": "24,0"
+      },
+      {
+        "name": "Meyer Dirk",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "16164174",
+        "lk": "24,5"
+      },
+      {
+        "name": "Nickel Jan",
+        "club": "TC Haiger",
+        "dtbId": "10067073",
+        "lk": "24,6"
+      },
+      {
+        "name": "Schmidt Fabian",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "19663216",
+        "lk": "24,6"
+      },
+      {
+        "name": "Wissenbach Jan",
+        "club": "TC Haiger",
+        "dtbId": "10269814",
+        "lk": "25,0"
+      }
+    ]
+  },
+  {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
@@ -1037,6 +1149,29 @@
         "club": "TV Eiserfeld",
         "dtbId": "29356680",
         "lk": "24,6"
+      }
+    ]
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0 (Nebenrunde)",
+    "entrants": [
+      {
+        "name": "Becker Sarah",
+        "club": "TC Buschhütten",
+        "dtbId": "28893189",
+        "lk": "24,6"
+      },
+      {
+        "name": "Gerich Verena",
+        "club": "TC Brachbach",
+        "dtbId": "29557842",
+        "lk": "23,2"
+      },
+      {
+        "name": "Steuber Melina",
+        "club": "TV Eiserfeld",
+        "dtbId": "29356680",
+        "lk": "24,7"
       }
     ]
   },
