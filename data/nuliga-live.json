@@ -43,7 +43,7 @@
     "competition": "Herren Einzel LK1,0-25,0",
     "round": "Viertelfinale",
     "player1": "Wagner, Matthias / Jud, Tobias",
-    "player2": "Iordanidis, Aristotelis / Nies, Tim",
+    "player2": "Nies, Tim",
     "winner": null,
     "score": null,
     "time": "18.08.2026 17:00 Uhr",
@@ -94,8 +94,8 @@
     "round": "Achtelfinale",
     "player1": "Iordanidis, Aristotelis",
     "player2": "Nies, Tim",
-    "winner": null,
-    "score": null,
+    "winner": "Nies, Tim",
+    "score": "6:2 6:2",
     "time": "16.08.2026 09:00 Uhr",
     "court": "Platz 1"
   },
@@ -283,7 +283,7 @@
     "competition": "Damen Einzel LK22,0-25,0",
     "round": "Finale",
     "player1": null,
-    "player2": null,
+    "player2": "Pfeifer, Jasmin / Fiedler, Julia",
     "winner": null,
     "score": null,
     "time": "22.08.2026 09:00 Uhr",
@@ -293,7 +293,7 @@
     "competition": "Damen Einzel LK22,0-25,0",
     "round": "Finale",
     "player1": null,
-    "player2": null,
+    "player2": "Pfeifer, Jasmin / Fiedler, Julia",
     "winner": null,
     "score": null,
     "time": "22.08.2026 12:00 Uhr",
@@ -324,8 +324,8 @@
     "round": "Viertelfinale",
     "player1": "Fiedler, Julia",
     "player2": "Gerich, Verena",
-    "winner": null,
-    "score": null,
+    "winner": "Fiedler, Julia",
+    "score": "6:0 6:1",
     "time": "16.08.2026 09:00 Uhr",
     "court": "Platz 4"
   },
@@ -853,7 +853,7 @@
     "competition": "Herren Einzel LK22,0-25,0",
     "round": "Halbfinale",
     "player1": null,
-    "player2": null,
+    "player2": "Klein, Thilo / Büdenbender, Jens",
     "winner": null,
     "score": null,
     "time": "20.08.2026 18:30 Uhr",
@@ -877,7 +877,7 @@
     "winner": null,
     "score": null,
     "time": "16.08.2026 10:30 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 3"
   },
   {
     "competition": "Herren Einzel LK22,0-25,0",
@@ -904,8 +904,8 @@
     "round": "Achtelfinale",
     "player1": "Högemann, Simon",
     "player2": "Büdenbender, Jens",
-    "winner": null,
-    "score": null,
+    "winner": "Büdenbender, Jens",
+    "score": "6:0 6:3",
     "time": "16.08.2026 09:00 Uhr",
     "court": "Platz 2"
   },
@@ -1037,7 +1037,7 @@
     "winner": null,
     "score": null,
     "time": "16.08.2026 10:30 Uhr",
-    "court": "Platz 3"
+    "court": "Platz 4"
   },
   {
     "competition": "Herren Einzel LK17,0-25,0",
