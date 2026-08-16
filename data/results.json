@@ -62,6 +62,16 @@
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "Achtelfinale",
+    "player1": "Ebener, Frederik",
+    "player2": "Ebener, Sebastian",
+    "winner": "Ebener, Frederik",
+    "score": "6:0 6:0",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
     "player1": "Weber, Louis",
     "player2": "Ballion, Silas",
     "winner": "Ballion, Silas",
@@ -96,6 +106,16 @@
     "player2": "Kettner, Paul",
     "winner": "Kettner, Paul",
     "score": "6:3 6:4",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Lotz, Mike",
+    "player2": "Mauk, Andreas",
+    "winner": "Lotz, Mike",
+    "score": "6:2 6:1",
     "time": "",
     "court": ""
   },
@@ -446,6 +466,16 @@
     "player2": "Müller, Lea",
     "winner": "Grau, Neela Marlen",
     "score": "6:4 6:2",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Hussing, Mara",
+    "player2": "Wiegel, Lea",
+    "winner": "Wiegel, Lea",
+    "score": "0:6 6:4 10:1",
     "time": "",
     "court": ""
   },
