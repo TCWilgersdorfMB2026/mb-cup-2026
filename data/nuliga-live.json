@@ -1103,7 +1103,7 @@
     "competition": "Herren Einzel LK10,0-25,0",
     "round": "Halbfinale",
     "player1": null,
-    "player2": null,
+    "player2": "Türk, Michael / Henrichs, Lukas",
     "winner": null,
     "score": null,
     "time": "21.08.2026 17:00 Uhr",
@@ -1122,7 +1122,7 @@
   {
     "competition": "Herren Einzel LK10,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Iordanidis, Alexandros / Göckus, Maximilian",
+    "player1": "Göckus, Maximilian",
     "player2": "Tempel, Marian / Solbach, Tim",
     "winner": null,
     "score": null,
@@ -1133,7 +1133,7 @@
     "competition": "Herren Einzel LK10,0-25,0",
     "round": "Viertelfinale",
     "player1": "Türk, Michael",
-    "player2": "Henrichs, Lukas / Ermert, Martin",
+    "player2": "Henrichs, Lukas",
     "winner": null,
     "score": null,
     "time": "19.08.2026 17:00 Uhr",
@@ -1164,8 +1164,8 @@
     "round": "Achtelfinale",
     "player1": "Iordanidis, Alexandros",
     "player2": "Göckus, Maximilian",
-    "winner": null,
-    "score": null,
+    "winner": "Göckus, Maximilian",
+    "score": "6:3 6:1",
     "time": "15.08.2026 16:30 Uhr",
     "court": "Platz 4"
   },
@@ -1184,8 +1184,8 @@
     "round": "Achtelfinale",
     "player1": "Henrichs, Lukas",
     "player2": "Ermert, Martin",
-    "winner": null,
-    "score": null,
+    "winner": "Henrichs, Lukas",
+    "score": "4:6 6:2 10:7",
     "time": "15.08.2026 16:30 Uhr",
     "court": "Platz 3"
   }
