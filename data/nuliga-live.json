@@ -22,7 +22,7 @@
   {
     "competition": "Herren Einzel LK1,0-25,0",
     "round": "Halbfinale",
-    "player1": null,
+    "player1": "Wagner, Matthias / Nies, Tim",
     "player2": null,
     "winner": null,
     "score": null,
@@ -42,7 +42,7 @@
   {
     "competition": "Herren Einzel LK1,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Wagner, Matthias / Jud, Tobias",
+    "player1": "Wagner, Matthias",
     "player2": "Nies, Tim",
     "winner": null,
     "score": null,
@@ -84,8 +84,8 @@
     "round": "Achtelfinale",
     "player1": "Wagner, Matthias",
     "player2": "Jud, Tobias",
-    "winner": null,
-    "score": null,
+    "winner": "Wagner, Matthias",
+    "score": "6:0 6:2",
     "time": "16.08.2026 13:30 Uhr",
     "court": "Platz 1"
   },
@@ -203,7 +203,7 @@
     "competition": "Damen Einzel LK17,0-25,0",
     "round": "Halbfinale",
     "player1": null,
-    "player2": null,
+    "player2": "Palić, Nina / Anders, Xenia",
     "winner": null,
     "score": null,
     "time": "21.08.2026 18:30 Uhr",
@@ -264,8 +264,8 @@
     "round": "Achtelfinale",
     "player1": "Becker, Birgit",
     "player2": "Anders, Xenia",
-    "winner": null,
-    "score": null,
+    "winner": "Anders, Xenia",
+    "score": "6:2 6:2",
     "time": "16.08.2026 13:30 Uhr",
     "court": "Platz 3"
   },
@@ -1082,7 +1082,7 @@
   {
     "competition": "Herren Einzel LK10,0-25,0",
     "round": "Halbfinale",
-    "player1": null,
+    "player1": "Bahlmann, Niclas Hans / Kettner, Paul",
     "player2": null,
     "winner": null,
     "score": null,
@@ -1134,8 +1134,8 @@
     "round": "Achtelfinale",
     "player1": "Reuter, Marco",
     "player2": "Kettner, Paul",
-    "winner": null,
-    "score": null,
+    "winner": "Kettner, Paul",
+    "score": "6:3 6:4",
     "time": "16.08.2026 13:30 Uhr",
     "court": "Platz 2"
   },
