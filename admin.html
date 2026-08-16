@@ -154,6 +154,8 @@
 .live-court h3 { margin: 0 0 8px; font-size: 0.95rem; color: var(--navy); }
 .live-court select { width: 100%; padding: 9px 10px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.9rem; background: #fff; margin-bottom: 2px; }
 .live-court input[type=text] { margin: 0 0 2px; }
+.live-court-reset { margin-top: 8px; font-size: 0.8rem; padding: 8px 12px; }
+.live-court-status { margin-top: 4px; font-size: 0.78rem; }
 </style>
 </head>
 <body>
@@ -797,6 +799,8 @@ function renderLiveCourts(optionsHtml) {
 <input type="text" class="live-round-custom" data-court-i="${i}" placeholder="Eigene Runde eingeben" style="display:none;">
               <label>Datum &amp; Uhrzeit</label>
         <input type="datetime-local" class="live-time" data-court-i="${i}">
+        <button type="button" class="secondary live-court-reset" data-court-i="${i}">Manuellen Eintrag löschen (zurück zur Automatik)</button>
+        <div class="status live-court-status" data-court-i="${i}"></div>
     </div>`).join('');
 }
 
@@ -843,6 +847,44 @@ if (playerSel) {
   else { custom.style.display = 'none'; custom.value = ''; }
   return;
 }
+});
+
+// Löscht (nach Bestätigung) den manuellen Live-Eintrag genau EINES Platzes
+// aus data/live-current.json - der Platz wird danach wieder automatisch
+// befüllt (tennis.de bzw. nuLiga je nach Seite), ohne dass die anderen 3
+// Plätze angetastet werden.
+document.querySelector('[data-live-court-list]').addEventListener('click', async (e) => {
+const btn = e.target.closest('.live-court-reset');
+if (!btn) return;
+const i = Number(btn.dataset.courtI);
+const court = LIVE_COURTS[i];
+if (!confirm(`Manuellen Eintrag für ${court} wirklich löschen? Der Platz wird danach wieder automatisch befüllt.`)) return;
+const statusEl = document.querySelector(`.live-court-status[data-court-i="${i}"]`);
+btn.disabled = true;
+if (statusEl) { statusEl.textContent = 'Lösche…'; statusEl.className = 'status live-court-status'; }
+try {
+const { sha, list } = await ghGet('data/live-current.json');
+const newList = (list || []).filter((m) => m && m.court !== court);
+await ghPutJson('data/live-current.json', newList, sha, `Live-Anzeige: manueller Eintrag ${court} entfernt`);
+const p1 = document.querySelector(`.live-player1[data-court-i="${i}"]`);
+const p2 = document.querySelector(`.live-player2[data-court-i="${i}"]`);
+const p1Custom = document.querySelector(`.live-player1-custom[data-court-i="${i}"]`);
+const p2Custom = document.querySelector(`.live-player2-custom[data-court-i="${i}"]`);
+const rd = document.querySelector(`.live-round-select[data-court-i="${i}"]`);
+const rdCustom = document.querySelector(`.live-round-custom[data-court-i="${i}"]`);
+const tm = document.querySelector(`.live-time[data-court-i="${i}"]`);
+if (p1) p1.value = '';
+if (p2) p2.value = '';
+if (p1Custom) { p1Custom.value = ''; p1Custom.style.display = 'none'; }
+if (p2Custom) { p2Custom.value = ''; p2Custom.style.display = 'none'; }
+if (rd) rd.value = '';
+if (rdCustom) { rdCustom.value = ''; rdCustom.style.display = 'none'; }
+if (tm) tm.value = '';
+if (statusEl) { statusEl.textContent = 'Gelöscht! Platz wird wieder automatisch befüllt.'; statusEl.className = 'status live-court-status ok'; }
+} catch (err) {
+if (statusEl) { statusEl.textContent = err.message; statusEl.className = 'status live-court-status err'; }
+}
+btn.disabled = false;
 });
 
 // Traegt einen Spieler-Namen in ein Select (aus der Meldeliste) plus sein
@@ -1165,3 +1207,4 @@ if (getToken()) { showForms(); } else { showSetup(); }
 </script>
 </body>
 </html>
+
