@@ -62,6 +62,16 @@
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "Achtelfinale",
+    "player1": "Schwedes, Nick Luca",
+    "player2": "Dreysse, Kay",
+    "winner": "Schwedes, Nick Luca",
+    "score": "6:2 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
     "player1": "Ebener, Frederik",
     "player2": "Ebener, Sebastian",
     "winner": "Ebener, Frederik",
@@ -142,6 +152,16 @@
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
     "round": "Achtelfinale",
+    "player1": "Tempel, Marian",
+    "player2": "Solbach, Tim",
+    "winner": "Solbach, Tim",
+    "score": "3:6 6:3 10:4",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Achtelfinale",
     "player1": "Rötzel, Johannes",
     "player2": "Türk, Michael",
     "winner": "Türk, Michael",
@@ -206,6 +226,26 @@
     "player2": "Fries, Leo",
     "winner": "Becker, Volker",
     "score": "6:1 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Backaus, Ole Fiete",
+    "player2": "Mai, Lennart",
+    "winner": "Mai, Lennart",
+    "score": "6:1 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Runde 1",
+    "player1": "Schmidt, Torben",
+    "player2": "Lück, Markus",
+    "winner": "Lück, Markus",
+    "score": "3:6 6:4 10:7",
     "time": "",
     "court": ""
   },
@@ -322,6 +362,16 @@
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
     "round": "Achtelfinale",
+    "player1": "Wissenbach, Jan",
+    "player2": "Scheuermann, Florian",
+    "winner": "Scheuermann, Florian",
+    "score": "6:2 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
     "player1": "Baak, Matthäus",
     "player2": "Klein, Thilo",
     "winner": "Klein, Thilo",
@@ -406,6 +456,16 @@
     "player2": "Glied, Alexander",
     "winner": "Schmelzeisen, Frank",
     "score": "6:1 6:0",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Siegwolf, Volker",
+    "player2": "Hussing, Frank",
+    "winner": "Hussing, Frank",
+    "score": "6:2 6:2",
     "time": "",
     "court": ""
   },
