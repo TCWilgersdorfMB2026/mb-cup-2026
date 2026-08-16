@@ -237,7 +237,7 @@
     "winner": null,
     "score": null,
     "time": "16.08.2026 10:30 Uhr",
-    "court": "Platz 3"
+    "court": "Platz 4"
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
@@ -467,7 +467,7 @@
     "winner": null,
     "score": null,
     "time": "16.08.2026 10:30 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 3"
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -988,15 +988,5 @@
     "score": null,
     "time": "16.08.2026 13:30 Uhr",
     "court": "Platz 3"
-  },
-  {
-    "competition": "Damen Einzel KO LK 22,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Fiedler, Julia",
-    "player2": "Gerich, Verena",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 09:00 Uhr",
-    "court": "Platz 4"
   }
 ]
