@@ -186,7 +186,7 @@
     "player2": "Fries, Leo",
     "winner": null,
     "score": null,
-    "time": "16.08.2026 16:30 Uhr",
+    "time": "17.08.2026 18:30 Uhr",
     "court": "Platz 4"
   },
   {
@@ -462,31 +462,11 @@
   {
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
     "round": "Achtelfinale",
-    "player1": "Schwarzer, Martin",
-    "player2": "Dumke, Bernd",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 16:30 Uhr",
-    "court": "Platz 2"
-  },
-  {
-    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
     "player1": "Durow, Thorsten",
     "player2": "Pavicic, Peter",
     "winner": null,
     "score": null,
     "time": "16.08.2026 18:00 Uhr",
-    "court": "Platz 1"
-  },
-  {
-    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Schmelzeisen, Frank",
-    "player2": "Glied, Alexander",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 16:30 Uhr",
     "court": "Platz 1"
   },
   {
