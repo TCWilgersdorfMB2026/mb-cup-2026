@@ -901,12 +901,22 @@
   },
   {
     "competition": "Damen Einzel KO LK 22,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Giebeler, Ina",
-    "player2": "Becker, Sarah",
+    "round": "Halbfinale",
+    "player1": "Herrmann Solbach, Sophia",
+    "player2": "Giebeler, Ina",
     "winner": null,
     "score": null,
-    "time": "16.08.2026 13:30 Uhr",
-    "court": "Platz 4"
+    "time": "19.08.2026 17:00 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 3"
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Pfeifer, Jasmin",
+    "player2": "Fiedler, Julia",
+    "winner": null,
+    "score": null,
+    "time": "19.08.2026 18:30 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 3"
   }
 ]
