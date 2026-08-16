@@ -422,26 +422,6 @@
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
     "round": "Achtelfinale",
-    "player1": "Freudenstein, Manuel",
-    "player2": "Damm, Robin",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 12:00 Uhr",
-    "court": "Platz 3"
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Zöller, Robin",
-    "player2": "Windisch, Marcus",
-    "winner": null,
-    "score": null,
-    "time": "18.08.2026 17:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 3"
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Achtelfinale",
     "player1": "Wissenbach, Jan",
     "player2": "Scheuermann, Florian",
     "winner": null,
@@ -888,16 +868,6 @@
     "score": null,
     "time": "17.08.2026 17:00 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 3"
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Grau, Neela Marlen",
-    "player2": "Müller, Lea",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 12:00 Uhr",
-    "court": "TC Wieland-Wilnsdorf, Platz 1"
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",

@@ -232,6 +232,16 @@
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
     "round": "Achtelfinale",
+    "player1": "Freudenstein, Manuel",
+    "player2": "Damm, Robin",
+    "winner": "Freudenstein, Manuel",
+    "score": "6:2 6:2",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
     "player1": "Roth, Marvin",
     "player2": "Zahlmann, Jörg Michael",
     "winner": "Roth, Marvin",
@@ -246,6 +256,16 @@
     "player2": "Braun, Sebastian",
     "winner": "Schürbusch, Nico",
     "score": "6:2 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Zöller, Robin",
+    "player2": "Windisch, Marcus",
+    "winner": "Zöller, Robin",
+    "score": "6:1 6:4",
     "time": "",
     "court": ""
   },
@@ -386,6 +406,16 @@
     "player2": "Müller, Karin",
     "winner": "Kamyab, Maya",
     "score": "6:2 6:4",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Grau, Neela Marlen",
+    "player2": "Müller, Lea",
+    "winner": "Grau, Neela Marlen",
+    "score": "6:4 6:2",
     "time": "",
     "court": ""
   },
