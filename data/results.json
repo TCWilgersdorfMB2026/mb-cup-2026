@@ -540,6 +540,16 @@
     "court": ""
   },
   {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Becker, Henning",
+    "player2": "Mosch, Rüdiger",
+    "winner": "Becker, Henning",
+    "score": "6:1 6:4",
+    "time": "",
+    "court": ""
+  },
+  {
     "competition": "Herren 70 Einzel KO LK 1,0-25,0",
     "round": "Viertelfinale",
     "player1": "Sprenger, Axel",
@@ -596,6 +606,16 @@
     "player2": "Gyurcsi, Lili",
     "winner": "Burghardt, Jule",
     "score": "6:4 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Lübke, Bettina",
+    "player2": "Voth, Eva",
+    "winner": "Voth, Eva",
+    "score": "6:1 6:0",
     "time": "",
     "court": ""
   },

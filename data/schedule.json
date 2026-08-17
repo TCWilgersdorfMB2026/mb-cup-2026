@@ -552,16 +552,6 @@
   {
     "competition": "Herren 60 Einzel KO LK 1,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Becker, Henning",
-    "player2": "Mosch, Rüdiger",
-    "winner": null,
-    "score": null,
-    "time": "19.08.2026 17:00 Uhr",
-    "court": "Platz 3"
-  },
-  {
-    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
-    "round": "Viertelfinale",
     "player1": "Simon, Reinhard",
     "player2": "Germies, Bernd",
     "winner": null,
@@ -648,16 +638,6 @@
     "score": null,
     "time": "18.08.2026 18:30 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 3"
-  },
-  {
-    "competition": "Damen Einzel KO LK 10,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Lübke, Bettina",
-    "player2": "Voth, Eva",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 17:00 Uhr",
-    "court": "Platz 2"
   },
   {
     "competition": "Damen Einzel KO LK 10,0-25,0",
@@ -826,8 +806,8 @@
     "player2": "Dörr, Vanessa",
     "winner": null,
     "score": null,
-    "time": "17.08.2026 17:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 2"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -882,23 +862,12 @@
   },
   {
     "competition": "Herren Einzel LK1,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Wedding, Robin",
-    "player2": "Menn, Jan Steffen / Klahold, Linus",
+    "round": "Halbfinale",
+    "player1": "Ebener, Frederik / Ballion, Silas",
+    "player2": "Wedding, Robin / Menn, Jan Steffen",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:30 Uhr",
-    "court": "Platz 2",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren Einzel LK1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Menn, Jan Steffen",
-    "player2": "Klahold, Linus",
-    "winner": null,
-    "score": null,
-    "time": "17.08.2026 17:00 Uhr",
+    "time": "21.08.2026 17:00 Uhr",
     "court": "Platz 1",
     "source": "nuliga-merge"
   },
@@ -906,7 +875,7 @@
     "competition": "Damen Einzel LK17,0-25,0",
     "round": "Halbfinale",
     "player1": "Kamyab, Maya / Schläger, Antonia",
-    "player2": "Herking, Lea-Marie / Hercher, Elise",
+    "player2": "Herking, Lea-Marie",
     "winner": null,
     "score": null,
     "time": "21.08.2026 17:00 Uhr",
@@ -972,7 +941,7 @@
     "competition": "Damen Einzel LK10,0-25,0",
     "round": "Halbfinale",
     "player1": "Panning- Dornseifer, Nicole / Hoffmann, Nicole",
-    "player2": "Lübke, Bettina / Voth, Eva",
+    "player2": "Voth, Eva",
     "winner": null,
     "score": null,
     "time": "20.08.2026 17:00 Uhr",
@@ -983,22 +952,11 @@
     "competition": "Damen Einzel LK10,0-25,0",
     "round": "Halbfinale",
     "player1": "Hees, Sabrina / Hörner, Judith",
-    "player2": "Burghardt, Jule / Backaus, Hedda Lotta",
+    "player2": "Backaus, Hedda Lotta",
     "winner": null,
     "score": null,
     "time": "20.08.2026 18:30 Uhr",
     "court": "Platz 2",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Damen Einzel LK10,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Burghardt, Jule",
-    "player2": "Backaus, Hedda Lotta",
-    "winner": null,
-    "score": null,
-    "time": "17.08.2026 17:00 Uhr",
-    "court": "Platz 3",
     "source": "nuliga-merge"
   },
   {
@@ -1027,7 +985,7 @@
     "competition": "Herren 60 Einzel LK1,0-25,0",
     "round": "Halbfinale",
     "player1": "Rothe, Michael / Feldmann, Jürgen",
-    "player2": "Becker, Henning / Mosch, Rüdiger",
+    "player2": "Becker, Henning",
     "winner": null,
     "score": null,
     "time": "19.08.2026 17:00 Uhr",
