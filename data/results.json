@@ -100,6 +100,16 @@
     "court": ""
   },
   {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Menn, Jan Steffen",
+    "player2": "Klahold, Linus",
+    "winner": "Menn, Jan Steffen",
+    "score": "6:2 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
     "competition": "Herren Einzel KO LK 10,0-25,0",
     "round": "Achtelfinale",
     "player1": "Bahlmann, Niclas Hans",
@@ -586,6 +596,16 @@
     "player2": "Gyurcsi, Lili",
     "winner": "Burghardt, Jule",
     "score": "6:4 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Burghardt, Jule",
+    "player2": "Backaus, Hedda Lotta",
+    "winner": "Backaus, Hedda Lotta",
+    "score": "6:3 6:0",
     "time": "",
     "court": ""
   },
