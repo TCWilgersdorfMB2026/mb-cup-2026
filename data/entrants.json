@@ -1297,6 +1297,65 @@
     "competition": "Damen Einzel KO LK 22,0-25,0 (Nebenrunde)",
     "entrants": [
       {
+        "name": "Becker Birgit",
+        "club": "TC Buschhütten",
+        "dtbId": "26352849",
+        "lk": "19,4"
+      },
+      {
+        "name": "Göckus Luisa",
+        "club": "TuS 1900 Eisern",
+        "dtbId": "29863505",
+        "lk": "20,6"
+      },
+      {
+        "name": "Hercher Elise",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "20162671",
+        "lk": "19,7"
+      },
+      {
+        "name": "Hussing Mara",
+        "club": "1. TC Wahlbach",
+        "dtbId": "20458151",
+        "lk": "20,2"
+      },
+      {
+        "name": "Menn Svenja",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "29054847",
+        "lk": "20,2"
+      },
+      {
+        "name": "Müller Karin",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "26300588",
+        "lk": "19,7"
+      },
+      {
+        "name": "Müller Lea",
+        "club": "TC Brachbach",
+        "dtbId": "20766989",
+        "lk": "23,9"
+      },
+      {
+        "name": "Ohm Michaela",
+        "club": "TC Lütringhausen",
+        "dtbId": "28752666",
+        "lk": "19,2"
+      },
+      {
+        "name": "Pilz Melanie",
+        "club": "Tennisverein Altenseelbach e.V.",
+        "dtbId": "28354153",
+        "lk": "19,5"
+      }
+    ]
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0 (Nebenrunde)",
+    "entrants": [
+      {
         "name": "Becker Sarah",
         "club": "TC Buschhütten",
         "dtbId": "28893189",
