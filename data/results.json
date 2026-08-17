@@ -302,10 +302,30 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Achtelfinale",
+    "player1": "Müller, Joachim",
+    "player2": "Binsack, Jarno",
+    "winner": "Binsack, Jarno",
+    "score": "6:3 6:0",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
     "player1": "Polzer, Timo",
     "player2": "Koch, Heico",
     "winner": "Polzer, Timo",
     "score": "6:3 7:6",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Becker, Volker",
+    "player2": "Gyurcsi, Robert Denes",
+    "winner": "Gyurcsi, Robert Denes",
+    "score": "6:1 6:3",
     "time": "",
     "court": ""
   },
