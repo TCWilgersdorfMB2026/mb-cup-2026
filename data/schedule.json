@@ -482,16 +482,6 @@
   {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",
     "round": "Achtelfinale",
-    "player1": "Lerscht, Michael",
-    "player2": "Wroben, Thorsten",
-    "winner": null,
-    "score": null,
-    "time": "17.08.2026 15:00 Uhr",
-    "court": "Platz 2"
-  },
-  {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
     "player1": "Schmidt, Carsten",
     "player2": null,
     "winner": "Schmidt, Carsten",
@@ -546,8 +536,8 @@
     "player2": "Germies, Bernd",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 15:00 Uhr",
-    "court": "Platz 3"
+    "time": "19.08.2026 18:30 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 3"
   },
   {
     "competition": "Herren 60 Einzel KO LK 1,0-25,0",
@@ -556,8 +546,8 @@
     "player2": "Schwarz, Volker",
     "winner": null,
     "score": null,
-    "time": "17.08.2026 15:00 Uhr",
-    "court": "Platz 1"
+    "time": "19.08.2026 18:30 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 3"
   },
   {
     "competition": "Herren 70 Einzel KO LK 1,0-25,0",
