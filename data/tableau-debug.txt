@@ -1,22 +1,3 @@
-Zustimmung
-Details
-Anzeigeneinstellungen
-Über Cookies
-Verantwortungsvoller Umgang mit Ihren Daten
-Wir und unsere 1022 Partner verarbeiten Ihre persönlichen Daten, wie z. B. Ihre IP-Adresse, mithilfe von Technologien wie Cookies, um Informationen auf Ihrem Gerät zu speichern und darauf zuzugreifen und so personalisierte Werbung und Inhalte, Messungen von Werbung und Inhalten, Zielgruppenforschung sowie Entwicklung von Angeboten zu ermöglichen. Sie entscheiden darüber, wer Ihre Daten für welche Zwecke nutzt. Sie können Ihre Einwilligung jederzeit über die Cookie-Erklärung oder durch Klicken auf das Privacy Trigger Symbol ändern oder widerrufen
-
-Wenn Sie es erlauben, würden wir auch gerne:
-Informationen über Ihre geografische Lage erfassen, welche bis auf einige Meter genau sein können
-Ihr Gerät durch aktives Scannen nach bestimmten Merkmalen (Fingerprinting) identifizieren
-Erfahren Sie mehr darüber, wie Ihre persönlichen Daten verarbeitet werden, und legen Sie Ihre Präferenzen im Abschnitt Einzelheiten fest.
-
-
-
-Wir verwenden Cookies, um Inhalte und Anzeigen zu personalisieren, Funktionen für soziale Medien anbieten zu können und die Zugriffe auf unsere Website zu analysieren. Außerdem geben wir Informationen zu Ihrer Verwendung unserer Website an unsere Partner für soziale Medien, Werbung und Analysen weiter. Unsere Partner führen diese Informationen möglicherweise mit weiteren Daten zusammen, die Sie ihnen bereitgestellt haben oder die sie im Rahmen Ihrer Nutzung der Dienste gesammelt haben. Die Cookie-Einstellungen können jederzeit über den Link im Footer aufgerufen und angepasst werden.
-
-Ablehnen
-Anpassen
-Alle zulassen
 tennis.de
 mypadel.de
 DTB
@@ -204,7 +185,7 @@ Herren Einzel - Hauptfeld
 		Jud, T.				
 	LK13,9 - Lotz, Federico, 2007 - Tennisverein Altenseelbach e.V., WTV	6:3 6:4				
 				TC Wilger..., Platz 1		
-	[Rast]			18.08. 17:00		
+	[Rast]			18.08. 16:30		
 		Iordanidis, A.				
 	LK12,3 - Iordanidis, Aristotelis, 2009 - TC Siegen, WTV					
 			Nies, T.			
@@ -220,7 +201,7 @@ Herren Einzel - Hauptfeld
 		Prado Saldana, J.				
 	LK12,2 - Prado Saldana, Joan Ricardo, 2006 - TC Brachbach, RPF	6:4 6:3				
 				TC Wilger..., Platz 1		
-	[Rast]			19.08. 18:30		
+	[Rast]			19.08. 18:00		
 		Schwedes, N.				
 	LK13,9 - Schwedes, Nick Luca, 1997 - TC 71 Netphen, WTV					
 			Schwedes, N.			
@@ -236,7 +217,7 @@ Herren Einzel - Hauptfeld
 		Ebener, S.				
 	[Rast]					
 				TC Wilger..., Platz 1		
-	[Rast]			18.08. 18:30		
+	[Rast]			18.08. 18:00		
 		Weber, L.				
 	LK11,7 - Weber, Louis, 2005 - TC Haiger, HTV					
 			Ballion, S.			
@@ -252,7 +233,7 @@ Herren Einzel - Hauptfeld
 		Wedding, R.				
 	[Rast]					
 				TC Wilger..., Platz 2		
-	LK9,4 - Menn, Jan Steffen, 1988 - TC Niederschelderhütte, RPF			19.08. 18:30		
+	LK9,4 - Menn, Jan Steffen, 1988 - TC Niederschelderhütte, RPF			19.08. 18:00		
 		Menn, J.				
 	LK11,3 - Müller, Nico, 1992 - Tennisverein Altenseelbach e.V., WTV	7:5 6:0				
 			Menn, J.			

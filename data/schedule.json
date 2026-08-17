@@ -136,7 +136,7 @@
     "player2": "Nies, Tim",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 17:00 Uhr",
+    "time": "18.08.2026 16:30 Uhr",
     "court": "Platz 1"
   },
   {
@@ -146,7 +146,7 @@
     "player2": "Schwedes, Nick Luca",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:30 Uhr",
+    "time": "19.08.2026 18:00 Uhr",
     "court": "Platz 1"
   },
   {
@@ -156,7 +156,7 @@
     "player2": "Ballion, Silas",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 18:30 Uhr",
+    "time": "18.08.2026 18:00 Uhr",
     "court": "Platz 1"
   },
   {
@@ -166,7 +166,7 @@
     "player2": "Menn, Jan Steffen",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:30 Uhr",
+    "time": "19.08.2026 18:00 Uhr",
     "court": "Platz 2"
   },
   {
@@ -186,8 +186,8 @@
     "player2": "Koch, Colin",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:30 Uhr",
-    "court": "Platz 3"
+    "time": "19.08.2026 18:00 Uhr",
+    "court": "Platz 4"
   },
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
@@ -196,7 +196,7 @@
     "player2": "Solbach, Tim",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:30 Uhr",
+    "time": "19.08.2026 18:00 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 1"
   },
   {
@@ -206,7 +206,7 @@
     "player2": "Henrichs, Lukas",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 17:00 Uhr",
+    "time": "19.08.2026 16:30 Uhr",
     "court": "Platz 1"
   },
   {
@@ -406,7 +406,7 @@
     "player2": "Freudenstein, Manuel",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 18:30 Uhr",
+    "time": "18.08.2026 18:00 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 1"
   },
   {
@@ -416,7 +416,7 @@
     "player2": "Schürbusch, Nico",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 17:00 Uhr",
+    "time": "18.08.2026 16:30 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 2"
   },
   {
@@ -426,7 +426,7 @@
     "player2": "Scheuermann, Florian",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 17:00 Uhr",
+    "time": "18.08.2026 16:30 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 3"
   },
   {
@@ -436,7 +436,7 @@
     "player2": "Büdenbender, Jens",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 17:00 Uhr",
+    "time": "18.08.2026 16:30 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 1"
   },
   {
@@ -491,12 +491,42 @@
   },
   {
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Hofacker, Mathias",
+    "round": "Viertelfinale",
+    "player1": "Lück, Marco",
     "player2": "Schreiber, Oliver",
     "winner": null,
     "score": null,
-    "time": "17.08.2026 18:30 Uhr",
+    "time": "19.08.2026 18:00 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Koehler, Michael",
+    "player2": "Klink, Peter",
+    "winner": null,
+    "score": null,
+    "time": "18.08.2026 18:00 Uhr",
+    "court": "TC Wieland-Wilnsdorf, Platz 1"
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Schwarzer, Martin",
+    "player2": "Pavicic, Peter",
+    "winner": null,
+    "score": null,
+    "time": "18.08.2026 18:30 Uhr",
+    "court": "Platz 3"
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Schmelzeisen, Frank",
+    "player2": "Hussing, Frank",
+    "winner": null,
+    "score": null,
+    "time": "18.08.2026 18:00 Uhr",
     "court": "Platz 2"
   },
   {
@@ -516,7 +546,7 @@
     "player2": "Germies, Bernd",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:30 Uhr",
+    "time": "19.08.2026 18:00 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 3"
   },
   {
@@ -526,7 +556,7 @@
     "player2": "Schwarz, Volker",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:30 Uhr",
+    "time": "19.08.2026 18:00 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 3"
   },
   {
@@ -596,7 +626,7 @@
     "player2": "Hoffmann, Nicole",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 18:30 Uhr",
+    "time": "18.08.2026 18:00 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 3"
   },
   {
@@ -796,7 +826,7 @@
     "player2": "Giebeler, Ina",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 17:00 Uhr",
+    "time": "19.08.2026 16:30 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 2"
   },
   {
@@ -806,7 +836,7 @@
     "player2": "Fiedler, Julia",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:30 Uhr",
+    "time": "19.08.2026 18:00 Uhr",
     "court": "TC Ludwigseck Salchendorf, Platz 2"
   },
   {
@@ -966,17 +996,6 @@
   {
     "competition": "Herren 50 Einzel LK1,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Koehler, Michael",
-    "player2": "Klink, Peter",
-    "winner": null,
-    "score": null,
-    "time": "17.08.2026 18:30 Uhr",
-    "court": "Platz 1",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren 50 Einzel LK1,0-25,0",
-    "round": "Viertelfinale",
     "player1": "Schwarzer, Martin",
     "player2": "Durow, Thorsten / Pavicic, Peter",
     "winner": null,
@@ -987,12 +1006,12 @@
   },
   {
     "competition": "Herren 50 Einzel LK1,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Schmelzeisen, Frank",
-    "player2": "Hussing, Frank",
+    "round": "Achtelfinale",
+    "player1": "Hofacker, Mathias",
+    "player2": "Schreiber, Oliver",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 18:30 Uhr",
+    "time": "17.08.2026 18:30 Uhr",
     "court": "Platz 2",
     "source": "nuliga-merge"
   },

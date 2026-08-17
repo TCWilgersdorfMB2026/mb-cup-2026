@@ -509,6 +509,71 @@
     "competition": "Herren Einzel KO LK 22,0-25,0 (Nebenrunde)",
     "entrants": [
       {
+        "name": "Backaus Ole Fiete",
+        "club": "TC Wilgersdorf",
+        "dtbId": "11152457",
+        "lk": "19,8"
+      },
+      {
+        "name": "Fries Leo",
+        "club": "TC Wilgersdorf",
+        "dtbId": "11202558",
+        "lk": "21,4"
+      },
+      {
+        "name": "Gün Bulut",
+        "club": "TuS 1900 Eisern",
+        "dtbId": "18754721",
+        "lk": "19,8"
+      },
+      {
+        "name": "Hilberg Max",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "10831874",
+        "lk": "19,1"
+      },
+      {
+        "name": "Malore Govindarajan Suhas",
+        "club": "TC Siegen",
+        "dtbId": "18754451",
+        "lk": "20,8"
+      },
+      {
+        "name": "Mayenschein Dennis",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "19764458",
+        "lk": "21,3"
+      },
+      {
+        "name": "Metzger Tim",
+        "club": "TC Niederschelderhütte",
+        "dtbId": "19663213",
+        "lk": "21,7"
+      },
+      {
+        "name": "Schauerte Andre",
+        "club": "TC Maumke e.V.",
+        "dtbId": "17300468",
+        "lk": "17,4"
+      },
+      {
+        "name": "Schläger Lorenz",
+        "club": "VfL Kirchen",
+        "dtbId": "11306967",
+        "lk": "20,9"
+      },
+      {
+        "name": "Schmidt Torben",
+        "club": "TuS 1900 Eisern",
+        "dtbId": "19259169",
+        "lk": "20,3"
+      }
+    ]
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0 (Nebenrunde)",
+    "entrants": [
+      {
         "name": "Böhl Timo",
         "club": "TC 71 Netphen",
         "dtbId": "18201150",
@@ -831,6 +896,53 @@
   {
     "competition": "Herren 50 Einzel KO LK 20,0-25,0",
     "entrants": []
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 20,0-25,0 (Nebenrunde)",
+    "entrants": [
+      {
+        "name": "Durow Thorsten",
+        "club": "TC Grün-Weiß Neuenkirchen e.V.",
+        "dtbId": "16900516",
+        "lk": "11,0"
+      },
+      {
+        "name": "Galbas Jörg",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17101145",
+        "lk": "14,3"
+      },
+      {
+        "name": "Glied Alexander",
+        "club": "TSV Sasel e.V.",
+        "dtbId": "16991999",
+        "lk": "25,0"
+      },
+      {
+        "name": "Hermann Torsten",
+        "club": "TC GW Freudenberg",
+        "dtbId": "17000921",
+        "lk": "16,3"
+      },
+      {
+        "name": "Hofacker Mathias",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17400520",
+        "lk": "11,9"
+      },
+      {
+        "name": "Siegwolf Volker",
+        "club": "TC Wilgersdorf",
+        "dtbId": "16854501",
+        "lk": "17,8"
+      },
+      {
+        "name": "Stauf Michael",
+        "club": "TC Wieland-Wilnsdorf",
+        "dtbId": "17056937",
+        "lk": "17,3"
+      }
+    ]
   },
   {
     "competition": "Herren 60 Einzel KO LK 1,0-25,0",
