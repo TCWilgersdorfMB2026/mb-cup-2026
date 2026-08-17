@@ -44,7 +44,10 @@ jobs:
           TENNIS_DE_PASSWORD: ${{ secrets.TENNIS_DE_PASSWORD }}
           TEST_TOURNAMENT_ID: ${{ github.event.inputs.test_tournament_id }}
 
-      - name: Änderungen committen (falls vorhanden)
+      - name: Mit nuLiga-Daten mergen
+        run: npm run merge:nuliga
+
+- name: Änderungen committen (falls vorhanden)
         run: |
           git config user.name "mb-cup-bot"
           git config user.email "actions@github.com"
