@@ -5,7 +5,8 @@
     "description": "Liest die öffentliche tennis.de-Turnierseite des MB-Cup 2026 aus und aktualisiert data/schedule.json und data/results.json.",
     "scripts": {
           "scrape": "node scripts/scrape-tennis-de.js",
-          "scrape:nuliga": "node scripts/scrape-nuliga-live.js"
+          "scrape:nuliga": "node scripts/scrape-nuliga-live.js",
+        "merge:nuliga": "node scripts/merge-nuliga-schedule.js"
     },
     "dependencies": {
           "playwright": "^1.47.0",
