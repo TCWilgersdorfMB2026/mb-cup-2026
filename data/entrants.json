@@ -618,6 +618,35 @@
     ]
   },
   {
+    "competition": "Herren Einzel KO LK 22,0-25,0 (Nebenrunde)",
+    "entrants": [
+      {
+        "name": "Ebener Sebastian",
+        "club": "TC Wilgersdorf",
+        "dtbId": "19754789",
+        "lk": "14,0"
+      },
+      {
+        "name": "Feldmann Jonas Juttichai",
+        "club": "TC Rhode e.V.",
+        "dtbId": "10914651",
+        "lk": "9,5"
+      },
+      {
+        "name": "Iordanidis Aristotelis",
+        "club": "TC Siegen",
+        "dtbId": "10900644",
+        "lk": "12,3"
+      },
+      {
+        "name": "Peters Marvin",
+        "club": "TC Wilgersdorf",
+        "dtbId": "10055938",
+        "lk": "13,5"
+      }
+    ]
+  },
+  {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
