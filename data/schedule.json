@@ -530,16 +530,6 @@
     "court": "Platz 2"
   },
   {
-    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Durow, Thorsten",
-    "player2": "Pavicic, Peter",
-    "winner": null,
-    "score": null,
-    "time": "16.08.2026 18:00 Uhr",
-    "court": "Platz 1"
-  },
-  {
     "competition": "Herren 60 Einzel KO LK 1,0-25,0",
     "round": "Viertelfinale",
     "player1": "Rothe, Michael",
@@ -1034,6 +1024,17 @@
     "score": null,
     "time": "18.08.2026 18:30 Uhr",
     "court": "Platz 2",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Herren 50 Einzel LK1,0-25,0",
+    "round": "Achtelfinale",
+    "player1": "Durow, Thorsten",
+    "player2": "Pavicic, Peter",
+    "winner": null,
+    "score": null,
+    "time": "16.08.2026 18:00 Uhr",
+    "court": "Platz 1",
     "source": "nuliga-merge"
   },
   {
