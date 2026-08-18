@@ -21,6 +21,7 @@ const path = require('path');
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const SCHEDULE_PATH = path.join(DATA_DIR, 'schedule.json');
 const NULIGA_PATH = path.join(DATA_DIR, 'nuliga-live.json');
+const RESULTS_PATH = path.join(DATA_DIR, 'results.json');
 
 function readJson(p, fallback) {
   try {
