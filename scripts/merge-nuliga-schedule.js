@@ -38,6 +38,10 @@ function pairKey(a, b) {
   return [normName(a), normName(b)].sort().join('||');
 }
 
+function entryKey(m) {
+  return [m.competition || '', m.round || '', m.player1 || '', m.player2 || ''].join('||');
+}
+
 function main() {
   const schedule = readJson(SCHEDULE_PATH, []);
   const nuliga = readJson(NULIGA_PATH, []);
@@ -51,10 +55,6 @@ function main() {
     return;
   }
 
-  // Bestehende tennis.de-Partien nach Spieler-Paar indizieren, damit wir
-  // pro Paarung nachschauen koennen, ob (und mit welchem Stand) sie schon
-  // im Spielplan steht. Die Reihenfolge player1/player2 kann zwischen den
-  // Quellen abweichen, daher sortiert die Paar-Kennung beide Namen.
   const byPair = new Map();
   schedule.forEach((m) => {
     if (!m || !m.player1 || !m.player2) return;
@@ -65,26 +65,33 @@ function main() {
 
   let filled = 0;
   let added = 0;
+  let skippedPlatzhalter = 0;
 
   nuliga.forEach((n) => {
     if (!n || !n.player1 || !n.player2) return; // Freilos/Platzhalter ohne beide Gegner ueberspringen
     if (n.winner) return; // bereits abgeschlossen - gehoert nicht in den offenen Spielplan
     if (!n.time && !n.court) return; // ohne Platz/Zeit bringt der Eintrag hier nichts
 
+    // nuLiga zeigt fuer noch nicht feststehende Paarungen manchmal
+    // Platzhalter wie "Spieler A / Spieler B" (= "Sieger aus einer noch
+    // offenen Partie"). Solche Platzhalter enthalten "/" im Namen und
+    // sind KEINE echten, bestaetigten Spielernamen - diese duerfen nicht
+    // als eigene Partie in den Spielplan uebernommen werden.
+    if (n.player1.includes('/') || n.player2.includes('/')) {
+      skippedPlatzhalter++;
+      return;
+    }
+
     const key = pairKey(n.player1, n.player2);
     const matches = byPair.get(key);
 
     if (matches && matches.length) {
-      // Bereits bei tennis.de vorhanden - nur fehlende Platz-/Zeit-Angabe
-      // ergaenzen, nichts ueberschreiben, was tennis.de schon selbst hat.
       matches.forEach((m) => {
         if (!m.time && n.time) { m.time = n.time; filled++; }
         if (!m.court && n.court) { m.court = n.court; }
       });
     } else {
-      // Komplett neue Partie, die bei tennis.de (noch) nicht auftaucht -
-      // aus nuLiga uebernehmen, damit sie im Spielplan nicht fehlt.
-      schedule.push({
+      const newEntry = {
         competition: n.competition || '',
         round: n.round || '',
         player1: n.player1,
@@ -94,16 +101,29 @@ function main() {
         time: n.time || '',
         court: n.court || '',
         source: 'nuliga-merge',
-      });
+      };
+      schedule.push(newEntry);
+      byPair.set(key, [newEntry]); // verhindert Duplikate innerhalb desselben Laufs
       added++;
     }
   });
 
-  if (filled || added) {
-    fs.writeFileSync(SCHEDULE_PATH, JSON.stringify(schedule, null, 2) + '\n');
-    console.log(`nuLiga-Merge: ${filled} Partie(n) ergaenzt, ${added} neue Partie(n) uebernommen.`);
+  // Sicherheitsnetz: exakte Duplikate (gleiche Konkurrenz/Runde/Spieler)
+  // koennen nicht doppelt im Spielplan stehen.
+  const seen = new Set();
+  const deduped = schedule.filter((m) => {
+    const k = entryKey(m);
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
+  const removedDupes = schedule.length - deduped.length;
+
+  if (filled || added || removedDupes) {
+    fs.writeFileSync(SCHEDULE_PATH, JSON.stringify(deduped, null, 2) + '\n');
+    console.log(`nuLiga-Merge: ${filled} Partie(n) ergaenzt, ${added} neue Partie(n) uebernommen, ${skippedPlatzhalter} Platzhalter uebersprungen, ${removedDupes} Duplikat(e) entfernt.`);
   } else {
-    console.log('nuLiga-Merge: keine Ergaenzungen noetig.');
+    console.log(`nuLiga-Merge: keine Ergaenzungen noetig (${skippedPlatzhalter} Platzhalter uebersprungen).`);
   }
 }
 
