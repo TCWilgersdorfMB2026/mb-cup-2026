@@ -38,6 +38,24 @@ function pairKey(a, b) {
   return [normName(a), normName(b)].sort().join('||');
 }
 
+function normComp(s) {
+  return (s || '').replace(/\bKO\s+/g, '').replace(/LK\s+/g, 'LK').replace(/\s+/g, ' ').trim();
+}
+
+function buildCompetitionMap() {
+  const lists = [readJson(SCHEDULE_PATH, []), readJson(RESULTS_PATH, [])];
+  const map = new Map();
+  lists.forEach((list) => {
+    (list || []).forEach((m) => {
+      if (!m || !m.competition || m.source) return;
+      const key = normComp(m.competition);
+      if (!map.has(key)) map.set(key, m.competition);
+    });
+  });
+  return map;
+}
+
+
 function entryKey(m) {
   return [m.competition || '', m.round || '', m.player1 || '', m.player2 || ''].join('||');
 }
@@ -45,6 +63,7 @@ function entryKey(m) {
 function main() {
   const schedule = readJson(SCHEDULE_PATH, []);
   const nuliga = readJson(NULIGA_PATH, []);
+  const compMap = buildCompetitionMap();
 
   if (!Array.isArray(schedule)) {
     console.log('data/schedule.json ist kein Array - Merge uebersprungen.');
@@ -92,7 +111,7 @@ function main() {
       });
     } else {
       const newEntry = {
-        competition: n.competition || '',
+        competition: compMap.get(normComp(n.competition)) || n.competition || '',
         round: n.round || '',
         player1: n.player1,
         player2: n.player2,
@@ -152,6 +171,7 @@ function mergeResults() {
   const RESULTS_PATH = path.join(DATA_DIR, 'results.json');
   const results = readJson(RESULTS_PATH, []);
   const nuliga = readJson(NULIGA_PATH, []);
+  const compMap = buildCompetitionMap();
   if (!Array.isArray(results)) {
     console.log('data/results.json ist kein Array - Ergebnis-Merge uebersprungen.');
     return;
@@ -167,10 +187,11 @@ function mergeResults() {
   nuliga.forEach((n) => {
     if (!n || !n.player1 || !n.player2 || !n.winner) return;
     if (n.player1.includes('/') || n.player2.includes('/')) return;
-    const key = entryKey(n);
+    const competition = compMap.get(normComp(n.competition)) || n.competition || '';
+    const key = entryKey({ competition, round: n.round, player1: n.player1, player2: n.player2 });
     if (officialKeys.has(key)) return;
     base.push({
-      competition: n.competition || '',
+      competition,
       round: n.round || '',
       player1: n.player1,
       player2: n.player2,
