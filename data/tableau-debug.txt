@@ -216,8 +216,8 @@ Herren Einzel - Hauptfeld
 	LK14,5 - Ebener, Sebastian, 1997 - TC Wilgersdorf, WTV		6:0 6:0			
 		Ebener, S.				
 	[Rast]					
-				TC Wilger..., Platz 2		
-	[Rast]			19.08. 18:00		
+				TC Wilger..., Platz 1		
+	[Rast]			19.08. 16:30		
 		Weber, L.				
 	LK11,7 - Weber, Louis, 2005 - TC Haiger, HTV					
 			Ballion, S.			
