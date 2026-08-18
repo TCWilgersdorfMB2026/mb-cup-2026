@@ -177,7 +177,7 @@
     "winner": null,
     "score": null,
     "time": "19.08.2026 18:00 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 3"
   },
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
@@ -197,7 +197,7 @@
     "winner": null,
     "score": null,
     "time": "19.08.2026 18:00 Uhr",
-    "court": "Platz 2"
+    "court": "Platz 4"
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
@@ -517,7 +517,7 @@
     "winner": null,
     "score": null,
     "time": "19.08.2026 18:00 Uhr",
-    "court": "Platz 3"
+    "court": "Platz 2"
   },
   {
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
@@ -537,7 +537,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 15:00 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 2"
   },
   {
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
@@ -587,7 +587,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 15:00 Uhr",
-    "court": "Platz 2"
+    "court": "Platz 1"
   },
   {
     "competition": "Herren 70 Einzel KO LK 1,0-25,0",
@@ -597,7 +597,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 15:00 Uhr",
-    "court": "Platz 2"
+    "court": "Platz 1"
   },
   {
     "competition": "Damen Einzel KO LK 10,0-25,0",
@@ -840,7 +840,7 @@
     "court": "TC Ludwigseck Salchendorf, Platz 2"
   },
   {
-    "competition": "Damen Einzel LK17,0-25,0",
+    "competition": "Damen Einzel KO LK 17,0-25,0",
     "round": "Halbfinale",
     "player1": "Schläger, Antonia",
     "player2": "Herking, Lea-Marie",
@@ -851,7 +851,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Damen Einzel LK17,0-25,0",
+    "competition": "Damen Einzel KO LK 17,0-25,0",
     "round": "Viertelfinale",
     "player1": "Grau, Neela Marlen",
     "player2": "Wiegel, Lea",
@@ -862,7 +862,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Damen Einzel LK10,0-25,0",
+    "competition": "Damen Einzel KO LK 10,0-25,0",
     "round": "Halbfinale",
     "player1": "Hoffmann, Nicole",
     "player2": "Voth, Eva",
@@ -873,7 +873,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Herren 70 Einzel LK1,0-25,0",
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
     "round": "Halbfinale",
     "player1": "Simmerl, Mario",
     "player2": "Sprenger, Axel",
@@ -884,7 +884,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Herren 70 Einzel LK1,0-25,0",
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
     "round": "Halbfinale",
     "player1": "Flath, Werner",
     "player2": "Sommer, Rainer",
@@ -895,7 +895,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Herren 60 Einzel LK1,0-25,0",
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
     "round": "Halbfinale",
     "player1": "Rothe, Michael",
     "player2": "Becker, Henning",
@@ -906,7 +906,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Herren 40 Einzel LK1,0-25,0",
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
     "round": "Halbfinale",
     "player1": "Weber, Holger",
     "player2": "Wroben, Thorsten",
