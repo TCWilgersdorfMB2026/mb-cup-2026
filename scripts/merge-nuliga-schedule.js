@@ -128,3 +128,66 @@ function main() {
 }
 
 main();
+
+/**
+* Ergaenzt data/results.json um bereits abgeschlossene Partien, die nuLiga
+* schon als beendet meldet (winner/score gesetzt), tennis.de aber noch nicht
+* hat. Hintergrund: nuLiga und tennis.de werden von derselben Person
+* gepflegt, oft aber nicht zur exakt gleichen Zeit - je nachdem, was zuerst
+* eingetragen wird, soll die Seite immer den aktuellsten bekannten Stand
+* zeigen statt auf die jeweils andere Quelle zu warten.
+*
+* Solche Ergaenzungen werden klar als "source: nuliga-live" + "vorlaeufig:
+* true" markiert (siehe assets/app.js, bracketBoxHtml), damit erkennbar
+* bleibt, dass tennis.de dieses Ergebnis noch nicht selbst bestaetigt hat.
+*
+* Bei jedem Lauf werden zunaechst ALLE zuvor so ergaenzten Eintraege
+* entfernt und aus den aktuellen nuLiga-Daten neu aufgebaut - ein
+* vorlaeufiger Eintrag verschwindet dadurch automatisch von selbst,
+* sobald scrape-tennis-de.js (das VOR diesem Skript laeuft, siehe
+* update-data.yml) das echte Ergebnis von tennis.de in results.json
+* geschrieben hat.
+*/
+function mergeResults() {
+  const RESULTS_PATH = path.join(DATA_DIR, 'results.json');
+  const results = readJson(RESULTS_PATH, []);
+  const nuliga = readJson(NULIGA_PATH, []);
+  if (!Array.isArray(results)) {
+    console.log('data/results.json ist kein Array - Ergebnis-Merge uebersprungen.');
+    return;
+  }
+  if (!Array.isArray(nuliga) || !nuliga.length) {
+    return;
+  }
+  const officialKeys = new Set(
+    results.filter((m) => m && m.player1 && m.player2 && !m.vorlaeufig).map(entryKey)
+    );
+  const base = results.filter((m) => !(m && m.vorlaeufig));
+  let added = 0;
+  nuliga.forEach((n) => {
+    if (!n || !n.player1 || !n.player2 || !n.winner) return;
+    if (n.player1.includes('/') || n.player2.includes('/')) return;
+    const key = entryKey(n);
+    if (officialKeys.has(key)) return;
+    base.push({
+      competition: n.competition || '',
+      round: n.round || '',
+      player1: n.player1,
+      player2: n.player2,
+      winner: n.winner,
+      score: n.score || '',
+      time: n.time || '',
+      court: n.court || '',
+      source: 'nuliga-live',
+      vorlaeufig: true,
+    });
+    added++;
+  });
+  if (added || base.length !== results.length) {
+    fs.writeFileSync(RESULTS_PATH, JSON.stringify(base, null, 2) + '\n');
+    console.log(`nuLiga-Ergebnis-Merge: ${added} vorlaeufige(s) Ergebnis(se) aus nuLiga uebernommen.`);
+  } else {
+    console.log('nuLiga-Ergebnis-Merge: keine Ergaenzungen noetig.');
+  }
+}
+mergeResults();
