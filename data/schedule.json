@@ -261,13 +261,43 @@
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Schneider, Dominik",
-    "player2": "Mai, Lennart",
+    "round": "Viertelfinale",
+    "player1": "Anders, Denis",
+    "player2": "Binsack, Jarno",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 17:00 Uhr",
+    "time": "19.08.2026 16:30 Uhr",
     "court": "Platz 3"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Polzer, Timo",
+    "player2": "Gyurcsi, Robert Denes",
+    "winner": null,
+    "score": null,
+    "time": "19.08.2026 16:30 Uhr",
+    "court": "Platz 2"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Schneider, Dominik",
+    "player2": "Baldus, Jonas",
+    "winner": null,
+    "score": null,
+    "time": "20.08.2026 16:30 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 1"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Kamyab, Taymas",
+    "player2": "Hartmann, Nils",
+    "winner": null,
+    "score": null,
+    "time": "20.08.2026 18:00 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 1"
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -898,24 +928,13 @@
   },
   {
     "competition": "Herren Einzel LK17,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Anders, Denis",
-    "player2": "Binsack, Jarno",
+    "round": "Achtelfinale",
+    "player1": "Schneider, Dominik",
+    "player2": "Mai, Lennart",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 16:30 Uhr",
+    "time": "18.08.2026 17:00 Uhr",
     "court": "Platz 3",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren Einzel LK17,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Polzer, Timo",
-    "player2": "Gyurcsi, Robert Denes",
-    "winner": null,
-    "score": null,
-    "time": "19.08.2026 16:30 Uhr",
-    "court": "Platz 2",
     "source": "nuliga-merge"
   },
   {
