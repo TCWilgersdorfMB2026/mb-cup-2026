@@ -224,6 +224,18 @@ body {
 .bracket-freilos { color: var(--muted); font-style: italic; font-size: 0.72rem; margin-top: 3px; }
 .bracket-meta { color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
 
+/* Hinweis bei Ergebnissen, die (noch) nur aus den nuLiga-Live-Daten
+stammen, weil tennis.de dieses Spiel noch nicht selbst als abgeschlossen
+vermerkt hat (siehe scripts/merge-nuliga-schedule.js, mergeResults()).
+Bewusst dezent/neutral gehalten - kein Warnsignal, nur Transparenz, da
+nuLiga und tennis.de von derselben Person gepflegt werden. */
+.bracket-vorlaeufig {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-style: italic;
+  margin-top: 3px;
+}
+
 /* Der Sieger-Kasten steht in einer Grid-Zelle, die über die volle Höhe des
    Tableaus geht (damit er auf Höhe des Finales zentriert ist) - der Kasten
    selbst darf dabei aber NICHT mitwachsen, sondern muss genauso hoch bleiben
