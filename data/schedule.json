@@ -136,7 +136,7 @@
     "player2": "Nies, Tim",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 16:30 Uhr",
+    "time": "20.08.2026 18:00 Uhr",
     "court": "Platz 2"
   },
   {
@@ -168,16 +168,6 @@
     "score": null,
     "time": "19.08.2026 18:00 Uhr",
     "court": "Platz 2"
-  },
-  {
-    "competition": "Herren Einzel KO LK 10,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Bahlmann, Niclas Hans",
-    "player2": "Kettner, Paul",
-    "winner": null,
-    "score": null,
-    "time": "18.08.2026 15:00 Uhr",
-    "court": "Platz 1"
   },
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
@@ -532,16 +522,6 @@
   {
     "competition": "Herren 60 Einzel KO LK 1,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Rothe, Michael",
-    "player2": "Feldmann, Jürgen",
-    "winner": null,
-    "score": null,
-    "time": "18.08.2026 15:30 Uhr",
-    "court": "Platz 3"
-  },
-  {
-    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
-    "round": "Viertelfinale",
     "player1": "Simon, Reinhard",
     "player2": "Germies, Bernd",
     "winner": null,
@@ -626,8 +606,8 @@
     "player2": "Hoffmann, Nicole",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 18:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 1"
+    "time": "18.08.2026 18:30 Uhr",
+    "court": "Platz 3"
   },
   {
     "competition": "Damen Einzel KO LK 10,0-25,0",
@@ -873,6 +853,28 @@
     "source": "nuliga-merge"
   },
   {
+    "competition": "Herren 70 Einzel LK1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Flath, Werner",
+    "player2": "Sommer, Rainer",
+    "winner": null,
+    "score": null,
+    "time": "20.08.2026 15:00 Uhr",
+    "court": "Platz 2",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Herren 60 Einzel LK1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Rothe, Michael",
+    "player2": "Feldmann, Jürgen",
+    "winner": null,
+    "score": null,
+    "time": "18.08.2026 15:30 Uhr",
+    "court": "Platz 3",
+    "source": "nuliga-merge"
+  },
+  {
     "competition": "Herren 40 Einzel LK1,0-25,0",
     "round": "Halbfinale",
     "player1": "Müller, Stefan",
@@ -917,6 +919,17 @@
     "source": "nuliga-merge"
   },
   {
+    "competition": "Herren Einzel LK10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Bahlmann, Niclas Hans",
+    "player2": "Kettner, Paul",
+    "winner": null,
+    "score": null,
+    "time": "18.08.2026 15:00 Uhr",
+    "court": "Platz 1",
+    "source": "nuliga-merge"
+  },
+  {
     "competition": "Nebenrunde Herren Einzel",
     "round": "Achtelfinale",
     "player1": "Schläger, Lorenz",
@@ -935,7 +948,7 @@
     "winner": null,
     "score": null,
     "time": "18.08.2026 16:30 Uhr",
-    "court": "Platz 2",
+    "court": "Platz 1",
     "source": "nuliga-merge"
   },
   {

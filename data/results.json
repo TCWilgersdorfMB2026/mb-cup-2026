@@ -190,6 +190,16 @@
     "court": ""
   },
   {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Bahlmann, Niclas Hans",
+    "player2": "Kettner, Paul",
+    "winner": "Kettner, Paul",
+    "score": "7:6 6:2",
+    "time": "",
+    "court": ""
+  },
+  {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
     "player1": "Margeit, Ben",
@@ -586,6 +596,16 @@
     "player2": "Hussing, Frank",
     "winner": "Hussing, Frank",
     "score": "6:2 6:2",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Rothe, Michael",
+    "player2": "Feldmann, Jürgen",
+    "winner": "Rothe, Michael",
+    "score": "6:3 6:1",
     "time": "",
     "court": ""
   },
