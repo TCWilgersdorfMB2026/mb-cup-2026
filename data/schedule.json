@@ -840,28 +840,6 @@
     "court": "TC Ludwigseck Salchendorf, Platz 2"
   },
   {
-    "competition": "Herren Einzel LK1,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Wagner, Matthias / Nies, Tim",
-    "player2": "Gross, Ingo / Schwedes, Nick Luca",
-    "winner": null,
-    "score": null,
-    "time": "21.08.2026 18:00 Uhr",
-    "court": "Platz 1",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren Einzel LK1,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Ebener, Frederik / Ballion, Silas",
-    "player2": "Wedding, Robin / Menn, Jan Steffen",
-    "winner": null,
-    "score": null,
-    "time": "21.08.2026 16:30 Uhr",
-    "court": "Platz 1",
-    "source": "nuliga-merge"
-  },
-  {
     "competition": "Damen Einzel LK17,0-25,0",
     "round": "Halbfinale",
     "player1": "Schläger, Antonia",
@@ -869,17 +847,6 @@
     "winner": null,
     "score": null,
     "time": "21.08.2026 16:30 Uhr",
-    "court": "Platz 4",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Damen Einzel LK17,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Grau, Neela Marlen / Wiegel, Lea",
-    "player2": "Palić, Nina / Anders, Xenia",
-    "winner": null,
-    "score": null,
-    "time": "21.08.2026 18:00 Uhr",
     "court": "Platz 4",
     "source": "nuliga-merge"
   },
@@ -895,50 +862,6 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Damen Einzel LK22,0-25,0",
-    "round": "Finale",
-    "player1": "Herrmann Solbach, Sophia / Giebeler, Ina",
-    "player2": "Pfeifer, Jasmin / Fiedler, Julia",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 09:00 Uhr",
-    "court": "Platz 4",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Damen Einzel LK22,0-25,0",
-    "round": "Finale",
-    "player1": "Herrmann Solbach, Sophia / Giebeler, Ina",
-    "player2": "Pfeifer, Jasmin / Fiedler, Julia",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 12:00 Uhr",
-    "court": "Platz 2",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Damen Einzel LK10,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Panning- Dornseifer, Nicole / Hoffmann, Nicole",
-    "player2": "Voth, Eva",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 2",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Damen Einzel LK10,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Hees, Sabrina / Hörner, Judith",
-    "player2": "Backaus, Hedda Lotta",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 18:00 Uhr",
-    "court": "Platz 2",
-    "source": "nuliga-merge"
-  },
-  {
     "competition": "Herren 70 Einzel LK1,0-25,0",
     "round": "Halbfinale",
     "player1": "Simmerl, Mario",
@@ -946,50 +869,6 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 15:00 Uhr",
-    "court": "Platz 1",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren 70 Einzel LK1,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Flath, Werner / Bieker, Joachim",
-    "player2": "Rauen, Werner / Sommer, Rainer",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 15:00 Uhr",
-    "court": "Platz 2",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren 60 Einzel LK1,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Rothe, Michael / Feldmann, Jürgen",
-    "player2": "Becker, Henning",
-    "winner": null,
-    "score": null,
-    "time": "19.08.2026 15:00 Uhr",
-    "court": "Platz 3",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren 50 Einzel LK1,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Lück, Marco / Schreiber, Oliver",
-    "player2": "Koehler, Michael / Klink, Peter",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 18:00 Uhr",
-    "court": "Platz 1",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren 50 Einzel LK1,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Schwarzer, Martin / Pavicic, Peter",
-    "player2": "Hussing, Frank",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 16:30 Uhr",
     "court": "Platz 1",
     "source": "nuliga-merge"
   },
@@ -1006,17 +885,6 @@
   },
   {
     "competition": "Herren 40 Einzel LK1,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Weber, Holger",
-    "player2": "Wroben, Thorsten / Schmidt, Carsten",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 3",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren 40 Einzel LK1,0-25,0",
     "round": "Viertelfinale",
     "player1": "Wroben, Thorsten",
     "player2": "Schmidt, Carsten",
@@ -1024,39 +892,6 @@
     "score": null,
     "time": "18.08.2026 18:00 Uhr",
     "court": "Platz 4",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren Einzel LK22,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Laarmann, Mark / Freudenstein, Manuel",
-    "player2": "Roth, Marvin / Schürbusch, Nico",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 4",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren Einzel LK22,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Zöller, Robin / Scheuermann, Florian",
-    "player2": "Klein, Thilo / Büdenbender, Jens",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 18:00 Uhr",
-    "court": "Platz 4",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren Einzel LK17,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Anders, Denis / Binsack, Jarno",
-    "player2": "Polzer, Timo / Gyurcsi, Robert Denes",
-    "winner": null,
-    "score": null,
-    "time": "21.08.2026 18:00 Uhr",
-    "court": "Platz 3",
     "source": "nuliga-merge"
   },
   {
@@ -1078,28 +913,6 @@
     "winner": null,
     "score": null,
     "time": "19.08.2026 16:30 Uhr",
-    "court": "Platz 2",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren Einzel LK10,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Bahlmann, Niclas Hans / Kettner, Paul",
-    "player2": "Lotz, Mike / Koch, Colin",
-    "winner": null,
-    "score": null,
-    "time": "21.08.2026 18:00 Uhr",
-    "court": "Platz 2",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren Einzel LK10,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Göckus, Maximilian / Solbach, Tim",
-    "player2": "Türk, Michael / Henrichs, Lukas",
-    "winner": null,
-    "score": null,
-    "time": "21.08.2026 16:30 Uhr",
     "court": "Platz 2",
     "source": "nuliga-merge"
   },
