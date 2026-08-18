@@ -354,6 +354,18 @@ Meldeliste
 	
 
 
+	
+	
+Deutschland
+	
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Nebenrunde
+
+
 Herren 50 Einzel
 KO
 LK 1,0-25,0
@@ -422,6 +434,18 @@ Deutschland
 	
 Meldeliste
 	
+
+
+	
+	
+Deutschland
+	
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Nebenrunde
 
 
 Herren 70 Einzel
@@ -512,6 +536,18 @@ Zulassungsliste
 Termine
 	
 Hauptfeld
+
+
+	
+	
+Deutschland
+	
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Nebenrunde
 
 
 	

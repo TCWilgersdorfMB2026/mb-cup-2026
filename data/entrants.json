@@ -793,6 +793,47 @@
     "entrants": []
   },
   {
+    "competition": "Herren 40 Einzel KO LK 20,0-25,0 (Nebenrunde)",
+    "entrants": [
+      {
+        "name": "Engel Peter",
+        "club": "1. TC Wahlbach",
+        "dtbId": "16994366",
+        "lk": "19,2"
+      },
+      {
+        "name": "Hess Manuel",
+        "club": "1. TC Wahlbach",
+        "dtbId": "18156765",
+        "lk": "21,9"
+      },
+      {
+        "name": "Lerscht Michael",
+        "club": "TC Wieland-Wilnsdorf",
+        "dtbId": "18456683",
+        "lk": "21,5"
+      },
+      {
+        "name": "Schmidt Carsten",
+        "club": "TC Wilgersdorf",
+        "dtbId": "17355286",
+        "lk": "19,7"
+      },
+      {
+        "name": "Steinkohl Alexander",
+        "club": "TuS 09 Drolshagen e.V. TA",
+        "dtbId": "17656023",
+        "lk": "19,4"
+      },
+      {
+        "name": "Trappe Richard",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "16854728",
+        "lk": "21,6"
+      }
+    ]
+  },
+  {
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
     "entrants": [
       {
@@ -1000,6 +1041,23 @@
   {
     "competition": "Herren 60 Einzel KO LK 20,0-25,0",
     "entrants": []
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 20,0-25,0 (Nebenrunde)",
+    "entrants": [
+      {
+        "name": "Feldmann Jürgen",
+        "club": "TC Rhode e.V.",
+        "dtbId": "16400579",
+        "lk": "17,4"
+      },
+      {
+        "name": "Mosch Rüdiger",
+        "club": "TC Ludwigseck Salchendorf e.V.",
+        "dtbId": "16654162",
+        "lk": "22,2"
+      }
+    ]
   },
   {
     "competition": "Herren 70 Einzel KO LK 1,0-25,0",
@@ -1290,6 +1348,53 @@
         "club": "TV Eiserfeld",
         "dtbId": "29356680",
         "lk": "24,6"
+      }
+    ]
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0 (Nebenrunde)",
+    "entrants": [
+      {
+        "name": "Demirdöven Mehtap",
+        "club": "TC Haiger",
+        "dtbId": "28892052",
+        "lk": "16,2"
+      },
+      {
+        "name": "Gyurcsi Lili",
+        "club": "SC Holweide",
+        "dtbId": "29708855",
+        "lk": "16,2"
+      },
+      {
+        "name": "Heide Miriam",
+        "club": "TC Wilgersdorf",
+        "dtbId": "28801140",
+        "lk": "15,3"
+      },
+      {
+        "name": "Lübke Bettina",
+        "club": "TuS Unglinghausen TA",
+        "dtbId": "29350692",
+        "lk": "13,5"
+      },
+      {
+        "name": "Panning- Dornseifer Nicole",
+        "club": "TC Buschhütten",
+        "dtbId": "27700206",
+        "lk": "13,2"
+      },
+      {
+        "name": "Schumacher-Markowski Claudia",
+        "club": "TC Wilgersdorf",
+        "dtbId": "28300858",
+        "lk": "16,8"
+      },
+      {
+        "name": "Tempel Carolin",
+        "club": "TC Wilgersdorf",
+        "dtbId": "28451486",
+        "lk": "15,8"
       }
     ]
   },
