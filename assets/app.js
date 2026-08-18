@@ -186,14 +186,7 @@ resultHtml = `<div class="bracket-score">${escapeHtml(formatScore(m.score || '')
 } else {
 resultHtml = '<div class="bracket-pending">Noch offen</div>';
 }
-  // Ergebnisse, die nur aus den nuLiga-Live-Daten stammen (tennis.de hat
-  // dieses Spiel noch nicht selbst als abgeschlossen vermerkt, siehe
-  // scripts/merge-nuliga-schedule.js, mergeResults()) werden zusaetzlich
-  // markiert, damit klar ist: der Stand kann sich noch aendern, sobald
-  // tennis.de nachzieht.
-  const vorlaeufigHtml = (m.played && m.vorlaeufig)
-  ? '<div class="bracket-vorlaeufig">Quelle: nuLiga – tennis.de-Bestätigung folgt</div>'
-    : '';
+const vorlaeufigHtml = '';
 return `
 <div class="bracket-box">
 <div class="bracket-player${p1Wins ? ' winner' : ''}">${playerHtml(m.player1)}</div>
