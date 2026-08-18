@@ -1,15 +1,15 @@
 name: nuLiga Live-Daten aktualisieren
 
 # Nur fuer die Live-Anzeige (live-display.html) - laeuft alle 5 Minuten,
-# aber nur taeglich von 7 bis 18 Uhr deutscher Zeit (MESZ, UTC+2), waehrend
+# aber nur taeglich von 7 bis 22 Uhr deutscher Zeit (MESZ, UTC+2), waehrend
 # auf der Anlage gespielt wird. Die Hauptseite (index.html: Spielplan/
 # Ergebnisse/Turnierbaum) nutzt weiterhin ausschliesslich tennis.de ueber
 # den unveraenderten 30-Minuten-Cron in update-data.yml - dieser Workflow
 # ruehrt schedule.json/results.json/entrants.json nicht an.
 on:
   schedule:
-    - cron: '*/5 5-15 * * *'
-    - cron: '0 16 * * *'
+        - cron: '*/5 5-19 * * *'
+        - cron: '0 20 * * *'
   workflow_dispatch:
 
 permissions:
