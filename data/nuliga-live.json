@@ -46,7 +46,7 @@
     "player2": "Nies, Tim",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 16:30 Uhr",
+    "time": "20.08.2026 18:00 Uhr",
     "court": "Platz 2"
   },
   {
@@ -64,16 +64,6 @@
     "round": "Viertelfinale",
     "player1": "Ebener, Frederik",
     "player2": "Ballion, Silas",
-    "winner": null,
-    "score": null,
-    "time": "18.08.2026 18:00 Uhr",
-    "court": "Platz 1"
-  },
-  {
-    "competition": "Herren Einzel LK1,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Wedding, Robin",
-    "player2": "Menn, Jan Steffen",
     "winner": null,
     "score": null,
     "time": "19.08.2026 18:00 Uhr",
@@ -332,7 +322,7 @@
   {
     "competition": "Damen Einzel LK10,0-25,0",
     "round": "Finale",
-    "player1": null,
+    "player1": "Hoffmann, Nicole / Voth, Eva",
     "player2": null,
     "winner": null,
     "score": null,
@@ -342,7 +332,7 @@
   {
     "competition": "Damen Einzel LK10,0-25,0",
     "round": "Finale",
-    "player1": null,
+    "player1": "Hoffmann, Nicole / Voth, Eva",
     "player2": null,
     "winner": null,
     "score": null,
@@ -352,12 +342,12 @@
   {
     "competition": "Damen Einzel LK10,0-25,0",
     "round": "Halbfinale",
-    "player1": "Panning- Dornseifer, Nicole / Hoffmann, Nicole",
+    "player1": "Hoffmann, Nicole",
     "player2": "Voth, Eva",
     "winner": null,
     "score": null,
     "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 2"
+    "court": "Platz 1"
   },
   {
     "competition": "Damen Einzel LK10,0-25,0",
@@ -366,7 +356,17 @@
     "player2": "Backaus, Hedda Lotta",
     "winner": null,
     "score": null,
-    "time": "20.08.2026 18:00 Uhr",
+    "time": "20.08.2026 16:30 Uhr",
+    "court": "Platz 4"
+  },
+  {
+    "competition": "Damen Einzel LK10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Panning- Dornseifer, Nicole",
+    "player2": "Hoffmann, Nicole",
+    "winner": "Hoffmann, Nicole",
+    "score": "6:3 3:6 10:4",
+    "time": "18.08.2026 18:00 Uhr",
     "court": "Platz 2"
   },
   {
@@ -502,7 +502,7 @@
   {
     "competition": "Herren 60 Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": null,
+    "player1": "Rothe, Michael / Becker, Henning",
     "player2": "Simon, Reinhard / Schwarz, Volker",
     "winner": null,
     "score": null,
@@ -512,7 +512,7 @@
   {
     "competition": "Herren 60 Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": null,
+    "player1": "Rothe, Michael / Becker, Henning",
     "player2": "Simon, Reinhard / Schwarz, Volker",
     "winner": null,
     "score": null,
@@ -522,7 +522,7 @@
   {
     "competition": "Herren 60 Einzel LK1,0-25,0",
     "round": "Halbfinale",
-    "player1": "Rothe, Michael / Feldmann, Jürgen",
+    "player1": "Rothe, Michael",
     "player2": "Becker, Henning",
     "winner": null,
     "score": null,
@@ -534,8 +534,8 @@
     "round": "Viertelfinale",
     "player1": "Rothe, Michael",
     "player2": "Feldmann, Jürgen",
-    "winner": null,
-    "score": null,
+    "winner": "Rothe, Michael",
+    "score": "6:3 6:1",
     "time": "18.08.2026 15:30 Uhr",
     "court": "Platz 3"
   },
@@ -586,8 +586,8 @@
     "player2": "Hussing, Frank",
     "winner": null,
     "score": null,
-    "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 1"
+    "time": "21.08.2026 18:00 Uhr",
+    "court": "Platz 3"
   },
   {
     "competition": "Herren 50 Einzel LK1,0-25,0",
@@ -606,8 +606,8 @@
     "player2": "Pavicic, Peter",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 18:00 Uhr",
-    "court": "Platz 2"
+    "time": "20.08.2026 15:00 Uhr",
+    "court": "Platz 4"
   },
   {
     "competition": "Herren 50 Einzel LK1,0-25,0",
@@ -683,7 +683,7 @@
     "competition": "Herren 40 Einzel LK1,0-25,0",
     "round": "Finale",
     "player1": "Müller, Stefan / Borodin, Eugen",
-    "player2": null,
+    "player2": "Weber, Holger / Wroben, Thorsten",
     "winner": null,
     "score": null,
     "time": "22.08.2026 12:00 Uhr",
@@ -693,7 +693,7 @@
     "competition": "Herren 40 Einzel LK1,0-25,0",
     "round": "Finale",
     "player1": "Müller, Stefan / Borodin, Eugen",
-    "player2": null,
+    "player2": "Weber, Holger / Wroben, Thorsten",
     "winner": null,
     "score": null,
     "time": "22.08.2026 13:30 Uhr",
@@ -707,17 +707,17 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 18:00 Uhr",
-    "court": "Platz 3"
+    "court": "Platz 4"
   },
   {
     "competition": "Herren 40 Einzel LK1,0-25,0",
     "round": "Halbfinale",
     "player1": "Weber, Holger",
-    "player2": "Wroben, Thorsten / Schmidt, Carsten",
+    "player2": "Wroben, Thorsten",
     "winner": null,
     "score": null,
     "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 3"
+    "court": "Platz 2"
   },
   {
     "competition": "Herren 40 Einzel LK1,0-25,0",
@@ -744,8 +744,8 @@
     "round": "Viertelfinale",
     "player1": "Wroben, Thorsten",
     "player2": "Schmidt, Carsten",
-    "winner": null,
-    "score": null,
+    "winner": "Wroben, Thorsten",
+    "score": "6:1 6:1",
     "time": "18.08.2026 18:00 Uhr",
     "court": "Platz 4"
   },
@@ -788,26 +788,6 @@
     "score": null,
     "time": "22.08.2026 12:00 Uhr",
     "court": "Platz 1"
-  },
-  {
-    "competition": "Herren Einzel LK22,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Freudenstein, Manuel",
-    "player2": "Roth, Marvin / Schürbusch, Nico",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 4"
-  },
-  {
-    "competition": "Herren Einzel LK22,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Zöller, Robin / Scheuermann, Florian",
-    "player2": "Klein, Thilo / Büdenbender, Jens",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 18:00 Uhr",
-    "court": "Platz 4"
   },
   {
     "competition": "Herren Einzel LK22,0-25,0",
@@ -902,17 +882,7 @@
   {
     "competition": "Herren Einzel LK17,0-25,0",
     "round": "Halbfinale",
-    "player1": "Anders, Denis / Binsack, Jarno",
-    "player2": "Polzer, Timo / Gyurcsi, Robert Denes",
-    "winner": null,
-    "score": null,
-    "time": "21.08.2026 18:00 Uhr",
-    "court": "Platz 3"
-  },
-  {
-    "competition": "Herren Einzel LK17,0-25,0",
-    "round": "Halbfinale",
-    "player1": null,
+    "player1": "Schneider, Dominik / Baldus, Jonas",
     "player2": "Kamyab, Taymas / Hartmann, Nils",
     "winner": null,
     "score": null,
@@ -964,8 +934,8 @@
     "round": "Achtelfinale",
     "player1": "Schneider, Dominik",
     "player2": "Mai, Lennart",
-    "winner": null,
-    "score": null,
+    "winner": "Schneider, Dominik",
+    "score": "6:2 6:3",
     "time": "18.08.2026 17:00 Uhr",
     "court": "Platz 3"
   },
@@ -1032,7 +1002,7 @@
   {
     "competition": "Herren Einzel LK10,0-25,0",
     "round": "Halbfinale",
-    "player1": "Bahlmann, Niclas Hans / Kettner, Paul",
+    "player1": "Kettner, Paul",
     "player2": "Lotz, Mike / Koch, Colin",
     "winner": null,
     "score": null,
@@ -1054,8 +1024,8 @@
     "round": "Viertelfinale",
     "player1": "Bahlmann, Niclas Hans",
     "player2": "Kettner, Paul",
-    "winner": null,
-    "score": null,
+    "winner": "Kettner, Paul",
+    "score": "7:6 6:2",
     "time": "18.08.2026 15:00 Uhr",
     "court": "Platz 1"
   },
@@ -1130,6 +1100,16 @@
     "court": "Platz 3"
   },
   {
+    "competition": "Nebenrunde Damen Einzel",
+    "round": "Viertelfinale",
+    "player1": "Heide, Miriam",
+    "player2": "Gyurcsi, Lili",
+    "winner": null,
+    "score": null,
+    "time": "20.08.2026 16:30 Uhr",
+    "court": "Platz 3"
+  },
+  {
     "competition": "Nebenrunde Herren Einzel",
     "round": "Achtelfinale",
     "player1": "Schläger, Lorenz",
@@ -1146,8 +1126,8 @@
     "player2": "Rötzel, Johannes",
     "winner": null,
     "score": null,
-    "time": "18.08.2026 16:30 Uhr",
-    "court": "Platz 1"
+    "time": "20.08.2026 18:00 Uhr",
+    "court": "Platz 3"
   },
   {
     "competition": "Nebenrunde Herren Einzel",
