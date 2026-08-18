@@ -40,8 +40,14 @@
  * Scrape-Zeitpunkt (generatedAt, deutsche Ortszeit) - die Live-Anzeige
  * zeigt das getrennt vom Browser-Polling-Zeitpunkt als "Datenstand" an,
  * damit vor Ort erkennbar ist, ob die Daten wirklich frisch sind.
+ *
+ * nuLiga antwortet gelegentlich sehr langsam oder gar nicht (Timeout beim
+ * initialen page.goto) - vermutlich Last auf dem Server waehrend laufender
+ * Turniere. Ein einzelner Fehlschlag soll die Live-Anzeige nicht tagelang
+ * auf veralteten Daten sitzen lassen, deshalb versucht main() den kompletten
+ * Scrape-Vorgang bis zu MAX_ATTEMPTS mal (mit frischem Browser je Versuch)
+ * und wartet zwischen den Versuchen kurz, bevor der Job endgueltig fehlschlaegt.
  */
-
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
@@ -50,13 +56,19 @@ const TOURNAMENT_ID = process.env.TEST_TOURNAMENT_ID || '796221'; // 17. Wilgers
 const DATA_URL = `https://tende-apps.liga.nu/cgi-bin/WebObjects/nuTurnierTENDE.woa/ra/tournaments/${TOURNAMENT_ID}/`;
 const HOME_LOCATION_NAME = 'TC Wilgersdorf';
 const DATA_DIR = path.join(__dirname, '..', 'data');
+const MAX_ATTEMPTS = 3;
+const RETRY_DELAY_MS = 15000;
 
 function writeJSON(file, data) {
-    fs.writeFileSync(path.join(DATA_DIR, file), JSON.stringify(data, null, 2) + '\n');
+  fs.writeFileSync(path.join(DATA_DIR, file), JSON.stringify(data, null, 2) + '\n');
 }
 
 function pad(n) {
-    return String(n).padStart(2, '0');
+  return String(n).padStart(2, '0');
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 // nuLiga liefert Termine als ISO-Zeitstempel ohne Zeitzonen-Suffix (lokale
@@ -64,117 +76,117 @@ function pad(n) {
 // schedule.json/results.json angleichen, damit assets/live.js dieselbe
 // parseDeTime()-Regex unveraendert weiterverwenden kann.
 function formatDeDateTime(isoStr) {
-    if (!isoStr) return '';
-    const d = new Date(isoStr);
-    if (isNaN(d.getTime())) return '';
-    return `${pad(d.getDate())}.${pad(d.getMonth() + 1)}.${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())} Uhr`;
+  if (!isoStr) return '';
+  const d = new Date(isoStr);
+  if (isNaN(d.getTime())) return '';
+  return `${pad(d.getDate())}.${pad(d.getMonth() + 1)}.${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())} Uhr`;
 }
 
 // Aktueller Zeitpunkt (Server laeuft auf GitHub Actions in UTC) in echte
 // deutsche Ortszeit (MEZ/MESZ) umgerechnet - Intl.DateTimeFormat uebernimmt
 // hier die DST-Umrechnung, unabhaengig von der Zeitzone des Runners.
 function formatDeNow() {
-    const parts = new Intl.DateTimeFormat('de-DE', {
-        timeZone: 'Europe/Berlin',
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false,
-    }).formatToParts(new Date());
-    const map = {};
-    parts.forEach((p) => { map[p.type] = p.value; });
-    return `${map.day}.${map.month}.${map.year} ${map.hour}:${map.minute} Uhr`;
+  const parts = new Intl.DateTimeFormat('de-DE', {
+    timeZone: 'Europe/Berlin',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }).formatToParts(new Date());
+  const map = {};
+  parts.forEach((p) => { map[p.type] = p.value; });
+  return `${map.day}.${map.month}.${map.year} ${map.hour}:${map.minute} Uhr`;
 }
 
 // nuLiga-Rundennamen kommen als interne Kurzformen ("½ F", "¼ F", "⅛ F",
 // "1 .R", "Finale", "3. Pl.") - auf die im Rest der Seite genutzten
 // deutschen Bezeichnungen abbilden.
 function normalizeRoundName(raw) {
-    const s = (raw || '').trim();
-    if (/3\.\s*Pl/.test(s)) return 'Spiel um Platz 3';
-    if (/½/.test(s)) return 'Halbfinale';
-    if (/¼/.test(s)) return 'Viertelfinale';
-    if (/⅛/.test(s)) return 'Achtelfinale';
-    if (/1\/16|Sechzehntel/.test(s)) return 'Sechzehntelfinale';
-    if (/Finale/.test(s)) return 'Finale';
-    const rMatch = s.match(/^(\d+)\s*\.?\s*R/);
-    if (rMatch) return `${rMatch[1]}. Runde`;
-    return s.replace(/^"/, '').trim() || raw || '';
+  const s = (raw || '').trim();
+  if (/3\.\s*Pl/.test(s)) return 'Spiel um Platz 3';
+  if (/½/.test(s)) return 'Halbfinale';
+  if (/¼/.test(s)) return 'Viertelfinale';
+  if (/⅛/.test(s)) return 'Achtelfinale';
+  if (/1\/16|Sechzehntel/.test(s)) return 'Sechzehntelfinale';
+  if (/Finale/.test(s)) return 'Finale';
+  const rMatch = s.match(/^(\d+)\s*\.?\s*R/);
+  if (rMatch) return `${rMatch[1]}. Runde`;
+  return s.replace(/^"/, '').trim() || raw || '';
 }
 
 function formatPlayerName(person) {
-    if (!person) return null;
-    const last = (person.lastname || '').trim();
-    const first = (person.firstname || '').trim();
-    if (!last && !first) return null;
-    return first ? `${last}, ${first}` : last;
+  if (!person) return null;
+  const last = (person.lastname || '').trim();
+  const first = (person.firstname || '').trim();
+  if (!last && !first) return null;
+  return first ? `${last}, ${first}` : last;
 }
 
 // playersA/playersB sind Arrays (Einzel: 1 Eintrag, Doppel: 2) - Platzhalter
 // (noch nicht ausgespielte Paarungen, "player: null") liefern hier bewusst
 // null statt eines erfundenen Namens.
 function playerLabel(playersSide) {
-    if (!playersSide || !playersSide.length) return null;
-    const names = playersSide
-      .map((p) => (p && p.player ? formatPlayerName(p.player.person1) : null))
-      .filter(Boolean);
-    return names.length ? names.join(' / ') : null;
+  if (!playersSide || !playersSide.length) return null;
+  const names = playersSide
+    .map((p) => (p && p.player ? formatPlayerName(p.player.person1) : null))
+    .filter(Boolean);
+  return names.length ? names.join(' / ') : null;
 }
 
 // Loggt sich bei nuLiga (tende-id.liga.nu, OAuth2) ein, falls DATA_URL ohne
 // gueltige Session aufgerufen wird, und liefert das geparste JSON-Objekt der
 // Turnierdaten zurueck.
 async function loginAndFetch(page) {
-    const username = process.env.NULIGA_USERNAME;
-    const password = process.env.NULIGA_PASSWORD;
+  const username = process.env.NULIGA_USERNAME;
+  const password = process.env.NULIGA_PASSWORD;
 
   await page.goto(DATA_URL, { waitUntil: 'domcontentloaded', timeout: 120000 });
 
   if (/tende-id\.liga\.nu/.test(page.url())) {
-        console.log('nuLiga verlangt Login - melde mich an...');
-        if (!username || !password) {
-                throw new Error('nuLiga-Login erforderlich, aber NULIGA_USERNAME/NULIGA_PASSWORD nicht gesetzt.');
-        }
-        const userInput = page.locator('input[type="text"], input[type="email"]').first();
-        const passInput = page.locator('input[type="password"]').first();
-        await userInput.waitFor({ timeout: 15000 });
-        await userInput.fill(username);
-        await passInput.waitFor({ timeout: 15000 });
-        await passInput.fill(password);
-        const submitBtn = page.getByRole('button', { name: /login|anmelden/i }).first();
-        if (await submitBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
-                await submitBtn.click({ timeout: 5000 });
-        } else {
-                await passInput.press('Enter');
-        }
-        // Der OAuth2-Redirect nach dem Login landet auf .../wa/login?code=...,
-      // NICHT automatisch wieder auf DATA_URL - deshalb die JSON-Schnittstelle
-      // danach explizit erneut aufrufen (jetzt mit gueltiger Session).
-      await page.waitForURL((u) => /tende-apps\.liga\.nu/.test(u.toString()), { timeout: 20000 }).catch(() => {});
-        await page.waitForTimeout(1500);
-        await page.goto(DATA_URL, { waitUntil: 'domcontentloaded', timeout: 120000 });
+    console.log('nuLiga verlangt Login - melde mich an...');
+    if (!username || !password) {
+      throw new Error('nuLiga-Login erforderlich, aber NULIGA_USERNAME/NULIGA_PASSWORD nicht gesetzt.');
+    }
+    const userInput = page.locator('input[type="text"], input[type="email"]').first();
+    const passInput = page.locator('input[type="password"]').first();
+    await userInput.waitFor({ timeout: 15000 });
+    await userInput.fill(username);
+    await passInput.waitFor({ timeout: 15000 });
+    await passInput.fill(password);
+    const submitBtn = page.getByRole('button', { name: /login|anmelden/i }).first();
+    if (await submitBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+      await submitBtn.click({ timeout: 5000 });
+    } else {
+      await passInput.press('Enter');
+    }
+    // Der OAuth2-Redirect nach dem Login landet auf .../wa/login?code=...,
+    // NICHT automatisch wieder auf DATA_URL - deshalb die JSON-Schnittstelle
+    // danach explizit erneut aufrufen (jetzt mit gueltiger Session).
+    await page.waitForURL((u) => /tende-apps\.liga\.nu/.test(u.toString()), { timeout: 20000 }).catch(() => {});
+    await page.waitForTimeout(1500);
+    await page.goto(DATA_URL, { waitUntil: 'domcontentloaded', timeout: 120000 });
   }
 
   const bodyText = await page.locator('body').innerText();
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+  try {
+    const data = JSON.parse(bodyText);
+    return data;
+  } catch (e) {
+    fs.writeFileSync(path.join(DATA_DIR, 'nuliga-debug.txt'), bodyText);
     try {
-          const data = JSON.parse(bodyText);
-          return data;
-    } catch (e) {
-          fs.writeFileSync(path.join(DATA_DIR, 'nuliga-debug.txt'), bodyText);
-          try {
-                  await page.screenshot({ path: path.join(DATA_DIR, 'nuliga-debug.png'), fullPage: true });
-          } catch (e2) {
-                  // Diagnose ist best-effort - ein Fehlschlag hier soll den eigentlichen
-            // Fehler nicht verdecken.
-          }
-          throw new Error(
-                  'Antwort von nuLiga war kein JSON - vermutlich Login fehlgeschlagen. Siehe data/nuliga-debug.txt/.png. Auszug: ' +
-                    bodyText.slice(0, 300)
-                );
+      await page.screenshot({ path: path.join(DATA_DIR, 'nuliga-debug.png'), fullPage: true });
+    } catch (e2) {
+      // Diagnose ist best-effort - ein Fehlschlag hier soll den eigentlichen
+      // Fehler nicht verdecken.
     }
+    throw new Error(
+      'Antwort von nuLiga war kein JSON - vermutlich Login fehlgeschlagen. Siehe data/nuliga-debug.txt/.png. Auszug: ' +
+      bodyText.slice(0, 300)
+    );
+  }
 }
 
 // Baut aus dem rohen nuLiga-Turnierobjekt (Felder: matches, courts, groups,
@@ -182,72 +194,99 @@ async function loginAndFetch(page) {
 // results.json (competition, round, player1, player2, winner, score, time,
 // court), gefiltert auf Heimspiele am TC Wilgersdorf.
 function buildRecords(data) {
-    const courtsById = new Map();
-    (data.courts || []).forEach((c) => courtsById.set(c.id, c));
-    const locationsById = new Map();
-    (data.locations || []).forEach((l) => locationsById.set(l.id, l));
-    const groupsById = new Map();
-    (data.groups || []).forEach((g) => groupsById.set(g.groupId, g));
-    const roundNameByRoundId = new Map();
-    (data.groups || []).forEach((g) => {
-          (g.rounds || []).forEach((r) => roundNameByRoundId.set(r.roundId, r.name));
-    });
+  const courtsById = new Map();
+  (data.courts || []).forEach((c) => courtsById.set(c.id, c));
+  const locationsById = new Map();
+  (data.locations || []).forEach((l) => locationsById.set(l.id, l));
+  const groupsById = new Map();
+  (data.groups || []).forEach((g) => groupsById.set(g.groupId, g));
+  const roundNameByRoundId = new Map();
+  (data.groups || []).forEach((g) => {
+    (g.rounds || []).forEach((r) => roundNameByRoundId.set(r.roundId, r.name));
+  });
 
   const records = [];
-    for (const m of data.matches || []) {
-          const court = m.court && courtsById.get(m.court.id);
-          if (!court) continue;
-          const location = court.tournamentLocation && locationsById.get(court.tournamentLocation.id);
-          if (!location || !location.name || location.name.indexOf(HOME_LOCATION_NAME) === -1) continue;
+  for (const m of data.matches || []) {
+    const court = m.court && courtsById.get(m.court.id);
+    if (!court) continue;
+    const location = court.tournamentLocation && locationsById.get(court.tournamentLocation.id);
+    if (!location || !location.name || location.name.indexOf(HOME_LOCATION_NAME) === -1) continue;
 
-      const roundId = m.round && m.round.roundId;
-          // roundId hat das Format "<groupId-Teil1>-<groupId-Teil2>-<Rundenindex>",
-      // z.B. "1680627-0-2" - die ersten zwei Teile ergeben die groupId
-      // ("1680627-0"), ueber die Konkurrenzname und Rundenname nachgeschlagen
-      // werden.
-      const groupId = roundId ? roundId.split('-').slice(0, 2).join('-') : null;
-          const group = groupId ? groupsById.get(groupId) : null;
-          const competition = group ? (group.name || '').trim() : '';
-          const round = normalizeRoundName(roundId ? roundNameByRoundId.get(roundId) : '');
+    const roundId = m.round && m.round.roundId;
+    // roundId hat das Format "<groupId-Teil1>-<groupId-Teil2>-<Rundenindex>",
+    // z.B. "1680627-0-2" - die ersten zwei Teile ergeben die groupId
+    // ("1680627-0"), ueber die Konkurrenzname und Rundenname nachgeschlagen
+    // werden.
+    const groupId = roundId ? roundId.split('-').slice(0, 2).join('-') : null;
+    const group = groupId ? groupsById.get(groupId) : null;
+    const competition = group ? (group.name || '').trim() : '';
+    const round = normalizeRoundName(roundId ? roundNameByRoundId.get(roundId) : '');
 
-      const player1 = playerLabel(m.playersA);
-          const player2 = playerLabel(m.playersB);
-          const isFinished = !!m.isFinished;
-          let winner = null;
-          if (isFinished) {
-                  if (m.matchWinner === 1) winner = player1;
-                  else if (m.matchWinner === 2) winner = player2;
-          }
-
-      records.push({
-              competition,
-              round,
-              player1,
-              player2,
-              winner,
-              score: isFinished && m.result ? m.result : null,
-              time: formatDeDateTime(m.scheduled),
-              court: court.courtName,
-      });
+    const player1 = playerLabel(m.playersA);
+    const player2 = playerLabel(m.playersB);
+    const isFinished = !!m.isFinished;
+    let winner = null;
+    if (isFinished) {
+      if (m.matchWinner === 1) winner = player1;
+      else if (m.matchWinner === 2) winner = player2;
     }
-    return records;
+
+    records.push({
+      competition,
+      round,
+      player1,
+      player2,
+      winner,
+      score: isFinished && m.result ? m.result : null,
+      time: formatDeDateTime(m.scheduled),
+      court: court.courtName,
+    });
+  }
+  return records;
+}
+
+// Fuehrt einen kompletten Scrape-Versuch mit frischem Browser durch. Ein
+// eigener Browser pro Versuch stellt sicher, dass ein Timeout/Absturz aus
+// einem vorherigen Versuch keinen Einfluss auf den naechsten hat.
+async function scrapeOnce() {
+  const browser = await chromium.launch();
+  try {
+    const page = await browser.newPage({ locale: 'de-DE' });
+    console.log('Öffne', DATA_URL);
+    const data = await loginAndFetch(page);
+    return buildRecords(data);
+  } finally {
+    await browser.close();
+  }
 }
 
 async function main() {
-    const browser = await chromium.launch();
-    const page = await browser.newPage({ locale: 'de-DE' });
+  let records = null;
+  let lastErr = null;
 
-  console.log('Öffne', DATA_URL);
-    const data = await loginAndFetch(page);
-    const records = buildRecords(data);
-    writeJSON('nuliga-live.json', records);
-    writeJSON('nuliga-live-meta.json', { generatedAt: formatDeNow() });
-    console.log(`Fertig: ${records.length} Heimspiele aus nuLiga geschrieben.`);
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    try {
+      records = await scrapeOnce();
+      lastErr = null;
+      break;
+    } catch (err) {
+      lastErr = err;
+      console.error(`Versuch ${attempt}/${MAX_ATTEMPTS} fehlgeschlagen: ${err.message}`);
+      if (attempt < MAX_ATTEMPTS) {
+        console.log(`Warte ${RETRY_DELAY_MS / 1000}s vor erneutem Versuch...`);
+        await sleep(RETRY_DELAY_MS);
+      }
+    }
+  }
 
-  await browser.close();
+  if (lastErr) throw lastErr;
+
+  writeJSON('nuliga-live.json', records);
+  writeJSON('nuliga-live-meta.json', { generatedAt: formatDeNow() });
+  console.log(`Fertig: ${records.length} Heimspiele aus nuLiga geschrieben.`);
 }
 
 main().catch((err) => {
-    console.error(err);
-    process.exit(1);
+  console.error(err);
+  process.exit(1);
 });
