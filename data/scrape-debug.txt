@@ -1,32 +1,38 @@
-tennis.de Menu
-Schließen
 tennis.de
 mypadel.de
 DTB
 Landesverbände
 Weitere Plattformen
+Willkommen Bastian!
 Willkommen bei tennis.de
 Suche
+Mein Court
+Mein Spielerprofil
+Meine Favoriten
+Meine Anmeldungen
+Meine Abonnements
+Kontoeinstellungen
+wird in einer neuen Registerkarte geöffnet
+Logout
 Suche nach:
 Spieler
 Turniere
 Mannschaften
 Ligen
 Veranstaltungen
-Schließen
-Melde dich an
 News
 Spielen
+Spielen
+Schließen
 Spielbetrieb
-Übersicht
 Spielersuche
 Turniersuche
 Ligensuche
 Mannschaftssuche
 Vereinsspielplan
 Ergebniserfassung
+Untermenü erweitern
 Ranglisten und Leistungsklasse
-Übersicht
 Interaktive DTB-Rangliste
 DTB-Ranglisten Aktive
 DTB-Ranglisten Junior:innen
@@ -35,47 +41,51 @@ LK Single-Race
 LK Club-Race
 Leistungsklasse
 Lizenz für Ranglisten- und LK-Spieler
+Untermenü erweitern
 Weitere Sportarten
-Übersicht
 Beach Tennis
 Padel
 Pickleball
+Untermenü erweitern
 Inklusion
-Übersicht
 Blinden- und Sehbehindertentennis
 Rollstuhltennis
 Para-Tennis Terminkalender
+Untermenü erweitern
 Lernen
+Lernen
+Schließen
 Veranstaltungssuche
 Grundlagen
-Übersicht
 Tennis spielen lernen: So gelingt dein Einstieg
 Regeln und Punkte
 Ausrüstung
 Tennisbeläge und Plätze
+Untermenü erweitern
 Trainingsangebote
-Übersicht
 Kindertennis
 Tennis für Einsteiger 18+
 Tennis für Menschen mit Beeinträchtigung
+Untermenü erweitern
 Trainingstipps von Profis
-Übersicht
 Game ready! - Das DTB Warm-up-Programm
 Lernen mit DTB-Bundestrainer Athletik Cameron Scullard: So wirst du fit für die Sandplatzsaison
 Lernen mit Dr. Joerg Pfuhl: 5 Tipps, um erfolgreich Tennis im Seniorenalter zu lernen
 Dr. Moritz Anderten: 5 Sport-Psychologische Tipps für jede(n) Tennisspieler:in
 Lernen mit Mentaltrainer Dr. Christian Spreckels: 5 Tipps für mehr Leichtigkeit im Spiel
+Untermenü erweitern
 Internationaler DTB Tenniskongress
 Mitfiebern
+Mitfiebern
+Schließen
 Tennis live verfolgen
-Übersicht
 Livestreams
 Livescores unserer deutschen Spieler:innen
 Livescores der Tennis-Bundesliga
 Highlights der ATP & WTA-Tour
 Tennis im TV, Stream und Podcast
+Untermenü erweitern
 National
-Übersicht
 1. Tennis-Bundesliga Herren
 1. Tennis-Bundesliga Damen
 weitere Tennis-Bundesligen
@@ -83,33 +93,620 @@ Regionalliga
 Deutsche Meisterschaften
 DTB Premium Tour
 Race der DTB Internationals und DTB Premium Tour
+Untermenü erweitern
 International
-Übersicht
 Davis Cup
 Billie Jean King Cup
 ATP / WTA Tour
 DTB Internationals
 ITF Seniorenturniere
 ITF German Open Wheelchair Tennis
+Untermenü erweitern
 Tennis Fanclub Germany
 Profitieren
+Profitieren
+Schließen
 tennis.de Abonnements
 tennis.de Vorteile und Funktionen
 Gutscheine & Rabatte
 Partnerübersicht
 Service
+Service
+Schließen
 Helpcenter
 Widgets für Vereine
-Übersicht
 News-Widget für Vereine
 Mannschaftswidget für Vereine
 LK-Race-Widget für Vereine
+Untermenü erweitern
 Marktplatz
 Jobbörse
 Wissenswertes & Beratung
 Tennis live
-tennis.de
-mypadel.de
-DTB
+wird in einer neuen Registerkarte geöffnet
+Shop
+Sucher
+Vorschläge
 Landesverbände
+Übersicht
+Schließen
+Badischer Tennisverband
+BAD
+Bayerischer Tennis-Verband
+BTV
+Hamburger Tennisverband
+HAM
+Hessischer Tennis-Verband
+HTV
+Tennisverband Rheinland-Pfalz
+RPF
+Tennisverband Schleswig-Holstein
+SLH
+Saarländischer Tennisbund
+STB
+Sächsischer Tennis Verband
+STV
+Tennisverband Mecklenburg-Vorpommern
+TMV
+Tennisverband Niedersachsen-Bremen
+TNB
+Tennisverband Sachsen-Anhalt
+TSA
+Thüringer Tennis-Verband
+TTV
+Tennis-Verband Berlin-Brandenburg
+TVBB
+Tennisverband Mittelrhein
+TVM
+Tennis-Verband Niederrhein
+TVN
+Württembergischer Tennis-Bund
+WTB
+Westfälischer Tennis-Verband
+WTV
+ 
+17. Wilgersdorfer LK-Turnier um den markenbaumarkt24-Cup		
+Favorit
+Termin exportieren
+ 
+ Zurück zur Turniersuche
+ 
+ 
+ 
+Termin
+15.08.2026 - 22.08.2026
+ 
+ 
+ 
+Meldebeginn
+18.01.2026 00:00 Uhr
+ 
+ 
+ 
+Meldeschluss
+09.08.2026 23:59 Uhr
+ 
+ 
+ 
+Auslosung
+11.08.2026 18:00 Uhr
+ 
+ 
+ 
+Ausschreibung
+ Download
+ 
+ 
+ 
+Status
+ 
+ 
+ 
+ 
+ 
+ 
+Jetzt zum Turnier anmelden!
+ 
+Konkurrenzen
+Konkurrenzen
+offen für
+Nenngeld
+Listen
+Ergebnisse
+Herren Einzel
+KO
+LK 1,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Hauptfeld
+
+
+Herren Einzel
+KO
+LK 10,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Hauptfeld
+
+
+Herren Einzel
+KO
+LK 17,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Hauptfeld
+
+
+Herren Einzel
+KO
+LK 22,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Hauptfeld
+
+
+	
+	
+Deutschland
+	
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Nebenrunde
+
+
+	
+	
+Deutschland
+	
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Nebenrunde
+
+
+	
+	
+Deutschland
+	
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Nebenrunde
+
+
+	
+	
+Deutschland
+	
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Nebenrunde
+
+
+Herren 40 Einzel
+KO
+LK 1,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Hauptfeld
+
+
+Herren 40 Einzel
+KO
+LK 20,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+	
+
+
+Herren 50 Einzel
+KO
+LK 1,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Hauptfeld
+
+
+Herren 50 Einzel
+KO
+LK 20,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+	
+
+
+	
+	
+Deutschland
+	
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Nebenrunde
+
+
+Herren 60 Einzel
+KO
+LK 1,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Hauptfeld
+
+
+Herren 60 Einzel
+KO
+LK 20,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+	
+
+
+Herren 70 Einzel
+KO
+LK 1,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Hauptfeld
+
+
+Herren 70 Einzel
+KO
+LK 20,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+	
+
+
+Damen Einzel
+KO
+LK 1,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+	
+
+
+Damen Einzel
+KO
+LK 10,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Hauptfeld
+
+
+Damen Einzel
+KO
+LK 17,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Hauptfeld
+
+
+Damen Einzel
+KO
+LK 22,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Hauptfeld
+
+
+	
+	
+Deutschland
+	
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Nebenrunde
+
+
+	
+	
+Deutschland
+	
+	
+Meldeliste
+Zulassungsliste
+Termine
+	
+Nebenrunde
+
+
+Damen 40 Einzel
+KO
+LK 1,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+	
+
+
+Damen 40 Einzel
+KO
+LK 20,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+	
+
+
+Damen 50 Einzel
+KO
+LK 1,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+	
+
+
+Damen 50 Einzel
+KO
+LK 20,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+	
+
+
+Damen 60 Einzel
+KO
+LK 1,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+	
+
+
+Damen 60 Einzel
+KO
+LK 20,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+	
+
+
+Damen 70 Einzel
+KO
+LK 1,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+	
+
+
+Damen 70 Einzel
+KO
+LK 20,0-25,0
+	
+	
+Deutschland
+	
+25,00 € zzgl. 5 €
+	
+Meldeliste
+	
+
+
+ 
+Turnierinformationen
+ 
+Turnierdaten
+Veranstalter
+Platzanlagen
+Zahlungsmöglichkeiten
+Zulassungskriterien
+Zusatzinformationen
+Aktionen und Links
+ 
+ 
+Zurück zur Turniersuche
+ 
+ 
+Projektpartner "Spielen"
+wird in einer neuen Registerkarte geöffnet
+wird in einer neuen Registerkarte geöffnet
+wird in einer neuen Registerkarte geöffnet
+wird in einer neuen Registerkarte geöffnet
+wird in einer neuen Registerkarte geöffnet
+Strategische Partner
+wird in einer neuen Registerkarte geöffnet
+wird in einer neuen Registerkarte geöffnet
+wird in einer neuen Registerkarte geöffnet
+
+Kontaktiere uns
+wird in einer neuen Registerkarte geöffnet
+ bei allen Fragen rund um Tennis in Deutschland!
+
+Bleib am Ball!
+Jetzt zum Newsletter anmelden
+
+Social
+Instagram
+wird in einer neuen Registerkarte geöffnet
+Facebook
+wird in einer neuen Registerkarte geöffnet
+TikTok
+wird in einer neuen Registerkarte geöffnet
+Whatsapp
+wird in einer neuen Registerkarte geöffnet
 Weitere Plattformen
+webapp.tennis.de
+trainer.tennis.de
+wird in einer neuen Registerkarte geöffnet
+vereine.tennis.de
+wird in einer neuen Registerkarte geöffnet
+schiedsrichter.tennis.de
+wird in einer neuen Registerkarte geöffnet
+ 
+reisen.tennis.de
+wird in einer neuen Registerkarte geöffnet
+
+
+kinder.tennis.de
+wird in einer neuen Registerkarte geöffnet
+
+tennis.de © 2026
+
+Impressum
+Datenschutzerklärung
+Cookies
+AGB
+Rechtliche Hinweise
+Digital Services Act
+Barrierefreiheit
+Kontakt
