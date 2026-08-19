@@ -110,6 +110,16 @@
     "court": ""
   },
   {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Ebener, Frederik",
+    "player2": "Ballion, Silas",
+    "winner": "Ebener, Frederik",
+    "score": "6:3 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
     "competition": "Herren Einzel KO LK 10,0-25,0",
     "round": "Achtelfinale",
     "player1": "Bahlmann, Niclas Hans",
@@ -196,6 +206,26 @@
     "player2": "Kettner, Paul",
     "winner": "Kettner, Paul",
     "score": "7:6 6:2",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Lotz, Mike",
+    "player2": "Koch, Colin",
+    "winner": "Koch, Colin",
+    "score": "7:5 6:2",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Göckus, Maximilian",
+    "player2": "Solbach, Tim",
+    "winner": "Göckus, Maximilian",
+    "score": "6:4 6:7 11:9",
     "time": "",
     "court": ""
   },
@@ -878,6 +908,18 @@
     "score": "6:1 6:1",
     "time": "",
     "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Gross, Ingo",
+    "player2": "Schwedes, Nick Luca",
+    "winner": "Gross, Ingo",
+    "score": "6:0 6:2",
+    "time": "19.08.2026 18:00 Uhr",
+    "court": "Platz 1",
+    "source": "nuliga-live",
+    "vorlaeufig": true
   },
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
