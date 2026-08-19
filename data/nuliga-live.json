@@ -467,7 +467,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 15:00 Uhr",
-    "court": "Platz 1"
+    "court": "Platz 3"
   },
   {
     "competition": "Herren 70 Einzel LK1,0-25,0",
@@ -477,7 +477,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 15:00 Uhr",
-    "court": "Platz 2"
+    "court": "Platz 1"
   },
   {
     "competition": "Herren 70 Einzel LK1,0-25,0",
@@ -527,7 +527,7 @@
     "winner": null,
     "score": null,
     "time": "19.08.2026 15:00 Uhr",
-    "court": "Platz 3"
+    "court": "Platz 2"
   },
   {
     "competition": "Herren 60 Einzel LK1,0-25,0",
@@ -597,7 +597,7 @@
     "winner": null,
     "score": null,
     "time": "19.08.2026 18:00 Uhr",
-    "court": "Platz 3"
+    "court": "Platz 2"
   },
   {
     "competition": "Herren 50 Einzel LK1,0-25,0",
@@ -607,7 +607,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 15:00 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 2"
   },
   {
     "competition": "Herren 50 Einzel LK1,0-25,0",
@@ -1027,7 +1027,7 @@
     "winner": null,
     "score": null,
     "time": "19.08.2026 18:00 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 3"
   },
   {
     "competition": "Herren Einzel LK10,0-25,0",
@@ -1037,7 +1037,7 @@
     "winner": null,
     "score": null,
     "time": "19.08.2026 18:00 Uhr",
-    "court": "Platz 2"
+    "court": "Platz 4"
   },
   {
     "competition": "Herren Einzel LK10,0-25,0",
@@ -1137,6 +1137,6 @@
     "winner": null,
     "score": null,
     "time": "19.08.2026 15:00 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 1"
   }
 ]
