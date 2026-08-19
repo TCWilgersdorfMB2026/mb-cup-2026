@@ -350,6 +350,33 @@ margin-bottom: 10px;
   .results-view-toggle { display: none; }
 }
 
+/* Aeusserer Wrapper um den scrollbaren Turnierbaum: position:relative als
+   Bezugsrahmen fuer die beiden Scroll-Pfeil-Buttons, die oben links/rechts
+   fest ueber dem Baum "schweben" (bleiben beim horizontalen Scrollen an
+   Ort und Stelle, da sie NICHT Teil von .bt-scroll sind). */
+.bt-wrap { position: relative; }
+.bt-scroll-btn {
+  position: absolute;
+  top: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--navy);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  z-index: 5;
+}
+.bt-scroll-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+.bt-scroll-left { left: 0; }
+.bt-scroll-right { right: 0; }
+
 .bt-scroll {
   overflow-x: auto;
   padding-bottom: 8px;
