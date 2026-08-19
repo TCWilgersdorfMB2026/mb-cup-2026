@@ -272,16 +272,6 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Polzer, Timo",
-    "player2": "Gyurcsi, Robert Denes",
-    "winner": null,
-    "score": null,
-    "time": "19.08.2026 16:00 Uhr",
-    "court": "Platz 3"
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Viertelfinale",
     "player1": "Schneider, Dominik",
     "player2": "Baldus, Jonas",
     "winner": null,
@@ -917,17 +907,6 @@
     "score": null,
     "time": "20.08.2026 18:00 Uhr",
     "court": "Platz 3",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Nebenrunde Herren Einzel",
-    "round": "Halbfinale",
-    "player1": "Feldmann, Jonas Juttichai",
-    "player2": "Peters, Marvin",
-    "winner": null,
-    "score": null,
-    "time": "19.08.2026 15:00 Uhr",
-    "court": "Platz 1",
     "source": "nuliga-merge"
   }
 ]
