@@ -192,7 +192,7 @@
   {
     "competition": "Damen Einzel LK17,0-25,0",
     "round": "Halbfinale",
-    "player1": "Grau, Neela Marlen / Wiegel, Lea",
+    "player1": "Wiegel, Lea",
     "player2": "Palić, Nina / Anders, Xenia",
     "winner": null,
     "score": null,
@@ -214,8 +214,8 @@
     "round": "Viertelfinale",
     "player1": "Grau, Neela Marlen",
     "player2": "Wiegel, Lea",
-    "winner": null,
-    "score": null,
+    "winner": "Wiegel, Lea",
+    "score": "1:6 6:3 10:7",
     "time": "18.08.2026 16:30 Uhr",
     "court": "Platz 4"
   },
@@ -862,7 +862,7 @@
   {
     "competition": "Herren Einzel LK17,0-25,0",
     "round": "Finale",
-    "player1": null,
+    "player1": "Binsack, Jarno / Polzer, Timo",
     "player2": null,
     "winner": null,
     "score": null,
@@ -884,8 +884,8 @@
     "round": "Viertelfinale",
     "player1": "Anders, Denis",
     "player2": "Binsack, Jarno",
-    "winner": null,
-    "score": null,
+    "winner": "Binsack, Jarno",
+    "score": "2:6 6:4 10:1",
     "time": "19.08.2026 16:30 Uhr",
     "court": "Platz 2"
   },
@@ -1114,8 +1114,8 @@
     "round": "Achtelfinale",
     "player1": "Schläger, Lorenz",
     "player2": "Mayenschein, Dennis",
-    "winner": null,
-    "score": null,
+    "winner": "Mayenschein, Dennis",
+    "score": "6:3 6:2",
     "time": "19.08.2026 16:30 Uhr",
     "court": "Platz 4"
   },
