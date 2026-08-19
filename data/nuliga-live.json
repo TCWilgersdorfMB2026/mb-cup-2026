@@ -32,7 +32,7 @@
   {
     "competition": "Herren Einzel LK1,0-25,0",
     "round": "Halbfinale",
-    "player1": "Ebener, Frederik / Ballion, Silas",
+    "player1": "Ebener, Frederik",
     "player2": "Wedding, Robin / Menn, Jan Steffen",
     "winner": null,
     "score": null,
@@ -64,8 +64,8 @@
     "round": "Viertelfinale",
     "player1": "Ebener, Frederik",
     "player2": "Ballion, Silas",
-    "winner": null,
-    "score": null,
+    "winner": "Ebener, Frederik",
+    "score": "6:3 6:3",
     "time": "19.08.2026 16:30 Uhr",
     "court": "Platz 1"
   },
@@ -347,7 +347,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 1"
+    "court": "Platz 4"
   },
   {
     "competition": "Damen Einzel LK10,0-25,0",
@@ -357,7 +357,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 2"
   },
   {
     "competition": "Damen Einzel LK10,0-25,0",
@@ -707,7 +707,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 2"
+    "court": "Platz 1"
   },
   {
     "competition": "Herren 40 Einzel LK1,0-25,0",
