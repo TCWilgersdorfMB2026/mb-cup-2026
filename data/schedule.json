@@ -176,8 +176,8 @@
     "player2": "Koch, Colin",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:00 Uhr",
-    "court": "Platz 3"
+    "time": "21.08.2026 18:00 Uhr",
+    "court": "Platz 2"
   },
   {
     "competition": "Herren Einzel KO LK 10,0-25,0",
@@ -404,16 +404,6 @@
     "round": "Viertelfinale",
     "player1": "Laarmann, Mark",
     "player2": "Freudenstein, Manuel",
-    "winner": null,
-    "score": null,
-    "time": "21.08.2026 16:30 Uhr",
-    "court": "TC Wieland-Wilnsdorf, Platz 2"
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Roth, Marvin",
-    "player2": "Schürbusch, Nico",
     "winner": null,
     "score": null,
     "time": "21.08.2026 16:30 Uhr",
@@ -781,13 +771,13 @@
   },
   {
     "competition": "Damen Einzel KO LK 22,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Pfeifer, Jasmin",
+    "round": "Finale",
+    "player1": "Giebeler, Ina",
     "player2": "Fiedler, Julia",
     "winner": null,
     "score": null,
-    "time": "22.08.2026 09:00 Uhr",
-    "court": "Platz 4"
+    "time": "22.08.2026 12:00 Uhr",
+    "court": "Platz 2"
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -809,17 +799,6 @@
     "score": null,
     "time": "22.08.2026 09:00 Uhr",
     "court": "Platz 4",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Damen Einzel KO LK 22,0-25,0",
-    "round": "Finale",
-    "player1": "Giebeler, Ina",
-    "player2": "Fiedler, Julia",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 12:00 Uhr",
-    "court": "Platz 2",
     "source": "nuliga-merge"
   },
   {
