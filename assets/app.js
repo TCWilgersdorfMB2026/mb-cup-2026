@@ -364,11 +364,31 @@ function renderBracketTree(matches) {
   });
 
   return `
-    <div class="bt-scroll">
-      <div class="bt-grid" style="grid-template-columns:${colTemplate}; grid-template-rows:auto repeat(${totalSubrows}, minmax(34px, 1fr));">
-        ${cells}
+    <div class="bt-wrap">
+      <button type="button" class="bt-scroll-btn bt-scroll-left" aria-label="Turnierbaum nach links scrollen">&#8249;</button>
+      <button type="button" class="bt-scroll-btn bt-scroll-right" aria-label="Turnierbaum nach rechts scrollen">&#8250;</button>
+      <div class="bt-scroll">
+        <div class="bt-grid" style="grid-template-columns:${colTemplate}; grid-template-rows:auto repeat(${totalSubrows}, minmax(34px, 1fr));">
+          ${cells}
+        </div>
       </div>
     </div>`;
+}
+
+// Verdrahtet die Scroll-Pfeil-Buttons oben links/rechts am Turnierbaum: ein
+// Klick scrollt den Turnierbaum-Container (.bt-scroll) um ca. 80% seiner
+// sichtbaren Breite nach links/rechts, damit man auf Desktop nicht per
+// Trackpad/Scrollbalken durch viele Runden scrollen muss.
+function setupBracketScrollButtons(container) {
+  const wrap = container.querySelector('.bt-wrap');
+  if (!wrap) return;
+  const scrollEl = wrap.querySelector('.bt-scroll');
+  const leftBtn = wrap.querySelector('.bt-scroll-left');
+  const rightBtn = wrap.querySelector('.bt-scroll-right');
+  if (!scrollEl || !leftBtn || !rightBtn) return;
+  const amount = () => Math.max(240, scrollEl.clientWidth * 0.8);
+  leftBtn.addEventListener('click', () => scrollEl.scrollBy({ left: -amount(), behavior: 'smooth' }));
+  rightBtn.addEventListener('click', () => scrollEl.scrollBy({ left: amount(), behavior: 'smooth' }));
 }
 
 // Rendert die aktuell im Dropdown gewählte Konkurrenz: Turnierbaum, wenn
@@ -389,6 +409,7 @@ function renderCompetitionDetail() {
   if (matches.length) {
     if (viewToggle) viewToggle.hidden = false;
     el.innerHTML = state.resultsView === 'bracket' ? renderBracketTree(matches) : renderBracket(matches);
+    if (state.resultsView === 'bracket') setupBracketScrollButtons(el);
     return;
   }
   if (viewToggle) viewToggle.hidden = true;
