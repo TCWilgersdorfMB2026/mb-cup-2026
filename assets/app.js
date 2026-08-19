@@ -277,12 +277,27 @@ function renderBracketTree(matches) {
   // sind. So ist die gesamte Turnierbaum-Struktur von Anfang an sichtbar; die
   // noch offenen Felder werden erst nach und nach mit echten Paarungen befuellt,
   // sobald tennis.de sie veroeffentlicht.
-  const firstIdx = ROUND_ORDER.indexOf(roundsPresent[0]);
-  const finaleIdx = ROUND_ORDER.indexOf('Finale');
-  const roundsFull = firstIdx === -1 || finaleIdx === -1 ? roundsPresent : ROUND_ORDER.slice(firstIdx, finaleIdx + 1);
-
   const firstRoundCount = byRound.get(roundsPresent[0]).length;
   const totalSubrows = firstRoundCount * 2;
+
+  // Wie viele Runden braucht es von der ersten angezeigten Runde bis zum
+  // Finale? Das ergibt sich rein rechnerisch aus der Anzahl an Partien in
+  // dieser ersten Runde (inkl. Freilose) - NICHT aus der Position von
+  // roundsPresent[0] in ROUND_ORDER. Grund: tennis.de nennt die zuerst
+  // gespielte Runde einer Konkurrenz immer "Runde 1", unabhaengig davon, wie
+  // gross das Tableau tatsaechlich ist (ein 16er-Tableau startet also
+  // ebenfalls bei "Runde 1" und geht danach direkt zum "Achtelfinale" weiter -
+  // ganz ohne "Sechzehntelfinale" dazwischen). Ohne diese Korrektur wuerde bei
+  // kleineren Tableaus faelschlich eine zusaetzliche, nie eintretende
+  // Zwischenrunde eingefuegt, deren Kaestchen dauerhaft "Paarung / Termin /
+  // Spielort noch offen" zeigen wuerden - selbst wenn das Turnier in
+  // Wahrheit schon viel weiter ist.
+  const finaleIdx = ROUND_ORDER.indexOf('Finale');
+  const roundsNeeded = finaleIdx === -1 ? 1 : Math.round(Math.log2(firstRoundCount)) + 1;
+  const laterCount = Math.max(0, roundsNeeded - 1);
+  const roundsFull = finaleIdx === -1
+    ? roundsPresent
+    : [roundsPresent[0], ...ROUND_ORDER.slice(Math.max(0, finaleIdx - laterCount + 1), finaleIdx + 1).filter((r) => r !== roundsPresent[0])];
 
   const finaleMatches = byRound.get('Finale');
   const finaleDone = finaleMatches && finaleMatches.length === 1 && finaleMatches[0].winner;
