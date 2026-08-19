@@ -416,8 +416,8 @@
     "player2": "Schürbusch, Nico",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 2"
+    "time": "21.08.2026 16:30 Uhr",
+    "court": "TC Wieland-Wilnsdorf, Platz 2"
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -526,8 +526,8 @@
     "player2": "Germies, Bernd",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 1"
+    "time": "22.08.2026 10:30 Uhr",
+    "court": "Platz 4"
   },
   {
     "competition": "Herren 70 Einzel KO LK 1,0-25,0",
@@ -786,8 +786,8 @@
     "player2": "Fiedler, Julia",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 3"
+    "time": "22.08.2026 09:00 Uhr",
+    "court": "Platz 4"
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -798,6 +798,28 @@
     "score": null,
     "time": "21.08.2026 16:30 Uhr",
     "court": "Platz 4",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Finale",
+    "player1": "Herrmann Solbach, Sophia",
+    "player2": "Pfeifer, Jasmin",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 09:00 Uhr",
+    "court": "Platz 4",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Finale",
+    "player1": "Giebeler, Ina",
+    "player2": "Fiedler, Julia",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 12:00 Uhr",
+    "court": "Platz 2",
     "source": "nuliga-merge"
   },
   {
@@ -819,6 +841,28 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 15:00 Uhr",
+    "court": "Platz 1",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Finale",
+    "player1": "Becker, Henning",
+    "player2": "Simon, Reinhard",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 10:30 Uhr",
+    "court": "Platz 4",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Finale",
+    "player1": "Rothe, Michael",
+    "player2": "Schwarz, Volker",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 09:00 Uhr",
     "court": "Platz 1",
     "source": "nuliga-merge"
   },

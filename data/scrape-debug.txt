@@ -5,6 +5,14 @@ Landesverbände
 Weitere Plattformen
 Willkommen bei tennis.de
 Suche
+Mein Court
+Mein Spielerprofil
+Meine Favoriten
+Meine Anmeldungen
+Meine Abonnements
+Kontoeinstellungen
+wird in einer neuen Registerkarte geöffnet
+Logout
 Suche nach:
 Spieler
 Turniere
@@ -13,8 +21,6 @@ Ligen
 Veranstaltungen
 News
 Spielen
-Spielen
-Schließen
 Spielbetrieb
 Spielersuche
 Turniersuche
@@ -22,7 +28,6 @@ Ligensuche
 Mannschaftssuche
 Vereinsspielplan
 Ergebniserfassung
-Untermenü erweitern
 Ranglisten und Leistungsklasse
 Interaktive DTB-Rangliste
 DTB-Ranglisten Aktive
@@ -32,50 +37,39 @@ LK Single-Race
 LK Club-Race
 Leistungsklasse
 Lizenz für Ranglisten- und LK-Spieler
-Untermenü erweitern
 Weitere Sportarten
 Beach Tennis
 Padel
 Pickleball
-Untermenü erweitern
 Inklusion
 Blinden- und Sehbehindertentennis
 Rollstuhltennis
 Para-Tennis Terminkalender
-Untermenü erweitern
 Lernen
-Lernen
-Schließen
 Veranstaltungssuche
 Grundlagen
 Tennis spielen lernen: So gelingt dein Einstieg
 Regeln und Punkte
 Ausrüstung
 Tennisbeläge und Plätze
-Untermenü erweitern
 Trainingsangebote
 Kindertennis
 Tennis für Einsteiger 18+
 Tennis für Menschen mit Beeinträchtigung
-Untermenü erweitern
 Trainingstipps von Profis
 Game ready! - Das DTB Warm-up-Programm
 Lernen mit DTB-Bundestrainer Athletik Cameron Scullard: So wirst du fit für die Sandplatzsaison
 Lernen mit Dr. Joerg Pfuhl: 5 Tipps, um erfolgreich Tennis im Seniorenalter zu lernen
 Dr. Moritz Anderten: 5 Sport-Psychologische Tipps für jede(n) Tennisspieler:in
 Lernen mit Mentaltrainer Dr. Christian Spreckels: 5 Tipps für mehr Leichtigkeit im Spiel
-Untermenü erweitern
 Internationaler DTB Tenniskongress
 Mitfiebern
-Mitfiebern
-Schließen
 Tennis live verfolgen
 Livestreams
 Livescores unserer deutschen Spieler:innen
 Livescores der Tennis-Bundesliga
 Highlights der ATP & WTA-Tour
 Tennis im TV, Stream und Podcast
-Untermenü erweitern
 National
 1. Tennis-Bundesliga Herren
 1. Tennis-Bundesliga Damen
@@ -84,7 +78,6 @@ Regionalliga
 Deutsche Meisterschaften
 DTB Premium Tour
 Race der DTB Internationals und DTB Premium Tour
-Untermenü erweitern
 International
 Davis Cup
 Billie Jean King Cup
@@ -92,35 +85,25 @@ ATP / WTA Tour
 DTB Internationals
 ITF Seniorenturniere
 ITF German Open Wheelchair Tennis
-Untermenü erweitern
 Tennis Fanclub Germany
 Profitieren
-Profitieren
-Schließen
 tennis.de Abonnements
 tennis.de Vorteile und Funktionen
 Gutscheine & Rabatte
 Partnerübersicht
 Service
-Service
-Schließen
 Helpcenter
 Widgets für Vereine
 News-Widget für Vereine
 Mannschaftswidget für Vereine
 LK-Race-Widget für Vereine
-Untermenü erweitern
 Marktplatz
 Jobbörse
 Wissenswertes & Beratung
 Tennis live
 wird in einer neuen Registerkarte geöffnet
-Shop
 Sucher
 Vorschläge
-Landesverbände
-Übersicht
-Schließen
 Badischer Tennisverband
 BAD
 Bayerischer Tennis-Verband
@@ -155,6 +138,16 @@ Württembergischer Tennis-Bund
 WTB
 Westfälischer Tennis-Verband
 WTV
+Projektpartner "Spielen"
+wird in einer neuen Registerkarte geöffnet
+wird in einer neuen Registerkarte geöffnet
+wird in einer neuen Registerkarte geöffnet
+wird in einer neuen Registerkarte geöffnet
+wird in einer neuen Registerkarte geöffnet
+Strategische Partner
+wird in einer neuen Registerkarte geöffnet
+wird in einer neuen Registerkarte geöffnet
+wird in einer neuen Registerkarte geöffnet
 
 Kontaktiere uns
 wird in einer neuen Registerkarte geöffnet
