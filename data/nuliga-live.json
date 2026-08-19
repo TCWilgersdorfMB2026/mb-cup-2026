@@ -23,7 +23,7 @@
     "competition": "Herren Einzel LK1,0-25,0",
     "round": "Halbfinale",
     "player1": "Wagner, Matthias / Nies, Tim",
-    "player2": "Gross, Ingo / Schwedes, Nick Luca",
+    "player2": "Gross, Ingo",
     "winner": null,
     "score": null,
     "time": "21.08.2026 18:00 Uhr",
@@ -54,8 +54,8 @@
     "round": "Viertelfinale",
     "player1": "Gross, Ingo",
     "player2": "Schwedes, Nick Luca",
-    "winner": null,
-    "score": null,
+    "winner": "Gross, Ingo",
+    "score": "6:0 6:2",
     "time": "19.08.2026 18:00 Uhr",
     "court": "Platz 1"
   },
@@ -586,8 +586,8 @@
     "player2": "Schreiber, Oliver",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:00 Uhr",
-    "court": "Platz 2"
+    "time": "20.08.2026 18:00 Uhr",
+    "court": "Platz 1"
   },
   {
     "competition": "Herren 50 Einzel LK1,0-25,0",
@@ -992,7 +992,7 @@
   {
     "competition": "Herren Einzel LK10,0-25,0",
     "round": "Halbfinale",
-    "player1": "Göckus, Maximilian / Solbach, Tim",
+    "player1": "Göckus, Maximilian",
     "player2": "Türk, Michael / Henrichs, Lukas",
     "winner": null,
     "score": null,
