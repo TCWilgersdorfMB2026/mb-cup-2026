@@ -32,7 +32,7 @@ function readJson(p, fallback) {
 }
 
 function normName(s) {
-  return (s || '').trim().toLowerCase().replace(/s+/g, ' ');
+  return (s || '').trim().toLowerCase().replace(/\s+/g, ' ');
 }
 
 function pairKey(a, b) {
@@ -40,7 +40,7 @@ function pairKey(a, b) {
 }
 
 function normComp(s) {
-  return (s || '').replace(/KOs+/g, '').replace(/LKs+/g, 'LK').replace(/s+/g, ' ').trim();
+  return (s || '').replace(/\bKO\s+/g, '').replace(/LK\s+/g, 'LK').replace(/\s+/g, ' ').trim();
 }
 
 function buildCompetitionMap() {
@@ -144,8 +144,7 @@ function main() {
   const removedDupes = schedule.length - deduped.length;
 
   if (filled || added || removedDupes) {
-    fs.writeFileSync(SCHEDULE_PATH, JSON.stringify(deduped, null, 2) + '
-');
+    fs.writeFileSync(SCHEDULE_PATH, JSON.stringify(deduped, null, 2) + '\n');
     console.log(`nuLiga-Merge: ${filled} Partie(n) ergaenzt, ${added} neue Partie(n) uebernommen, ${skippedPlatzhalter} Platzhalter uebersprungen, ${removedDupes} Duplikat(e) entfernt.`);
   } else {
     console.log(`nuLiga-Merge: keine Ergaenzungen noetig (${skippedPlatzhalter} Platzhalter uebersprungen).`);
@@ -211,8 +210,7 @@ function mergeResults() {
     added++;
   });
   if (added || base.length !== results.length) {
-    fs.writeFileSync(RESULTS_PATH, JSON.stringify(base, null, 2) + '
-');
+    fs.writeFileSync(RESULTS_PATH, JSON.stringify(base, null, 2) + '\n');
     console.log(`nuLiga-Ergebnis-Merge: ${added} vorlaeufige(s) Ergebnis(se) aus nuLiga uebernommen.`);
   } else {
     console.log('nuLiga-Ergebnis-Merge: keine Ergaenzungen noetig.');
@@ -253,11 +251,11 @@ function removeDecidedFromSchedule() {
 
   const removed = schedule.length - filtered.length;
   if (removed) {
-    fs.writeFileSync(SCHEDULE_PATH, JSON.stringify(filtered, null, 2) + '
-');
+    fs.writeFileSync(SCHEDULE_PATH, JSON.stringify(filtered, null, 2) + '\n');
     console.log(`Spielplan-Bereinigung: ${removed} bereits entschiedene Partie(n) aus schedule.json entfernt (Duplikat zu results.json).`);
   } else {
     console.log('Spielplan-Bereinigung: keine bereits entschiedenen Duplikate im Spielplan gefunden.');
   }
 }
 removeDecidedFromSchedule();
+
