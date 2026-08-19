@@ -893,6 +893,18 @@
   },
   {
     "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Rothe, Michael",
+    "player2": "Becker, Henning",
+    "winner": "Rothe, Michael",
+    "score": "6:0 6:1",
+    "time": "19.08.2026 15:00 Uhr",
+    "court": "Platz 2",
+    "source": "nuliga-live",
+    "vorlaeufig": true
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
     "round": "Viertelfinale",
     "player1": "Hebestreit, Thorsten",
     "player2": "Schwarz, Volker",
