@@ -32,7 +32,7 @@ function readJson(p, fallback) {
 }
 
 function normName(s) {
-  return (s || '').trim().toLowerCase().replace(/\s+/g, ' ');
+  return (s || '').trim().toLowerCase().replace(/s+/g, ' ');
 }
 
 function pairKey(a, b) {
@@ -40,7 +40,7 @@ function pairKey(a, b) {
 }
 
 function normComp(s) {
-  return (s || '').replace(/\bKO\s+/g, '').replace(/LK\s+/g, 'LK').replace(/\s+/g, ' ').trim();
+  return (s || '').replace(/KOs+/g, '').replace(/LKs+/g, 'LK').replace(/s+/g, ' ').trim();
 }
 
 function buildCompetitionMap() {
@@ -59,6 +59,10 @@ function buildCompetitionMap() {
 
 function entryKey(m) {
   return [m.competition || '', m.round || '', m.player1 || '', m.player2 || ''].join('||');
+}
+
+function compPairKey(m) {
+  return [normComp(m.competition || ''), pairKey(m.player1, m.player2)].join('||');
 }
 
 function main() {
@@ -140,7 +144,8 @@ function main() {
   const removedDupes = schedule.length - deduped.length;
 
   if (filled || added || removedDupes) {
-    fs.writeFileSync(SCHEDULE_PATH, JSON.stringify(deduped, null, 2) + '\n');
+    fs.writeFileSync(SCHEDULE_PATH, JSON.stringify(deduped, null, 2) + '
+');
     console.log(`nuLiga-Merge: ${filled} Partie(n) ergaenzt, ${added} neue Partie(n) uebernommen, ${skippedPlatzhalter} Platzhalter uebersprungen, ${removedDupes} Duplikat(e) entfernt.`);
   } else {
     console.log(`nuLiga-Merge: keine Ergaenzungen noetig (${skippedPlatzhalter} Platzhalter uebersprungen).`);
@@ -206,10 +211,53 @@ function mergeResults() {
     added++;
   });
   if (added || base.length !== results.length) {
-    fs.writeFileSync(RESULTS_PATH, JSON.stringify(base, null, 2) + '\n');
+    fs.writeFileSync(RESULTS_PATH, JSON.stringify(base, null, 2) + '
+');
     console.log(`nuLiga-Ergebnis-Merge: ${added} vorlaeufige(s) Ergebnis(se) aus nuLiga uebernommen.`);
   } else {
     console.log('nuLiga-Ergebnis-Merge: keine Ergaenzungen noetig.');
   }
 }
 mergeResults();
+
+/**
+ * Entfernt aus data/schedule.json alle Partien, die laut data/results.json
+ * bereits entschieden sind (gleiche Spielerpaarung) - unabhaengig davon, ob
+ * Konkurrenz/Runde exakt uebereinstimmen (Absicherung gegen abweichende
+ * Rundenbezeichnungen zwischen nuLiga und tennis.de).
+ *
+ * Hintergrund/Bug, den das behebt: mergeResults() (oben) schreibt ein
+ * vorlaeufiges Ergebnis nach results.json, sobald nuLiga eine Partie als
+ * beendet meldet - entfernt aber die zugehoerige "noch offene" Partie
+ * NICHT aus schedule.json. Ohne diese Bereinigung erscheint dieselbe
+ * Paarung doppelt auf der Seite: einmal als (vorlaeufiges) Ergebnis,
+ * einmal als noch offen mit ggf. veralteten Platz-/Zeitangaben von
+ * tennis.de.
+ */
+function removeDecidedFromSchedule() {
+  const schedule = readJson(SCHEDULE_PATH, []);
+  const results = readJson(RESULTS_PATH, []);
+  if (!Array.isArray(schedule) || !schedule.length) return;
+  if (!Array.isArray(results) || !results.length) return;
+
+  const decided = results.filter((m) => m && m.player1 && m.player2);
+  const decidedEntryKeys = new Set(decided.map(entryKey));
+  const decidedCompPairKeys = new Set(decided.map(compPairKey));
+
+  const filtered = schedule.filter((m) => {
+    if (!m) return true;
+    if (decidedEntryKeys.has(entryKey(m))) return false;
+    if (m.player1 && m.player2 && decidedCompPairKeys.has(compPairKey(m))) return false;
+    return true;
+  });
+
+  const removed = schedule.length - filtered.length;
+  if (removed) {
+    fs.writeFileSync(SCHEDULE_PATH, JSON.stringify(filtered, null, 2) + '
+');
+    console.log(`Spielplan-Bereinigung: ${removed} bereits entschiedene Partie(n) aus schedule.json entfernt (Duplikat zu results.json).`);
+  } else {
+    console.log('Spielplan-Bereinigung: keine bereits entschiedenen Duplikate im Spielplan gefunden.');
+  }
+}
+removeDecidedFromSchedule();
