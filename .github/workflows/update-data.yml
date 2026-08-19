@@ -16,6 +16,10 @@ on:
         required: false
         default: ''
 
+concurrency:
+  group: tennis-data
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
