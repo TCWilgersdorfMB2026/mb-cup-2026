@@ -850,7 +850,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 15:00 Uhr",
-    "court": "Platz 1",
+    "court": "Platz 3",
     "source": "nuliga-merge"
   },
   {
@@ -861,7 +861,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 15:00 Uhr",
-    "court": "Platz 2",
+    "court": "Platz 1",
     "source": "nuliga-merge"
   },
   {
@@ -872,7 +872,7 @@
     "winner": null,
     "score": null,
     "time": "19.08.2026 15:00 Uhr",
-    "court": "Platz 3",
+    "court": "Platz 2",
     "source": "nuliga-merge"
   },
   {
@@ -938,7 +938,7 @@
     "winner": null,
     "score": null,
     "time": "19.08.2026 15:00 Uhr",
-    "court": "Platz 4",
+    "court": "Platz 1",
     "source": "nuliga-merge"
   }
 ]
