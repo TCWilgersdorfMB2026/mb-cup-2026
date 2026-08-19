@@ -502,7 +502,7 @@
   {
     "competition": "Herren 60 Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": "Rothe, Michael / Becker, Henning",
+    "player1": "Becker, Henning",
     "player2": "Simon, Reinhard / Schwarz, Volker",
     "winner": null,
     "score": null,
@@ -512,7 +512,7 @@
   {
     "competition": "Herren 60 Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": "Rothe, Michael / Becker, Henning",
+    "player1": "Rothe, Michael",
     "player2": "Simon, Reinhard / Schwarz, Volker",
     "winner": null,
     "score": null,
@@ -524,8 +524,8 @@
     "round": "Halbfinale",
     "player1": "Rothe, Michael",
     "player2": "Becker, Henning",
-    "winner": null,
-    "score": null,
+    "winner": "Rothe, Michael",
+    "score": "6:0 6:1",
     "time": "19.08.2026 15:00 Uhr",
     "court": "Platz 2"
   },
