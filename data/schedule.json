@@ -150,16 +150,6 @@
     "court": "TC Lese Grün-Weiss KölnTV Eiserfeld, Platz 1"
   },
   {
-    "competition": "Herren Einzel KO LK 10,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Türk, Michael",
-    "player2": "Henrichs, Lukas",
-    "winner": null,
-    "score": null,
-    "time": "21.08.2026 16:30 Uhr",
-    "court": "Platz 2"
-  },
-  {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
     "player1": "Anders, Denis",
@@ -436,8 +426,8 @@
     "player2": "Schreiber, Oliver",
     "winner": null,
     "score": null,
-    "time": "20.08.2026 18:00 Uhr",
-    "court": "Platz 1"
+    "time": "19.08.2026 18:00 Uhr",
+    "court": "Platz 2"
   },
   {
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
@@ -824,6 +814,17 @@
     "winner": null,
     "score": null,
     "time": "21.08.2026 18:00 Uhr",
+    "court": "Platz 2",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Göckus, Maximilian",
+    "player2": "Henrichs, Lukas",
+    "winner": null,
+    "score": null,
+    "time": "21.08.2026 16:30 Uhr",
     "court": "Platz 2",
     "source": "nuliga-merge"
   },
