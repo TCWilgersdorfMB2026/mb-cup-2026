@@ -382,6 +382,16 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Viertelfinale",
+    "player1": "Anders, Denis",
+    "player2": "Binsack, Jarno",
+    "winner": "Binsack, Jarno",
+    "score": "2:6 6:4 10:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
     "player1": "Polzer, Timo",
     "player2": "Gyurcsi, Robert Denes",
     "winner": "Polzer, Timo",
@@ -722,6 +732,16 @@
   {
     "competition": "Damen Einzel KO LK 10,0-25,0",
     "round": "Viertelfinale",
+    "player1": "Hees, Sabrina",
+    "player2": "Hörner, Judith",
+    "winner": "Hees, Sabrina",
+    "score": "7:6 7:5",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Viertelfinale",
     "player1": "Burghardt, Jule",
     "player2": "Backaus, Hedda Lotta",
     "winner": "Backaus, Hedda Lotta",
@@ -830,6 +850,16 @@
     "court": ""
   },
   {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Herrmann Solbach, Sophia",
+    "player2": "Giebeler, Ina",
+    "winner": "Giebeler, Ina",
+    "score": "4:6 6:4 10:8",
+    "time": "",
+    "court": ""
+  },
+  {
     "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "1. Runde",
     "player1": "Jud, Tobias",
@@ -874,6 +904,18 @@
     "score": "7:5 6:3",
     "time": "17.08.2026 17:00 Uhr",
     "court": "Platz 2",
+    "source": "nuliga-live",
+    "vorlaeufig": true
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Grau, Neela Marlen",
+    "player2": "Wiegel, Lea",
+    "winner": "Wiegel, Lea",
+    "score": "1:6 6:3 10:7",
+    "time": "18.08.2026 16:30 Uhr",
+    "court": "Platz 4",
     "source": "nuliga-live",
     "vorlaeufig": true
   },
@@ -1054,6 +1096,18 @@
     "score": "6:1 6:1",
     "time": "16.08.2026 18:00 Uhr",
     "court": "Platz 3",
+    "source": "nuliga-live",
+    "vorlaeufig": true
+  },
+  {
+    "competition": "Nebenrunde Herren Einzel",
+    "round": "Achtelfinale",
+    "player1": "Schläger, Lorenz",
+    "player2": "Mayenschein, Dennis",
+    "winner": "Mayenschein, Dennis",
+    "score": "6:3 6:2",
+    "time": "19.08.2026 16:30 Uhr",
+    "court": "Platz 4",
     "source": "nuliga-live",
     "vorlaeufig": true
   },

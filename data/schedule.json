@@ -262,16 +262,6 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Anders, Denis",
-    "player2": "Binsack, Jarno",
-    "winner": null,
-    "score": null,
-    "time": "19.08.2026 16:30 Uhr",
-    "court": "Platz 2"
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Viertelfinale",
     "player1": "Schneider, Dominik",
     "player2": "Baldus, Jonas",
     "winner": null,
@@ -426,8 +416,8 @@
     "player2": "Schürbusch, Nico",
     "winner": null,
     "score": null,
-    "time": "20.08.2026 16:30 Uhr",
-    "court": "TC NiederschelderhütteTV Eiserfeld, Platz 3"
+    "time": "19.08.2026 18:00 Uhr",
+    "court": "TC Ludwigseck Salchendorf, Platz 2"
   },
   {
     "competition": "Herren Einzel KO LK 22,0-25,0",
@@ -591,13 +581,23 @@
   },
   {
     "competition": "Damen Einzel KO LK 10,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Hees, Sabrina",
-    "player2": "Hörner, Judith",
+    "round": "Halbfinale",
+    "player1": "Hoffmann, Nicole",
+    "player2": "Voth, Eva",
     "winner": null,
     "score": null,
-    "time": "19.08.2026 18:00 Uhr",
-    "court": "TC Wieland-Wilnsdorf, Platz 1"
+    "time": "20.08.2026 16:30 Uhr",
+    "court": "Platz 1"
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Hees, Sabrina",
+    "player2": "Backaus, Hedda Lotta",
+    "winner": null,
+    "score": null,
+    "time": "20.08.2026 16:30 Uhr",
+    "court": "Platz 4"
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -782,22 +782,12 @@
   {
     "competition": "Damen Einzel KO LK 22,0-25,0",
     "round": "Halbfinale",
-    "player1": "Herrmann Solbach, Sophia",
-    "player2": "Giebeler, Ina",
-    "winner": null,
-    "score": null,
-    "time": "19.08.2026 16:30 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 2"
-  },
-  {
-    "competition": "Damen Einzel KO LK 22,0-25,0",
-    "round": "Halbfinale",
     "player1": "Pfeifer, Jasmin",
     "player2": "Fiedler, Julia",
     "winner": null,
     "score": null,
     "time": "19.08.2026 18:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 2"
+    "court": "TC Ludwigseck Salchendorf, Platz 3"
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -808,28 +798,6 @@
     "score": null,
     "time": "21.08.2026 16:30 Uhr",
     "court": "Platz 4",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Grau, Neela Marlen",
-    "player2": "Wiegel, Lea",
-    "winner": null,
-    "score": null,
-    "time": "18.08.2026 16:30 Uhr",
-    "court": "Platz 4",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Damen Einzel KO LK 10,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Hoffmann, Nicole",
-    "player2": "Voth, Eva",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 1",
     "source": "nuliga-merge"
   },
   {
@@ -884,17 +852,6 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 18:00 Uhr",
-    "court": "Platz 4",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Nebenrunde Herren Einzel",
-    "round": "Achtelfinale",
-    "player1": "Schläger, Lorenz",
-    "player2": "Mayenschein, Dennis",
-    "winner": null,
-    "score": null,
-    "time": "19.08.2026 16:30 Uhr",
     "court": "Platz 4",
     "source": "nuliga-merge"
   },
