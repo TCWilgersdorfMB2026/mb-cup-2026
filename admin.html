@@ -154,8 +154,6 @@
 .live-court h3 { margin: 0 0 8px; font-size: 0.95rem; color: var(--navy); }
 .live-court select { width: 100%; padding: 9px 10px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.9rem; background: #fff; margin-bottom: 2px; }
 .live-court input[type=text] { margin: 0 0 2px; }
-.live-court-reset { margin-top: 8px; font-size: 0.8rem; padding: 8px 12px; }
-.live-court-status { margin-top: 4px; font-size: 0.78rem; }
 </style>
 </head>
 <body>
@@ -188,7 +186,7 @@
 
     <div class="card">
       <h2>Liveticker</h2>
-      <p class="hint">Kurze Meldung vom Platz. Zeit wird automatisch auf jetzt gesetzt, kann angepasst werden.</p>
+      <p class="hint">Kurze Meldung vom Platz. Zeit wird automatisch auf jetzt gesetzt (auch beim Bearbeiten), kann aber jederzeit manuell angepasst werden.</p>
       <form id="ticker-form">
         <label>Zeitpunkt</label>
         <input type="datetime-local" name="time" required>
@@ -242,7 +240,7 @@
 
 <div class="card">
 <h2>Live-Anzeige (4 Plätze)</h2>
-<p class="hint">Standardmäßig werden die Paarungen automatisch von tennis.de übernommen. Trage hier nur dann etwas ein, wenn du für einen Platz eingreifen musst – z.B. wenn sich Paarung, Platz, Datum oder Uhrzeit geändert haben oder tennis.de noch nicht aktuell ist. Eine hier eingetragene Partie überschreibt für diesen Platz die automatischen Daten. Spieler stammen aus der Meldeliste (nach Konkurrenz sortiert); über "Sonstige (Name eingeben)…" kann auch ein Name manuell eingetragen werden, der nicht in der Meldeliste steht (z.B. Ersatzspieler oder Konkurrenz noch nicht erfasst). Datum und Uhrzeit werden über den Kalender bzw. die Uhrzeitauswahl eingestellt. Platz einfach ohne Spieler lassen, damit dort automatisch die Partie von tennis.de angezeigt wird.</p>
+<p class="hint">Trage hier die aktuell laufenden Partien ein, die auf der Live-Display-Seite gezeigt werden. Spieler stammen aus der Meldeliste (nach Konkurrenz sortiert), Datum und Uhrzeit werden über den Kalender bzw. die Uhrzeitauswahl eingestellt. Platz einfach ohne Spieler lassen, wenn dort gerade nichts läuft.</p>
 <form id="live-form">
 <div class="live-court-list" data-live-court-list></div>
 <button type="submit">Veröffentlichen</button>
@@ -620,6 +618,23 @@ async function refreshTickerList() {
 
 const tickerPicker = setupImagePicker(document.getElementById('ticker-form'));
 
+// Verhindert, dass ein längst veraltetes "Jetzt" im Zeitpunkt-Feld stehen
+// bleibt - z.B. wenn admin.html tagelang in einem Tab offen bleibt, oder
+// wenn eine bestehende Meldung nur bearbeitet wird, um den Spielstand zu
+// aktualisieren (siehe Platz-1-4-Ticker-Meldungen: hier wurde bislang beim
+// Bearbeiten immer der ursprüngliche, längst veraltete Zeitpunkt wieder
+// eingesetzt). Solange das Feld nicht manuell angefasst wurde, wird es
+// beim Bearbeiten und beim Zurückkehren zum Tab automatisch auf die
+// tatsächliche aktuelle Zeit gesetzt; sobald jemand die Zeit von Hand
+// ändert, bleibt genau dieser Wert erhalten.
+let tickerTimeTouched = false;
+document.querySelector('#ticker-form [name=time]').addEventListener('input', () => { tickerTimeTouched = true; });
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && !tickerTimeTouched) {
+    setDefaultTime(document.getElementById('ticker-form'));
+  }
+});
+
 document.getElementById('ticker-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const form = e.target;
@@ -756,11 +771,9 @@ document.getElementById('menu-form').addEventListener('submit', async (e) => {
 const LIVE_COURTS = ['Platz 1', 'Platz 2', 'Platz 3', 'Platz 4'];
 
 // Baut die <option>-Liste (gruppiert nach Konkurrenz als <optgroup>) für die
-// Spieler-Dropdowns aus den Meldelisten (data/entrants.json). Zusätzlich zur
-// Meldeliste gibt es immer die Option "Sonstige (Name eingeben)…", über die
-// ein Name manuell eingetragen werden kann, der nicht gemeldet ist.
+// Spieler-Dropdowns aus den Meldelisten (data/entrants.json).
 function livePlayerOptionsHtml(entrantsList) {
-  let html = '<option value="">– keiner –</option><option value="__custom__">Sonstige (Name eingeben)…</option>';
+  let html = '<option value="">– keiner –</option>';
   (entrantsList || []).forEach((group) => {
     const players = group.entrants || [];
     if (!players.length) return;
@@ -781,10 +794,8 @@ function renderLiveCourts(optionsHtml) {
       <h3>${court}</h3>
       <label>Spieler 1</label>
       <select class="live-player1" data-court-i="${i}">${optionsHtml}</select>
-      <input type="text" class="live-player1-custom" data-court-i="${i}" placeholder="Name eingeben" style="display:none;">
       <label>Spieler 2</label>
       <select class="live-player2" data-court-i="${i}">${optionsHtml}</select>
-      <input type="text" class="live-player2-custom" data-court-i="${i}" placeholder="Name eingeben" style="display:none;">
       <label>Runde (optional)</label>
 <select class="live-round-select" data-court-i="${i}">
 <option value="">– keine Angabe –</option>
@@ -799,8 +810,6 @@ function renderLiveCourts(optionsHtml) {
 <input type="text" class="live-round-custom" data-court-i="${i}" placeholder="Eigene Runde eingeben" style="display:none;">
               <label>Datum &amp; Uhrzeit</label>
         <input type="datetime-local" class="live-time" data-court-i="${i}">
-        <button type="button" class="secondary live-court-reset" data-court-i="${i}">Manuellen Eintrag löschen (zurück zur Automatik)</button>
-        <div class="status live-court-status" data-court-i="${i}"></div>
     </div>`).join('');
 }
 
@@ -823,86 +832,16 @@ function inputValueToLiveTime(val) {
 }
 
 // Zeigt bei Auswahl von "Sonstige..." im Runde-Dropdown das Freitextfeld
-// an (und blendet es sonst wieder aus). Dasselbe Prinzip gilt fuer die
-// Spieler-Dropdowns: bei "Sonstige (Name eingeben)…" wird das zugehoerige
-// Freitextfeld eingeblendet, damit auch nicht gemeldete Spieler manuell
-// eingetragen werden koennen.
+// an (und blendet es sonst wieder aus).
 document.querySelector('[data-live-court-list]').addEventListener('change', (e) => {
-const roundSel = e.target.closest('.live-round-select');
-if (roundSel) {
-  const i = roundSel.dataset.courtI;
-  const custom = document.querySelector(`.live-round-custom[data-court-i="${i}"]`);
-  if (!custom) return;
-  if (roundSel.value === '__custom__') { custom.style.display = 'block'; custom.focus(); }
-  else { custom.style.display = 'none'; custom.value = ''; }
-  return;
-}
-const playerSel = e.target.closest('.live-player1, .live-player2');
-if (playerSel) {
-  const i = playerSel.dataset.courtI;
-  const isP1 = playerSel.classList.contains('live-player1');
-  const custom = document.querySelector(`.live-player${isP1 ? '1' : '2'}-custom[data-court-i="${i}"]`);
-  if (!custom) return;
-  if (playerSel.value === '__custom__') { custom.style.display = 'block'; custom.focus(); }
-  else { custom.style.display = 'none'; custom.value = ''; }
-  return;
-}
+const sel = e.target.closest('.live-round-select');
+if (!sel) return;
+const i = sel.dataset.courtI;
+const custom = document.querySelector(`.live-round-custom[data-court-i="${i}"]`);
+if (!custom) return;
+if (sel.value === '__custom__') { custom.style.display = 'block'; custom.focus(); }
+else { custom.style.display = 'none'; custom.value = ''; }
 });
-
-// Löscht (nach Bestätigung) den manuellen Live-Eintrag genau EINES Platzes
-// aus data/live-current.json - der Platz wird danach wieder automatisch
-// befüllt (tennis.de bzw. nuLiga je nach Seite), ohne dass die anderen 3
-// Plätze angetastet werden.
-document.querySelector('[data-live-court-list]').addEventListener('click', async (e) => {
-const btn = e.target.closest('.live-court-reset');
-if (!btn) return;
-const i = Number(btn.dataset.courtI);
-const court = LIVE_COURTS[i];
-if (!confirm(`Manuellen Eintrag für ${court} wirklich löschen? Der Platz wird danach wieder automatisch befüllt.`)) return;
-const statusEl = document.querySelector(`.live-court-status[data-court-i="${i}"]`);
-btn.disabled = true;
-if (statusEl) { statusEl.textContent = 'Lösche…'; statusEl.className = 'status live-court-status'; }
-try {
-const { sha, list } = await ghGet('data/live-current.json');
-const newList = (list || []).filter((m) => m && m.court !== court);
-await ghPutJson('data/live-current.json', newList, sha, `Live-Anzeige: manueller Eintrag ${court} entfernt`);
-const p1 = document.querySelector(`.live-player1[data-court-i="${i}"]`);
-const p2 = document.querySelector(`.live-player2[data-court-i="${i}"]`);
-const p1Custom = document.querySelector(`.live-player1-custom[data-court-i="${i}"]`);
-const p2Custom = document.querySelector(`.live-player2-custom[data-court-i="${i}"]`);
-const rd = document.querySelector(`.live-round-select[data-court-i="${i}"]`);
-const rdCustom = document.querySelector(`.live-round-custom[data-court-i="${i}"]`);
-const tm = document.querySelector(`.live-time[data-court-i="${i}"]`);
-if (p1) p1.value = '';
-if (p2) p2.value = '';
-if (p1Custom) { p1Custom.value = ''; p1Custom.style.display = 'none'; }
-if (p2Custom) { p2Custom.value = ''; p2Custom.style.display = 'none'; }
-if (rd) rd.value = '';
-if (rdCustom) { rdCustom.value = ''; rdCustom.style.display = 'none'; }
-if (tm) tm.value = '';
-if (statusEl) { statusEl.textContent = 'Gelöscht! Platz wird wieder automatisch befüllt.'; statusEl.className = 'status live-court-status ok'; }
-} catch (err) {
-if (statusEl) { statusEl.textContent = err.message; statusEl.className = 'status live-court-status err'; }
-}
-btn.disabled = false;
-});
-
-// Traegt einen Spieler-Namen in ein Select (aus der Meldeliste) plus sein
-// zugehoeriges Freitextfeld ein. Ist der Name nicht unter den bekannten
-// Optionen (z.B. weil er manuell eingetragen wurde oder die Konkurrenz
-// nicht mehr in der Meldeliste steht), wird automatisch auf "Sonstige"
-// umgeschaltet und der Name im Freitextfeld angezeigt.
-function setPlayerField(select, customInput, name) {
-  if (!select) return;
-  const known = Array.from(select.options).map(o => o.value).filter(v => v && v !== '__custom__');
-  if (name && !known.includes(name)) {
-    select.value = '__custom__';
-    if (customInput) { customInput.value = name; customInput.style.display = 'block'; }
-  } else {
-    select.value = name || '';
-    if (customInput) { customInput.value = ''; customInput.style.display = 'none'; }
-  }
-}
 
 // Befüllt die 4 Court-Blöcke mit den aktuell gespeicherten Werten (falls
 // vorhanden), damit man beim erneuten Öffnen der Seite sieht, was gerade
@@ -914,13 +853,11 @@ function fillLiveForm(matches) {
     const m = byCourt[court];
     const p1 = document.querySelector(`.live-player1[data-court-i="${i}"]`);
     const p2 = document.querySelector(`.live-player2[data-court-i="${i}"]`);
-    const p1Custom = document.querySelector(`.live-player1-custom[data-court-i="${i}"]`);
-    const p2Custom = document.querySelector(`.live-player2-custom[data-court-i="${i}"]`);
 const rd = document.querySelector(`.live-round-select[data-court-i="${i}"]`);
 const rdCustom = document.querySelector(`.live-round-custom[data-court-i="${i}"]`);
 const tm = document.querySelector(`.live-time[data-court-i="${i}"]`);
-setPlayerField(p1, p1Custom, m ? m.player1 : '');
-setPlayerField(p2, p2Custom, m ? m.player2 : '');
+if (p1) p1.value = m ? m.player1 : '';
+if (p2) p2.value = m ? m.player2 : '';
 if (rd) {
 const roundVal = m ? (m.round || '') : '';
 const known = Array.from(rd.options).map(o => o.value).filter(v => v && v !== '__custom__');
@@ -963,16 +900,8 @@ document.getElementById('live-form').addEventListener('submit', async (e) => {
     LIVE_COURTS.forEach((court, i) => {
       const p1sel = document.querySelector(`.live-player1[data-court-i="${i}"]`);
       const p2sel = document.querySelector(`.live-player2[data-court-i="${i}"]`);
-      let player1 = p1sel.value;
-      let player2 = p2sel.value;
-      if (player1 === '__custom__') {
-        const c = document.querySelector(`.live-player1-custom[data-court-i="${i}"]`);
-        player1 = c ? c.value.trim() : '';
-      }
-      if (player2 === '__custom__') {
-        const c = document.querySelector(`.live-player2-custom[data-court-i="${i}"]`);
-        player2 = c ? c.value.trim() : '';
-      }
+      const player1 = p1sel.value;
+      const player2 = p2sel.value;
       if (!player1 || !player2) return;
 const roundSel = document.querySelector(`.live-round-select[data-court-i="${i}"]`);
 let round = roundSel ? roundSel.value : '';
@@ -982,7 +911,7 @@ round = roundCustom ? roundCustom.value.trim() : '';
 }
       const time = inputValueToLiveTime(document.querySelector(`.live-time[data-court-i="${i}"]`).value);
       const opt1 = p1sel.selectedOptions[0];
-      const competition = (opt1 && p1sel.value !== '__custom__' && opt1.dataset.competition) || '';
+      const competition = (opt1 && opt1.dataset.competition) || '';
       matches.push({ competition, round, player1, player2, time, court });
     });
     const { sha } = await ghGet('data/live-current.json');
@@ -1004,7 +933,7 @@ const FORM_MAP = {
 };
 const PICKER_MAP = { ticker: tickerPicker, reports: reportPicker, menu: menuDishList };
 // Hält pro Formular den Index des gerade bearbeiteten Eintrags (oder null,
-// wenn gerade ein neuer Eintrag angelegt wird statt ein bestehender
+// wenn gerade ein neuer Eintrag angelegt wird statt ein bestehendes
 // bearbeitet zu werden).
 const editState = { ticker: null, reports: null, menu: null };
 
@@ -1037,10 +966,17 @@ async function startEdit(kind, idx) {
     const { list } = await ghGet(FILE_MAP[kind]);
     const entry = list[idx];
     if (!entry) throw new Error('Eintrag nicht mehr vorhanden – Liste neu laden.');
+    let tickerTimeNote = '';
     if (kind === 'ticker') {
-      form.time.value = toDatetimeLocalValue(entry.time);
+      // Der Zeitpunkt wird beim Bearbeiten bewusst NICHT auf den alten
+      // gespeicherten Wert zurückgesetzt, sondern wie bei einer neuen
+      // Meldung auf "jetzt" - siehe Hinweistext im Formular. Wer wirklich
+      // den ursprünglichen Zeitpunkt beibehalten will (z.B. um nur einen
+      // Tippfehler zu korrigieren), kann ihn unten manuell wieder eintragen.
+      setDefaultTime(form);
       form.text.value = entry.text || '';
       tickerPicker.reset();
+      if (entry.time) tickerTimeNote = ` Zeitpunkt wurde auf jetzt gesetzt (ursprünglich veröffentlicht: ${entry.time.replace('T', ' ')} Uhr) – im Feld oben bei Bedarf anpassen.`;
     } else if (kind === 'reports') {
       form.date.value = entry.date || '';
       form.title.value = entry.title || '';
@@ -1053,7 +989,7 @@ async function startEdit(kind, idx) {
     editState[kind] = idx;
     form.querySelector('button[type=submit]').textContent = 'Änderungen speichern';
     form.querySelector('.cancel-edit').style.display = 'inline-block';
-    setStatus(statusEl, 'Eintrag wird bearbeitet – Änderungen vornehmen und speichern, oder abbrechen. Vorhandene Bilder bleiben erhalten (neue werden angehängt, Reihenfolge/Breite unten in der Liste anpassbar).', false);
+    setStatus(statusEl, 'Eintrag wird bearbeitet – Änderungen vornehmen und speichern, oder abbrechen. Vorhandene Bilder bleiben erhalten (neue werden angehängt, Reihenfolge/Breite unten in der Liste anpassbar).' + tickerTimeNote, false);
     form.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (err) {
     setStatus(statusEl, err.message, true);
@@ -1164,6 +1100,7 @@ function setDefaultTime(form) {
   const now = new Date();
   now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
   form.querySelector('[name=time]').value = now.toISOString().slice(0, 16);
+  if (form.id === 'ticker-form') tickerTimeTouched = false;
 }
 
 // ---- Setup / token handling ----
@@ -1207,4 +1144,3 @@ if (getToken()) { showForms(); } else { showSetup(); }
 </script>
 </body>
 </html>
-
