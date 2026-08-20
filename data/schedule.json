@@ -610,6 +610,26 @@
     "court": ""
   },
   {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Herrmann Solbach, Sophia",
+    "player2": null,
+    "winner": "Herrmann Solbach, Sophia",
+    "score": "Freilos",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "round": "Finale",
+    "player1": "Giebeler, Ina",
+    "player2": "Fiedler, Julia",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 12:00 Uhr",
+    "court": "Platz 2"
+  },
+  {
     "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "Halbfinale",
     "player1": "Nies, Tim",
@@ -643,7 +663,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Damen Einzel LK22,0-25,0",
+    "competition": "Damen Einzel KO LK 22,0-25,0",
     "round": "Finale",
     "player1": "Herrmann Solbach, Sophia",
     "player2": "Pfeifer, Jasmin",
@@ -651,17 +671,6 @@
     "score": null,
     "time": "22.08.2026 09:00 Uhr",
     "court": "Platz 4",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Damen Einzel LK22,0-25,0",
-    "round": "Finale",
-    "player1": "Giebeler, Ina",
-    "player2": "Fiedler, Julia",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 12:00 Uhr",
-    "court": "Platz 2",
     "source": "nuliga-merge"
   },
   {
