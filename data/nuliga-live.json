@@ -337,7 +337,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 3"
   },
   {
     "competition": "Damen Einzel LK10,0-25,0",
@@ -543,7 +543,7 @@
     "competition": "Herren 50 Einzel LK1,0-25,0",
     "round": "Finale",
     "player1": null,
-    "player2": null,
+    "player2": "Schwarzer, Martin / Hussing, Frank",
     "winner": null,
     "score": null,
     "time": "22.08.2026 13:30 Uhr",
@@ -553,7 +553,7 @@
     "competition": "Herren 50 Einzel LK1,0-25,0",
     "round": "Finale",
     "player1": null,
-    "player2": null,
+    "player2": "Schwarzer, Martin / Hussing, Frank",
     "winner": null,
     "score": null,
     "time": "22.08.2026 15:00 Uhr",
@@ -572,7 +572,7 @@
   {
     "competition": "Herren 50 Einzel LK1,0-25,0",
     "round": "Halbfinale",
-    "player1": "Schwarzer, Martin / Pavicic, Peter",
+    "player1": "Schwarzer, Martin",
     "player2": "Hussing, Frank",
     "winner": null,
     "score": null,
@@ -594,8 +594,8 @@
     "round": "Viertelfinale",
     "player1": "Schwarzer, Martin",
     "player2": "Pavicic, Peter",
-    "winner": null,
-    "score": null,
+    "winner": "Schwarzer, Martin",
+    "score": "5:2 Aufg.",
     "time": "20.08.2026 15:00 Uhr",
     "court": "Platz 2"
   },
@@ -1094,8 +1094,8 @@
     "round": "Viertelfinale",
     "player1": "Heide, Miriam",
     "player2": "Gyurcsi, Lili",
-    "winner": null,
-    "score": null,
+    "winner": "Heide, Miriam",
+    "score": "6:3 7:5",
     "time": "20.08.2026 15:00 Uhr",
     "court": "Platz 3"
   },
