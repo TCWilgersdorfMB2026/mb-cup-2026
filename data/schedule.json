@@ -140,16 +140,6 @@
     "court": "Platz 2"
   },
   {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Wedding, Robin",
-    "player2": "Menn, Jan Steffen",
-    "winner": null,
-    "score": null,
-    "time": "21.08.2026 16:30 Uhr",
-    "court": "Platz 1"
-  },
-  {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
     "player1": "Anders, Denis",
@@ -466,8 +456,8 @@
     "player2": "Hees, Sabrina",
     "winner": null,
     "score": null,
-    "time": "22.08.2026 13:30 Uhr",
-    "court": "Platz 1"
+    "time": "22.08.2026 15:00 Uhr",
+    "court": "Platz 2"
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
@@ -636,8 +626,8 @@
     "player2": "Pilz, Melanie",
     "winner": null,
     "score": null,
-    "time": "20.08.2026 17:00 Uhr",
-    "court": "-Tennisverein Altenseelbach e.V. TuS 1900 Eisern, Platz 1"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Damen Einzel KO LK 22,0-25,0",
@@ -668,6 +658,17 @@
     "score": null,
     "time": "21.08.2026 16:30 Uhr",
     "court": "Platz 2",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Ebener, Frederik",
+    "player2": "Wedding, Robin",
+    "winner": null,
+    "score": null,
+    "time": "21.08.2026 16:30 Uhr",
+    "court": "Platz 1",
     "source": "nuliga-merge"
   },
   {
@@ -760,13 +761,24 @@
   },
   {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Müller, Stefan",
-    "player2": "Borodin, Eugen",
+    "round": "Finale",
+    "player1": "Borodin, Eugen",
+    "player2": "Wroben, Thorsten",
     "winner": null,
     "score": null,
-    "time": "20.08.2026 18:00 Uhr",
-    "court": "Platz 4",
+    "time": "22.08.2026 12:00 Uhr",
+    "court": "Platz 3",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Finale",
+    "player1": "Müller, Stefan",
+    "player2": "Weber, Holger",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 13:30 Uhr",
+    "court": "Platz 2",
     "source": "nuliga-merge"
   },
   {
@@ -800,17 +812,6 @@
     "score": null,
     "time": "20.08.2026 18:00 Uhr",
     "court": "Platz 3",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Nebenrunde Herren Einzel",
-    "round": "Viertelfinale",
-    "player1": "Iordanidis, Alexandros",
-    "player2": "Rötzel, Johannes",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 18:00 Uhr",
-    "court": "Platz 2",
     "source": "nuliga-merge"
   }
 ]

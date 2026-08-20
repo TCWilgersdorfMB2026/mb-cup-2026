@@ -130,6 +130,16 @@
     "court": ""
   },
   {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Wedding, Robin",
+    "player2": "Menn, Jan Steffen",
+    "winner": "Wedding, Robin",
+    "score": "6:7 6:3 10:8",
+    "time": "",
+    "court": ""
+  },
+  {
     "competition": "Herren Einzel KO LK 10,0-25,0",
     "round": "Achtelfinale",
     "player1": "Bahlmann, Niclas Hans",
@@ -1138,6 +1148,18 @@
   {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",
     "round": "Halbfinale",
+    "player1": "Müller, Stefan",
+    "player2": "Borodin, Eugen",
+    "winner": "Müller, Stefan",
+    "score": "7:6 6:1",
+    "time": "20.08.2026 18:00 Uhr",
+    "court": "Platz 4",
+    "source": "nuliga-live",
+    "vorlaeufig": true
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
     "player1": "Weber, Holger",
     "player2": "Wroben, Thorsten",
     "winner": "Weber, Holger",
@@ -1312,6 +1334,18 @@
     "score": "6:3 6:2",
     "time": "19.08.2026 16:30 Uhr",
     "court": "Platz 4",
+    "source": "nuliga-live",
+    "vorlaeufig": true
+  },
+  {
+    "competition": "Nebenrunde Herren Einzel",
+    "round": "Viertelfinale",
+    "player1": "Iordanidis, Alexandros",
+    "player2": "Rötzel, Johannes",
+    "winner": "Rötzel, Johannes",
+    "score": "6:4 6:1",
+    "time": "20.08.2026 18:00 Uhr",
+    "court": "Platz 2",
     "source": "nuliga-live",
     "vorlaeufig": true
   },
