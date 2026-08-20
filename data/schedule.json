@@ -146,8 +146,8 @@
     "player2": "Menn, Jan Steffen",
     "winner": null,
     "score": null,
-    "time": "20.08.2026 18:00 Uhr",
-    "court": "TC Lese Grün-Weiss KölnTV Eiserfeld, Platz 1"
+    "time": "21.08.2026 16:30 Uhr",
+    "court": "Platz 1"
   },
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
@@ -388,16 +388,6 @@
     "score": "Freilos",
     "time": "",
     "court": ""
-  },
-  {
-    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Koehler, Michael",
-    "player2": "Klink, Peter",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 18:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 2"
   },
   {
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
@@ -743,6 +733,17 @@
     "winner": null,
     "score": null,
     "time": "22.08.2026 09:00 Uhr",
+    "court": "Platz 1",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Lück, Marco",
+    "player2": "Klink, Peter",
+    "winner": null,
+    "score": null,
+    "time": "21.08.2026 18:00 Uhr",
     "court": "Platz 1",
     "source": "nuliga-merge"
   },
