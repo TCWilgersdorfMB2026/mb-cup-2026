@@ -154,67 +154,85 @@ function main() {
 main();
 
 /**
-* Ergaenzt data/results.json um bereits abgeschlossene Partien, die nuLiga
-* schon als beendet meldet (winner/score gesetzt), tennis.de aber noch nicht
-* hat. Hintergrund: nuLiga und tennis.de werden von derselben Person
-* gepflegt, oft aber nicht zur exakt gleichen Zeit - je nachdem, was zuerst
-* eingetragen wird, soll die Seite immer den aktuellsten bekannten Stand
-* zeigen statt auf die jeweils andere Quelle zu warten.
+* Uebernimmt von nuLiga als beendet gemeldete Partien (winner/score
+* gesetzt) DAUERHAFT in data/results.json - im Gegensatz zur alten
+* "vorlaeufig"-Logik werden diese Eintraege nicht mehr bei jedem Lauf
+* verworfen und aus den aktuellen nuLiga-Daten neu aufgebaut.
 *
-* Solche Ergaenzungen werden klar als "source: nuliga-live" + "vorlaeufig:
-* true" markiert (siehe assets/app.js, bracketBoxHtml), damit erkennbar
-* bleibt, dass tennis.de dieses Ergebnis noch nicht selbst bestaetigt hat.
+* Grund: scrape-tennis-de.js (laeuft VOR diesem Skript, siehe
+* update-data.yml) schreibt results.json bei JEDEM Lauf komplett neu
+* aus dem tennis.de-Tableau - ein rein "vorlaeufiger" nuLiga-Eintrag
+* wuerde sonst schon vor dem naechsten Merge-Lauf wieder verschwinden,
+* sobald tennis.de das Ergebnis noch nicht selbst nachgezogen hat.
 *
-* Bei jedem Lauf werden zunaechst ALLE zuvor so ergaenzten Eintraege
-* entfernt und aus den aktuellen nuLiga-Daten neu aufgebaut - ein
-* vorlaeufiger Eintrag verschwindet dadurch automatisch von selbst,
-* sobald scrape-tennis-de.js (das VOR diesem Skript laeuft, siehe
-* update-data.yml) das echte Ergebnis von tennis.de in results.json
-* geschrieben hat.
+* Deshalb werden von nuLiga bestaetigte Ergebnisse zusaetzlich in
+* data/nuliga-confirmed-results.json gesammelt - dieser Speicher wird
+* nur ergaenzt, nie von scrape-tennis-de.js ueberschrieben, und bleibt
+* damit ueber beliebig viele Pipeline-Laeufe hinweg erhalten. Bei jedem
+* Lauf wird zunaechst aus nuliga-live.json neu dazugekommenes in diesen
+* Speicher aufgenommen und anschliessend alles daraus, was noch nicht
+* in results.json steht, dort ergaenzt (kein "vorlaeufig"-Flag mehr -
+* das Ergebnis gilt sofort als endgueltig).
+*
+* Verein/LK bleiben davon unberuehrt weiterhin ausschliesslich von
+* tennis.de (entrants.json) - nuLiga liefert dafuer keine Daten.
 */
 function mergeResults() {
   const RESULTS_PATH = path.join(DATA_DIR, 'results.json');
+  const CONFIRMED_PATH = path.join(DATA_DIR, 'nuliga-confirmed-results.json');
   const results = readJson(RESULTS_PATH, []);
   const nuliga = readJson(NULIGA_PATH, []);
+  const confirmed = readJson(CONFIRMED_PATH, []);
   const compMap = buildCompetitionMap();
+
   if (!Array.isArray(results)) {
     console.log('data/results.json ist kein Array - Ergebnis-Merge uebersprungen.');
     return;
   }
-  if (!Array.isArray(nuliga) || !nuliga.length) {
-    return;
-  }
-  const officialKeys = new Set(
-    results.filter((m) => m && m.player1 && m.player2 && !m.vorlaeufig).map(entryKey)
-    );
-  const base = results.filter((m) => !(m && m.vorlaeufig));
-  let added = 0;
-  nuliga.forEach((n) => {
-    if (!n || !n.player1 || !n.player2 || !n.winner) return;
-    if (n.player1.includes('/') || n.player2.includes('/')) return;
-    const competition = compMap.get(normComp(n.competition)) || n.competition || '';
-    const key = entryKey({ competition, round: n.round, player1: n.player1, player2: n.player2 });
-    if (officialKeys.has(key)) return;
-    base.push({
-      competition,
-      round: n.round || '',
-      player1: n.player1,
-      player2: n.player2,
-      winner: n.winner,
-      score: n.score || '',
-      time: n.time || '',
-      court: n.court || '',
-      source: 'nuliga-live',
-      vorlaeufig: true,
+
+  const confirmedKeys = new Set(confirmed.map(entryKey));
+  let neuBestaetigt = 0;
+  if (Array.isArray(nuliga)) {
+    nuliga.forEach((n) => {
+      if (!n || !n.player1 || !n.player2 || !n.winner) return;
+      if (n.player1.includes('/') || n.player2.includes('/')) return;
+      const competition = compMap.get(normComp(n.competition)) || n.competition || '';
+      const entry = {
+        competition,
+        round: n.round || '',
+        player1: n.player1,
+        player2: n.player2,
+        winner: n.winner,
+        score: n.score || '',
+        time: n.time || '',
+        court: n.court || '',
+        source: 'nuliga-live',
+      };
+      const key = entryKey(entry);
+      if (confirmedKeys.has(key)) return;
+      confirmed.push(entry);
+      confirmedKeys.add(key);
+      neuBestaetigt++;
     });
+  }
+  if (neuBestaetigt) {
+    fs.writeFileSync(CONFIRMED_PATH, JSON.stringify(confirmed, null, 2) + '\n');
+  }
+
+  const existingKeys = new Set(results.filter((m) => m && m.player1 && m.player2).map(entryKey));
+  let added = 0;
+  confirmed.forEach((entry) => {
+    const key = entryKey(entry);
+    if (existingKeys.has(key)) return;
+    results.push(entry);
+    existingKeys.add(key);
     added++;
   });
-  if (added || base.length !== results.length) {
-    fs.writeFileSync(RESULTS_PATH, JSON.stringify(base, null, 2) + '\n');
-    console.log(`nuLiga-Ergebnis-Merge: ${added} vorlaeufige(s) Ergebnis(se) aus nuLiga uebernommen.`);
-  } else {
-    console.log('nuLiga-Ergebnis-Merge: keine Ergaenzungen noetig.');
+
+  if (added || neuBestaetigt) {
+    fs.writeFileSync(RESULTS_PATH, JSON.stringify(results, null, 2) + '\n');
   }
+  console.log(`nuLiga-Ergebnis-Merge: ${neuBestaetigt} neu dauerhaft bestaetigt, ${added} in results.json ergaenzt.`);
 }
 mergeResults();
 
