@@ -350,26 +350,6 @@
     "court": ""
   },
   {
-    "competition": "Damen Einzel KO LK 22,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Herrmann Solbach, Sophia",
-    "player2": "Giebeler, Ina",
-    "winner": "Giebeler, Ina",
-    "score": "4:6 6:4 10:8",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 22,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Pfeifer, Jasmin",
-    "player2": "Fiedler, Julia",
-    "winner": "Fiedler, Julia",
-    "score": "6:1 6:1",
-    "time": "",
-    "court": ""
-  },
-  {
     "competition": "Herren Einzel KO LK 1,0-25,0",
     "round": "1. Runde",
     "player1": "Jud, Tobias",
@@ -1291,6 +1271,39 @@
     "score": "4:6 6:2 10:7",
     "time": "15.08.2026 16:30 Uhr",
     "court": "Platz 3",
+    "source": "nuliga-live"
+  },
+  {
+    "competition": "Damen Einzel LK22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Giebeler, Ina",
+    "player2": "Becker, Sarah",
+    "winner": "Giebeler, Ina",
+    "score": "7:6 6:1",
+    "time": "16.08.2026 13:30 Uhr",
+    "court": "Platz 4",
+    "source": "nuliga-live"
+  },
+  {
+    "competition": "Damen Einzel LK22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Steuber, Melina",
+    "player2": "Pfeifer, Jasmin",
+    "winner": "Pfeifer, Jasmin",
+    "score": "6:1 6:1",
+    "time": "15.08.2026 13:30 Uhr",
+    "court": "Platz 4",
+    "source": "nuliga-live"
+  },
+  {
+    "competition": "Damen Einzel LK22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Fiedler, Julia",
+    "player2": "Gerich, Verena",
+    "winner": "Fiedler, Julia",
+    "score": "6:0 6:1",
+    "time": "16.08.2026 09:00 Uhr",
+    "court": "Platz 4",
     "source": "nuliga-live"
   }
 ]

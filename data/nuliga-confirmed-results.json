@@ -922,5 +922,38 @@
     "time": "15.08.2026 16:30 Uhr",
     "court": "Platz 3",
     "source": "nuliga-live"
+  },
+  {
+    "competition": "Damen Einzel LK22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Giebeler, Ina",
+    "player2": "Becker, Sarah",
+    "winner": "Giebeler, Ina",
+    "score": "7:6 6:1",
+    "time": "16.08.2026 13:30 Uhr",
+    "court": "Platz 4",
+    "source": "nuliga-live"
+  },
+  {
+    "competition": "Damen Einzel LK22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Steuber, Melina",
+    "player2": "Pfeifer, Jasmin",
+    "winner": "Pfeifer, Jasmin",
+    "score": "6:1 6:1",
+    "time": "15.08.2026 13:30 Uhr",
+    "court": "Platz 4",
+    "source": "nuliga-live"
+  },
+  {
+    "competition": "Damen Einzel LK22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Fiedler, Julia",
+    "player2": "Gerich, Verena",
+    "winner": "Fiedler, Julia",
+    "score": "6:0 6:1",
+    "time": "16.08.2026 09:00 Uhr",
+    "court": "Platz 4",
+    "source": "nuliga-live"
   }
 ]
