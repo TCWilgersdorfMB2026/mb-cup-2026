@@ -652,7 +652,7 @@
   {
     "competition": "Herren 40 Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": "Müller, Stefan / Borodin, Eugen",
+    "player1": "Borodin, Eugen",
     "player2": "Wroben, Thorsten",
     "winner": null,
     "score": null,
@@ -662,7 +662,7 @@
   {
     "competition": "Herren 40 Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": "Müller, Stefan / Borodin, Eugen",
+    "player1": "Müller, Stefan",
     "player2": "Weber, Holger",
     "winner": null,
     "score": null,
@@ -674,8 +674,8 @@
     "round": "Halbfinale",
     "player1": "Müller, Stefan",
     "player2": "Borodin, Eugen",
-    "winner": null,
-    "score": null,
+    "winner": "Müller, Stefan",
+    "score": "7:6 6:1",
     "time": "20.08.2026 18:00 Uhr",
     "court": "Platz 4"
   },
@@ -1104,8 +1104,8 @@
     "round": "Viertelfinale",
     "player1": "Iordanidis, Alexandros",
     "player2": "Rötzel, Johannes",
-    "winner": null,
-    "score": null,
+    "winner": "Rötzel, Johannes",
+    "score": "6:4 6:1",
     "time": "20.08.2026 18:00 Uhr",
     "court": "Platz 2"
   },
