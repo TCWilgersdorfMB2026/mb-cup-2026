@@ -302,7 +302,7 @@
   {
     "competition": "Damen Einzel LK10,0-25,0",
     "round": "Finale",
-    "player1": "Hoffmann, Nicole / Voth, Eva",
+    "player1": "Voth, Eva",
     "player2": "Hees, Sabrina / Backaus, Hedda Lotta",
     "winner": null,
     "score": null,
@@ -312,7 +312,7 @@
   {
     "competition": "Damen Einzel LK10,0-25,0",
     "round": "Finale",
-    "player1": "Hoffmann, Nicole / Voth, Eva",
+    "player1": "Hoffmann, Nicole",
     "player2": "Hees, Sabrina / Backaus, Hedda Lotta",
     "winner": null,
     "score": null,
@@ -324,8 +324,8 @@
     "round": "Halbfinale",
     "player1": "Hoffmann, Nicole",
     "player2": "Voth, Eva",
-    "winner": null,
-    "score": null,
+    "winner": "Hoffmann, Nicole",
+    "score": "6:1 6:3",
     "time": "20.08.2026 16:30 Uhr",
     "court": "Platz 3"
   },
