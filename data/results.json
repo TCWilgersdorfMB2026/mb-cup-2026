@@ -830,6 +830,16 @@
     "court": ""
   },
   {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Hoffmann, Nicole",
+    "player2": "Voth, Eva",
+    "winner": "Hoffmann, Nicole",
+    "score": "6:1 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
     "competition": "Damen Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
     "player1": "Schläger, Antonia",
@@ -1101,6 +1111,18 @@
     "winner": "Schwarzer, Martin",
     "score": "5:2 Aufg.",
     "time": "20.08.2026 15:00 Uhr",
+    "court": "Platz 2",
+    "source": "nuliga-live",
+    "vorlaeufig": true
+  },
+  {
+    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Weber, Holger",
+    "player2": "Wroben, Thorsten",
+    "winner": "Weber, Holger",
+    "score": "4:6 6:4 10:4",
+    "time": "20.08.2026 16:30 Uhr",
     "court": "Platz 2",
     "source": "nuliga-live",
     "vorlaeufig": true

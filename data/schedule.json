@@ -472,16 +472,6 @@
   {
     "competition": "Damen Einzel KO LK 10,0-25,0",
     "round": "Halbfinale",
-    "player1": "Hoffmann, Nicole",
-    "player2": "Voth, Eva",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 3"
-  },
-  {
-    "competition": "Damen Einzel KO LK 10,0-25,0",
-    "round": "Halbfinale",
     "player1": "Hees, Sabrina",
     "player2": "Backaus, Hedda Lotta",
     "winner": null,
@@ -764,18 +754,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 18:00 Uhr",
-    "court": "Platz 1",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Weber, Holger",
-    "player2": "Wroben, Thorsten",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 2",
+    "court": "Platz 4",
     "source": "nuliga-merge"
   },
   {
