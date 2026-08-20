@@ -432,8 +432,8 @@
   {
     "competition": "Herren 70 Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": "Simmerl, Mario / Sprenger, Axel",
-    "player2": "Flath, Werner / Sommer, Rainer",
+    "player1": "Sprenger, Axel",
+    "player2": "Flath, Werner",
     "winner": null,
     "score": null,
     "time": "22.08.2026 10:30 Uhr",
@@ -442,8 +442,8 @@
   {
     "competition": "Herren 70 Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": "Simmerl, Mario / Sprenger, Axel",
-    "player2": "Flath, Werner / Sommer, Rainer",
+    "player1": "Simmerl, Mario",
+    "player2": "Sommer, Rainer",
     "winner": null,
     "score": null,
     "time": "22.08.2026 10:30 Uhr",
@@ -454,8 +454,8 @@
     "round": "Halbfinale",
     "player1": "Simmerl, Mario",
     "player2": "Sprenger, Axel",
-    "winner": null,
-    "score": null,
+    "winner": "Simmerl, Mario",
+    "score": "6:4 6:2",
     "time": "20.08.2026 15:00 Uhr",
     "court": "Platz 4"
   },
@@ -464,8 +464,8 @@
     "round": "Halbfinale",
     "player1": "Flath, Werner",
     "player2": "Sommer, Rainer",
-    "winner": null,
-    "score": null,
+    "winner": "Sommer, Rainer",
+    "score": "6:4 7:6",
     "time": "20.08.2026 15:00 Uhr",
     "court": "Platz 1"
   },
