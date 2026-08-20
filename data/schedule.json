@@ -130,16 +130,6 @@
     "court": ""
   },
   {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Wagner, Matthias",
-    "player2": "Nies, Tim",
-    "winner": null,
-    "score": null,
-    "time": "21.08.2026 16:30 Uhr",
-    "court": "Platz 2"
-  },
-  {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Runde 1",
     "player1": "Anders, Denis",
@@ -390,16 +380,6 @@
     "court": ""
   },
   {
-    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Schmelzeisen, Frank",
-    "player2": "Hussing, Frank",
-    "winner": null,
-    "score": null,
-    "time": "21.08.2026 18:00 Uhr",
-    "court": "Platz 2"
-  },
-  {
     "competition": "Herren 60 Einzel KO LK 1,0-25,0",
     "round": "Viertelfinale",
     "player1": "Simon, Reinhard",
@@ -418,16 +398,6 @@
     "score": "Freilos",
     "time": "",
     "court": ""
-  },
-  {
-    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Rauen, Werner",
-    "player2": "Sommer, Rainer",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 10:30 Uhr",
-    "court": "Platz 1"
   },
   {
     "competition": "Damen Einzel KO LK 10,0-25,0",
