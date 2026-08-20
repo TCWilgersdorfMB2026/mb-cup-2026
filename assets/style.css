@@ -221,6 +221,7 @@ body {
 .bracket-player.winner { font-weight: 700; color: var(--navy); }
 .bracket-score { color: var(--accent); font-weight: 700; font-size: 0.72rem; margin-top: 3px; }
 .bracket-pending { color: var(--muted); font-style: italic; font-size: 0.72rem; margin-top: 3px; }
+.pending-placeholder { color: var(--muted); font-style: italic; }
 .bracket-freilos { color: var(--muted); font-style: italic; font-size: 0.72rem; margin-top: 3px; }
 .bracket-meta { color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
 
