@@ -153,6 +153,79 @@ function main() {
 
 main();
 
+// Konkurrenz-Runden-Reihenfolge, um zu erkennen, ob eine offene Spielplan-
+// Paarung durch eine sichere, aus nuLiga ablesbare Erkenntnis "Spieler ist
+// dort schon weiter" ueberholt (superseded) ist. Eigene Kopie der Liste
+// aus assets/app.js (ROUND_ORDER) - dieses Skript laeuft serverseitig unter
+// Node und hat keinen Zugriff auf den Browser-Code.
+const ROUND_ORDER = ['Runde 1', '1. Runde', 'Sechzehntelfinale', 'Achtelfinale', 'Viertelfinale', 'Halbfinale', 'Finale'];
+function roundIdx(r) { return ROUND_ORDER.indexOf(r || ''); }
+
+/**
+ * Entfernt aus data/schedule.json offene (noch nicht entschiedene)
+ * Paarungen, bei denen einer der beiden Spieler laut nuLiga
+ * (data/nuliga-live.json) bereits in einer SPAETEREN Runde derselben
+ * Konkurrenz auftaucht - egal ob diese spaetere Partie schon entschieden
+ * ist oder selbst noch offen ist. Ein Spieler kann nicht gleichzeitig in
+ * zwei Runden aktiv sein: eine fruehere, noch offene Paarung ist in diesem
+ * Fall ein veralteter tennis.de-Tableau-Eintrag (typischerweise, weil der
+ * Gegner kampflos/durch Aufgabe weitergekommen ist und tennis.de die
+ * Ur-Partie nie als beendet markiert hat).
+ *
+ * Ersetzt die bisherige Praxis, jeden Einzelfall manuell als
+ * "removedSchedule"-Regel in data/match-overrides.json einzutragen (siehe
+ * dort: Wagner/Nies, Schmelzeisen/Hussing) - solche Faelle werden ab jetzt
+ * automatisch erkannt und bereinigt, unabhaengig vom genauen Spielernamen.
+ */
+function removeSupersededSchedule() {
+  const schedule = readJson(SCHEDULE_PATH, []);
+  const nuliga = readJson(NULIGA_PATH, []);
+  if (!Array.isArray(schedule) || !schedule.length) return;
+  if (!Array.isArray(nuliga) || !nuliga.length) return;
+
+  const compMap = buildCompetitionMap();
+
+  // Hoechste Runde, die ein Spieler laut nuLiga in einer Konkurrenz bereits
+  // erreicht hat (Platzhalter-Paarungen mit "/" im Namen werden ignoriert,
+  // da sie keine echten Spieler sind).
+  const reached = new Map(); // key: competition||spieler -> hoechster roundIdx
+
+  nuliga.forEach((n) => {
+    if (!n || !n.player1 || !n.player2) return;
+    if (n.player1.includes('/') || n.player2.includes('/')) return;
+    const competition = compMap.get(normComp(n.competition)) || n.competition || '';
+    const r = roundIdx(n.round);
+    if (r === -1) return;
+    [n.player1, n.player2].forEach((p) => {
+      const key = competition + '||' + normName(p);
+      const prev = reached.get(key);
+      if (prev === undefined || r > prev) reached.set(key, r);
+    });
+  });
+
+  const filtered = schedule.filter((m) => {
+    if (!m || m.winner) return true; // nur offene Paarungen pruefen
+    if (!m.player1 || !m.player2) return true; // Freilos-Platzhalter unangetastet lassen
+    const mIdx = roundIdx(m.round);
+    if (mIdx === -1) return true;
+    for (const p of [m.player1, m.player2]) {
+      const key = m.competition + '||' + normName(p);
+      const r = reached.get(key);
+      if (r !== undefined && r > mIdx) return false; // Spieler ist laut nuLiga schon weiter - Eintrag veraltet
+    }
+    return true;
+  });
+
+  const removed = schedule.length - filtered.length;
+  if (removed) {
+    fs.writeFileSync(SCHEDULE_PATH, JSON.stringify(filtered, null, 2) + '\n');
+    console.log(`Automatische Bereinigung: ${removed} veraltete Spielplan-Paarung(en) entfernt (Spieler laut nuLiga bereits in spaeterer Runde).`);
+  } else {
+    console.log('Automatische Bereinigung: keine veralteten Spielplan-Paarungen gefunden.');
+  }
+}
+removeSupersededSchedule();
+
 /**
 * Uebernimmt von nuLiga als beendet gemeldete Partien (winner/score
 * gesetzt) DAUERHAFT in data/results.json - im Gegensatz zur alten
