@@ -1,0 +1,34 @@
+{
+  "_hinweis": "Manuelle Korrekturen fuer Faelle, in denen der automatische tennis.de/nuLiga-Scrape veraltete oder falsche Paarungen erzeugt (z.B. Nichtantreten oder Finale-Platzhalter mit bereits ausgeschiedenen Spieler:innen). Wird von assets/app.js bei JEDEM Laden angewendet und ueberlebt daher automatische Re-Scrapes. Eintraege koennen entfernt werden, sobald tennis.de die zugrunde liegenden Daten selbst korrekt fuehrt.",
+  "resolvedMatches": [
+    {
+      "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+      "round": "Viertelfinale",
+      "player1": "Rauen, Werner",
+      "player2": "Sommer, Rainer",
+      "winner": "Sommer, Rainer",
+      "score": "nicht angetreten",
+      "note": "Rauen ist nicht angetreten. tennis.de fuehrt die Paarung nach jedem Re-Scrape wieder als offen."
+    }
+  ],
+  "eliminatedPlayers": [
+    {
+      "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+      "player": "Becker, Henning",
+      "afterRound": "Halbfinale",
+      "note": "Verlor Halbfinale 6:0 6:1 gegen Rothe, Michael. Taucht bei manchen Scrapes trotzdem in einem Finale-Platzhalter auf."
+    },
+    {
+      "competition": "Damen Einzel KO LK 22,0-25,0",
+      "player": "Herrmann Solbach, Sophia",
+      "afterRound": "Halbfinale",
+      "note": "Verlor Halbfinale gegen Giebeler, Ina."
+    },
+    {
+      "competition": "Damen Einzel KO LK 22,0-25,0",
+      "player": "Pfeifer, Jasmin",
+      "afterRound": "Halbfinale",
+      "note": "Verlor Halbfinale gegen Fiedler, Julia."
+    }
+  ]
+}
