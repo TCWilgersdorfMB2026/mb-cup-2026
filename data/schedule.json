@@ -471,9 +471,9 @@
   },
   {
     "competition": "Damen Einzel KO LK 10,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Hees, Sabrina",
-    "player2": "Backaus, Hedda Lotta",
+    "round": "Finale",
+    "player1": "Hoffmann, Nicole",
+    "player2": "Hees, Sabrina",
     "winner": null,
     "score": null,
     "time": "22.08.2026 13:30 Uhr",
@@ -699,6 +699,17 @@
     "winner": null,
     "score": null,
     "time": "22.08.2026 09:00 Uhr",
+    "court": "Platz 4",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "round": "Finale",
+    "player1": "Voth, Eva",
+    "player2": "Backaus, Hedda Lotta",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 12:00 Uhr",
     "court": "Platz 4",
     "source": "nuliga-merge"
   },
