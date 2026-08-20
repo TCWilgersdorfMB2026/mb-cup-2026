@@ -993,6 +993,30 @@
   },
   {
     "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Simmerl, Mario",
+    "player2": "Sprenger, Axel",
+    "winner": "Simmerl, Mario",
+    "score": "6:4 6:2",
+    "time": "20.08.2026 15:00 Uhr",
+    "court": "Platz 4",
+    "source": "nuliga-live",
+    "vorlaeufig": true
+  },
+  {
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Flath, Werner",
+    "player2": "Sommer, Rainer",
+    "winner": "Sommer, Rainer",
+    "score": "6:4 7:6",
+    "time": "20.08.2026 15:00 Uhr",
+    "court": "Platz 1",
+    "source": "nuliga-live",
+    "vorlaeufig": true
+  },
+  {
+    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
     "round": "Viertelfinale",
     "player1": "Flath, Werner",
     "player2": "Bieker, Joachim",
@@ -1035,6 +1059,18 @@
     "winner": "Lück, Marco",
     "score": "6:4 3:1 Aufg.",
     "time": "19.08.2026 18:00 Uhr",
+    "court": "Platz 2",
+    "source": "nuliga-live",
+    "vorlaeufig": true
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Schwarzer, Martin",
+    "player2": "Pavicic, Peter",
+    "winner": "Schwarzer, Martin",
+    "score": "5:2 Aufg.",
+    "time": "20.08.2026 15:00 Uhr",
     "court": "Platz 2",
     "source": "nuliga-live",
     "vorlaeufig": true
@@ -1180,6 +1216,18 @@
     "score": "6:1 5:4 Aufg.",
     "time": "19.08.2026 18:00 Uhr",
     "court": "Platz 4",
+    "source": "nuliga-live",
+    "vorlaeufig": true
+  },
+  {
+    "competition": "Nebenrunde Damen Einzel",
+    "round": "Viertelfinale",
+    "player1": "Heide, Miriam",
+    "player2": "Gyurcsi, Lili",
+    "winner": "Heide, Miriam",
+    "score": "6:3 7:5",
+    "time": "20.08.2026 15:00 Uhr",
+    "court": "Platz 3",
     "source": "nuliga-live",
     "vorlaeufig": true
   },

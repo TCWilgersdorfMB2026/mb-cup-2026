@@ -432,16 +432,6 @@
   {
     "competition": "Herren 50 Einzel KO LK 1,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Schwarzer, Martin",
-    "player2": "Pavicic, Peter",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 15:00 Uhr",
-    "court": "Platz 2"
-  },
-  {
-    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
-    "round": "Viertelfinale",
     "player1": "Schmelzeisen, Frank",
     "player2": "Hussing, Frank",
     "winner": null,
@@ -476,7 +466,7 @@
     "player2": "Sommer, Rainer",
     "winner": null,
     "score": null,
-    "time": "20.08.2026 15:00 Uhr",
+    "time": "22.08.2026 10:30 Uhr",
     "court": "Platz 1"
   },
   {
@@ -517,7 +507,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 16:30 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 3"
   },
   {
     "competition": "Damen Einzel KO LK 10,0-25,0",
@@ -743,23 +733,23 @@
   },
   {
     "competition": "Herren 70 Einzel KO LK 1,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Simmerl, Mario",
-    "player2": "Sprenger, Axel",
+    "round": "Finale",
+    "player1": "Sprenger, Axel",
+    "player2": "Flath, Werner",
     "winner": null,
     "score": null,
-    "time": "20.08.2026 15:00 Uhr",
-    "court": "Platz 4",
+    "time": "22.08.2026 10:30 Uhr",
+    "court": "Platz 3",
     "source": "nuliga-merge"
   },
   {
     "competition": "Herren 70 Einzel KO LK 1,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Flath, Werner",
+    "round": "Finale",
+    "player1": "Simmerl, Mario",
     "player2": "Sommer, Rainer",
     "winner": null,
     "score": null,
-    "time": "20.08.2026 15:00 Uhr",
+    "time": "22.08.2026 10:30 Uhr",
     "court": "Platz 1",
     "source": "nuliga-merge"
   },
@@ -783,6 +773,17 @@
     "score": null,
     "time": "22.08.2026 09:00 Uhr",
     "court": "Platz 1",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Schwarzer, Martin",
+    "player2": "Hussing, Frank",
+    "winner": null,
+    "score": null,
+    "time": "21.08.2026 18:00 Uhr",
+    "court": "Platz 2",
     "source": "nuliga-merge"
   },
   {
@@ -827,17 +828,6 @@
     "score": null,
     "time": "21.08.2026 18:00 Uhr",
     "court": "Platz 4",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Nebenrunde Damen Einzel",
-    "round": "Viertelfinale",
-    "player1": "Heide, Miriam",
-    "player2": "Gyurcsi, Lili",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 15:00 Uhr",
-    "court": "Platz 3",
     "source": "nuliga-merge"
   },
   {
