@@ -440,6 +440,16 @@
     "court": ""
   },
   {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Schneider, Dominik",
+    "player2": "Baldus, Jonas",
+    "winner": "Schneider, Dominik",
+    "score": "6:1 6:3",
+    "time": "",
+    "court": ""
+  },
+  {
     "competition": "Herren Einzel KO LK 22,0-25,0",
     "round": "Runde 1",
     "player1": "Freudenstein, Manuel",
@@ -566,6 +576,26 @@
     "player2": "Schürbusch, Nico",
     "winner": "Roth, Marvin",
     "score": "6:0 6:0",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Zöller, Robin",
+    "player2": "Scheuermann, Florian",
+    "winner": "Scheuermann, Florian",
+    "score": "6:2 6:1",
+    "time": "",
+    "court": ""
+  },
+  {
+    "competition": "Herren Einzel KO LK 22,0-25,0",
+    "round": "Viertelfinale",
+    "player1": "Klein, Thilo",
+    "player2": "Büdenbender, Jens",
+    "winner": "Klein, Thilo",
+    "score": "6:3 6:2",
     "time": "",
     "court": ""
   },

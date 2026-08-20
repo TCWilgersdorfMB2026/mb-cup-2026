@@ -212,16 +212,6 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Viertelfinale",
-    "player1": "Schneider, Dominik",
-    "player2": "Baldus, Jonas",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 16:30 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 1"
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Viertelfinale",
     "player1": "Kamyab, Taymas",
     "player2": "Hartmann, Nils",
     "winner": null,
@@ -358,26 +348,6 @@
     "score": null,
     "time": "21.08.2026 16:30 Uhr",
     "court": "TC Wieland-Wilnsdorf, Platz 2"
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Zöller, Robin",
-    "player2": "Scheuermann, Florian",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 16:30 Uhr",
-    "court": "TC NiederschelderhütteTV Eiserfeld, Platz 2"
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Klein, Thilo",
-    "player2": "Büdenbender, Jens",
-    "winner": null,
-    "score": null,
-    "time": "20.08.2026 16:30 Uhr",
-    "court": "-Tennisclub Dynamit Nobel e.V.TV Eiserfeld, Platz 1"
   },
   {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",
@@ -710,6 +680,17 @@
     "court": "Platz 2"
   },
   {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Nies, Tim",
+    "player2": "Gross, Ingo",
+    "winner": null,
+    "score": null,
+    "time": "21.08.2026 16:30 Uhr",
+    "court": "Platz 2",
+    "source": "nuliga-merge"
+  },
+  {
     "competition": "Damen Einzel KO LK 17,0-25,0",
     "round": "Halbfinale",
     "player1": "Schläger, Antonia",
@@ -729,17 +710,6 @@
     "score": null,
     "time": "22.08.2026 09:00 Uhr",
     "court": "Platz 4",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
-    "round": "Finale",
-    "player1": "Sprenger, Axel",
-    "player2": "Flath, Werner",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 10:30 Uhr",
-    "court": "Platz 3",
     "source": "nuliga-merge"
   },
   {
@@ -849,7 +819,7 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 18:00 Uhr",
-    "court": "Platz 4",
+    "court": "Platz 2",
     "source": "nuliga-merge"
   }
 ]
