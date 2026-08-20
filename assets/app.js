@@ -727,6 +727,11 @@ function applyMatchOverrides(schedule, results, overrides) {
     });
   }
 
+    for (const rule of overrides.removedSchedule || []) {
+    const { competition, round, player1, player2 } = rule;
+    newSchedule = newSchedule.filter((m) => !isMatch(m, competition, round, player1, player2));
+  }
+
   return { schedule: newSchedule, results: newResults };
 }
 
