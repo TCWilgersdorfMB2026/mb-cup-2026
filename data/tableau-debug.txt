@@ -192,8 +192,8 @@ Herren Einzel - Hauptfeld
 	[Rast]		6:2 6:2			
 		Nies, T.				
 5	[5] - LK8,0 - Nies, Tim, 2004 - TC Wilgersdorf, WTV					
-					TC Wilger..., Platz 1	
-3	[3] - LK6,9 - Gross, Ingo, 1977 - VfL Kirchen, RPF				21.08. 18:00	
+					TC Wilger..., Platz 2	
+3	[3] - LK6,9 - Gross, Ingo, 1977 - VfL Kirchen, RPF				21.08. 16:30	
 		Gross, I.				
 	[Rast]					
 			Gross, I.			
