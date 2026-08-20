@@ -1,16 +1,18 @@
 #!/usr/bin/env node
 /**
- * Ergaenzt data/schedule.json um Partien, die auf tennis.de noch keinen
- * Platz/keine Uhrzeit haben oder dort komplett fehlen, aber in den
- * nuLiga-Live-Daten (data/nuliga-live.json, siehe scrape-nuliga-live.js)
- * bereits mit Platz/Uhrzeit vorhanden sind.
+ * nuLiga ist die massgebliche Quelle fuer den aktuellen Turnierstand:
+ * Termin/Platz einer Partie im Spielplan (data/schedule.json) und wer
+ * eine Partie gewonnen hat samt Ergebnis (data/results.json) - sobald
+ * nuLiga (data/nuliga-live.json, siehe scrape-nuliga-live.js) dazu Daten
+ * liefert, haben diese Vorrang vor tennis.de.
  *
- * tennis.de bleibt die alleinige Quelle fuer die Meldeliste (LK, Verein,
- * DTB-ID) und fuer bereits abgeschlossene Ergebnisse - hier werden
- * ausschliesslich noch offene (unentschiedene) Partien ergaenzt, die im
- * Spielplan (schedule.json) auftauchen sollen. Bereits gespielte nuLiga-
- * Partien (mit winner/score) werden bewusst NICHT hierher uebernommen,
- * da schedule.json nur fuer den anstehenden Spielplan gedacht ist.
+ * tennis.de bleibt weiterhin die alleinige Quelle fuer die Meldeliste
+ * (LK, Verein, DTB-ID, siehe entrants.json) und dient hier nur noch als
+ * Fallback: Termin/Platz/Ergebnis aus dem tennis.de-Tableau werden
+ * verwendet, solange nuLiga zu einer Partie noch nichts zeigt (z.B. weil
+ * die Partie dort noch nicht auftaucht, oder bei einem Ausfall des
+ * nuLiga-Scrapers) - sobald nuLiga Daten zu dieser Partie liefert, wird
+ * die tennis.de-Angabe ueberschrieben bzw. ersetzt.
  *
  * Die Live-Anzeige (live-display.html / assets/live.js) nutzt weiterhin
  * ausschliesslich nuLiga direkt und ist von diesem Merge unabhaengig.
@@ -111,8 +113,16 @@ function main() {
 
     if (matches && matches.length) {
       matches.forEach((m) => {
-        if (!m.time && n.time) { m.time = n.time; filled++; }
-        if (!m.court && n.court) { m.court = n.court; }
+        // nuLiga ist die massgebliche Quelle fuer Termin/Platz einer
+        // bereits vorhandenen Spielplan-Partie - ein vorhandener
+        // tennis.de-Wert wird ueberschrieben, sobald nuLiga eine
+        // abweichende/aktuellere Angabe liefert (nicht nur, wenn er
+        // komplett fehlt). tennis.de bleibt nur so lange massgeblich,
+        // wie nuLiga zu dieser Partie noch nichts zeigt.
+        let aktualisiert = false;
+        if (n.time && m.time !== n.time) { m.time = n.time; aktualisiert = true; }
+        if (n.court && m.court !== n.court) { m.court = n.court; aktualisiert = true; }
+        if (aktualisiert) filled++;
       });
     } else {
       const newEntry = {
@@ -145,7 +155,7 @@ function main() {
 
   if (filled || added || removedDupes) {
     fs.writeFileSync(SCHEDULE_PATH, JSON.stringify(deduped, null, 2) + '\n');
-    console.log(`nuLiga-Merge: ${filled} Partie(n) ergaenzt, ${added} neue Partie(n) uebernommen, ${skippedPlatzhalter} Platzhalter uebersprungen, ${removedDupes} Duplikat(e) entfernt.`);
+    console.log(`nuLiga-Merge: ${filled} Partie(n) mit nuLiga-Termin/Platz aktualisiert, ${added} neue Partie(n) uebernommen, ${skippedPlatzhalter} Platzhalter uebersprungen, ${removedDupes} Duplikat(e) entfernt.`);
   } else {
     console.log(`nuLiga-Merge: keine Ergaenzungen noetig (${skippedPlatzhalter} Platzhalter uebersprungen).`);
   }
@@ -247,13 +257,22 @@ removeSupersededSchedule();
 * in results.json steht, dort ergaenzt (kein "vorlaeufig"-Flag mehr -
 * das Ergebnis gilt sofort als endgueltig).
 *
+* nuLiga gilt dabei als massgeblich: ein von tennis.de gemeldetes Ergebnis
+* fuer dieselbe Paarung (gleiche Konkurrenz + Spielerpaar, unabhaengig von
+* ggf. abweichender Rundenbezeichnung) wird verworfen, sobald nuLiga
+* dieselbe Partie bestaetigt hat - tennis.de bleibt nur so lange
+* massgeblich, wie nuLiga zu dieser Paarung noch keine Bestaetigung hat
+* (z.B. bei einem Ausfall des nuLiga-Scrapers). Aendert sich ein bereits
+* von nuLiga bestaetigtes Ergebnis nachtraeglich (z.B. Korrektur), wird
+* der bestehende Eintrag in results.json entsprechend aktualisiert.
+*
 * Verein/LK bleiben davon unberuehrt weiterhin ausschliesslich von
 * tennis.de (entrants.json) - nuLiga liefert dafuer keine Daten.
 */
 function mergeResults() {
   const RESULTS_PATH = path.join(DATA_DIR, 'results.json');
   const CONFIRMED_PATH = path.join(DATA_DIR, 'nuliga-confirmed-results.json');
-  const results = readJson(RESULTS_PATH, []);
+  let results = readJson(RESULTS_PATH, []);
   const nuliga = readJson(NULIGA_PATH, []);
   const confirmed = readJson(CONFIRMED_PATH, []);
   const compMap = buildCompetitionMap();
@@ -263,8 +282,15 @@ function mergeResults() {
     return;
   }
 
-  const confirmedKeys = new Set(confirmed.map(entryKey));
+  // Map statt reinem Set, damit eine nachtraegliche Korrektur eines bereits
+  // bestaetigten Ergebnisses (z.B. falscher Score wurde von nuLiga
+  // spaeter berichtigt) erkannt und im Speicher aktualisiert wird - ein
+  // reiner Vorhanden-Check auf entryKey (ohne Score/Sieger) wuerde das
+  // sonst uebersehen, weil sich entryKey bei einer Korrektur nicht
+  // aendert.
+  const confirmedMap = new Map(confirmed.map((entry) => [entryKey(entry), entry]));
   let neuBestaetigt = 0;
+  let nachtraeglichKorrigiert = 0;
   if (Array.isArray(nuliga)) {
     nuliga.forEach((n) => {
       if (!n || !n.player1 || !n.player2 || !n.winner) return;
@@ -282,30 +308,59 @@ function mergeResults() {
         source: 'nuliga-live',
       };
       const key = entryKey(entry);
-      if (confirmedKeys.has(key)) return;
-      confirmed.push(entry);
-      confirmedKeys.add(key);
-      neuBestaetigt++;
+      const existing = confirmedMap.get(key);
+      if (!existing) {
+        confirmed.push(entry);
+        confirmedMap.set(key, entry);
+        neuBestaetigt++;
+      } else if (
+        existing.score !== entry.score || existing.winner !== entry.winner ||
+        existing.time !== entry.time || existing.court !== entry.court
+      ) {
+        Object.assign(existing, entry);
+        nachtraeglichKorrigiert++;
+      }
     });
   }
-  if (neuBestaetigt) {
+  if (neuBestaetigt || nachtraeglichKorrigiert) {
     fs.writeFileSync(CONFIRMED_PATH, JSON.stringify(confirmed, null, 2) + '\n');
   }
 
-  const existingKeys = new Set(results.filter((m) => m && m.player1 && m.player2).map(entryKey));
-  let added = 0;
-  confirmed.forEach((entry) => {
-    const key = entryKey(entry);
-    if (existingKeys.has(key)) return;
-    results.push(entry);
-    existingKeys.add(key);
-    added++;
+  // nuLiga ist massgeblich: ein tennis.de-Ergebnis fuer dieselbe Paarung
+  // (Konkurrenz + Spielerpaar) wird verworfen, sobald nuLiga diese Partie
+  // bestaetigt hat. Eigene, in einem frueheren Lauf eingefuegte
+  // nuliga-live-Eintraege werden hier nicht angefasst.
+  const confirmedPairKeys = new Set(confirmed.map(compPairKey));
+  let ersetzt = 0;
+  results = results.filter((m) => {
+    if (!m || !m.player1 || !m.player2) return true;
+    if (m.source === 'nuliga-live') return true;
+    if (confirmedPairKeys.has(compPairKey(m))) { ersetzt++; return false; }
+    return true;
   });
 
-  if (added || neuBestaetigt) {
+  let added = 0;
+  let aktualisiert = 0;
+  confirmed.forEach((entry) => {
+    const key = entryKey(entry);
+    const idx = results.findIndex((m) => m && entryKey(m) === key);
+    if (idx === -1) {
+      results.push(entry);
+      added++;
+    } else if (
+      results[idx].source === 'nuliga-live' &&
+      (results[idx].score !== entry.score || results[idx].winner !== entry.winner ||
+        results[idx].time !== entry.time || results[idx].court !== entry.court)
+    ) {
+      results[idx] = entry;
+      aktualisiert++;
+    }
+  });
+
+  if (added || neuBestaetigt || ersetzt || aktualisiert) {
     fs.writeFileSync(RESULTS_PATH, JSON.stringify(results, null, 2) + '\n');
   }
-  console.log(`nuLiga-Ergebnis-Merge: ${neuBestaetigt} neu dauerhaft bestaetigt, ${added} in results.json ergaenzt.`);
+  console.log(`nuLiga-Ergebnis-Merge: ${neuBestaetigt} neu dauerhaft bestaetigt, ${nachtraeglichKorrigiert} nachtraeglich korrigiert, ${ersetzt} abweichende tennis.de-Eintraege durch nuLiga ersetzt, ${added} in results.json ergaenzt, ${aktualisiert} aktualisiert.`);
 }
 mergeResults();
 
@@ -349,4 +404,3 @@ function removeDecidedFromSchedule() {
   }
 }
 removeDecidedFromSchedule();
-
