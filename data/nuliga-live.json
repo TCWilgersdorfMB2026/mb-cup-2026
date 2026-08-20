@@ -422,16 +422,6 @@
   {
     "competition": "Herren 70 Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": "Sprenger, Axel",
-    "player2": "Flath, Werner",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 10:30 Uhr",
-    "court": "Platz 3"
-  },
-  {
-    "competition": "Herren 70 Einzel LK1,0-25,0",
-    "round": "Finale",
     "player1": "Simmerl, Mario",
     "player2": "Sommer, Rainer",
     "winner": null,
@@ -862,7 +852,7 @@
   {
     "competition": "Herren Einzel LK17,0-25,0",
     "round": "Halbfinale",
-    "player1": "Schneider, Dominik / Baldus, Jonas",
+    "player1": "Schneider, Dominik",
     "player2": "Kamyab, Taymas / Hartmann, Nils",
     "winner": null,
     "score": null,
