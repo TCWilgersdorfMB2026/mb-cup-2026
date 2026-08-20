@@ -119,8 +119,25 @@ function formatPlayerName(rawName) {
   return last + ', ' + first;
 }
 
+// tennis.de zeigt fuer eine Turnierbaum-Position, deren Gegner noch nicht
+// feststeht (weil die zufuehrende Partie noch offen ist), manchmal einen
+// Platzhalter-Text wie "Kamyab, Taymas / Hartmann, Nils" anstelle eines
+// echten Namens (Bedeutung: "Sieger aus dieser noch offenen Partie"). Der
+// nuLiga-Merge hat dagegen einen eigenen Schutz (siehe skippedPlatzhalter in
+// scripts/merge-nuliga-schedule.js), direkt von tennis.de gescrapte
+// Tableau-Eintraege aber nicht - dort landet der Platzhalter-Text 1:1 als
+// (scheinbar dritter/vierter) Spielername in schedule.json. Diese Erkennung
+// laeuft daher zusaetzlich beim Rendern und greift unabhaengig davon, ob
+// bzw. wie oft tennis.de diesen Platzhalter liefert.
+function isPendingPlaceholder(name) {
+  return /\S\s*\/\s*\S/.test((name || '').trim());
+}
+
 function playerHtml(rawName) {
   const raw = rawName || '';
+  if (isPendingPlaceholder(raw)) {
+    return '<span class="pending-placeholder">Gegner steht noch nicht fest</span>';
+  }
   const entrant = findEntrant(raw);
   const lk = entrant && entrant.lk;
   const club = entrant && entrant.club;
