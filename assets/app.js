@@ -225,28 +225,38 @@ function renderBracket(matches) {
   const finaleDone = finaleMatches && finaleMatches.length === 1 && finaleMatches[0].winner;
   const columns = finaleDone ? [...roundsPresent, 'Sieger'] : roundsPresent;
 
-  let cells = '';
-  columns.forEach((roundName, colIdx) => {
+  // Baut fuer jede Runde/Spalte einen eigenen HTML-Block. Die Reihenfolge, in
+  // der diese Bloecke am Ende zusammengefuegt werden, bestimmt (in der
+  // Liste-Ansicht, die per CSS zu einem einfachen vertikalen Block wird, siehe
+  // .bracket-grid { display: block; } in style.css) die sichtbare Reihenfolge
+  // von oben nach unten - deshalb wird die Blockliste vor dem Zusammenfuegen
+  // umgedreht, damit die juengste Runde (Sieger/Finale) oben steht und Runde 1
+  // unten. Die grid-column/-row-Werte je Block bleiben unveraendert (Struktur-
+  // Index), sie werden in der Liste-Ansicht ohnehin ignoriert.
+  const blocks = columns.map((roundName, colIdx) => {
     const col = colIdx + 1;
-    cells += `<div class="bracket-col-header" style="grid-column:${col};grid-row:1;">${escapeHtml(roundName)}</div>`;
+    let block = `<div class="bracket-col-header" style="grid-column:${col};grid-row:1;">${escapeHtml(roundName)}</div>`;
 
     if (roundName === 'Sieger') {
-      cells += `
+      block += `
         <div class="bracket-match bracket-champion" style="grid-column:${col};grid-row:2 / span ${totalSubrows};">
           <div class="bracket-box winner-box">${playerHtml(finaleMatches[0].winner)}</div>
         </div>`;
-      return;
+      return block;
     }
 
     const rowUnit = Math.pow(2, colIdx + 1);
     byRound.get(roundName).forEach((m, i) => {
       const rowStart = i * rowUnit + 2;
-      cells += `
+      block += `
         <div class="bracket-match" style="grid-column:${col};grid-row:${rowStart} / span ${rowUnit};">
           ${bracketBoxHtml(m)}
         </div>`;
     });
+    return block;
   });
+
+  const cells = blocks.slice().reverse().join('');
 
   return `
     <div class="bracket-wide">
@@ -255,7 +265,6 @@ function renderBracket(matches) {
       </div>
     </div>`;
 }
-
 // Wimbledon-artige Turnierbaum-Ansicht: Runden als Spalten nebeneinander mit
 // echten Verbindungslinien zwischen den Runden. Nur ueber den
 // Liste/Turnierbaum-Umschalter erreichbar (Umschalter selbst ist per CSS auf
