@@ -843,7 +843,7 @@
     "competition": "Herren Einzel LK17,0-25,0",
     "round": "Finale",
     "player1": "Binsack, Jarno / Polzer, Timo",
-    "player2": null,
+    "player2": "Schneider, Dominik / Hartmann, Nils",
     "winner": null,
     "score": null,
     "time": "22.08.2026 13:30 Uhr",
@@ -853,7 +853,7 @@
     "competition": "Herren Einzel LK17,0-25,0",
     "round": "Halbfinale",
     "player1": "Schneider, Dominik",
-    "player2": "Kamyab, Taymas / Hartmann, Nils",
+    "player2": "Hartmann, Nils",
     "winner": null,
     "score": null,
     "time": "21.08.2026 16:30 Uhr",
@@ -1068,6 +1068,16 @@
     "score": "4:6 6:2 10:7",
     "time": "15.08.2026 16:30 Uhr",
     "court": "Platz 3"
+  },
+  {
+    "competition": "Nebenrunde Damen Einzel",
+    "round": "Halbfinale",
+    "player1": "Heide, Miriam",
+    "player2": "Lübke, Bettina",
+    "winner": null,
+    "score": null,
+    "time": "21.08.2026 15:00 Uhr",
+    "court": "Platz 1"
   },
   {
     "competition": "Nebenrunde Damen Einzel",
