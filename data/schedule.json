@@ -406,8 +406,8 @@
     "player2": "Germies, Bernd",
     "winner": null,
     "score": null,
-    "time": "22.08.2026 10:30 Uhr",
-    "court": "Platz 4"
+    "time": "",
+    "court": ""
   },
   {
     "competition": "Herren 70 Einzel KO LK 1,0-25,0",
@@ -811,6 +811,17 @@
     "score": null,
     "time": "21.08.2026 18:00 Uhr",
     "court": "Platz 4",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Nebenrunde Damen Einzel",
+    "round": "Halbfinale",
+    "player1": "Heide, Miriam",
+    "player2": "Lübke, Bettina",
+    "winner": null,
+    "score": null,
+    "time": "21.08.2026 15:00 Uhr",
+    "court": "Platz 1",
     "source": "nuliga-merge"
   }
 ]
