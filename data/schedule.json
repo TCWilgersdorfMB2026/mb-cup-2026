@@ -766,6 +766,17 @@
   {
     "competition": "Herren 60 Einzel KO LK 1,0-25,0",
     "round": "Finale",
+    "player1": "Becker, Henning",
+    "player2": "Simon, Reinhard",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 10:30 Uhr",
+    "court": "Platz 4",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "round": "Finale",
     "player1": "Rothe, Michael",
     "player2": "Schwarz, Volker",
     "winner": null,
