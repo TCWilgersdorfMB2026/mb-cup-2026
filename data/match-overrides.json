@@ -30,5 +30,21 @@
       "afterRound": "Halbfinale",
       "note": "Verlor Halbfinale gegen Fiedler, Julia."
     }
+  ],
+  "removedSchedule": [
+    {
+      "competition": "Herren Einzel KO LK 1,0-25,0",
+      "round": "Viertelfinale",
+      "player1": "Wagner, Matthias",
+      "player2": "Nies, Tim",
+      "note": "tennis.de zeigt diese Paarung weiterhin als offen, obwohl Nies laut nuLiga bereits zur selben Zeit/Platz im Halbfinale gegen Gross, Ingo steht. Ergebnis dieser Viertelfinale-Partie ist uns nicht bekannt, daher nur Entfernung des veralteten Spielplan-Eintrags (kein erfundenes Ergebnis)."
+    },
+    {
+      "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+      "round": "Viertelfinale",
+      "player1": "Schmelzeisen, Frank",
+      "player2": "Hussing, Frank",
+      "note": "tennis.de zeigt diese Paarung weiterhin als offen, obwohl Hussing laut nuLiga bereits zur selben Zeit im Halbfinale gegen Schwarzer, Martin steht."
+    }
   ]
 }
