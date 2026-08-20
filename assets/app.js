@@ -655,17 +655,68 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;');
 }
 
+// Manuelle Korrekturen fuer Faelle, in denen der automatische tennis.de/
+// nuLiga-Scrape veraltete oder falsche Paarungen liefert (z.B. weil ein
+// Spieler nicht angetreten ist, oder weil nuLiga eine Finale-/Halbfinale-
+// Platzhalter-Paarung mit bereits ausgeschiedenen Spieler:innen erzeugt).
+// Wird bei JEDEM Laden aus data/match-overrides.json angewendet - ueberlebt
+// also automatische Re-Scrapes, statt nur einmalig die JSON-Dateien zu
+// patchen. Siehe data/match-overrides.json fuer die aktuell gepflegten
+// Regeln; Eintraege koennen entfernt werden, sobald tennis.de/nuLiga die
+// zugrunde liegenden Daten selbst korrekt fuehrt (dann greifen die Regeln
+// einfach nicht mehr, da kein passender Eintrag mehr gefunden wird).
+function applyMatchOverrides(schedule, results, overrides) {
+  if (!overrides) return { schedule, results };
+
+  const isMatch = (m, competition, round, p1, p2) => {
+    if (m.competition !== competition || m.round !== round) return false;
+    const a = (m.player1 || '').trim();
+    const b = (m.player2 || '').trim();
+    return (a === p1 && b === p2) || (a === p2 && b === p1);
+  };
+
+  let newSchedule = [...schedule];
+  let newResults = [...results];
+
+  for (const rule of overrides.resolvedMatches || []) {
+    const { competition, round, player1, player2, winner, score } = rule;
+    newSchedule = newSchedule.filter((m) => !isMatch(m, competition, round, player1, player2));
+    const alreadyDecided = newResults.some((m) => isMatch(m, competition, round, player1, player2) && m.winner);
+    if (!alreadyDecided) {
+      newResults = newResults.filter((m) => !isMatch(m, competition, round, player1, player2));
+      newResults = [...newResults, { competition, round, player1, player2, winner, score, time: '', court: '' }];
+    }
+  }
+
+  for (const rule of overrides.eliminatedPlayers || []) {
+    const { competition, player, afterRound } = rule;
+    const afterIdx = ROUND_ORDER.indexOf(afterRound);
+    newSchedule = newSchedule.filter((m) => {
+      if (m.winner) return true; // reale Freilos-Eintraege unangetastet lassen
+      if (m.competition !== competition) return true;
+      const mIdx = ROUND_ORDER.indexOf(m.round || '');
+      if (afterIdx === -1 || mIdx === -1 || mIdx <= afterIdx) return true;
+      const isPlayer = namesMatch(m.player1, player) || namesMatch(m.player2, player);
+      return !isPlayer;
+    });
+  }
+
+  return { schedule: newSchedule, results: newResults };
+}
+
 async function refreshAll() {
-  const [ticker, schedule, results, reports, menu, entrants] = await Promise.all([
+  const [ticker, schedule, results, reports, menu, entrants, overrides] = await Promise.all([
     loadJSON('data/ticker.json'),
     loadJSON('data/schedule.json'),
     loadJSON('data/results.json'),
     loadJSON('data/reports.json'),
     loadJSON('data/menu.json'),
     loadJSON('data/entrants.json'),
+    loadJSON('data/match-overrides.json'),
   ]);
+  const corrected = applyMatchOverrides(schedule || [], results || [], overrides);
   renderTicker(ticker);
-  renderSpielplanErgebnisse(schedule, results, entrants);
+  renderSpielplanErgebnisse(corrected.schedule, corrected.results, entrants);
   renderReports(reports);
   renderMenu(menu);
   qs('last-updated').textContent = 'Zuletzt aktualisiert: ' + new Date().toLocaleTimeString('de-DE');
