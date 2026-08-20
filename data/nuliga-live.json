@@ -653,7 +653,7 @@
     "competition": "Herren 40 Einzel LK1,0-25,0",
     "round": "Finale",
     "player1": "Müller, Stefan / Borodin, Eugen",
-    "player2": "Weber, Holger / Wroben, Thorsten",
+    "player2": "Wroben, Thorsten",
     "winner": null,
     "score": null,
     "time": "22.08.2026 12:00 Uhr",
@@ -663,7 +663,7 @@
     "competition": "Herren 40 Einzel LK1,0-25,0",
     "round": "Finale",
     "player1": "Müller, Stefan / Borodin, Eugen",
-    "player2": "Weber, Holger / Wroben, Thorsten",
+    "player2": "Weber, Holger",
     "winner": null,
     "score": null,
     "time": "22.08.2026 13:30 Uhr",
@@ -677,15 +677,15 @@
     "winner": null,
     "score": null,
     "time": "20.08.2026 18:00 Uhr",
-    "court": "Platz 1"
+    "court": "Platz 4"
   },
   {
     "competition": "Herren 40 Einzel LK1,0-25,0",
     "round": "Halbfinale",
     "player1": "Weber, Holger",
     "player2": "Wroben, Thorsten",
-    "winner": null,
-    "score": null,
+    "winner": "Weber, Holger",
+    "score": "4:6 6:4 10:4",
     "time": "20.08.2026 16:30 Uhr",
     "court": "Platz 2"
   },
