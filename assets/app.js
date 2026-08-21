@@ -341,7 +341,16 @@ function renderBracketTree(matches) {
   // wuerde (z.B. eine nie kommende "Finale"-Runde) wird dann nicht mehr
   // angehaengt, sonst bliebe nach Abschluss dieser letzten Partie dauerhaft
   // eine leere, nie zu befuellende Spalte stehen.
-  const terminalRound = roundsPresent.find((r) => byRound.get(r).length === 1);
+  // roundsPresent.find() wuerde bei mehreren Runden mit je nur 1 Partie
+  // (siehe isConsistentBracket weiter unten - kommt z.B. bei der Nebenrunde
+  // Herren vor, wo mehrere unabhaengige Einzelpartien zufaellig alle nur 1
+  // Partie pro Runde haben) die ERSTE davon finden und faelschlich alle
+  // spaeteren echten Runden abschneiden. Deshalb wird hier stattdessen die
+  // LETZTE (chronologisch spaeteste) Runde mit nur 1 Partie gesucht.
+  let terminalRound = null;
+  for (const r of roundsPresent) {
+    if (byRound.get(r).length === 1) terminalRound = r;
+  }
   if (terminalRound) {
     const terminalIdx = ROUND_ORDER.indexOf(terminalRound);
     roundsFull = roundsFull.filter((r) => ROUND_ORDER.indexOf(r) <= terminalIdx);
@@ -352,6 +361,26 @@ function renderBracketTree(matches) {
   const lastRoundName = roundsFull[roundsFull.length - 1];
   const finaleMatches = byRound.get(lastRoundName);
   const finaleDone = finaleMatches && finaleMatches.length === 1 && finaleMatches[0].winner;
+
+  // Manche Nebenrunden (grosse, aus mehreren LK-Hauptrunden zusammengefuehrte
+  // Trostrunden) haben laut nuLiga-Live-Scraper keine erfassten Freilos-
+  // Eintraege - dadurch kennen wir die wahre Groesse der ersten Runde nicht,
+  // und aufeinanderfolgende Runden halbieren sich weder sauber noch teilen
+  // sie ueberhaupt gemeinsame Spieler (jede Runde zeigt dann voneinander
+  // unabhaengige Partien statt einer Sieger-Kette). Die normale Zeilen-
+  // Zentrierung/Verbindungslinien-Mathematik setzt exaktes Halbieren voraus
+  // und wuerde hier zu falsch hohen bzw. verschobenen Kaestchen fuehren. In
+  // diesem Fall wird stattdessen ein einfacher Spalten-Modus ohne
+  // Verbindungslinien verwendet: jede Runde zeigt nur ihre tatsaechlichen
+  // Partien schlicht untereinander, ohne (falschen) Zubringer-Bezug.
+  const isConsistentBracket = roundsFull.every((r, colIdx) => {
+    const actual = byRound.get(r);
+    if (!actual) return true;
+    const expected = Math.max(1, Math.round(firstRoundCount / Math.pow(2, colIdx)));
+    return actual.length === expected;
+  });
+  const simpleMaxCount = Math.max(1, ...roundsFull.map((r) => (byRound.get(r) || []).length));
+  const effectiveTotalSubrows = isConsistentBracket ? totalSubrows : simpleMaxCount * 2;
 
   const columns = [...roundsFull, 'Sieger'];
 
@@ -405,22 +434,22 @@ function renderBracketTree(matches) {
     const connectorCol = col - 1;
     const dispCol = mirrorCol(col);
     const dispConnectorCol = mirrorCol(connectorCol);
-    const rowUnit = Math.pow(2, colIdx + 1);
+    const rowUnit = isConsistentBracket ? Math.pow(2, colIdx + 1) : 2;
 
     cells += `<div class="bt-col-header"${roundName === frontierRound ? ' data-bt-frontier="1"' : ''} style="grid-column:${dispCol};grid-row:1;">${escapeHtml(roundName === 'Sieger' ? roundName : roundName)}</div>`;
 
     if (roundName === 'Sieger') {
-      if (colIdx > 0) {
-        cells += `<div class="bt-connector" style="grid-column:${dispConnectorCol};grid-row:2 / span ${totalSubrows};"></div>`;
+      if (colIdx > 0 && isConsistentBracket) {
+        cells += `<div class="bt-connector" style="grid-column:${dispConnectorCol};grid-row:2 / span ${effectiveTotalSubrows};"></div>`;
       }
       if (finaleDone) {
         cells += `
-          <div class="bt-match bt-champion" style="grid-column:${dispCol};grid-row:2 / span ${totalSubrows};">
+          <div class="bt-match bt-champion" style="grid-column:${dispCol};grid-row:2 / span ${effectiveTotalSubrows};">
             <div class="bracket-box winner-box">${escapeHtml(finaleMatches[0].winner)}</div>
           </div>`;
       } else {
         cells += `
-          <div class="bt-match bt-champion" style="grid-column:${dispCol};grid-row:2 / span ${totalSubrows};">
+          <div class="bt-match bt-champion" style="grid-column:${dispCol};grid-row:2 / span ${effectiveTotalSubrows};">
             <div class="bracket-box bt-placeholder">Sieger steht noch nicht fest</div>
           </div>`;
       }
@@ -428,9 +457,11 @@ function renderBracketTree(matches) {
     }
 
     const roundMatches = byRound.get(roundName);
-    const expectedCount = Math.max(1, firstRoundCount / Math.pow(2, colIdx));
+    const expectedCount = isConsistentBracket
+      ? Math.max(1, firstRoundCount / Math.pow(2, colIdx))
+      : Math.max(1, roundMatches ? roundMatches.length : 1);
 
-    if (colIdx > 0) {
+    if (colIdx > 0 && isConsistentBracket) {
       for (let i = 0; i < expectedCount; i++) {
         const rowStart = i * rowUnit + 2;
         cells += `<div class="bt-connector" style="grid-column:${dispConnectorCol};grid-row:${rowStart} / span ${rowUnit};"></div>`;
@@ -461,7 +492,7 @@ function renderBracketTree(matches) {
       <button type="button" class="bt-scroll-btn bt-scroll-left" aria-label="Turnierbaum nach links scrollen">&#8249;</button>
       <button type="button" class="bt-scroll-btn bt-scroll-right" aria-label="Turnierbaum nach rechts scrollen">&#8250;</button>
       <div class="bt-scroll">
-        <div class="bt-grid" style="grid-template-columns:${colTemplate}; grid-template-rows:auto repeat(${totalSubrows}, minmax(34px, 1fr));">
+        <div class="bt-grid" style="grid-template-columns:${colTemplate}; grid-template-rows:auto repeat(${effectiveTotalSubrows}, minmax(34px, 1fr));">
           ${cells}
         </div>
       </div>
