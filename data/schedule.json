@@ -326,8 +326,8 @@
     "player2": "Freudenstein, Manuel",
     "winner": null,
     "score": null,
-    "time": "21.08.2026 16:30 Uhr",
-    "court": "TC Wieland-Wilnsdorf, Platz 2"
+    "time": "22.08.2026 09:00 Uhr",
+    "court": "Platz 2"
   },
   {
     "competition": "Herren 40 Einzel KO LK 1,0-25,0",
@@ -748,6 +748,17 @@
     "winner": null,
     "score": null,
     "time": "21.08.2026 18:00 Uhr",
+    "court": "Platz 4",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Nebenrunde Herren Einzel",
+    "round": "Finale",
+    "player1": "Ermert, Martin",
+    "player2": "Rötzel, Johannes",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 10:30 Uhr",
     "court": "Platz 4",
     "source": "nuliga-merge"
   }
