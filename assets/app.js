@@ -348,6 +348,22 @@ function renderBracketTree(matches) {
   const maxTrack = totalCols === 1 ? 1 : (totalCols - 1) * 2 + 1;
   const mirrorCol = (c) => maxTrack + 1 - c;
 
+  // Beim Anzeigen soll der Turnierbaum nicht bei Sieger/Finale starten, wenn
+  // dort noch nichts feststeht, sondern bei der Runde, in der zuletzt
+  // tatsaechlich ein Ergebnis erzielt wurde - das ist der fuer den
+  // Betrachter interessante Ausschnitt, statt erst durch leere
+  // "noch offen"-Platzhalter scrollen zu muessen (siehe setupBracketScroll-
+  // Buttons() weiter unten, das anhand von data-bt-frontier den initialen
+  // Scroll setzt). Ohne bereits erzieltes Ergebnis (Turnier hat gerade erst
+  // begonnen) wird stattdessen die erste Runde markiert, da dort die
+  // tatsaechlichen Paarungen stehen.
+  let frontierRound = roundsFull[0];
+  for (const r of roundsFull) {
+    const ms = byRound.get(r);
+    if (ms && ms.some((m) => m.winner)) frontierRound = r;
+  }
+  if (finaleDone) frontierRound = 'Sieger';
+
   let cells = '';
   columns.forEach((roundName, colIdx) => {
     const col = colIdx === 0 ? 1 : colIdx * 2 + 1;
@@ -356,7 +372,7 @@ function renderBracketTree(matches) {
     const dispConnectorCol = mirrorCol(connectorCol);
     const rowUnit = Math.pow(2, colIdx + 1);
 
-    cells += `<div class="bt-col-header" style="grid-column:${dispCol};grid-row:1;">${escapeHtml(roundName === 'Sieger' ? roundName : roundName)}</div>`;
+    cells += `<div class="bt-col-header"${roundName === frontierRound ? ' data-bt-frontier="1"' : ''} style="grid-column:${dispCol};grid-row:1;">${escapeHtml(roundName === 'Sieger' ? roundName : roundName)}</div>`;
 
     if (roundName === 'Sieger') {
       if (colIdx > 0) {
@@ -431,6 +447,17 @@ function setupBracketScrollButtons(container) {
   const amount = () => Math.max(240, scrollEl.clientWidth * 0.8);
   leftBtn.addEventListener('click', () => scrollEl.scrollBy({ left: -amount(), behavior: 'smooth' }));
   rightBtn.addEventListener('click', () => scrollEl.scrollBy({ left: amount(), behavior: 'smooth' }));
+
+  // Startet die Ansicht nicht bei Sieger/Finale (falls dort noch nichts
+  // feststeht), sondern bei der Runde mit den zuletzt erzielten Ergebnissen
+  // (siehe data-bt-frontier in renderBracketTree()) - ohne smooth-Animation,
+  // damit beim ersten Anzeigen kein sichtbares "Hinueberscrollen" passiert.
+  const frontierEl = wrap.querySelector('[data-bt-frontier="1"]');
+  if (frontierEl) {
+    const scrollRect = scrollEl.getBoundingClientRect();
+    const frontierRect = frontierEl.getBoundingClientRect();
+    scrollEl.scrollLeft += frontierRect.left - scrollRect.left;
+  }
 }
 
 // Rendert die aktuell im Dropdown gewählte Konkurrenz: Turnierbaum, wenn
