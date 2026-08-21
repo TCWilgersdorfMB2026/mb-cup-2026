@@ -334,26 +334,42 @@ function renderBracketTree(matches) {
     .map((_, idx) => (idx === 0 ? 'minmax(380px, 1fr)' : '28px minmax(380px, 1fr)'))
     .join(' ');
 
+  // Der Turnierbaum wird komplett gespiegelt dargestellt, damit - wie in der
+  // mobilen Listen-Ansicht (siehe renderBracket()) - die neueste Runde
+  // (Sieger/Finale) zuerst (links) steht und Runde 1 zuletzt (rechts) kommt.
+  // Dazu wird jede Spalten-Position (Kaestchen wie Verbindungslinie) an der
+  // Gesamtbreite des Rasters gespiegelt: Position 1 <-> Position maxTrack,
+  // 2 <-> maxTrack-1, usw. Die Zeilen-Mathematik (rowUnit/expectedCount -
+  // welche Zeile welche Partie zeigt) bleibt davon komplett unberuehrt, nur
+  // die horizontale Anordnung dreht sich um. Passend dazu sind die
+  // Verbindungslinien (.bt-connector in style.css) mit vertauschter Seite
+  // (links/rechts) gezeichnet.
+  const totalCols = columns.length;
+  const maxTrack = totalCols === 1 ? 1 : (totalCols - 1) * 2 + 1;
+  const mirrorCol = (c) => maxTrack + 1 - c;
+
   let cells = '';
   columns.forEach((roundName, colIdx) => {
     const col = colIdx === 0 ? 1 : colIdx * 2 + 1;
     const connectorCol = col - 1;
+    const dispCol = mirrorCol(col);
+    const dispConnectorCol = mirrorCol(connectorCol);
     const rowUnit = Math.pow(2, colIdx + 1);
 
-    cells += `<div class="bt-col-header" style="grid-column:${col};grid-row:1;">${escapeHtml(roundName === 'Sieger' ? roundName : roundName)}</div>`;
+    cells += `<div class="bt-col-header" style="grid-column:${dispCol};grid-row:1;">${escapeHtml(roundName === 'Sieger' ? roundName : roundName)}</div>`;
 
     if (roundName === 'Sieger') {
       if (colIdx > 0) {
-        cells += `<div class="bt-connector" style="grid-column:${connectorCol};grid-row:2 / span ${totalSubrows};"></div>`;
+        cells += `<div class="bt-connector" style="grid-column:${dispConnectorCol};grid-row:2 / span ${totalSubrows};"></div>`;
       }
       if (finaleDone) {
         cells += `
-          <div class="bt-match bt-champion" style="grid-column:${col};grid-row:2 / span ${totalSubrows};">
+          <div class="bt-match bt-champion" style="grid-column:${dispCol};grid-row:2 / span ${totalSubrows};">
             <div class="bracket-box winner-box">${escapeHtml(finaleMatches[0].winner)}</div>
           </div>`;
       } else {
         cells += `
-          <div class="bt-match bt-champion" style="grid-column:${col};grid-row:2 / span ${totalSubrows};">
+          <div class="bt-match bt-champion" style="grid-column:${dispCol};grid-row:2 / span ${totalSubrows};">
             <div class="bracket-box bt-placeholder">Sieger steht noch nicht fest</div>
           </div>`;
       }
@@ -366,7 +382,7 @@ function renderBracketTree(matches) {
     if (colIdx > 0) {
       for (let i = 0; i < expectedCount; i++) {
         const rowStart = i * rowUnit + 2;
-        cells += `<div class="bt-connector" style="grid-column:${connectorCol};grid-row:${rowStart} / span ${rowUnit};"></div>`;
+        cells += `<div class="bt-connector" style="grid-column:${dispConnectorCol};grid-row:${rowStart} / span ${rowUnit};"></div>`;
       }
     }
 
@@ -374,7 +390,7 @@ function renderBracketTree(matches) {
       roundMatches.forEach((m, i) => {
         const rowStart = i * rowUnit + 2;
         cells += `
-          <div class="bt-match" style="grid-column:${col};grid-row:${rowStart} / span ${rowUnit};">
+          <div class="bt-match" style="grid-column:${dispCol};grid-row:${rowStart} / span ${rowUnit};">
             ${bracketBoxHtml(m)}
           </div>`;
       });
@@ -382,7 +398,7 @@ function renderBracketTree(matches) {
       for (let i = 0; i < expectedCount; i++) {
         const rowStart = i * rowUnit + 2;
         cells += `
-          <div class="bt-match" style="grid-column:${col};grid-row:${rowStart} / span ${rowUnit};">
+          <div class="bt-match" style="grid-column:${dispCol};grid-row:${rowStart} / span ${rowUnit};">
             <div class="bracket-box bt-placeholder">Paarung / Termin / Spielort noch offen</div>
           </div>`;
       }
