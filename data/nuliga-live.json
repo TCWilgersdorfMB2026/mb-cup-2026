@@ -2,7 +2,7 @@
   {
     "competition": "Herren Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": "Nies, Tim / Gross, Ingo",
+    "player1": "Nies, Tim",
     "player2": "Wedding, Robin",
     "winner": null,
     "score": null,
@@ -12,7 +12,7 @@
   {
     "competition": "Herren Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": "Nies, Tim / Gross, Ingo",
+    "player1": "Gross, Ingo",
     "player2": "Ebener, Frederik",
     "winner": null,
     "score": null,
@@ -24,8 +24,8 @@
     "round": "Halbfinale",
     "player1": "Nies, Tim",
     "player2": "Gross, Ingo",
-    "winner": null,
-    "score": null,
+    "winner": "Gross, Ingo",
+    "score": "6:1 6:4",
     "time": "21.08.2026 16:30 Uhr",
     "court": "Platz 2"
   },
