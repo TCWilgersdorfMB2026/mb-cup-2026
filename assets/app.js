@@ -321,9 +321,18 @@ function renderBracketTree(matches) {
   const finaleIdx = ROUND_ORDER.indexOf('Finale');
   const roundsNeeded = finaleIdx === -1 ? 1 : Math.round(Math.log2(firstRoundCount)) + 1;
   const laterCount = Math.max(0, roundsNeeded - 1);
-  const roundsFull = finaleIdx === -1
+  const calculatedWindow = finaleIdx === -1
     ? roundsPresent
     : [roundsPresent[0], ...ROUND_ORDER.slice(Math.max(0, finaleIdx - laterCount + 1), finaleIdx + 1).filter((r) => r !== roundsPresent[0])];
+  // Manche Nebenrunden (Trostrunden) mit wenigen Teilnehmer:innen enden laut
+  // tennis.de/nuLiga schon bei "Halbfinale", ganz ohne eigene "Finale"-Runde -
+  // die obige, auf "Finale" verankerte Fensterberechnung wuerde diese Runde
+  // dann faelschlich ueberspringen (das berechnete Fenster reicht ja nur bis
+  // exakt "Finale", siehe Bug: Halbfinale fehlte im Turnierbaum der
+  // Nebenrunde). Deshalb werden tatsaechlich vorhandene Runden (roundsPresent)
+  // immer ergaenzt, auch wenn sie ausserhalb des berechneten Fensters liegen -
+  // eine echte, bereits terminierte Paarung darf nie unter den Tisch fallen.
+  const roundsFull = ROUND_ORDER.filter((r) => calculatedWindow.includes(r) || roundsPresent.includes(r));
 
   const finaleMatches = byRound.get('Finale');
   const finaleDone = finaleMatches && finaleMatches.length === 1 && finaleMatches[0].winner;
