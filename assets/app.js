@@ -509,7 +509,21 @@ function renderCompetitionDetail() {
 function renderSpielplanErgebnisse(schedule, results, entrants) {
   state.schedule = schedule || [];
   state.results = results || [];
-  state.entrants = entrants || [];
+  // tennis.de meldet fuer die Nebenrunde (Trostrunde) zwei unterschiedliche
+  // Dinge unter aehnlichen, aber nicht identischen Namen: die ECHTEN
+  // Paarungen/Ergebnisse laufen als EINE zusammengefasste Konkurrenz pro
+  // Geschlecht ("Nebenrunde Herren Einzel" / "Nebenrunde Damen Einzel", ohne
+  // LK-Zusatz - kommt ueber schedule/results). Die Meldeliste (entrants.json)
+  // fuehrt daneben aber noch die alten, nach urspruenglicher LK-Hauptrunde
+  // getrennten Nebenrunde-Meldelisten mit - und zwar fehlerhaft ALLE mit
+  // demselben (falschen) LK-Zusatz "(Nebenrunde)" benannt, unabhaengig von
+  // ihrer tatsaechlichen Herkunfts-LK. Diese wuerden im Konkurrenzen-Dropdown
+  // als zusaetzliche, verwirrende Eintraege neben der eigentlichen
+  // zusammengefassten Nebenrunde auftauchen und werden deshalb komplett
+  // herausgefiltert - die echten Nebenrunde-Ergebnisse sind davon unberuehrt,
+  // da sie unter dem anderen (kombinierten) Namen ueber results/schedule
+  // kommen, nicht ueber entrants.
+  state.entrants = (entrants || []).filter((c) => !/\(Nebenrunde\)\s*$/.test(c.competition || ''));
 
   const names = listCompetitions();
   const selectEl = qs('competition-select');
