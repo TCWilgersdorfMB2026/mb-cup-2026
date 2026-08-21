@@ -362,6 +362,16 @@ function renderBracketTree(matches) {
     const ms = byRound.get(r);
     if (ms && ms.some((m) => m.winner)) frontierRound = r;
   }
+  // Echte, bereits ausgeloste aber noch nicht gespielte Paarungen ("Noch
+  // offen", mit echten Spielernamen statt Platzhalter) sind fuer den
+  // Betrachter interessanter als eine bereits abgeschlossene Runde - sie
+  // zeigen die naechste(n) anstehende(n) Partie(n). Falls es solche gibt,
+  // haben sie deshalb Vorrang vor der oben ermittelten letzten entschiedenen
+  // Runde.
+  for (const r of roundsFull) {
+    const ms = byRound.get(r);
+    if (ms && ms.some((m) => !m.winner)) frontierRound = r;
+  }
   if (finaleDone) frontierRound = 'Sieger';
 
   let cells = '';
