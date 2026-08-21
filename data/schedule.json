@@ -633,13 +633,24 @@
   },
   {
     "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Schläger, Antonia",
-    "player2": "Herking, Lea-Marie",
+    "round": "Finale",
+    "player1": "Herking, Lea-Marie",
+    "player2": "Anders, Xenia",
     "winner": null,
     "score": null,
-    "time": "21.08.2026 16:30 Uhr",
-    "court": "Platz 4",
+    "time": "22.08.2026 09:00 Uhr",
+    "court": "Platz 3",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "round": "Finale",
+    "player1": "Schläger, Antonia",
+    "player2": "Wiegel, Lea",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 10:30 Uhr",
+    "court": "Platz 2",
     "source": "nuliga-merge"
   },
   {
@@ -722,17 +733,6 @@
   {
     "competition": "Herren Einzel KO LK 17,0-25,0",
     "round": "Finale",
-    "player1": "Binsack, Jarno",
-    "player2": "Hartmann, Nils",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 10:30 Uhr",
-    "court": "Platz 3",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Finale",
     "player1": "Polzer, Timo",
     "player2": "Schneider, Dominik",
     "winner": null,
@@ -771,7 +771,7 @@
     "winner": null,
     "score": null,
     "time": "22.08.2026 10:30 Uhr",
-    "court": "Platz 4",
+    "court": "Platz 3",
     "source": "nuliga-merge"
   }
 ]
