@@ -822,16 +822,6 @@
   {
     "competition": "Herren Einzel LK17,0-25,0",
     "round": "Finale",
-    "player1": "Binsack, Jarno",
-    "player2": "Hartmann, Nils",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 10:30 Uhr",
-    "court": "Platz 3"
-  },
-  {
-    "competition": "Herren Einzel LK17,0-25,0",
-    "round": "Finale",
     "player1": "Polzer, Timo",
     "player2": "Schneider, Dominik",
     "winner": null,
@@ -1107,7 +1097,7 @@
     "winner": null,
     "score": null,
     "time": "22.08.2026 10:30 Uhr",
-    "court": "Platz 4"
+    "court": "Platz 3"
   },
   {
     "competition": "Nebenrunde Herren Einzel",
