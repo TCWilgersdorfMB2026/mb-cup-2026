@@ -152,7 +152,7 @@
   {
     "competition": "Damen Einzel LK17,0-25,0",
     "round": "Finale",
-    "player1": "Schläger, Antonia / Herking, Lea-Marie",
+    "player1": "Herking, Lea-Marie",
     "player2": "Anders, Xenia",
     "winner": null,
     "score": null,
@@ -162,7 +162,7 @@
   {
     "competition": "Damen Einzel LK17,0-25,0",
     "round": "Finale",
-    "player1": "Schläger, Antonia / Herking, Lea-Marie",
+    "player1": "Schläger, Antonia",
     "player2": "Wiegel, Lea",
     "winner": null,
     "score": null,
@@ -174,8 +174,8 @@
     "round": "Halbfinale",
     "player1": "Schläger, Antonia",
     "player2": "Herking, Lea-Marie",
-    "winner": null,
-    "score": null,
+    "winner": "Schläger, Antonia",
+    "score": "4:6 6:2 10:4",
     "time": "21.08.2026 16:30 Uhr",
     "court": "Platz 4"
   },
