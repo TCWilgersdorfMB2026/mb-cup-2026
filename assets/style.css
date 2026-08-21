@@ -425,7 +425,7 @@ margin-bottom: 10px;
 .bt-connector::after {
   content: '';
   position: absolute;
-  left: 0;
+  right: 0;
   width: 50%;
   border-color: var(--accent);
   border-style: solid;
@@ -434,13 +434,13 @@ margin-bottom: 10px;
 .bt-connector::before {
   top: 0;
   height: 50%;
-  border-right-width: 2px;
+  border-left-width: 2px;
   border-top-width: 2px;
 }
 .bt-connector::after {
   bottom: 0;
   height: 50%;
-  border-right-width: 2px;
+  border-left-width: 2px;
   border-bottom-width: 2px;
 }
 
