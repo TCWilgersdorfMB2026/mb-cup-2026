@@ -190,16 +190,6 @@
     "court": ""
   },
   {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Binsack, Jarno",
-    "player2": "Polzer, Timo",
-    "winner": null,
-    "score": null,
-    "time": "21.08.2026 16:30 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 1"
-  },
-  {
     "competition": "Herren Einzel KO LK 22,0-25,0",
     "round": "Runde 1",
     "player1": "Laarmann, Mark",
@@ -621,23 +611,23 @@
   },
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Halbfinale",
+    "round": "Finale",
     "player1": "Nies, Tim",
-    "player2": "Gross, Ingo",
+    "player2": "Wedding, Robin",
     "winner": null,
     "score": null,
-    "time": "21.08.2026 16:30 Uhr",
-    "court": "Platz 2",
+    "time": "22.08.2026 15:00 Uhr",
+    "court": "Platz 4",
     "source": "nuliga-merge"
   },
   {
     "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Halbfinale",
-    "player1": "Ebener, Frederik",
-    "player2": "Wedding, Robin",
+    "round": "Finale",
+    "player1": "Gross, Ingo",
+    "player2": "Ebener, Frederik",
     "winner": null,
     "score": null,
-    "time": "21.08.2026 16:30 Uhr",
+    "time": "22.08.2026 16:30 Uhr",
     "court": "Platz 1",
     "source": "nuliga-merge"
   },
@@ -727,6 +717,28 @@
     "score": null,
     "time": "22.08.2026 13:30 Uhr",
     "court": "Platz 2",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Finale",
+    "player1": "Binsack, Jarno",
+    "player2": "Hartmann, Nils",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 10:30 Uhr",
+    "court": "Platz 3",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Finale",
+    "player1": "Polzer, Timo",
+    "player2": "Schneider, Dominik",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 13:30 Uhr",
+    "court": "Platz 3",
     "source": "nuliga-merge"
   },
   {

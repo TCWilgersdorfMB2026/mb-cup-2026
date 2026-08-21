@@ -977,5 +977,27 @@
     "time": "21.08.2026 16:30 Uhr",
     "court": "Platz 3",
     "source": "nuliga-live"
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Nies, Tim",
+    "player2": "Gross, Ingo",
+    "winner": "Gross, Ingo",
+    "score": "6:1 6:4",
+    "time": "21.08.2026 16:30 Uhr",
+    "court": "Platz 2",
+    "source": "nuliga-live"
+  },
+  {
+    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Ebener, Frederik",
+    "player2": "Wedding, Robin",
+    "winner": "Ebener, Frederik",
+    "score": "6:1 6:4",
+    "time": "21.08.2026 16:30 Uhr",
+    "court": "Platz 1",
+    "source": "nuliga-live"
   }
 ]

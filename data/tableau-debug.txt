@@ -192,8 +192,8 @@ Herren Einzel - Hauptfeld
 	[Rast]		6:2 6:2			
 		Nies, T.				
 5	[5] - LK8,0 - Nies, Tim, 2004 - TC Wilgersdorf, WTV					
-					TC Wilger..., Platz 2	
-3	[3] - LK6,9 - Gross, Ingo, 1977 - VfL Kirchen, RPF				21.08. 16:30	
+					Gross, I.	
+3	[3] - LK6,9 - Gross, Ingo, 1977 - VfL Kirchen, RPF				6:1 6:4	
 		Gross, I.				
 	[Rast]					
 			Gross, I.			
@@ -224,8 +224,8 @@ Herren Einzel - Hauptfeld
 	[Rast]		6:1 6:1			
 		Ballion, S.				
 4	[4] - LK7,9 - Ballion, Silas, 2002 - TC Siegen, WTV					
-					TC Wilger..., Platz 1	
-8	[8] - LK9,4 - Feldmann, Jonas Juttichai, 2009 - TC Rhode e.V., WTV				21.08. 16:30	
+					Ebener, F.	
+8	[8] - LK9,4 - Feldmann, Jonas Juttichai, 2009 - TC Rhode e.V., WTV				6:1 6:4	
 		Feldmann, J.				
 	[Rast]					
 			Wedding, R.			
@@ -242,9 +242,9 @@ Herren Einzel - Hauptfeld
 2	[2] - LK6,6 - Klahold, Linus, 1999 - TC Haiger, HTV					
 						
 					Spiel um den 3. Platz	3. Platz
-						
+					Nies, T.	
 						TC Wilger..., Platz 4
-						22.08. 15:00
+					Wedding, R.	22.08. 15:00
  
 Zurück zur Übersicht
  
