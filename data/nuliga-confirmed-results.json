@@ -966,5 +966,16 @@
     "time": "21.08.2026 15:00 Uhr",
     "court": "Platz 1",
     "source": "nuliga-live"
+  },
+  {
+    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Schneider, Dominik",
+    "player2": "Hartmann, Nils",
+    "winner": "Schneider, Dominik",
+    "score": "4:1 Aufg.",
+    "time": "21.08.2026 16:30 Uhr",
+    "court": "Platz 3",
+    "source": "nuliga-live"
   }
 ]
