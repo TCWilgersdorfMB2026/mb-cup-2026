@@ -29,6 +29,18 @@
       "player": "Pfeifer, Jasmin",
       "afterRound": "Halbfinale",
       "note": "Verlor Halbfinale gegen Fiedler, Julia."
+    },
+    {
+      "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+      "player": "Borodin, Eugen",
+      "afterRound": "Halbfinale",
+      "note": "Verlor Halbfinale 7:6 6:1 gegen Müller, Stefan. tennis.de zeigt Borodin trotzdem noch in einem Finale-Platzhalter gegen Wroben, Thorsten (der ebenfalls sein Halbfinale verloren hat)."
+    },
+    {
+      "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+      "player": "Wroben, Thorsten",
+      "afterRound": "Halbfinale",
+      "note": "Verlor Halbfinale 4:6 6:4 10:4 gegen Weber, Holger. tennis.de zeigt Wroben trotzdem noch in einem Finale-Platzhalter gegen Borodin, Eugen (der ebenfalls sein Halbfinale verloren hat)."
     }
   ],
   "removedSchedule": [
