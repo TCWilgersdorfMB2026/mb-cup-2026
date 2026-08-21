@@ -1,616 +1,6 @@
 [
   {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
-    "player1": "Wagner, Matthias",
-    "player2": null,
-    "winner": "Wagner, Matthias",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
-    "player1": "Iordanidis, Aristotelis",
-    "player2": null,
-    "winner": "Iordanidis, Aristotelis",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
-    "player1": "Nies, Tim",
-    "player2": null,
-    "winner": "Nies, Tim",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
-    "player1": "Gross, Ingo",
-    "player2": null,
-    "winner": "Gross, Ingo",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
-    "player1": "Schwedes, Nick Luca",
-    "player2": null,
-    "winner": "Schwedes, Nick Luca",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
-    "player1": "Dreysse, Kay",
-    "player2": null,
-    "winner": "Dreysse, Kay",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
-    "player1": "Ebener, Frederik",
-    "player2": null,
-    "winner": "Ebener, Frederik",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
-    "player1": "Ebener, Sebastian",
-    "player2": null,
-    "winner": "Ebener, Sebastian",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
-    "player1": "Weber, Louis",
-    "player2": null,
-    "winner": "Weber, Louis",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
-    "player1": "Ballion, Silas",
-    "player2": null,
-    "winner": "Ballion, Silas",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
-    "player1": "Feldmann, Jonas Juttichai",
-    "player2": null,
-    "winner": "Feldmann, Jonas Juttichai",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
-    "player1": "Wedding, Robin",
-    "player2": null,
-    "winner": "Wedding, Robin",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
-    "round": "Runde 1",
-    "player1": "Klahold, Linus",
-    "player2": null,
-    "winner": "Klahold, Linus",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Anders, Denis",
-    "player2": null,
-    "winner": "Anders, Denis",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Polzer, Timo",
-    "player2": null,
-    "winner": "Polzer, Timo",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Gyurcsi, Robert Denes",
-    "player2": null,
-    "winner": "Gyurcsi, Robert Denes",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Baldus, Jonas",
-    "player2": null,
-    "winner": "Baldus, Jonas",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Kamyab, Taymas",
-    "player2": null,
-    "winner": "Kamyab, Taymas",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Schauerte, Andre",
-    "player2": null,
-    "winner": "Schauerte, Andre",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
-    "player1": "Laarmann, Mark",
-    "player2": null,
-    "winner": "Laarmann, Mark",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
-    "player1": "Meyer, Dirk",
-    "player2": null,
-    "winner": "Meyer, Dirk",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
-    "player1": "Damm, Robin",
-    "player2": null,
-    "winner": "Damm, Robin",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
-    "player1": "Roth, Marvin",
-    "player2": null,
-    "winner": "Roth, Marvin",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
-    "player1": "Schürbusch, Nico",
-    "player2": null,
-    "winner": "Schürbusch, Nico",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
-    "player1": "Braun, Sebastian",
-    "player2": null,
-    "winner": "Braun, Sebastian",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
-    "player1": "Zöller, Robin",
-    "player2": null,
-    "winner": "Zöller, Robin",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
-    "player1": "Wissenbach, Jan",
-    "player2": null,
-    "winner": "Wissenbach, Jan",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
-    "player1": "Scheuermann, Florian",
-    "player2": null,
-    "winner": "Scheuermann, Florian",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
-    "player1": "Baak, Matthäus",
-    "player2": null,
-    "winner": "Baak, Matthäus",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
-    "player1": "Klein, Thilo",
-    "player2": null,
-    "winner": "Klein, Thilo",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Runde 1",
-    "player1": "Büdenbender, Jens",
-    "player2": null,
-    "winner": "Büdenbender, Jens",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren Einzel KO LK 22,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Laarmann, Mark",
-    "player2": "Freudenstein, Manuel",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 09:00 Uhr",
-    "court": "Platz 2"
-  },
-  {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Engel, Peter",
-    "player2": null,
-    "winner": "Engel, Peter",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Deeken, Matthias",
-    "player2": null,
-    "winner": "Deeken, Matthias",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Steinkohl, Alexander",
-    "player2": null,
-    "winner": "Steinkohl, Alexander",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Schmidt, Carsten",
-    "player2": null,
-    "winner": "Schmidt, Carsten",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Simon, Reinhard",
-    "player2": "Germies, Bernd",
-    "winner": null,
-    "score": null,
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Simmerl, Mario",
-    "player2": null,
-    "winner": "Simmerl, Mario",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 10,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Panning- Dornseifer, Nicole",
-    "player2": null,
-    "winner": "Panning- Dornseifer, Nicole",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 10,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Lübke, Bettina",
-    "player2": null,
-    "winner": "Lübke, Bettina",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 10,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Backaus, Hedda Lotta",
-    "player2": null,
-    "winner": "Backaus, Hedda Lotta",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 10,0-25,0",
-    "round": "Finale",
-    "player1": "Hoffmann, Nicole",
-    "player2": "Hees, Sabrina",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 15:00 Uhr",
-    "court": "Platz 2"
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Kamyab, Maya",
-    "player2": null,
-    "winner": "Kamyab, Maya",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Müller, Karin",
-    "player2": null,
-    "winner": "Müller, Karin",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Ohm, Michaela",
-    "player2": null,
-    "winner": "Ohm, Michaela",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Herking, Lea-Marie",
-    "player2": null,
-    "winner": "Herking, Lea-Marie",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Göckus, Luisa",
-    "player2": null,
-    "winner": "Göckus, Luisa",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Hercher, Elise",
-    "player2": null,
-    "winner": "Hercher, Elise",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Dörr, Vanessa",
-    "player2": null,
-    "winner": "Dörr, Vanessa",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Grau, Neela Marlen",
-    "player2": null,
-    "winner": "Grau, Neela Marlen",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Müller, Lea",
-    "player2": null,
-    "winner": "Müller, Lea",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Hussing, Mara",
-    "player2": null,
-    "winner": "Hussing, Mara",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Wiegel, Lea",
-    "player2": null,
-    "winner": "Wiegel, Lea",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Palić, Nina",
-    "player2": null,
-    "winner": "Palić, Nina",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Pilz, Melanie",
-    "player2": null,
-    "winner": "Pilz, Melanie",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Becker, Birgit",
-    "player2": null,
-    "winner": "Becker, Birgit",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Runde 1",
-    "player1": "Anders, Xenia",
-    "player2": null,
-    "winner": "Anders, Xenia",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Hercher, Elise",
-    "player2": "Dörr, Vanessa",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 09:00 Uhr",
-    "court": "TC Ludwigseck Salchendorf, Platz 1"
-  },
-  {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
-    "round": "Achtelfinale",
-    "player1": "Palić, Nina",
-    "player2": "Pilz, Melanie",
-    "winner": null,
-    "score": null,
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 22,0-25,0",
-    "round": "Viertelfinale",
-    "player1": "Herrmann Solbach, Sophia",
-    "player2": null,
-    "winner": "Herrmann Solbach, Sophia",
-    "score": "Freilos",
-    "time": "",
-    "court": ""
-  },
-  {
-    "competition": "Damen Einzel KO LK 22,0-25,0",
-    "round": "Finale",
-    "player1": "Giebeler, Ina",
-    "player2": "Fiedler, Julia",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 12:00 Uhr",
-    "court": "Platz 2"
-  },
-  {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "competition": "Herren Einzel LK1,0-25,0",
     "round": "Finale",
     "player1": "Nies, Tim",
     "player2": "Wedding, Robin",
@@ -621,7 +11,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Herren Einzel KO LK 1,0-25,0",
+    "competition": "Herren Einzel LK1,0-25,0",
     "round": "Finale",
     "player1": "Gross, Ingo",
     "player2": "Ebener, Frederik",
@@ -632,7 +22,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "competition": "Damen Einzel LK17,0-25,0",
     "round": "Finale",
     "player1": "Herking, Lea-Marie",
     "player2": "Anders, Xenia",
@@ -643,7 +33,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Damen Einzel KO LK 17,0-25,0",
+    "competition": "Damen Einzel LK17,0-25,0",
     "round": "Finale",
     "player1": "Schläger, Antonia",
     "player2": "Wiegel, Lea",
@@ -654,7 +44,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Damen Einzel KO LK 22,0-25,0",
+    "competition": "Damen Einzel LK22,0-25,0",
     "round": "Finale",
     "player1": "Herrmann Solbach, Sophia",
     "player2": "Pfeifer, Jasmin",
@@ -665,7 +55,18 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Damen Einzel KO LK 10,0-25,0",
+    "competition": "Damen Einzel LK22,0-25,0",
+    "round": "Finale",
+    "player1": "Giebeler, Ina",
+    "player2": "Fiedler, Julia",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 12:00 Uhr",
+    "court": "Platz 2",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Damen Einzel LK10,0-25,0",
     "round": "Finale",
     "player1": "Voth, Eva",
     "player2": "Backaus, Hedda Lotta",
@@ -676,7 +77,18 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Herren 70 Einzel KO LK 1,0-25,0",
+    "competition": "Damen Einzel LK10,0-25,0",
+    "round": "Finale",
+    "player1": "Hoffmann, Nicole",
+    "player2": "Hees, Sabrina",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 15:00 Uhr",
+    "court": "Platz 2",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Herren 70 Einzel LK1,0-25,0",
     "round": "Finale",
     "player1": "Simmerl, Mario",
     "player2": "Sommer, Rainer",
@@ -687,7 +99,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Herren 60 Einzel KO LK 1,0-25,0",
+    "competition": "Herren 60 Einzel LK1,0-25,0",
     "round": "Finale",
     "player1": "Rothe, Michael",
     "player2": "Schwarz, Volker",
@@ -698,7 +110,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "competition": "Herren 50 Einzel LK1,0-25,0",
     "round": "Halbfinale",
     "player1": "Lück, Marco",
     "player2": "Klink, Peter",
@@ -709,7 +121,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Herren 50 Einzel KO LK 1,0-25,0",
+    "competition": "Herren 50 Einzel LK1,0-25,0",
     "round": "Halbfinale",
     "player1": "Schwarzer, Martin",
     "player2": "Hussing, Frank",
@@ -720,7 +132,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Herren 40 Einzel KO LK 1,0-25,0",
+    "competition": "Herren 40 Einzel LK1,0-25,0",
     "round": "Finale",
     "player1": "Müller, Stefan",
     "player2": "Weber, Holger",
@@ -731,7 +143,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Herren Einzel KO LK 17,0-25,0",
+    "competition": "Herren Einzel LK17,0-25,0",
     "round": "Finale",
     "player1": "Polzer, Timo",
     "player2": "Schneider, Dominik",
@@ -742,7 +154,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "competition": "Herren Einzel LK10,0-25,0",
     "round": "Halbfinale",
     "player1": "Kettner, Paul",
     "player2": "Koch, Colin",
@@ -753,7 +165,7 @@
     "source": "nuliga-merge"
   },
   {
-    "competition": "Herren Einzel KO LK 10,0-25,0",
+    "competition": "Herren Einzel LK10,0-25,0",
     "round": "Halbfinale",
     "player1": "Göckus, Maximilian",
     "player2": "Henrichs, Lukas",
