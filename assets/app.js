@@ -332,9 +332,25 @@ function renderBracketTree(matches) {
   // Nebenrunde). Deshalb werden tatsaechlich vorhandene Runden (roundsPresent)
   // immer ergaenzt, auch wenn sie ausserhalb des berechneten Fensters liegen -
   // eine echte, bereits terminierte Paarung darf nie unter den Tisch fallen.
-  const roundsFull = ROUND_ORDER.filter((r) => calculatedWindow.includes(r) || roundsPresent.includes(r));
+  let roundsFull = ROUND_ORDER.filter((r) => calculatedWindow.includes(r) || roundsPresent.includes(r));
 
-  const finaleMatches = byRound.get('Finale');
+  // Sobald eine der tatsaechlich vorhandenen Runden nur noch 1 Partie enthaelt,
+  // ist das rechnerisch bereits die entscheidende (letzte) Runde dieses
+  // Tableaus - egal wie sie benannt ist (bei kleinen Nebenrunden z.B.
+  // "Halbfinale" statt "Finale"). Alles was danach in ROUND_ORDER noch folgen
+  // wuerde (z.B. eine nie kommende "Finale"-Runde) wird dann nicht mehr
+  // angehaengt, sonst bliebe nach Abschluss dieser letzten Partie dauerhaft
+  // eine leere, nie zu befuellende Spalte stehen.
+  const terminalRound = roundsPresent.find((r) => byRound.get(r).length === 1);
+  if (terminalRound) {
+    const terminalIdx = ROUND_ORDER.indexOf(terminalRound);
+    roundsFull = roundsFull.filter((r) => ROUND_ORDER.indexOf(r) <= terminalIdx);
+  }
+
+  // Die "letzte" Runde dieses Tableaus (fuer die Sieger-Ermittlung) ist somit
+  // nicht zwingend "Finale", sondern schlicht die letzte Spalte in roundsFull.
+  const lastRoundName = roundsFull[roundsFull.length - 1];
+  const finaleMatches = byRound.get(lastRoundName);
   const finaleDone = finaleMatches && finaleMatches.length === 1 && finaleMatches[0].winner;
 
   const columns = [...roundsFull, 'Sieger'];
