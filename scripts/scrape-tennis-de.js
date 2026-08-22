@@ -889,7 +889,14 @@ async function main() {
       'tennis.de zeigt einen Login-Hinweis statt der Konkurrenzen - vermutlich Bot-Erkennung. ' +
       `Siehe data/${FILE_PREFIX}scrape-debug.txt und data/${FILE_PREFIX}scrape-debug.png.`
     );
-    writeJSON(`${FILE_PREFIX}entrants.json`, readJSON(`${FILE_PREFIX}entrants.json`, []));
+    // NICHT mehr entrants.json anfassen: die vorher hier stehende Zeile
+    // schrieb readJSON(...) einfach wieder zurueck - das ist nur dann
+    // wirklich ein No-Op, wenn die zuletzt eingecheckte Datei tatsaechlich
+    // noch die guten Daten enthaelt. War sie es NICHT (z.B. weil ein
+    // vorheriger Lauf schon leer geschrieben hat), zementiert dieser Read-
+    // Write-Zyklus den leeren Stand fuer immer fest - genau das ist am
+    // 21.08.2026 passiert (LK/Verein fehlten seitdem komplett). Deshalb
+    // hier einfach gar nichts mehr schreiben.
     await browser.close();
     return;
   }
@@ -927,7 +934,18 @@ async function main() {
     if (matches && matches.length) allMatches.push(...matches);
   }
 
-  writeJSON(`${FILE_PREFIX}entrants.json`, allEntrants);
+  // Ein leeres Ergebnis fuer ALLE Konkurrenzen gleichzeitig ist so gut wie
+  // nie echt - eine Meldeliste schrumpft nicht ploetzlich auf 0 Blaecke.
+  // Viel wahrscheinlicher ist eine tennis.de-Bot-Sperre/Login-Wand oder ein
+  // Seitenstruktur-Wechsel mitten im Lauf (Vorfall 21.08.2026: entrants.json
+  // wurde dadurch tagelang faelschlich leer geschrieben, LK/Verein fehlten
+  // ueberall). Deshalb: ein leeres Ergebnis NIE committen, sondern die
+  // zuletzt bekannte gute Datei unangetastet lassen.
+  if (allEntrants.length > 0) {
+    writeJSON(`${FILE_PREFIX}entrants.json`, allEntrants);
+  } else {
+    console.warn('Keine Meldelisten gefunden - entrants.json wird NICHT ueberschrieben (bestehender Stand bleibt erhalten).');
+  }
 
   // Ergebnisse (mit Score) und Spielplan (ohne Score) trennen
   // "Freilos"-Einträge (Spieler kommt ohne Spiel weiter) zählen NICHT als
