@@ -422,8 +422,9 @@ function removeEliminatedFromSchedule() {
     if (!m || m.winner) return true;
     if (!m.player1 || !m.player2) return true;
     var comp = normComp(m.competition);
-    if (eliminated.has(comp + '||' + normName(m.player1))) return false;
-    if (eliminated.has(comp + '||' + normName(m.player2))) return false;
+    var p1Elim = eliminated.has(comp + '||' + normName(m.player1));
+    var p2Elim = eliminated.has(comp + '||' + normName(m.player2));
+    if (p1Elim && p2Elim) return false;
     return true;
   });
   var removed = schedule.length - filtered.length;
