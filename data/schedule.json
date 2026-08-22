@@ -13,23 +13,23 @@
   {
     "competition": "Damen Einzel LK17,0-25,0",
     "round": "Halbfinale",
-    "player1": "Schläger, Antonia",
-    "player2": "Wiegel, Lea",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 10:30 Uhr",
-    "court": "Platz 2",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Damen Einzel LK17,0-25,0",
-    "round": "Halbfinale",
     "player1": "Herking, Lea-Marie",
     "player2": "Anders, Xenia",
     "winner": null,
     "score": null,
     "time": "22.08.2026 09:00 Uhr",
     "court": "Platz 3",
+    "source": "nuliga-merge"
+  },
+  {
+    "competition": "Damen Einzel LK17,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Schläger, Antonia",
+    "player2": "Wiegel, Lea",
+    "winner": null,
+    "score": null,
+    "time": "22.08.2026 10:30 Uhr",
+    "court": "Platz 2",
     "source": "nuliga-merge"
   },
   {
