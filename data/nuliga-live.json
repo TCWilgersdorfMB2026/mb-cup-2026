@@ -512,8 +512,8 @@
   {
     "competition": "Herren 50 Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": "Lück, Marco / Klink, Peter",
-    "player2": "Schwarzer, Martin / Hussing, Frank",
+    "player1": "Klink, Peter",
+    "player2": "Schwarzer, Martin",
     "winner": null,
     "score": null,
     "time": "22.08.2026 13:30 Uhr",
@@ -522,8 +522,8 @@
   {
     "competition": "Herren 50 Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": "Lück, Marco / Klink, Peter",
-    "player2": "Schwarzer, Martin / Hussing, Frank",
+    "player1": "Lück, Marco",
+    "player2": "Hussing, Frank",
     "winner": null,
     "score": null,
     "time": "22.08.2026 15:00 Uhr",
@@ -534,8 +534,8 @@
     "round": "Halbfinale",
     "player1": "Lück, Marco",
     "player2": "Klink, Peter",
-    "winner": null,
-    "score": null,
+    "winner": "Lück, Marco",
+    "score": "6:2 6:1",
     "time": "21.08.2026 18:00 Uhr",
     "court": "Platz 1"
   },
@@ -544,8 +544,8 @@
     "round": "Halbfinale",
     "player1": "Schwarzer, Martin",
     "player2": "Hussing, Frank",
-    "winner": null,
-    "score": null,
+    "winner": "Hussing, Frank",
+    "score": "6:1 6:2",
     "time": "21.08.2026 18:00 Uhr",
     "court": "Platz 2"
   },
