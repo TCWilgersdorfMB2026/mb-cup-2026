@@ -1923,5 +1923,38 @@
     "time": "21.08.2026 18:00 Uhr",
     "court": "Platz 2",
     "source": "nuliga-live"
+  },
+  {
+    "competition": "Herren 60 Einzel LK1,0-25,0",
+    "round": "Finale",
+    "player1": "Rothe, Michael",
+    "player2": "Schwarz, Volker",
+    "winner": "Rothe, Michael",
+    "score": "6:3 6:4",
+    "time": "22.08.2026 09:00 Uhr",
+    "court": "Platz 1",
+    "source": "nuliga-live"
+  },
+  {
+    "competition": "Herren 50 Einzel LK1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Lück, Marco",
+    "player2": "Klink, Peter",
+    "winner": "Lück, Marco",
+    "score": "6:2 6:1",
+    "time": "21.08.2026 18:00 Uhr",
+    "court": "Platz 1",
+    "source": "nuliga-live"
+  },
+  {
+    "competition": "Herren 50 Einzel LK1,0-25,0",
+    "round": "Halbfinale",
+    "player1": "Schwarzer, Martin",
+    "player2": "Hussing, Frank",
+    "winner": "Hussing, Frank",
+    "score": "6:1 6:2",
+    "time": "21.08.2026 18:00 Uhr",
+    "court": "Platz 2",
+    "source": "nuliga-live"
   }
 ]
