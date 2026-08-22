@@ -65,8 +65,21 @@
     return last2 + ', ' + first2;
   }
 
+  // nuLiga zeigt fuer eine Turnierbaum-Position, deren Gegner noch nicht
+  // feststeht (weil die zufuehrende Partie noch offen ist), manchmal einen
+  // Platzhalter-Text wie "Kamyab, Taymas / Hartmann, Nils" statt eines
+  // echten Namens - Bedeutung: "Sieger aus dieser noch offenen Partie".
+  // Eigene Kopie von assets/app.js (isPendingPlaceholder) - dieses Skript
+  // laeuft im Browser der Live-Anzeige unabhaengig von app.js.
+  function isPendingPlaceholder(name) {
+    return /\S\s*\/\s*\S/.test((name || '').trim());
+  }
+
   function playerHtml(rawName) {
     var raw = rawName || '';
+    if (isPendingPlaceholder(raw)) {
+      return '<span class="pending-placeholder">Gegner steht noch nicht fest</span>';
+    }
     var entrant = findEntrant(raw);
     var lk = entrant && entrant.lk;
     var club = entrant && entrant.club;
@@ -165,6 +178,46 @@
       var nuliga = arr[0] || [];
       var manual = arr[1] || [];
       ENTRANTS = arr[2] || [];
+
+      // Dieselbe Bereinigung wie in scripts/merge-nuliga-schedule.js
+      // (removeEliminatedFromSchedule/fixDuplicateFinale), dort nur fuer
+      // schedule.json auf der Hauptseite wirksam - die Live-Anzeige liest
+      // ausschliesslich nuliga-live.json direkt und profitiert von jener
+      // serverseitigen Bereinigung nicht. Vorfall 22.08.2026: nuLiga
+      // meldete gleichzeitig eine laengst ueberholte "Finale"-Paarung mit
+      // zwei bereits im echten Halbfinale unterlegenen Spieler:innen sowie
+      // Faelle mit zwei gleichzeitig offenen "Finale"-Partien derselben
+      // Konkurrenz (strukturell unmoeglich - tatsaechlich das Halbfinale).
+      function normName2(s) { return (s || '').trim().toLowerCase().replace(/\s+/g, ' '); }
+      var eliminated = {};
+      nuliga.forEach(function (m) {
+        if (!m || !m.winner || !m.player1 || !m.player2) return;
+        var winnerNorm = normName2(m.winner);
+        var loser = normName2(m.player1) === winnerNorm ? m.player2 : (normName2(m.player2) === winnerNorm ? m.player1 : null);
+        if (!loser) return;
+        eliminated[m.competition + '||' + normName2(loser)] = true;
+      });
+      nuliga = nuliga.filter(function (m) {
+        if (!m || m.winner) return true;
+        if (!m.player1 || !m.player2) return true;
+        if (eliminated[m.competition + '||' + normName2(m.player1)]) return false;
+        if (eliminated[m.competition + '||' + normName2(m.player2)]) return false;
+        return true;
+      });
+      var openFinaleCount = {};
+      nuliga.forEach(function (m) {
+        if (!m || m.winner || m.round !== 'Finale') return;
+        openFinaleCount[m.competition] = (openFinaleCount[m.competition] || 0) + 1;
+      });
+      nuliga = nuliga.map(function (m) {
+        if (!m || m.winner || m.round !== 'Finale') return m;
+        if ((openFinaleCount[m.competition] || 0) < 2) return m;
+        var copy = {};
+        for (var k in m) copy[k] = m[k];
+        copy.round = 'Halbfinale';
+        return copy;
+      });
+
       var finishedKeys = {};
       nuliga.forEach(function (r) {
         if (r.winner) finishedKeys[matchKey(r)] = true;
