@@ -404,3 +404,62 @@ function removeDecidedFromSchedule() {
   }
 }
 removeDecidedFromSchedule();
+
+function removeEliminatedFromSchedule() {
+  const schedule = readJson(SCHEDULE_PATH, []);
+  const results = readJson(RESULTS_PATH, []);
+  if (!Array.isArray(schedule) || !schedule.length) return;
+  if (!Array.isArray(results) || !results.length) return;
+  var eliminated = new Set();
+  results.forEach(function (m) {
+    if (!m || !m.winner || !m.player1 || !m.player2) return;
+    var winnerNorm = normName(m.winner);
+    var loser = normName(m.player1) === winnerNorm ? m.player2 : (normName(m.player2) === winnerNorm ? m.player1 : null);
+    if (!loser) return;
+    eliminated.add(normComp(m.competition) + '||' + normName(loser));
+  });
+  var filtered = schedule.filter(function (m) {
+    if (!m || m.winner) return true;
+    if (!m.player1 || !m.player2) return true;
+    var comp = normComp(m.competition);
+    if (eliminated.has(comp + '||' + normName(m.player1))) return false;
+    if (eliminated.has(comp + '||' + normName(m.player2))) return false;
+    return true;
+  });
+  var removed = schedule.length - filtered.length;
+  if (removed) {
+    fs.writeFileSync(SCHEDULE_PATH, JSON.stringify(filtered, null, 2) + String.fromCharCode(10));
+    console.log('Spielplan-Bereinigung: ' + removed + ' Partie(n) mit bereits ausgeschiedenen Spieler(n) entfernt.');
+  } else {
+    console.log('Spielplan-Bereinigung: keine Partien mit bereits ausgeschiedenen Spieler(n) gefunden.');
+  }
+}
+removeEliminatedFromSchedule();
+
+function fixDuplicateFinale() {
+  const schedule = readJson(SCHEDULE_PATH, []);
+  if (!Array.isArray(schedule) || !schedule.length) return;
+  var openFinaleByComp = new Map();
+  schedule.forEach(function (m) {
+    if (!m || m.winner || m.round !== 'Finale') return;
+    var comp = normComp(m.competition);
+    openFinaleByComp.set(comp, (openFinaleByComp.get(comp) || 0) + 1);
+  });
+  var relabeled = 0;
+  var fixed = schedule.map(function (m) {
+    if (!m || m.winner || m.round !== 'Finale') return m;
+    var comp = normComp(m.competition);
+    if ((openFinaleByComp.get(comp) || 0) >= 2) {
+      relabeled++;
+      return Object.assign({}, m, { round: 'Halbfinale' });
+    }
+    return m;
+  });
+  if (relabeled) {
+    fs.writeFileSync(SCHEDULE_PATH, JSON.stringify(fixed, null, 2) + String.fromCharCode(10));
+    console.log('Spielplan-Bereinigung: ' + relabeled + ' faelschlich Finale genannte Partie(n) auf Halbfinale korrigiert.');
+  } else {
+    console.log('Spielplan-Bereinigung: keine doppelten Finale-Eintraege gefunden.');
+  }
+}
+fixDuplicateFinale();
