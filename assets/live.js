@@ -200,8 +200,9 @@
       nuliga = nuliga.filter(function (m) {
         if (!m || m.winner) return true;
         if (!m.player1 || !m.player2) return true;
-        if (eliminated[m.competition + '||' + normName2(m.player1)]) return false;
-        if (eliminated[m.competition + '||' + normName2(m.player2)]) return false;
+        var p1Elim = !!eliminated[m.competition + '||' + normName2(m.player1)];
+        var p2Elim = !!eliminated[m.competition + '||' + normName2(m.player2)];
+        if (p1Elim && p2Elim) return false;
         return true;
       });
       var openFinaleCount = {};
