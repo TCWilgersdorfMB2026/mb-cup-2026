@@ -2,34 +2,12 @@
   {
     "competition": "Herren Einzel LK1,0-25,0",
     "round": "Finale",
-    "player1": "Nies, Tim",
-    "player2": "Wedding, Robin",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 15:00 Uhr",
-    "court": "Platz 4",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Herren Einzel LK1,0-25,0",
-    "round": "Finale",
     "player1": "Gross, Ingo",
     "player2": "Ebener, Frederik",
     "winner": null,
     "score": null,
     "time": "22.08.2026 16:30 Uhr",
     "court": "Platz 1",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Damen Einzel LK17,0-25,0",
-    "round": "Finale",
-    "player1": "Herking, Lea-Marie",
-    "player2": "Anders, Xenia",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 09:00 Uhr",
-    "court": "Platz 3",
     "source": "nuliga-merge"
   },
   {
@@ -45,7 +23,7 @@
   },
   {
     "competition": "Damen Einzel LK22,0-25,0",
-    "round": "Finale",
+    "round": "Halbfinale",
     "player1": "Herrmann Solbach, Sophia",
     "player2": "Pfeifer, Jasmin",
     "winner": null,
@@ -56,24 +34,13 @@
   },
   {
     "competition": "Damen Einzel LK22,0-25,0",
-    "round": "Finale",
+    "round": "Halbfinale",
     "player1": "Giebeler, Ina",
     "player2": "Fiedler, Julia",
     "winner": null,
     "score": null,
     "time": "22.08.2026 12:00 Uhr",
     "court": "Platz 2",
-    "source": "nuliga-merge"
-  },
-  {
-    "competition": "Damen Einzel LK10,0-25,0",
-    "round": "Finale",
-    "player1": "Voth, Eva",
-    "player2": "Backaus, Hedda Lotta",
-    "winner": null,
-    "score": null,
-    "time": "22.08.2026 12:00 Uhr",
-    "court": "Platz 3",
     "source": "nuliga-merge"
   },
   {
